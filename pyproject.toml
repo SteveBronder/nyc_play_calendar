@@ -5,7 +5,7 @@ description = "ETL pipeline to parse NYC event listings (PDF + web), normalize, 
 authors = ["Steve Bronder <sbronder@flatironinstitute.org>"]
 license = "MIT"
 readme = "README.md"
-packages = [{ include = "nyc_events_etl" }]
+packages = [{ include = "nyc_events_etl", from = "src" }]
 
 [tool.poetry.dependencies]
 python = "^3.10"
