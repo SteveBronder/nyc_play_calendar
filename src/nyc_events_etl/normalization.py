@@ -2,7 +2,7 @@ from __future__ import annotations
 
 """Normalization utilities converting series to individual event instances."""
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, time
 from typing import Iterable, List
 from hashlib import md5
 from zoneinfo import ZoneInfo
@@ -24,14 +24,32 @@ def expand_series(series: EventSeries, default_duration: timedelta = DEFAULT_DUR
 
     instances: List[EventInstance] = []
     for d in series.dates:
-        for start_time in series.start_times:
-            start = datetime.combine(d, start_time, NY_TZ)
-            if series.end_time:
-                end = datetime.combine(d, series.end_time, NY_TZ)
-                if end <= start:
-                    end += timedelta(days=1)
-            else:
-                end = start + default_duration
+        if series.start_times:
+            for start_time in series.start_times:
+                start = datetime.combine(d, start_time, NY_TZ)
+                if series.end_time:
+                    end = datetime.combine(d, series.end_time, NY_TZ)
+                    if end <= start:
+                        end += timedelta(days=1)
+                else:
+                    end = start + default_duration
+                uid = generate_uid(series.title, start, series.venue_name)
+                instances.append(
+                    EventInstance(
+                        uid=uid,
+                        title=series.title,
+                        description=series.description,
+                        price=series.price,
+                        venue_name=series.venue_name,
+                        venue_address=series.venue_address,
+                        start=start,
+                        end=end,
+                        all_day=series.all_day,
+                    )
+                )
+        else:
+            start = datetime.combine(d, time.min, NY_TZ)
+            end = start + timedelta(days=1)
             uid = generate_uid(series.title, start, series.venue_name)
             instances.append(
                 EventInstance(
@@ -43,6 +61,7 @@ def expand_series(series: EventSeries, default_duration: timedelta = DEFAULT_DUR
                     venue_address=series.venue_address,
                     start=start,
                     end=end,
+                    all_day=True,
                 )
             )
     return instances

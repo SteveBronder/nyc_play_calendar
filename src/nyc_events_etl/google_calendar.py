@@ -29,12 +29,18 @@ class GoogleCalendarClient:
 
     def _event_body(self, event: EventInstance) -> Dict:
         location = f"{event.venue_name} – {event.venue_address}" if event.venue_address else event.venue_name
+        if event.all_day:
+            start = {"date": event.start.date().isoformat()}
+            end = {"date": event.end.date().isoformat()}
+        else:
+            start = {"dateTime": event.start.isoformat(), "timeZone": str(event.start.tzinfo)}
+            end = {"dateTime": event.end.isoformat(), "timeZone": str(event.end.tzinfo)}
         return {
             "id": event.uid,
             "summary": event.title,
             "description": f"{event.description}\nPrice: {event.price}",
-            "start": {"dateTime": event.start.isoformat(), "timeZone": str(event.start.tzinfo)},
-            "end": {"dateTime": event.end.isoformat(), "timeZone": str(event.end.tzinfo)},
+            "start": start,
+            "end": end,
             "location": location,
         }
 
