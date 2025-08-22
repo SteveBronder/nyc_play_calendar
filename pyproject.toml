@@ -8,7 +8,7 @@ readme = "README.md"
 packages = [{ include = "nyc_events_etl", from = "src" }]
 
 [tool.poetry.dependencies]
-python = "*"
+python = "^3.8"
 
 # HTTP + parsing
 httpx = "*"
