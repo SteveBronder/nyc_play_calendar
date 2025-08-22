@@ -14,9 +14,10 @@ class EventSeries:
     The parser for any source (PDF or HTML) should create an ``EventSeries``
     instance.  The ``dates`` field contains the explicit dates for the event;
     recurring rules should be expanded into concrete dates before creating the
-    dataclass.  ``start_times`` holds one or more start times for the event on a
-    given date.  If ``end_time`` is ``None`` a default duration may be applied
-    during normalization.
+    dataclass.  ``start_times`` may be empty for all-day events and otherwise
+    holds one or more start times for the event on a given date.  If
+    ``end_time`` is ``None`` a default duration may be applied during
+    normalization.
     """
 
     title: str
@@ -27,6 +28,7 @@ class EventSeries:
     dates: List[date]
     start_times: List[time]
     end_time: Optional[time] = None
+    all_day: bool = False
 
 
 @dataclass
@@ -46,6 +48,7 @@ class EventInstance:
     venue_address: str
     start: datetime
     end: datetime
+    all_day: bool = False
 
 
 DEFAULT_DURATION = timedelta(hours=1)
