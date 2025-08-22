@@ -1,4 +1,4 @@
-from datetime import time
+from datetime import date, time
 from nyc_events_etl.date_parsing import parse_dates, parse_times
 
 
@@ -29,6 +29,21 @@ def test_parse_through_range():
     dates = parse_dates("through Aug 24", 2025)
     assert len(dates) == 24
     assert dates[-1].day == 24
+
+
+def test_parse_through_range_from_mid_month():
+    start = date(2025, 8, 10)
+    dates = parse_dates("through Aug 24", 2025, start_date=start)
+    assert dates[0] == start
+    assert dates[-1].day == 24
+
+
+def test_parse_ordinal_weekday_months_ahead():
+    dates = parse_dates(
+        "first Sunday of every month", 2025, default_month=8, months_ahead=2
+    )
+    assert [d.month for d in dates] == [8, 9, 10]
+    assert [d.day for d in dates] == [3, 7, 5]
 
 
 def test_parse_time_range():

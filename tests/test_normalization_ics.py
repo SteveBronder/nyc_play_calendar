@@ -13,11 +13,14 @@ def test_expand_and_ics():
         venue_address="123 St",
         dates=[date(2025, 8, 3)],
         start_times=[time(16, 0), time(18, 0)],
+        source="http://example.com/rock",
     )
     events = expand_series(series)
     assert len(events) == 2
+    assert "Source: http://example.com/rock" in events[0].description
     ics_bytes = events_to_ics(events)
     text = ics_bytes.decode()
     assert text.count("BEGIN:VEVENT") == 2
     assert "SUMMARY:Rock Show" in text
     assert "DTSTART;TZID=America/New_York" in text
+    assert "Source: http://example.com/rock" in text
