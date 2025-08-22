@@ -1,0 +1,15 @@
+<svg id="icon-right" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="icon_small_chevron_next" d="M2,24A2,2,0,0,1,.586,20.587L9.172,12,.586,3.414A2,2,0,0,1,3.414.586l10,10a2,2,0,0,1,0,2.828l-10,10A2,2,0,0,1,2,24" fill="#889399"/>
+    </clipPath>
+  </defs>
+  <rect id="icon_small_chevron_next_background" data-name="icon/small/chevron/next background" width="48" height="48" fill="rgba(0,0,0,0)"/>
+  <path id="icon_small_chevron_next-2" data-name="icon_small_chevron_next" d="M2,24A2,2,0,0,1,.586,20.587L9.172,12,.586,3.414A2,2,0,0,1,3.414.586l10,10a2,2,0,0,1,0,2.828l-10,10A2,2,0,0,1,2,24" transform="translate(18 12)" fill="#889399"/>
+  <g transform="translate(18 12)" clip-path="url(#clip-path)">
+    <g id="colour_icon_blue" data-name="colour/icon/blue" transform="translate(-18 -12)">
+      <rect id="colour_icon_blue_background" data-name="colour/icon/blue background" width="48" height="48" fill="rgba(0,0,0,0)"/>
+      <rect id="Rectangle_6" data-name="Rectangle 6" width="48" height="48" fill="#fff"/>
+    </g>
+  </g>
+</svg>

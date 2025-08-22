@@ -1,0 +1,736 @@
+/* Your CSS styles go here */
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    overflow-x: hidden;
+}
+
+h2, p, button, a, label {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+p {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+a:hover {
+    color: #000000;
+}
+
+#overlay h2, #benefitsHolder .text-container h2 {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    line-height: normal;
+    color: #ef4135;
+    text-align: left;
+}
+    
+
+.errorMsg {
+    display: block;
+    padding-top: 0.25rem;
+    color: #ef4135;
+    font-style: italic;
+}
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to next line */
+    width: 100%;
+}
+
+.grid-item.donation {
+    text-align: center;
+}
+
+.alert-container {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.alert-container p {
+    color: #fff;
+}
+
+.notice-message p {
+    margin-bottom: 0;
+}
+
+.heading-container {
+    display: flex;
+    align-items: center;
+    margin: 3rem 0 1.5rem 0;
+}
+
+.heading-container .line {
+    flex-grow: 1;
+    border: none;
+    border-top: 3px solid #ccc; /* Adjust as needed */
+}
+
+.heading-container h2 {
+    padding: 0 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2%;
+}
+
+.button-container .button-item {
+    width: calc(98% / 2);
+    margin-bottom: 2%;
+}
+
+.button-container.payment-type-container .button-item {
+    width: calc(95% / 3);
+    margin-bottom: 2%;
+}
+
+
+.button-container .button-item button,
+.button-container .button-item a.button,
+.button-container .button-item label {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: #FFF;
+    border: 3px solid #ccc;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.button-container .button-item button:hover,
+.button-container .button-item a.button:hover {
+    background-color: #EF4135;
+    color: #FFF;
+}
+
+.button-container .button-item button:hover *,
+.button-container .button-item a.button:hover * {
+    color: #FFF;
+}
+
+.donation-membership .button-container .button-item button,
+.donation-membership .button-container .button-item a.button {
+    min-height: 100px;
+}
+
+.button-container.recurring-container .button-item label {
+    padding: 0.75rem 1rem !important;
+}
+
+.button-container .button-item label {
+    padding: 0 !important;
+}
+
+.button-container.payment-type-container button {
+    height: 68px;
+}
+
+.button-container .button-item a.button,
+.button-container .button-item label {
+    display: flex;
+    width: auto;
+    height: 35px;
+    padding: 0.85rem 1rem;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+[type="radio"]:checked + label.fake-radio:before,
+[type="radio"]:not(:checked) + label.fake-radio:before,
+[type="radio"]:checked + label.fake-radio:after,
+[type="radio"]:not(:checked) + label.fake-radio:after {
+    display: none;
+}
+
+.button-container.gift-container button {
+    height: 65px;
+}
+
+.button-container .button-item button:hover,
+.button-container .button-item a.button:hover,
+.button-container .button-item label:hover {
+    background-color: #EF4135;
+    color: #FFF;
+}
+
+
+.radio-container {
+    width: fit-content;
+    margin: auto;
+}
+
+.radio-container .radio-group {
+    position: relative;
+    display: flex;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.inactive {
+    opacity: 0.5;
+    pointer-events:none;
+}
+
+.is-active,
+.is-active .button-container .button-item label {
+    background-color: #EF4135 !important;
+    background-color: #000 !important;
+    color: #FFF !important;
+}
+
+.is-active label {
+    color: white !important;
+}
+
+.is-active label:hover {
+    background-color: black !important;
+    color: #FFF !important;
+}
+
+
+.radio-container-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.radio-container-button .radio-group-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65px;
+    padding: 0.75rem 1rem;
+    margin: 0;
+    border: 3px solid #ccc;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.radio-container-button .radio-group-button label {
+    padding: 0;
+}
+
+.radio-container-button .radio-group-button label:before,
+.radio-container-button .radio-group-button label:after {
+    display: none;
+}
+
+
+#formAndBenefitsContainer {
+    border-style: solid;
+    border-width: medium;
+    display: flex;
+}
+
+.form-container {
+    margin: 1.5rem 0 2.5rem 0;
+}
+
+#step2 fieldset .form-container {
+    margin-bottom: 0;
+}
+
+.form-row {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.form-row input,
+.form-row select {
+    max-width: unset;
+    width: 100%;
+    margin: 0;
+    padding: 0.75rem 0.5rem;
+    border: 3px solid #ccc;
+}
+
+#donate form select[aria-invalid="true"] {
+    background: unset;
+}
+
+.form-half-row-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 4%;
+}
+
+.form-half-row-container .form-row {
+    width: 48%;
+}
+
+.form-row #name-section {
+    padding: 0 2rem 1rem 2rem;
+}
+
+.form-row label {
+    display: block;
+    margin-right: 1rem;
+    padding-bottom: 0.25rem;
+}
+
+.checkbox-group label {
+    padding-left: 2rem !important;
+    text-align: left;
+}
+
+#recaptcha-div {
+    width: 200px;
+}
+
+.amount-container {
+    margin: 1.5rem 0 2.5rem 0;
+    text-align: center;
+}
+
+.amount {
+    margin: 2rem 0 1rem 0;
+    font-size: 2rem;
+    color: #EF4135;
+    font-weight: 600;
+}
+
+.amount-container button {
+    margin-bottom: 2rem;
+    padding: 0.75rem 1rem;
+    background-color: #EF4135;
+    border: 3px solid #ccc;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+.amount-container button i {
+    padding-right: 0.5rem;
+}
+
+
+.amount-container p {
+    text-align: center;
+}
+
+#confirmation,
+.validation-summary-errors {
+    margin-bottom: 1rem;
+}
+
+.benefits-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px; /* Peeking height */
+    overflow: hidden;
+    z-index: 50;
+    transition: height 0.3s ease;
+    cursor: default;
+}
+
+.benefits-container.expanded {
+    height: 87vh !important; 
+    z-index: 100;
+}
+
+.grid-item.benefits .mobile-tab {
+    text-align: center;
+}
+
+.grid-item.benefits .mobile-tab .is-active {
+    background-color: #000000 !important;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+.grid-item.benefits .mobile-tab #expand-btn {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem 0.75rem 1rem;
+    background-color: #000000;
+    border: 3px solid #fff;
+    border-bottom: 0;
+    border-radius: 0.5rem 0.5rem 0 0;
+    box-shadow: 0 0 10px #888888;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.grid-item.benefits .mobile-tab #expand-btn i {
+    padding: 0 0.25rem;
+}
+
+.grid-item.benefits .text-container {
+    position: relative;
+    z-index: 100;
+    height: 100%;
+    padding: 1.5rem;
+    background-color: #F3F3F3;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    box-shadow: 0 0 10px #888888;
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.sidebar-info {
+    padding-bottom: 3rem;
+}
+
+#formAndBenefitsContainer .grid-item:hover {
+    background-color: #F3F3F3;
+}
+
+/* Overlay Styles ---------------------------------- */
+.overlay-link {
+    display: block;
+    width: fit-content;
+    margin: auto;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    max-height: 80vh; /* Maximum height of the content */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.overlay-content h2 {
+    margin-bottom: 1rem;
+}
+
+.overlay-content ul {
+    margin: 1rem 2rem;
+    list-style: unset;
+    text-align: left;
+}
+
+.overlay-content ul li {
+    margin-bottom: 1rem;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Chevron styling */
+.chevron {
+    font-size: 16px; /* Adjust size as needed */
+    transition: transform 0.3s ease;
+    transform: rotate(0deg); /* Default position */
+}
+
+/* Rotate chevron when content is visible */
+.accordion-header.active .chevron {
+    transform: rotate(180deg); /* Rotate chevron */
+}
+
+/* Media Queries ---------------------------------- */
+@media screen and (max-width: 576px) {
+    .donation-giving .form-half-row-container {
+        flex-direction: column;
+    }
+
+    .donation-giving .form-half-row-container .form-row {
+        width: 100%;
+    }
+
+    .donation-membership .form-half-row-container {
+        flex-direction: column;
+    }
+
+    .donation-membership .form-half-row-container .form-row {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .grid-container {
+        flex-direction: column;
+    }
+
+    .grid-item.benefits .text-container {
+        padding: 3rem;
+    }
+
+    .button-container .button-item a.button,
+    .button-container .button-item label {
+        height: auto;
+    }
+
+    .button-container.payment-container {
+        justify-content: center;
+        gap: 1%;
+    }
+
+    .button-container.payment-container .button-item {
+        width: calc(98% / 3);
+        margin-bottom: 1%;
+    }
+
+    .button-container.gift-container button {
+        height: auto;
+    }
+
+    .button-container .button-item input {
+        height: auto;
+    }
+
+    .form-container.other {
+        width: calc(100% / 3);
+        margin: auto;
+        margin-top: 1rem;
+    }
+
+    .checkbox-container {
+        width: 75%;
+        margin: auto;
+    }
+
+    #recaptcha-div {
+        width: 304px;
+        margin: auto;
+    }
+
+    /* giving form */
+    .button-container.payment-type-container button {
+        height: unset;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .grid-container {
+        width: 80%;
+        margin: auto;
+    }
+
+    .checkbox-container {
+        width: unset;
+    }
+}
+
+
+#formAndBenefitsContainer #donate-form {
+    width: 60%;
+}
+
+@media screen and (min-width: 992px) {
+    .grid-container {
+        width: 100%;
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
+
+    .grid-item.donation {
+        width: 50%;
+        margin-right: 2rem;
+    }
+
+    .grid-item.benefits {
+        width: 50%;
+        background-color: #F3F3F3;
+    }
+
+    .grid-item.benefits .mobile-tab {
+        display: none;
+    }
+
+    #formAndBenefitsContainer {
+        border-style: solid;
+        border-width: medium;
+        display: block;
+    }
+
+    .benefits-container {
+        position: unset;
+        bottom: unset;
+        left: unset;
+        width: unset;
+        height: 100%;
+        border: unset;
+        z-index: unset;
+        transition: unset;
+    }
+
+    .grid-item.benefits .text-container {
+        padding: 2rem;
+        box-shadow: none;
+    }
+
+    #benefitsHolder .text-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .button-container {
+        align-items: center;
+    }
+
+    .button-container.gift-container button {
+        height: 65px;
+    }
+
+    .button-container .button-item input {
+        height: 65px;
+    }
+
+    #formAndBenefitsContainer #donate-form {
+        width: 60%;
+    }
+
+
+}
+
+@media screen and (max-width: 992px) {
+    .donation-membership .form-half-row-container {
+        flex-direction: column;
+    }
+
+    .donation-membership .form-half-row-container .form-row {
+        width: 100%;
+    }
+    #formAndBenefitsContainer #donate-form {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .grid-item.donation {
+        width: 60%;
+    }
+
+    .grid-item.benefits {
+        width: 40%;
+    }
+
+    .button-container .button-item a.button {
+        height: auto;
+    }
+
+    .button-container.gift-container button {
+        height: auto;
+    }
+
+    .button-container .button-item input {
+        height: auto;
+    }
+
+    .form-row input,
+    .form-row select {
+        flex: 1;
+    }
+
+    .form-half-row-container label[for="ccv"] {
+        text-align: right;
+    }
+
+    .overlay-content {
+        max-width: 800px;
+    }
+
+    #formAndBenefitsContainer #donate-form {
+        width: 60%;
+    }
+}
+
+
+
+/* Jumbotron --------------------------*/
+.jumbotronHolder {
+    position: relative;
+}
+
+.jumbotronImage {
+    width: 100%;
+    display: block;
+}
+
+.jumbotronTitle {
+    position: absolute;
+    bottom: 0px;
+    color: white;
+    margin: 0;
+    left: 10px;
+}
+
+.jumbotronHolder {
+    position: relative;
+    margin-bottom: -2px; /*there is whitespace and I can't seem to figure out why, we can delete this later*/
+}
+
+.jumbotronHolderMargin {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch; /* important: forces all children to match height */
+}
+
+.button-container .button-item {
+    display: flex; /* make it a flex container */
+    flex: 1 1 calc(100% / 2 - 1%); /* or adjust based on layout */
+    margin-bottom: 1rem;
+}
+
+.button-container .button-item button,
+.button-container .button-item a.button,
+.button-container .button-item label {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: auto; /* Let it stretch */
+    width: 100%;
+    padding: 1rem;
+}
+
+.button-item {
+    max-width: 200px;
+}
+

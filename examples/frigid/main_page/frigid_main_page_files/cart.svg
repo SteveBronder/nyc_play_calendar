@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20.003" height="18" viewBox="0 0 20.003 18">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="icon_medium_sales" d="M6,18a1,1,0,0,1-.874-.515l-5-9A1,1,0,0,1,1,7H3.34L6.081.606A1,1,0,0,1,7,0h6a1,1,0,0,1,.92.606L16.66,7H19a1,1,0,0,1,.874,1.485l-5,9A1,1,0,0,1,14,18Zm5-9v7h2V9H2.7L5,13.141V9H7v7H9V9Zm4,4.141L17.3,9H15ZM14.484,7,12.341,2H7.659L5.517,7Z" transform="translate(2 3)" fill="#889399"/>
+    </clipPath>
+  </defs>
+  <g id="cart" transform="translate(-2 -3)">
+    <path id="icon_medium_sales-2" data-name="icon_medium_sales" d="M6,18a1,1,0,0,1-.874-.515l-5-9A1,1,0,0,1,1,7H3.34L6.081.606A1,1,0,0,1,7,0h6a1,1,0,0,1,.92.606L16.66,7H19a1,1,0,0,1,.874,1.485l-5,9A1,1,0,0,1,14,18Zm5-9v7h2V9H2.7L5,13.141V9H7v7H9V9Zm4,4.141L17.3,9H15ZM14.484,7,12.341,2H7.659L5.517,7Z" transform="translate(2 3)" fill="#889399"/>
+    <g clip-path="url(#clip-path)">
+      <g id="colour_icon_blue" data-name="colour/icon/blue">
+        <rect id="Rectangle_6" data-name="Rectangle 6" width="24" height="24" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

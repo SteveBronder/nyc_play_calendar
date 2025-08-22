@@ -1,0 +1,3366 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)https://tickets.frigid.nyc/ -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="origin-trial" content="A7vZI3v+Gz7JfuRolKNM4Aff6zaGuT7X0mf3wtoZTnKv6497cVMnhy03KDqX7kBz/q/iidW7srW31oQbBt4VhgoAAACUeyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGUuY29tOjQ0MyIsImZlYXR1cmUiOiJEaXNhYmxlVGhpcmRQYXJ0eVN0b3JhZ2VQYXJ0aXRpb25pbmczIiwiZXhwaXJ5IjoxNzU3OTgwODAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><link rel="stylesheet" href="./frigid_main_page_files/all.min.css">
+
+
+
+	<script type="text/javascript" async="" charset="utf-8" src="./frigid_main_page_files/recaptcha__en.js" crossorigin="anonymous" integrity="sha384-LpPE17frK5ghpDNcL02QVoY7N6n375lMdZEBjkcA4rqimdzMm/XNiOx2MI2jTEkt"></script><script src="./frigid_main_page_files/bundle.min.js" integrity="sha384-ir4+BihBClNpjZk3UKgHTr0cwRhujAjy/M5VEGvcOzjhM1Db79GAg9xLxYn4uVK4" crossorigin="anonymous">
+	</script>
+	<script>
+		Sentry.init({
+			dsn: "https://a7c1385511eb4b45995ef1380a727838@o500868.ingest.sentry.io/5588029",
+			release: "v8.2.18",
+			beforeSend: (event) => {
+				// filter out sentry events from invalid domains
+				const url = event.request?.url;
+				const isMissingSubdomain = url && 
+					(url.startsWith('https://preview.red61') || url.startsWith('https://online.red61' || url.startsWith('https://online.qa.red61')))
+    			if (isMissingSubdomain) {
+      				return null;
+    			}
+    			return event;
+			},
+		});
+		Sentry.configureScope((scope) => {
+			scope.setTag("website", document.location.origin);
+		});
+	</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Frigid New York</title>
+
+
+<style>
+@media (max-width: 992px){
+	.carousel-inner {
+	height: 250px !important;
+	}
+}
+
+@media (max-width: 576px){
+	.carousel-inner {
+	height: 150px !important;
+	}
+}
+</style>
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="https://red61-digital-react-player.s3.eu-west-2.amazonaws.com/">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="alternate" type="application/rss+xml" title="Frigid New York » Feed" href="https://tickets.frigid.nyc/feed/">
+<link rel="alternate" type="application/rss+xml" title="Frigid New York » Comments Feed" href="https://tickets.frigid.nyc/comments/feed/">
+<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/tickets.frigid.nyc\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.8.2"}};
+/*! This file is auto-generated */
+!function(s,n){var o,i,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),a=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===a[t]})}function u(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);for(var n=e.getImageData(16,16,1,1),a=0;a<n.data.length;a++)if(0!==n.data[a])return!1;return!0}function f(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\udedf")}return!1}function g(e,t,n,a){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):s.createElement("canvas"),o=r.getContext("2d",{willReadFrequently:!0}),i=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(function(e){i[e]=t(o,e,n,a)}),i}function t(e){var t=s.createElement("script");t.src=e,t.defer=!0,s.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",i=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){s.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+g.toString()+"("+[JSON.stringify(i),f.toString(),p.toString(),u.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"}),r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=function(e){c(n=e.data),r.terminate(),t(n)})}catch(e){}c(n=g(i,f,p,u))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel="stylesheet" id="wp-block-library-css" href="./frigid_main_page_files/style.min.css" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id="global-styles-inline-css" type="text/css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel="stylesheet" id="contact-form-7-css" href="./frigid_main_page_files/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="cookie-law-info-css" href="./frigid_main_page_files/cookie-law-info-public.css" type="text/css" media="all">
+<link rel="stylesheet" id="cookie-law-info-gdpr-css" href="./frigid_main_page_files/cookie-law-info-gdpr.css" type="text/css" media="all">
+<link rel="stylesheet" id="styles-css" href="./frigid_main_page_files/styles.min.css" type="text/css" media="all">
+<style id="styles-inline-css" type="text/css">
+* { font-family: Lato; }
+.primary-color {
+	color: #33516d !important;
+}
+.primary-color-background {
+	background-color: #33516d !important;
+	color: white;
+}
+.donation-frequencys-ul input[type="radio"]:checked + label {
+    background: #33516d !important;
+    color: white;
+}
+a, .secondary-color {
+	color: #112638;
+}
+.menu-color {
+	background-color: #33516d;
+}
+.footer-bg-color {
+	background-color: #33516d;
+}
+.primary-bg-color {
+	background-color: #33516d !important;
+}
+.primary-bg-fade {
+  background-image: linear-gradient(to bottom,  #33516d, #7e9cb8);
+}
+.secondary-bg-color {
+	background-color: #112638 !important;
+}
+.low-availability-bg-color {
+	background-color: #FFA500 !important;
+	color: white !important;
+}
+.low-availability-border-color {
+	border-color: #FFA500 !important;
+}
+.menu-bg-color {
+	background-color: #33516d;
+}
+.primary-border-color {
+	border-color: #33516d !important;
+}
+.secondary-border-1px {
+	border: 1px solid #112638;
+}
+.secondary-border-color {
+	border-color: #112638 !important;
+}
+.green-selected-bg-color {
+	background-color: #45796e;
+}
+.menu-basket-bg-color {
+	background-color: #112638;
+	border: 1px solid #112638;
+}
+header .navbar .navbar-nav li .dropdown-menu {
+	background-color: #33516d;
+}
+header .navbar .navbar-nav li .dropdown-menu .dropdown-item:focus, header .navbar .navbar-nav li .dropdown-menu .dropdown-item:hover {
+	background-color: #33516d;
+}
+header .navbar .navbar-nav li a, footer .subscribe-row .footer-links li a {
+	color: #ffffff;
+}
+header .navbar .navbar-nav li.active > a, header .navbar .navbar-nav li:hover > a {
+	color: #000000;
+	border-color: #000000;
+}
+header .navbar .navbar-toggler svg,
+header .navbar #hamburger-container .hamburger-basket-class svg {
+	fill: #ffffff;
+	width: 25px;
+	height: 25px;
+}
+footer .subscribe-row .footer-links li a:hover {
+	color: #000000;
+}
+/*  Control the time slider */
+.filter-card .range-select .irs--round .irs-from, .filter-card .range-select .irs--round .irs-min, .filter-card .range-select .irs--round .irs-to {
+	color: #33516d;
+}
+.filter-card .range-select .irs--round .irs-handle {
+	border-color: #33516d;
+	background-color: #33516d;
+}
+.filter-card .range-select .irs--round .irs-bar {
+	background-color: #33516d;
+}
+.banner-slider .main_search .custom-form .form-control:focus,
+.search-event .custom-form .form-control:focus {
+	border-color: #33516d !important;
+}
+/* checkboxes and radios */
+.filter-card .via-box .checkbox-style:checked+.checkbox-style-3-label:before,
+.accounts .check-preference .checkbox-style:checked+.checkbox-style-3-label:before,
+.membership .card-custom .radio-style:checked+.radio-style-1-label:before,
+.membership .card-custom .card_body .checkbox-style:checked+.checkbox-style-3-label:before,
+.microsites .radio-style:checked+.radio-style-1-label:before {
+    background: #33516d;
+    color: #fff;
+    border-color: #33516d;
+}
+
+.events-filter-digital .radio-style:checked+.radio-style-1-label:before,
+.events-filter-digital-mobile .radio-style:checked+.radio-style-1-label:before {
+    background: #112638;
+    color: #fff;
+    border-color: #112638;
+}
+
+.filter-card .calendar-wraper .table tbody tr td.active, .filter-card .calendar-wraper .table tbody tr td.today, .filter-card .calendar-wraper .table tbody tr td:focus, .filter-card .calendar-wraper .table tbody tr td:hover{
+    background-color: #33516d;
+}
+.btn-success:not(:disabled):not(.disabled):active:focus{
+    box-shadow: 0 0 0 0;
+}
+/* login active pill */
+.microsites .login-regiter .nav li a.active {
+	border-color: #33516d;
+}
+.microsites .custom-form .checkbox-style:checked+.checkbox-style-3-label:before {
+	border-color: #33516d;
+	background-color: #33516d;
+}
+.wrapper-content .contact-main .cont-w li a {
+	color: #33516d;
+}
+.accounts .card-transiction li .info-box a.recycle {
+	background-color: #33516d;
+    border: 1px solid #33516d;
+}
+.search-event {
+	background-color: #33516d;
+}
+.event-schedule .calendar-wraper .table tbody tr td.active,
+.event-schedule .calendar-wraper .table tbody tr td.today,
+.event-schedule .calendar-wraper .table tbody tr td:focus,
+.event-schedule .calendar-wraper .table tbody tr td:not(.disabled):hover {
+	background-color: #45796e;
+}
+.event-schedule-seatmaps .Seatmap-detail .seatmap-detail-left .confirm-seatmap p.selected-seat:after {
+	background-color: #33516d;
+}
+.event-schedule-seatmaps .Seatmap-detail .seatmap-detail-left .confirm-seatmap p.basket-seat:after {
+	background-color: #112638;
+}
+.microsites .address-box {
+	border-color: #33516d;
+}
+/* Basket */
+.clear-basket-btn {
+	color: #33516d !important;
+}
+
+.tooltip-container:before {
+	background-color: #33516d !important;
+}
+
+.tooltip-container:after {
+    border:10px solid #33516d !important;
+    border-color: transparent #33516d transparent transparent !important;
+}
+
+/*  Buttons */
+
+.btn-primary-bg-color {
+	background-color: #33516d !important;
+	border-color: #33516d !important;
+}
+
+.btn-primary-bg-color:hover {
+	background-color: #0b2945 !important;
+	border-color: #0b2945 !important;
+
+}
+
+
+.btn-secondary-bg-color {
+	background-color: #112638 !important;
+	border-color: #112638 !important;
+}
+
+.btn-secondary-bg-color:hover {
+	background-color: #000010 !important;
+	border-color: #000010 !important;
+
+}
+
+.carousel-inner,
+.carousel-inner-no-content  {
+	height: 500px;
+}
+
+.home-carousel-height {
+	height: 500px !important;
+}
+
+@media (max-width: 991px){
+	.carousel-inner-no-content {
+	height: 0px;
+	}
+}
+
+</style>
+<link rel="stylesheet" id="rangeslider-css" href="./frigid_main_page_files/ion.rangeSlider.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="linje-headings-fonts-css" href="./frigid_main_page_files/css" type="text/css" media="all">
+<script type="text/javascript" src="./frigid_main_page_files/jquery.min.js" id="jquery-core-js"></script>
+<script type="text/javascript" src="./frigid_main_page_files/jquery-migrate.min.js" id="jquery-migrate-js"></script>
+<script type="text/javascript" id="cookie-law-info-js-extra">
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[],"non_necessary_cookies":[],"ccpaEnabled":"","ccpaRegionBased":"","ccpaBarEnabled":"","strictlyEnabled":["necessary","obligatoire"],"ccpaType":"gdpr","js_blocking":"","custom_integration":"","triggerDomRefresh":"","secure_cookies":""};
+var cli_cookiebar_settings = {"animate_speed_hide":"500","animate_speed_show":"500","background":"#FFF","border":"#b1a6a6c2","border_on":"","button_1_button_colour":"#ffffff","button_1_button_hover":"#cccccc","button_1_link_colour":"#000000","button_1_as_button":"1","button_1_new_win":"","button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":"","button_2_hidebar":"","button_3_button_colour":"#ffffff","button_3_button_hover":"#cccccc","button_3_link_colour":"#000000","button_3_as_button":"1","button_3_new_win":"","button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#62a329","button_4_as_button":"","button_7_button_colour":"#61a229","button_7_button_hover":"#4e8221","button_7_link_colour":"#fff","button_7_as_button":"1","button_7_new_win":"","font_family":"inherit","header_fix":"","notify_animate_hide":"1","notify_animate_show":"","notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":"","scroll_close_reload":"","accept_close_reload":"","reject_close_reload":"","showagain_tab":"1","showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":"","show_once":"10000","logging_on":"","as_popup":"","popup_overlay":"1","bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"};
+var log_object = {"ajax_url":"https:\/\/tickets.frigid.nyc\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./frigid_main_page_files/cookie-law-info-public.js" id="cookie-law-info-js"></script>
+<script type="text/javascript" src="./frigid_main_page_files/moment.min.js" id="moment-js"></script>
+<script type="text/javascript" id="moment-js-after">
+/* <![CDATA[ */
+moment.updateLocale( 'en_US', {"months":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthsShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"weekdaysShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"week":{"dow":1},"longDateFormat":{"LT":"g:i a","LTS":null,"L":null,"LL":"F j, Y","LLL":"F j, Y g:i a","LLLL":null}} );
+/* ]]> */
+</script>
+<script type="text/javascript" src="./frigid_main_page_files/bootstrap-datepicker.js" id="datepicker-js"></script>
+<script type="text/javascript" src="./frigid_main_page_files/ion.rangeSlider.min.js" id="rangeSlider-js"></script>
+<script type="text/javascript" src="./frigid_main_page_files/swiper.min.js" id="swiper-js"></script>
+<script type="text/javascript" src="./frigid_main_page_files/clamp.js" id="clamp-js"></script>
+<script type="text/javascript" src="./frigid_main_page_files/jquery.sticky.js" id="sticky-js"></script>
+<script type="text/javascript" id="frontend-js-extra">
+/* <![CDATA[ */
+var red61 = {"ajax_url":"https:\/\/tickets.frigid.nyc\/wp-admin\/admin-ajax.php","primary_color":"#33516d","removesvg":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"16px\" height=\"16px\" viewBox=\"0 0 16 16\" version=\"1.1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\">\n    <!-- Generator: Sketch 55 (78076) - https:\/\/sketchapp.com -->\n    <title>icon_close<\/title>\n    <desc>Created with Sketch.<\/desc>\n    <defs>\n        <path d=\"M13.41425,12.00025 L19.70725,5.70725 C20.09825,5.31625 20.09825,4.68425 19.70725,4.29325 C19.31625,3.90225 18.68425,3.90225 18.29325,4.29325 L12.00025,10.58625 L5.70725,4.29325 C5.31625,3.90225 4.68425,3.90225 4.29325,4.29325 C3.90225,4.68425 3.90225,5.31625 4.29325,5.70725 L10.58625,12.00025 L4.29325,18.29325 C3.90225,18.68425 3.90225,19.31625 4.29325,19.70725 C4.48825,19.90225 4.74425,20.00025 5.00025,20.00025 C5.25625,20.00025 5.51225,19.90225 5.70725,19.70725 L12.00025,13.41425 L18.29325,19.70725 C18.48825,19.90225 18.74425,20.00025 19.00025,20.00025 C19.25625,20.00025 19.51225,19.90225 19.70725,19.70725 C20.09825,19.31625 20.09825,18.68425 19.70725,18.29325 L13.41425,12.00025 Z\" id=\"path-1\"><\/path>\n    <\/defs>\n    <g id=\"Page-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"A4\" transform=\"translate(-68.000000, -285.000000)\">\n            <g id=\"icon\/small\/close\" transform=\"translate(64.000000, 281.000000)\">\n                <mask id=\"mask-2\" fill=\"white\">\n                    <use xlink:href=\"#path-1\"><\/use>\n                <\/mask>\n                <use id=\"icon_small_close\" fill=\"#33516d\" fill-rule=\"evenodd\" xlink:href=\"#path-1\"><\/use>\n                <g id=\"colour\/icon\/grey\" mask=\"url(#mask-2)\" fill=\"#33516d\" fill-rule=\"evenodd\">\n                <\/g>\n            <\/g>\n        <\/g>\n    <\/g>\n<\/svg>\n","secondary_color":"#112638","enable_autocomplete":"","fonts":"Lato:400,700,400italic,700italic","currency_format":"$","show_availability_in_calendar":"1","display_presentation_format_for_digital":"1","display_presentation_format_for_in_person":"1","seatmap_interval_refresh_timer":"6"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./frigid_main_page_files/frontend.min.js" id="frontend-js"></script>
+<link rel="https://api.w.org/" href="https://tickets.frigid.nyc/wp-json/"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://tickets.frigid.nyc/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 6.8.2">
+<link rel="icon" href="https://tickets.frigid.nyc/wp-content/uploads/sites/17/2021/11/cropped-blank-penguin-32x32.png" sizes="32x32">
+<link rel="icon" href="https://tickets.frigid.nyc/wp-content/uploads/sites/17/2021/11/cropped-blank-penguin-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://tickets.frigid.nyc/wp-content/uploads/sites/17/2021/11/cropped-blank-penguin-180x180.png">
+<meta name="msapplication-TileImage" content="https://tickets.frigid.nyc/wp-content/uploads/sites/17/2021/11/cropped-blank-penguin-270x270.png">
+		<style type="text/css" id="wp-custom-css">
+			
+.menu-bg-color {
+	background: #112638; 
+}
+
+.nav-link {
+font-family: var(--wp--preset--font-family--inter);
+	font-size: 16px !important;
+}
+
+.event-main h2, .event-main h3, .event-main li, .event-schedule h2, .event-schedule h3, .event-schedule li, .venu-main h2, .venu-main h3, .tickets-main h2,  .tickets-main h3 {
+	color: white !important;
+}
+
+.tickets-main .ticket-info table thead th, .table tr {
+	background: none;
+	color: white;
+	border: solid 3px white;
+}
+
+.main-link, .search-event {
+	background: #304c65;
+		padding: 20px 0 20px !important;
+}
+
+.search-event {
+		border-bottom: solid 3px white;
+}
+
+.event-schedule .calendar-wraper .table tbody tr td.old, 
+.event-schedule .calendar-wraper .table tbody tr td.new {
+	color: gray;
+}
+
+.event-main, .event-schedule, .venu-main, .tickets-main {
+	background: #304c65;
+	padding-top: 10px;
+}
+
+
+
+.event-main p, .tickets-main p, .event-main {
+	color: lightgray !important;
+}
+
+A {
+     Color: #d3f7f8;
+	    
+}
+
+A:Hover {
+   
+	 Text-Decoration: Underline;
+}
+
+.home-main-desktop-container {
+	background: #304c65;
+}
+
+div.card:hover {
+	background: #112638 !important;
+}
+
+.button-text-inner {
+	border: solid 3px white !important;
+}
+
+.button-text-inner {
+    top: 0 !important;
+    padding-top: 5px !important;
+}
+
+.main_search {
+	max-width: 100%;
+	min-width: 100%;
+	background: #112638 !important;
+	border: solid 5px white;
+	bottom: 0 !important;
+}
+
+div.card {
+	BORDER: SOLID 5PX white;
+    background: #304c65 !important;
+	color: white;
+}
+
+div.card-footer {
+	background: none !important;
+}
+
+div.card-body small {
+	color: lightgray !important;
+}
+
+div.card-body h4 {
+	color: white !important;
+}
+
+div.card-body p {
+	color: lightgray !important;
+}
+
+.secondary-color, .filter-card .range-select .irs--round .irs-from, .filter-card .range-select .irs--round .irs-min, .filter-card .range-select .irs--round .irs-to, .filter-card .range-select .irs--round .irs-handle {
+	color: white;
+	border-color: white;
+}
+
+.irs-line, .irs-bar {
+	background-color: lightgray !important;
+}
+
+.col-lg-3, .via-title {
+	color: white !important;
+}
+
+.radio-style-1-label, .radio-style-2-label, .radio-style-3-label, .dow, .datepicker-switch {
+	color: lightgray !important;
+}
+
+.day {
+	color: lightgray;
+}
+
+td.active.day {
+	background: darkgray !important;
+}
+
+td.today.day {
+	background: darkgray !important;
+}
+
+/*Hide news badge 9/11/21 -RF*/
+.news-main .badge-warning{
+display:none;}
+
+/*Change page text to Black - 9/11/21 -RF*/
+.content p{
+	color:black;
+}
+
+/*Change link text to Blue and Underline on content pages - Updated 23/01/24 - MM Original - 29/11/21 -RF*/
+.content a{
+	color:#6495ED;
+}
+.content a:hover, a:active {text-decoration:underline;}
+
+/*tweak banner sizing - 10/11/21 - RF*/
+.banner{
+	min-height:250px;
+	height:auto!important;
+	width:100%!important;
+	background-size:contain;
+	margin-top:auto;
+}
+
+/*align headers centered - 10/11/21 - RF*/
+.content h3{
+	text-align:center;
+}
+
+.content ol,.content ul,.content ul li{
+	list-style:inside;
+}
+
+.wpcf7 .wpcf7-submit{
+	color: #000000
+}
+
+/*Table biorders on Produce with Us page pages - 29/11/21 -RF*/
+.page-id-1306 table,.page-id-1306 th, .page-id-1306 td{
+	border: 1px solid black;
+	padding:1px;
+}
+
+/*fix event tiles images to not be zoomed in*/
+.event-image-square, .card-img-top{
+object-fit:contain;
+}
+
+.program_link{
+	display:none;
+}
+
+/*add refund/exchange text to Basket page - SR - 08/05/23*/
+.gift-aid-and-summary-box-wrapper:before{
+	content: "Please note all sales are final and FRIGID New York does not offer refunds or exchanges.";
+	white-space: pre-wrap;
+	font-weight: bold;
+	font-size: 18px;
+}
+/*Move the ticket selection above the event description*/
+body.blog.wp-custom-logo{
+  display:grid;
+}
+section.main-link,section.search-event,div.sticky-wrapper{
+  order:-2;
+}
+section.tickets-main{
+  order:-1;
+}
+
+/*remove map from Contact page - SR - 22/07/24*/
+.row.ct-map .col-lg-6{
+	display:none;
+}
+.row.ct-map .address-box{
+	padding-left:15px;
+}
+.wrapper-content .contact-main .heading3:nth-of-type(3){
+	padding-top:40px;
+}
+
+/*Change colour of subvenue text 2025/03/07 sl*/
+div.addres-pin p{
+	color: white !important;
+}
+/*tidy up add promocode and voucher buttons on checkout page to make them visible*/
+div.card-header  {
+	background: #ffffff !important;
+}
+
+/*widen add promocode and voucher buttons for mobile*/
+.btn {
+min-width:120px;
+width:auto;
+}
+
+/*hide Google and Apple Wallet buttons on Confirmation page*/
+img.google-wallet-img, img.apple-wallet-img{
+	display: none;
+}		</style>
+				<script src="./frigid_main_page_files/2.chunk.js"></script><script src="./frigid_main_page_files/main.chunk.js"></script></head>
+<body class="blog wp-custom-logo wp-theme-red61">
+<div id="sticky-wrapper" class="sticky-wrapper is-sticky" style="height: 72.5px;"><header class="menu-bg-color" style="width: 1512px; position: fixed; top: 0px; z-index: 2000;">
+	<div class="container">
+		<nav class="navbar navbar-expand-lg">
+			<a class="navbar-brand" href="http://www.frigid.nyc/"><img src="./frigid_main_page_files/cropped-Screen-Shot-2024-09-24-at-4.56.23-PM-142x41.png" alt=""></a>
+			<div id="hamburger-container">
+				<a class="hamburger-basket-class" href="https://tickets.frigid.nyc/basket">
+					<div class="mobile-basket-svg">
+						<svg data-testid="basket-in-menu-bar-mobile" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20.003" height="18" viewBox="0 0 20.003 18">
+  <defs>
+    <clippath id="clip-path">
+      <path id="icon_medium_sales" d="M6,18a1,1,0,0,1-.874-.515l-5-9A1,1,0,0,1,1,7H3.34L6.081.606A1,1,0,0,1,7,0h6a1,1,0,0,1,.92.606L16.66,7H19a1,1,0,0,1,.874,1.485l-5,9A1,1,0,0,1,14,18Zm5-9v7h2V9H2.7L5,13.141V9H7v7H9V9Zm4,4.141L17.3,9H15ZM14.484,7,12.341,2H7.659L5.517,7Z" transform="translate(2 3)" fill="#889399"></path>
+    </clippath>
+  </defs>
+  <g id="cart" transform="translate(-2 -3)">
+    <path id="icon_medium_sales-2" data-name="icon_medium_sales" d="M6,18a1,1,0,0,1-.874-.515l-5-9A1,1,0,0,1,1,7H3.34L6.081.606A1,1,0,0,1,7,0h6a1,1,0,0,1,.92.606L16.66,7H19a1,1,0,0,1,.874,1.485l-5,9A1,1,0,0,1,14,18Zm5-9v7h2V9H2.7L5,13.141V9H7v7H9V9Zm4,4.141L17.3,9H15ZM14.484,7,12.341,2H7.659L5.517,7Z" transform="translate(2 3)" fill="#889399"></path>
+    <g clip-path="url(#clip-path)">
+      <g id="colour_icon_blue" data-name="colour/icon/blue">
+        <rect id="Rectangle_6" data-name="Rectangle 6" width="24" height="24"></rect>
+      </g>
+    </g>
+  </g>
+</svg>
+					</div>
+				</a>
+				<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#header-menu" aria-controls="header-menu" aria-expanded="false" aria-label="Toggle navigation">
+					<!--?xml version="1.0"?-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 124 124" style="enable-background:new 0 0 124 124;" xml:space="preserve"><g><script xmlns="" id="tinyhippos-injected" class="active-path" style="fill:#010100" data-old_color="#FFFEFE"></script><g>
+	<path d="M112,6H12C5.4,6,0,11.4,0,18s5.4,12,12,12h100c6.6,0,12-5.4,12-12S118.6,6,112,6z" data-original="#000000" class="active-path" data-old_color="#FFFEFE"></path>
+	<path d="M112,50H12C5.4,50,0,55.4,0,62c0,6.6,5.4,12,12,12h100c6.6,0,12-5.4,12-12C124,55.4,118.6,50,112,50z" data-original="#000000" class="active-path" data-old_color="#FFFEFE"></path>
+	<path d="M112,94H12c-6.6,0-12,5.4-12,12s5.4,12,12,12h100c6.6,0,12-5.4,12-12S118.6,94,112,94z" data-original="#000000" class="active-path" data-old_color="#FFFEFE"></path>
+</g></g> </svg>
+				</button>
+			</div>
+			<div id="header-menu" class="collapse navbar-collapse"><ul id="menu-new-header-menu" class="navbar-nav ml-auto"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-7010" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7010 nav-item"><a title="Tickets" href="https://tickets.frigid.nyc/events/" class="nav-link">Tickets</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-7009" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7009 nav-item"><a title="Donate" href="https://secure.givelively.org/donate/frigid-new-york-inc/27-000-for-season-27" class="nav-link">Donate</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-7012" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7012 nav-item"><a title="Memberships" href="https://tickets.frigid.nyc/memberships/" class="nav-link">Memberships</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-7007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7007 nav-item"><a title="Gift Certificates" href="https://tickets.frigid.nyc/vouchers/" class="nav-link">Gift Certificates</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-7015" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7015 nav-item"><a title="Login" href="https://tickets.frigid.nyc/login" class="nav-link">Login</a></li>
+</ul></div>		</nav>
+	</div>
+	<a href="https://tickets.frigid.nyc/basket" data-testid="basket-in-menu-bar" class="cart-btn desktop-view menu-basket-bg-color">
+		<img src="./frigid_main_page_files/cart.svg" alt="">
+		<span>Cart: <strong> <span class="price">$0.00</span></strong></span>
+	</a>
+
+	<input id="currentLanguage" type="hidden" value="en">
+	<input id="defaultLanguage" type="hidden" value="en">
+</header></div>
+
+
+
+	<div class="home-main-desktop-container">
+		<!--BANNER SECTION START-->
+
+
+<section class="banner-slider">
+  <div id="home-data" data-start-date="" data-end-date=""></div>
+  <!--Slider Main Start-->
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+	<div class="carousel-inner">
+					<div class="carousel-item home-carousel-height">
+				<img src="./frigid_main_page_files/20191013_153315-1440x568.jpg" class="d-block w-100" alt="...">
+			</div>
+					<div class="carousel-item home-carousel-height">
+				<img src="./frigid_main_page_files/20200112_130948-1440x568.jpg" class="d-block w-100" alt="...">
+			</div>
+					<div class="carousel-item home-carousel-height active">
+				<img src="./frigid_main_page_files/IMG_20230530_225153336-1440x568.jpg" class="d-block w-100" alt="...">
+			</div>
+			</div>
+			<a class="carousel-control-prev" href="https://tickets.frigid.nyc/#carouselExampleControls" role="button" data-slide="prev"> <img src="./frigid_main_page_files/icon-left.svg" alt=""> <span class="sr-only">Previous</span> </a>
+		<a class="carousel-control-next" href="https://tickets.frigid.nyc/#carouselExampleControls" role="button" data-slide="next"> <img src="./frigid_main_page_files/icon-right.svg" alt=""> <span class="sr-only">Next</span> </a>
+	</div>
+<!--Slider Main End-->
+  <!--Search-main Start -->
+  <div class="container">
+    
+<div class="main_search" style="">
+	<form action="https://tickets.frigid.nyc/events" class="custom-form">
+		<div class="input-group mb-3 secondary-bg-color">
+	<input data-testid="event-search-box" type="text" name="s" id="s" value="" class="form-control" placeholder="Search for events" aria-label="Search for events" aria-describedby="basic-addon2">
+	<div class="input-group-append">
+		<span class="input-group-text secondary-border-color secondary-bg-color" id="basic-addon2">
+			<a data-testid="search-events-btn" href="https://tickets.frigid.nyc/#"> <img class="search-trigger" src="./frigid_main_page_files/search.svg" alt=""></a>
+		</span>
+	</div>
+</div>		<div class="row">
+													<div class="form-group col-lg-6 mb-lg-0">
+					<div class="select-style">
+						<select name="event_type" id="event_type" class="form-control">
+							<option value="">Event Type</option>
+																							<option style="font-weight:bold" value="27_0">
+																		Comedy and Improv								</option>
+																							<option style="font-weight:bold" value="9_0">
+																		Dance and Burlesque								</option>
+																							<option style="font-weight:bold" value="15_0">
+																		Film and Multi Media								</option>
+																							<option style="font-weight:bold" value="26_0">
+																		Music and Musicals								</option>
+																							<option style="font-weight:bold" value="24_0">
+																		Off Beat								</option>
+																							<option style="font-weight:bold" value="18_0">
+																		Plays and Dramas								</option>
+																							<option style="font-weight:bold" value="30_0">
+																		Readings								</option>
+																							<option style="font-weight:bold" value="32_0">
+																		Special Events								</option>
+																							<option style="font-weight:bold" value="10_0">
+																		Storytelling								</option>
+																							<option style="font-weight:bold" value="29_0">
+																		Theater for Young Audiences								</option>
+																							<option style="font-weight:bold" value="13_0">
+																		Uncategorized								</option>
+																							<option style="font-weight:bold" value="28_0">
+																		Variety and Open Mics								</option>
+													</select>
+					</div>
+				</div>
+										<div class="form-group col-lg-6 mb-lg-0">
+					<div class="select-style">
+						<select name="season" id="season" class="form-control">
+							<option value="">Festivals &amp; Companies</option>
+															<option value="MONTHLIES">
+									Monthly Shows								</option>
+															<option value="SFA">
+									Something from Abroad								</option>
+															<option value="TFTT">
+									The Fire This Time								</option>
+															<option value="COPRPS S27">
+									Co-Productions, Season 27								</option>
+															<option value="TORCH ENSEMBLE">
+									Torch Ensemble								</option>
+															<option value="RENTALS">
+									Rentals								</option>
+															<option value="MARKANDRODRIGO">
+									Mark-Eugene Garcia and Rodrigo Bolaños								</option>
+															<option value="LITTLE SHAKES 2025">
+									Little Shakespeare Fest 2025								</option>
+															<option value="NEUROTICA">
+									Neurotica Fest 2025								</option>
+															<option value="CO-PRO S28">
+									Co-Productions, Season 28								</option>
+													</select>
+					</div>
+				</div>
+					</div>
+	</form>
+</div>
+  </div>
+  <!--Search-main End -->
+</section>
+<!--BANNER SECTION END-->
+
+<!--Main Section Start-->
+
+<!--Main Section End-->
+<section class="main-cards">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
+        
+<div class="row pd-c justify-content-left">
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/107-Minutes-In-Heaven-Poster.jpg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Storytelling, Theater, Comedy, Theatre, Play - Co-Productions, Season 27					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">107 Minutes In Heaven</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      This play takes place entirely in a closet at a 2014 high school party 
+      where people are playing seven minutes in heaven.
+    
+    
+      
+    
+    
+      Makeout sessions, breakups, a mysterious student named Miles Burma: who 
+      will the bottle choose to go into the closet next??
+    
+    
+      
+    
+    
+      This comedy was written by Tucker Iverson (Go Dummy) and developed by 
+      Ava Smithmier.
+    
+    
+      
+    
+    
+      This play stars Emilio Peña, Maya Claridge, Gilles Hammoud, Darly 
+      Murray, Connor McCaffrey, Riley Prior, Juan Guajardo, Ava Smithmier, 
+      Tucker Iverson, and introducing Wander Boesjes as “Wander.”
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:1234" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/IMG_20250619_162256_817.webp" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Theater, Theatre, Play, Drama - Co-Productions, Season 27					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">The Climate Fables: The Clouds </h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      The Clouds is the SEVENTH of Padraig Bond's award winning series, “The 
+      Climate Fables”, to be staged at UNDER St Marks. 
+    
+    
+      
+    
+    
+      At the end of time, humanity is starving in the final city in the world, 
+      split between warring factions of police and protesters. A child who 
+      lives in the clouds lands on earth and must bring the rest of humanity 
+      back to the sky with them. 
+    
+    
+      
+    
+    
+      Written in 2020, this play speaks prophetically to the  PREVIOUS time 
+      that the national guard was weaponized against American civilians, and 
+      the battle against authoritarianism in the climate crisis.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																							<div class="digital-icon">
+								<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<circle cx="28" cy="26" r="20" fill="white"></circle>
+<circle cx="28" cy="26" r="19.75" stroke="#BDBDBD" stroke-width="0.5"></circle>
+</g>
+<path d="M34 19.25H22C21.175 19.25 20.5 19.925 20.5 20.75V29.75C20.5 30.575 21.175 31.25 22 31.25H25V32C25 32.4125 25.3375 32.75 25.75 32.75H30.25C30.6625 32.75 31 32.4125 31 32V31.25H34C34.825 31.25 35.4925 30.575 35.4925 29.75L35.5 20.75C35.5 19.925 34.825 19.25 34 19.25ZM34 29.75H22V20.75H34V29.75Z" fill="#112638"></path>
+<path d="M26.125 23.2476V27.2526C26.125 27.8451 26.785 28.2051 27.28 27.8826L30.3925 25.8801C30.4978 25.8121 30.5843 25.7189 30.6442 25.6088C30.7042 25.4988 30.7356 25.3754 30.7356 25.2501C30.7356 25.1248 30.7042 25.0015 30.6442 24.8915C30.5843 24.7814 30.4978 24.6881 30.3925 24.6201L27.28 22.6176C26.785 22.2951 26.125 22.6551 26.125 23.2476Z" fill="#899399"></path>
+<defs>
+<filter id="filter0_d" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+<fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+<feoffset dy="2"></feoffset>
+<fegaussianblur stdDeviation="4"></fegaussianblur>
+<fecolormatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0.18 0"></fecolormatrix>
+<feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feblend>
+<feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feblend>
+</filter>
+</defs>
+</svg>							</div>
+																	<a href="https://tickets.frigid.nyc/event/6897:1231" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/brooklyn-gothic-poster.jpg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Musical, Theater, Multi-Media, Dance, Solo Performance, Storytelling, Theatre, Play, Music, Drama - Co-Productions, Season 27					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">BROOKLYN GOTHIC</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Brooklyn Gothic collages a singer-songwriter acoustic set with 
+      surrealist contemporary dance performance. 
+    
+    
+      
+    
+    
+      Alternating between song and movement sections, the piece creates an 
+      emotional character study based on Gothic horror themes and literature. 
+    
+    
+      Drawing on works by artists such as Edgar Allan Poe, Charlotte Perkins 
+      Gilman, Anne Carson, and Alfred Hitchcock, the show examines 
+      self-repression, obsession, and the edges of control. 
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:1236" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/Untitled_Artwork.jpeg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Theater, BIPOC, Storytelling, Variety, Comedy, Theatre, Play, Reading - Rentals					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Peace, Love, and Power Presents: And Why Not Death?</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      An evening of theatre fueled by the love that fills and inspires artists 
+      of color.  So often we dream of a world peace that would allow us to 
+      enjoy one another's company fully and freely. Reality, however, is hard, 
+      and often makes us deal with the fact that life is a beautiful struggle.
+    
+    
+      
+    
+    
+      Journey with us through stories of love and loss, and maybe even escape 
+      into a world where love is given the power to shape the lives we want to 
+      live!  We will be sharing a few short plays from young playwrights and a 
+      workshop of my one-act play, Pop. 
+    
+    
+      
+    
+    
+      We hope to see you there!!
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:1230" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/Sins-and-Stardust-08.25.25-FRIGID.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Theater, Burlesque, Dance, Variety - Rentals					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Sins and Stardust Burlesque</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      
+        
+          
+            "Sins &amp; Stardust Burlesque" is a spellbinding series from 
+            producers Stiletto Sinclair and Jackie Galaxy, featuring a 
+            rotating cast of dazzling burlesque stars, high-energy go-go 
+            dancing, and unforgettable headliners. From classic striptease to 
+            genre-bending surprises, no two nights are ever the same, just 
+            unforgettable performances and a whole lot of glitter-fueled 
+            mischief. Note: This series a 21+ event.
+          
+        
+      
+      August 25th Performance: Get ready to tease your hair and your 
+      heartstrings! Sins and Stardust Burlesque is throwing it back to the 
+      totally tubular 80s for a night of big glam, bigger drama, and burlesque 
+      that pops like a power ballad. Returning to the stage are Dorienne 
+      Dreadful, Sapphic Fire, Lady Mabuhay, and Persé Fanny, with Sunshyne 
+      lighting up the floor on gogo. Making their dazzling Sins and Stardust 
+      debuts are Rain Supreme and Lily Lavalocks, joining producers Stiletto 
+      Sinclair and Jackie Galaxy for an electric evening where the only thing 
+      louder than the music is the sparkle.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:1057" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/aymi-poster-1.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Clowning, Variety, Spoken Word, Drama - Monthly Shows					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">As You Mic It: An Open Shakespeare Slam</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      As You Mic It: An Open Shakespeare Slam - Join us for a one-of-a-kind 
+      slam where you can compete to be crowned Best of the Bards! If you are 
+      slamming, come prepared to perform up to two of any Shakespeare 
+      monologue or sonnet of your choice (within 3 and a half minutes, 
+      memorization not required but encouraged). If you are don't want to 
+      slam, come join us for some merriment, libations, and maybe even become 
+      a judge (no experience necessary)!
+    
+    
+      
+    
+    
+      All full price ticket purchases come with a free glass of wine!
+    
+    
+      
+    
+    
+      SLAM MECHANICS -
+    
+    
+      First 15 to sign-up at the door will be guaranteed entry to the slam as 
+      a participant. Up to 3 people can be wait-listed depending on 
+      time-constraints.
+    
+    
+      
+    
+    
+      3 Judges will be selected at random from the crowd. Each participant 
+      will have 3 and a half minutes to perform their chosen monologue, after 
+      which the judges will secretly give them a score out of 10.0. Scores 
+      will be tallied in secret and the top 3 will enter the "callback" round 
+      where they will perform a second monologue and once again be graded. The 
+      overall winner of the "callback" round will be crowned Best of the Bards 
+      and receive a prize.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:588" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/Untitled-1-edited-1.jpg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Storytelling, Improv, Stand-Up, Variety, Comedy, Music - Monthly Shows					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">The Open Mic Downstairs @ Frigid New York</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      The show continues every Tuesday at 9:30 PM EST!At The Open Mic at 
+      FRIGID New York the focus is the stage! Sign-ups get 7 minutes to try 
+      anything in one of the most supportive rooms in New York City. Whether 
+      it’s a performance art piece, comedy, music, storytelling, dance, or 
+      something entirely off the top of your head, you'll find a home in the 
+      attentive welcoming community.
+    
+    
+      Open Mic FAQs
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:24" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/paperKraineLogo1.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Performance Art, Musical, Theater, Multi-Media, LGBTQIA+, Stand-Up, Clowning, BIPOC, Dance &amp; Movement, Spoken Word, Sketch Comedy, Solo Performance, Storytelling, Improv, Burlesque, Variety, Comedy, Play, Music, Drama, Reading - Monthly Shows					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Paper Kraine</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Paper Kraine was created in 2016 to bring together works in development, 
+      artists, and audiences in support of nonprofits. Monthly, the PK team 
+      curates a new works sample platter around a theme and donates all 
+      proceeds to a selected nonprofit.
+    
+    
+      Try something new, delicious and strange. Come for the art. Stay for the 
+      community.
+    
+    
+      We encourage risk-taking, question-asking, and the development of a 
+      supportive community of artists seeing, encouraging, and challenging 
+      each other’s work with the ultimate goal of enriching the artistic 
+      community through cross-pollination and meeting new people. Learn more 
+      at www.paperkraine.com..
+    
+    
+      Due to limited capacity, latecomers are not guaranteed seats. This 
+      applies to both walk ups and reserved tickets. 
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																							<div class="digital-icon">
+								<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<circle cx="28" cy="26" r="20" fill="white"></circle>
+<circle cx="28" cy="26" r="19.75" stroke="#BDBDBD" stroke-width="0.5"></circle>
+</g>
+<path d="M34 19.25H22C21.175 19.25 20.5 19.925 20.5 20.75V29.75C20.5 30.575 21.175 31.25 22 31.25H25V32C25 32.4125 25.3375 32.75 25.75 32.75H30.25C30.6625 32.75 31 32.4125 31 32V31.25H34C34.825 31.25 35.4925 30.575 35.4925 29.75L35.5 20.75C35.5 19.925 34.825 19.25 34 19.25ZM34 29.75H22V20.75H34V29.75Z" fill="#112638"></path>
+<path d="M26.125 23.2476V27.2526C26.125 27.8451 26.785 28.2051 27.28 27.8826L30.3925 25.8801C30.4978 25.8121 30.5843 25.7189 30.6442 25.6088C30.7042 25.4988 30.7356 25.3754 30.7356 25.2501C30.7356 25.1248 30.7042 25.0015 30.6442 24.8915C30.5843 24.7814 30.4978 24.6881 30.3925 24.6201L27.28 22.6176C26.785 22.2951 26.125 22.6551 26.125 23.2476Z" fill="#899399"></path>
+<defs>
+<filter id="filter0_d" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+<fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+<feoffset dy="2"></feoffset>
+<fegaussianblur stdDeviation="4"></fegaussianblur>
+<fecolormatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0.18 0"></fecolormatrix>
+<feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feblend>
+<feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feblend>
+</filter>
+</defs>
+</svg>							</div>
+																	<a href="https://tickets.frigid.nyc/event/6897:584" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/IMG_20250118_231445.jpg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Performance Art, Theater, LGBTQIA+, Stand-Up, Clowning, BIPOC, Drag, Storytelling, Burlesque, Variety, Movement, Comedy, Music - Monthly Shows					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Secret City Cabaret</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Step into a world of Music, Dance, Comedy, Burlesque. The cool. wild and 
+      wonderful. Dress Up, dress Downtown or come as you are for a slice of 
+      NYC nightlife like no other.
+    
+    
+      
+    
+    
+      Co-Hosted by dazzling Dara Jemmott (crowned Winner, NJ Statewide 
+      Funniest Fest) and gregarious Gregory Levine (Travel Channel &amp; Emcee - 
+      Guilty Pleasures) since June 2023.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																							<div class="digital-icon">
+								<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<circle cx="28" cy="26" r="20" fill="white"></circle>
+<circle cx="28" cy="26" r="19.75" stroke="#BDBDBD" stroke-width="0.5"></circle>
+</g>
+<path d="M34 19.25H22C21.175 19.25 20.5 19.925 20.5 20.75V29.75C20.5 30.575 21.175 31.25 22 31.25H25V32C25 32.4125 25.3375 32.75 25.75 32.75H30.25C30.6625 32.75 31 32.4125 31 32V31.25H34C34.825 31.25 35.4925 30.575 35.4925 29.75L35.5 20.75C35.5 19.925 34.825 19.25 34 19.25ZM34 29.75H22V20.75H34V29.75Z" fill="#112638"></path>
+<path d="M26.125 23.2476V27.2526C26.125 27.8451 26.785 28.2051 27.28 27.8826L30.3925 25.8801C30.4978 25.8121 30.5843 25.7189 30.6442 25.6088C30.7042 25.4988 30.7356 25.3754 30.7356 25.2501C30.7356 25.1248 30.7042 25.0015 30.6442 24.8915C30.5843 24.7814 30.4978 24.6881 30.3925 24.6201L27.28 22.6176C26.785 22.2951 26.125 22.6551 26.125 23.2476Z" fill="#899399"></path>
+<defs>
+<filter id="filter0_d" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+<fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+<feoffset dy="2"></feoffset>
+<fegaussianblur stdDeviation="4"></fegaussianblur>
+<fecolormatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0.18 0"></fecolormatrix>
+<feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feblend>
+<feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feblend>
+</filter>
+</defs>
+</svg>							</div>
+																	<a href="https://tickets.frigid.nyc/event/6897:1150" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/Untitled-design.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Theater, LGBTQIA+, Storytelling, Theatre, Play, Educational, Drama - Rentals					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Rowan</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      A man, Jathian, struggles to accept the loss of his high school best 
+      friend. Ten years later, he turns to the spirits of his past for 
+      answers, but he only solidifies what he believes to be true.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:1206" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/FRIGID-Nightcap-August-2025.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Variety - Monthly Shows					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">FRIGID Nightcap</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      FRIGID Nightcap: BLOOM
+    
+    
+      
+    
+    
+      They tried to sterilize the future. We said:&nbsp;pass the compost.
+    
+    
+      BLOOM is a late-night riot of subversive joy, queer resilience, and the 
+      weird, beautiful things that grow in hostile soil.&nbsp;
+    
+    
+      &nbsp;&nbsp;
+    
+    
+      
+    
+    
+      What’s blooming in&nbsp;you&nbsp;that refuses to be pruned? 
+    
+    
+      What networks sustain you underground? 
+    
+    
+      What are you planting in the ruins?&nbsp;&nbsp;
+    
+    
+      
+    
+    
+      Come see how NYC’s wildest and most unpredictable artists answer these 
+      questions at BLOOM!
+    
+    
+      
+    
+    
+      $15 tickets include a complimentary glass of wine 
+    
+    
+      Livestream tickets available for $10
+    
+    
+      
+    
+    
+      Defiant survival. Joyful regeneration. Mycelial rebellion. 
+    
+    
+      Messy, lush, ecstatic, alive.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																							<div class="digital-icon">
+								<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<circle cx="28" cy="26" r="20" fill="white"></circle>
+<circle cx="28" cy="26" r="19.75" stroke="#BDBDBD" stroke-width="0.5"></circle>
+</g>
+<path d="M34 19.25H22C21.175 19.25 20.5 19.925 20.5 20.75V29.75C20.5 30.575 21.175 31.25 22 31.25H25V32C25 32.4125 25.3375 32.75 25.75 32.75H30.25C30.6625 32.75 31 32.4125 31 32V31.25H34C34.825 31.25 35.4925 30.575 35.4925 29.75L35.5 20.75C35.5 19.925 34.825 19.25 34 19.25ZM34 29.75H22V20.75H34V29.75Z" fill="#112638"></path>
+<path d="M26.125 23.2476V27.2526C26.125 27.8451 26.785 28.2051 27.28 27.8826L30.3925 25.8801C30.4978 25.8121 30.5843 25.7189 30.6442 25.6088C30.7042 25.4988 30.7356 25.3754 30.7356 25.2501C30.7356 25.1248 30.7042 25.0015 30.6442 24.8915C30.5843 24.7814 30.4978 24.6881 30.3925 24.6201L27.28 22.6176C26.785 22.2951 26.125 22.6551 26.125 23.2476Z" fill="#899399"></path>
+<defs>
+<filter id="filter0_d" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+<fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+<feoffset dy="2"></feoffset>
+<fegaussianblur stdDeviation="4"></fegaussianblur>
+<fecolormatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0.18 0"></fecolormatrix>
+<feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feblend>
+<feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feblend>
+</filter>
+</defs>
+</svg>							</div>
+																	<a href="https://tickets.frigid.nyc/event/6897:646" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/Nelly-Reznik-photo-scaled.jpeg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Stand-Up, Real Life/True Stories, Comedy, Off-Beat, Solo Performance - Monthly Shows					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Comediumship</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Psychic medium and stand up comedian Nelly Reznik will be performing 
+      Comediumship, an experimental combination of stand up comedy and 
+      audience readings.
+    
+    
+      Readings may consist of connecting with loved ones who have passed, and 
+      receiving life guidance for audience members, all in a lighthearted way.
+    
+    
+      Not everyone will receive a reading, but all in attendance should be 
+      open to it.
+    
+    
+      Due to the intimate nature of the event, doors will close at curtain 
+      time and latecomers will not be given a seat. In addition, this is an 
+      alcohol-free event.
+    
+    
+      Opener: Grace Lobo
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:502" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/NEW-POSTER.jpg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Film - Monthly Shows					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">EAST VILLAGE NEW YORK FILM FESTIVAL</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Come catch the best short films of the month with the EAST VILLAGE NEW 
+      YORK FILM FESTIVAL
+    
+    
+      Please note that this show will not be streaming and can only be seen in 
+      person.
+    
+    
+      East Village Film Festival is an independent project and not 
+      produced by FRIGID New York. For more information, please visit 
+      their website at eastvillagefilmfestival.com. 
+      
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:567" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/LivingRadio_img_2023.jpg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Theater, Comedy, Podcast, True Stories, Drama - Monthly Shows					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Living Radio</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Every month, we remix current events to imagine what a slightly altered 
+      world could look like. Five brand-new radio plays, written with 
+      inspiration from the news, featuring a rotating cast and creative team, 
+      exploring alternate presents. The results range from the absurdly wacky 
+      to the poignantly reflective, from apocalyptic to aspirational—but 
+      they’re always clever, fun, and inspired.
+    
+    
+      
+    
+    
+      It's the news—only better.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																							<div class="digital-icon">
+								<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<circle cx="28" cy="26" r="20" fill="white"></circle>
+<circle cx="28" cy="26" r="19.75" stroke="#BDBDBD" stroke-width="0.5"></circle>
+</g>
+<path d="M34 19.25H22C21.175 19.25 20.5 19.925 20.5 20.75V29.75C20.5 30.575 21.175 31.25 22 31.25H25V32C25 32.4125 25.3375 32.75 25.75 32.75H30.25C30.6625 32.75 31 32.4125 31 32V31.25H34C34.825 31.25 35.4925 30.575 35.4925 29.75L35.5 20.75C35.5 19.925 34.825 19.25 34 19.25ZM34 29.75H22V20.75H34V29.75Z" fill="#112638"></path>
+<path d="M26.125 23.2476V27.2526C26.125 27.8451 26.785 28.2051 27.28 27.8826L30.3925 25.8801C30.4978 25.8121 30.5843 25.7189 30.6442 25.6088C30.7042 25.4988 30.7356 25.3754 30.7356 25.2501C30.7356 25.1248 30.7042 25.0015 30.6442 24.8915C30.5843 24.7814 30.4978 24.6881 30.3925 24.6201L27.28 22.6176C26.785 22.2951 26.125 22.6551 26.125 23.2476Z" fill="#899399"></path>
+<defs>
+<filter id="filter0_d" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+<fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+<feoffset dy="2"></feoffset>
+<fegaussianblur stdDeviation="4"></fegaussianblur>
+<fecolormatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0.18 0"></fecolormatrix>
+<feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feblend>
+<feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feblend>
+</filter>
+</defs>
+</svg>							</div>
+																	<a href="https://tickets.frigid.nyc/event/6897:556" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/Show22539.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Comedy, Storytelling, Stand-Up - Monthly Shows					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Awkward Teenage Years</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">True stories about the most gloriously awkward times in our lives - our 
+    teenage years! Awkward Teenage Years was born at the 2020 FRIGID Festival 
+    just before the pandemic began. We’re bringing you the best storytellers 
+    in NYC to relive their joys and traumas for your entertainment - let’s 
+    laugh and reminisce together!Streaming option available.</p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																							<div class="digital-icon">
+								<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<circle cx="28" cy="26" r="20" fill="white"></circle>
+<circle cx="28" cy="26" r="19.75" stroke="#BDBDBD" stroke-width="0.5"></circle>
+</g>
+<path d="M34 19.25H22C21.175 19.25 20.5 19.925 20.5 20.75V29.75C20.5 30.575 21.175 31.25 22 31.25H25V32C25 32.4125 25.3375 32.75 25.75 32.75H30.25C30.6625 32.75 31 32.4125 31 32V31.25H34C34.825 31.25 35.4925 30.575 35.4925 29.75L35.5 20.75C35.5 19.925 34.825 19.25 34 19.25ZM34 29.75H22V20.75H34V29.75Z" fill="#112638"></path>
+<path d="M26.125 23.2476V27.2526C26.125 27.8451 26.785 28.2051 27.28 27.8826L30.3925 25.8801C30.4978 25.8121 30.5843 25.7189 30.6442 25.6088C30.7042 25.4988 30.7356 25.3754 30.7356 25.2501C30.7356 25.1248 30.7042 25.0015 30.6442 24.8915C30.5843 24.7814 30.4978 24.6881 30.3925 24.6201L27.28 22.6176C26.785 22.2951 26.125 22.6551 26.125 23.2476Z" fill="#899399"></path>
+<defs>
+<filter id="filter0_d" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+<fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+<feoffset dy="2"></feoffset>
+<fegaussianblur stdDeviation="4"></fegaussianblur>
+<fecolormatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0.18 0"></fecolormatrix>
+<feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feblend>
+<feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feblend>
+</filter>
+</defs>
+</svg>							</div>
+																	<a href="https://tickets.frigid.nyc/event/6897:26" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/Stack-of-Books-Flyer.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Real Life/True Stories, Interview, True Stories, Storytelling, Improv, Comedy, Educational, Reading - Neurotica Fest 2025					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">IN CONVERSATION WITH SUSAN MORRISON &amp; KURT ANDERSEN</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Comedian and actor Iris Bahr (Curb your Enthusiasm, Hacks) chats with NY 
+      Times Bestselling authors Kurt Andersen, about his upcoming book, and 
+      Susan Morrison of The New Yorker, about her best selling book about 
+      SNL's Lorne Michaels.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																							<div class="digital-icon">
+								<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<circle cx="28" cy="26" r="20" fill="white"></circle>
+<circle cx="28" cy="26" r="19.75" stroke="#BDBDBD" stroke-width="0.5"></circle>
+</g>
+<path d="M34 19.25H22C21.175 19.25 20.5 19.925 20.5 20.75V29.75C20.5 30.575 21.175 31.25 22 31.25H25V32C25 32.4125 25.3375 32.75 25.75 32.75H30.25C30.6625 32.75 31 32.4125 31 32V31.25H34C34.825 31.25 35.4925 30.575 35.4925 29.75L35.5 20.75C35.5 19.925 34.825 19.25 34 19.25ZM34 29.75H22V20.75H34V29.75Z" fill="#112638"></path>
+<path d="M26.125 23.2476V27.2526C26.125 27.8451 26.785 28.2051 27.28 27.8826L30.3925 25.8801C30.4978 25.8121 30.5843 25.7189 30.6442 25.6088C30.7042 25.4988 30.7356 25.3754 30.7356 25.2501C30.7356 25.1248 30.7042 25.0015 30.6442 24.8915C30.5843 24.7814 30.4978 24.6881 30.3925 24.6201L27.28 22.6176C26.785 22.2951 26.125 22.6551 26.125 23.2476Z" fill="#899399"></path>
+<defs>
+<filter id="filter0_d" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+<fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+<feoffset dy="2"></feoffset>
+<fegaussianblur stdDeviation="4"></fegaussianblur>
+<fecolormatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0.18 0"></fecolormatrix>
+<feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feblend>
+<feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feblend>
+</filter>
+</defs>
+</svg>							</div>
+																	<a href="https://tickets.frigid.nyc/event/6897:1221" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/IMG_1514.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Storytelling, Stand-Up, Real Life/True Stories, Comedy - Neurotica Fest 2025					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Unapologetically Rocky and Cane Chronicles</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Stand up comedy
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																							<div class="digital-icon">
+								<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<circle cx="28" cy="26" r="20" fill="white"></circle>
+<circle cx="28" cy="26" r="19.75" stroke="#BDBDBD" stroke-width="0.5"></circle>
+</g>
+<path d="M34 19.25H22C21.175 19.25 20.5 19.925 20.5 20.75V29.75C20.5 30.575 21.175 31.25 22 31.25H25V32C25 32.4125 25.3375 32.75 25.75 32.75H30.25C30.6625 32.75 31 32.4125 31 32V31.25H34C34.825 31.25 35.4925 30.575 35.4925 29.75L35.5 20.75C35.5 19.925 34.825 19.25 34 19.25ZM34 29.75H22V20.75H34V29.75Z" fill="#112638"></path>
+<path d="M26.125 23.2476V27.2526C26.125 27.8451 26.785 28.2051 27.28 27.8826L30.3925 25.8801C30.4978 25.8121 30.5843 25.7189 30.6442 25.6088C30.7042 25.4988 30.7356 25.3754 30.7356 25.2501C30.7356 25.1248 30.7042 25.0015 30.6442 24.8915C30.5843 24.7814 30.4978 24.6881 30.3925 24.6201L27.28 22.6176C26.785 22.2951 26.125 22.6551 26.125 23.2476Z" fill="#899399"></path>
+<defs>
+<filter id="filter0_d" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+<fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+<feoffset dy="2"></feoffset>
+<fegaussianblur stdDeviation="4"></fegaussianblur>
+<fecolormatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0.18 0"></fecolormatrix>
+<feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feblend>
+<feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feblend>
+</filter>
+</defs>
+</svg>							</div>
+																	<a href="https://tickets.frigid.nyc/event/6897:1222" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/Manic-promo-v11.jpeg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Comedy, Storytelling, Solo Performance - Neurotica Fest 2025					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">MANIC!</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      This comedy solo show tells the story of two manic episodes, both of 
+      which lasted 3 months each and both resulting in husbands. Stand up 
+      comic and sketch writer Roya Hamadani will take you on her bizarre 
+      journey from being diagnosed with bipolar disorder at 33, transforming 
+      into Manic Roya, diligently questing for peen, and eventually finding 
+      her happy ending, mostly.
+    
+    
+      
+    
+    
+      Sometimes shocking, a little heart-breaking, and always entertaining, 
+      this is a unique story of how a few months in a completely altered state 
+      of mind can make all the difference in where and how and with whom you 
+      end up. Also, a nerd goes dick hunting.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																							<div class="digital-icon">
+								<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<circle cx="28" cy="26" r="20" fill="white"></circle>
+<circle cx="28" cy="26" r="19.75" stroke="#BDBDBD" stroke-width="0.5"></circle>
+</g>
+<path d="M34 19.25H22C21.175 19.25 20.5 19.925 20.5 20.75V29.75C20.5 30.575 21.175 31.25 22 31.25H25V32C25 32.4125 25.3375 32.75 25.75 32.75H30.25C30.6625 32.75 31 32.4125 31 32V31.25H34C34.825 31.25 35.4925 30.575 35.4925 29.75L35.5 20.75C35.5 19.925 34.825 19.25 34 19.25ZM34 29.75H22V20.75H34V29.75Z" fill="#112638"></path>
+<path d="M26.125 23.2476V27.2526C26.125 27.8451 26.785 28.2051 27.28 27.8826L30.3925 25.8801C30.4978 25.8121 30.5843 25.7189 30.6442 25.6088C30.7042 25.4988 30.7356 25.3754 30.7356 25.2501C30.7356 25.1248 30.7042 25.0015 30.6442 24.8915C30.5843 24.7814 30.4978 24.6881 30.3925 24.6201L27.28 22.6176C26.785 22.2951 26.125 22.6551 26.125 23.2476Z" fill="#899399"></path>
+<defs>
+<filter id="filter0_d" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+<fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+<feoffset dy="2"></feoffset>
+<fegaussianblur stdDeviation="4"></fegaussianblur>
+<fecolormatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0.18 0"></fecolormatrix>
+<feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feblend>
+<feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feblend>
+</filter>
+</defs>
+</svg>							</div>
+																	<a href="https://tickets.frigid.nyc/event/6897:1223" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/The-Pickle-Logo-Img.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Storytelling, Theater, Satire, Theatre, Film - Neurotica Fest 2025					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">The Pickle</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      The Pickle is a deeply personal, semi-autobiographical drama about the 
+      harrowing dangers of addiction and effects on family.
+    
+    
+      
+    
+    
+      Set one year after the devastating loss of her cousin Cody, The Pickle 
+      follows Nellie, a video editor in her mid-twenties, as she grapples with 
+      grief and the memories of their relationship. Cody, who died at 18 from 
+      a drug overdose, frequently visits Nellie as a spirit—his presence equal 
+      parts comforting and haunting.
+    
+    
+      
+    
+    
+      Nellie often pushes Cody away when he uses drugs around her, unable to 
+      confront the pain of his choices. But this time, Cody forces her to 
+      witness his struggle, reliving the moments that defined their bond and 
+      the tragedy of his illness. The film explores the complexities of grief, 
+      the enduring nature of love, and the unshakable imprint left by 
+      addiction.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																							<div class="digital-icon">
+								<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<circle cx="28" cy="26" r="20" fill="white"></circle>
+<circle cx="28" cy="26" r="19.75" stroke="#BDBDBD" stroke-width="0.5"></circle>
+</g>
+<path d="M34 19.25H22C21.175 19.25 20.5 19.925 20.5 20.75V29.75C20.5 30.575 21.175 31.25 22 31.25H25V32C25 32.4125 25.3375 32.75 25.75 32.75H30.25C30.6625 32.75 31 32.4125 31 32V31.25H34C34.825 31.25 35.4925 30.575 35.4925 29.75L35.5 20.75C35.5 19.925 34.825 19.25 34 19.25ZM34 29.75H22V20.75H34V29.75Z" fill="#112638"></path>
+<path d="M26.125 23.2476V27.2526C26.125 27.8451 26.785 28.2051 27.28 27.8826L30.3925 25.8801C30.4978 25.8121 30.5843 25.7189 30.6442 25.6088C30.7042 25.4988 30.7356 25.3754 30.7356 25.2501C30.7356 25.1248 30.7042 25.0015 30.6442 24.8915C30.5843 24.7814 30.4978 24.6881 30.3925 24.6201L27.28 22.6176C26.785 22.2951 26.125 22.6551 26.125 23.2476Z" fill="#899399"></path>
+<defs>
+<filter id="filter0_d" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+<fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+<feoffset dy="2"></feoffset>
+<fegaussianblur stdDeviation="4"></fegaussianblur>
+<fecolormatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0.18 0"></fecolormatrix>
+<feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feblend>
+<feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feblend>
+</filter>
+</defs>
+</svg>							</div>
+																	<a href="https://tickets.frigid.nyc/event/6897:1229" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/IMG_5488.jpeg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Storytelling, Real Life/True Stories, Theatre, True Stories, Solo Performance - Neurotica Fest 2025					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Homecoming</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Dara is on the adventure of her life studying art in Australia when she 
+      gets that call-- her mom is dying, and she has to come home. How 
+      inconvenient! Their mother/daughter relationship was already difficult 
+      and now she’s dead. Well played, mom. You win.
+    
+    
+      
+    
+    
+      What follows is a winding journey through the awkward, painful, 
+      unexpectedly hilarious process of finding yourself again after loss.
+    
+    
+      
+    
+    
+      “Homecoming” is a darkly funny solo show about complicated grief, 
+      identity, and how losing your mom can really mess with your study abroad 
+      year (and the next 20 years after that).
+    
+    
+      
+    
+    
+      So please: laugh, cry, or just sit there silently questioning your own 
+      life choices.
+    
+    
+      
+    
+    
+      Dara Kosberg is a Los Angeles-based storyteller, comedian, actress, and 
+      emerging screenwriter whose work blends humor with heart. A Moth 
+      StorySLAM winner, she’s performed at iconic venues including San 
+      Francisco’s Punch Line Comedy Club, The Marsh Theater, and Brooklyn’s 
+      Union Hall. Dara placed in the top three out of 150 comics in Rooster T. 
+      Feather’s New Talent Competition. As part of the Reimagine End of Life 
+      arts festival in San Francisco and New York City, she has produced and 
+      performed in comedy shows exploring grief and loss-- revealing the 
+      unexpected healing power of laughter through some of life’s heaviest 
+      moments.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:1226" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/SOFIA-_-BECCA-.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Storytelling, True Stories, Real Life/True Stories - Neurotica Fest 2025					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Latchkey Larki and Gifted</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Sofia drinks chai with her Pakistani family in Chicago; Becca has 
+      Shabbat dinners with her Jewish family in Baltimore. These two GenX 
+      comedians and storytellers come from different backgrounds, but their 
+      stories share universal themes. Join us for an evening of hilarious 
+      adventures in growing up, fitting in, and grappling with who we really 
+      are.
+    
+    
+      
+    
+    
+      iPhones still might be 30 years in the future, but growing up in early 
+      90s Chicago still meant plenty of screen time. Sofia Javed’s new comedy 
+      show is about being a child of hard-working immigrant parents, a student 
+      of teachers who don’t understand her culture, and a devotee of 
+      television sitcoms… that provide her real education.
+    
+    
+      
+    
+    
+      In a lot of ways, Becca Rothman is like her family. And in a lot of 
+      other ways, not so much. Whenever she is “too much” (which is often) 
+      they call out “RebeccAgenda!!!” as a kind of shorthand for how she moves 
+      through the world: always with some sort of scheme, always a messy 
+      tornado, and always, always in motion. At what point do we begin to 
+      realize that some things we get from our families, and some things are 
+      just who we are? Join Becca on a spellbinding journey about growing up, 
+      a surprise gift that changed the way she sees the world, and the 
+      mysteries that we discover - and sometimes solve - along the way.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																							<div class="digital-icon">
+								<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<circle cx="28" cy="26" r="20" fill="white"></circle>
+<circle cx="28" cy="26" r="19.75" stroke="#BDBDBD" stroke-width="0.5"></circle>
+</g>
+<path d="M34 19.25H22C21.175 19.25 20.5 19.925 20.5 20.75V29.75C20.5 30.575 21.175 31.25 22 31.25H25V32C25 32.4125 25.3375 32.75 25.75 32.75H30.25C30.6625 32.75 31 32.4125 31 32V31.25H34C34.825 31.25 35.4925 30.575 35.4925 29.75L35.5 20.75C35.5 19.925 34.825 19.25 34 19.25ZM34 29.75H22V20.75H34V29.75Z" fill="#112638"></path>
+<path d="M26.125 23.2476V27.2526C26.125 27.8451 26.785 28.2051 27.28 27.8826L30.3925 25.8801C30.4978 25.8121 30.5843 25.7189 30.6442 25.6088C30.7042 25.4988 30.7356 25.3754 30.7356 25.2501C30.7356 25.1248 30.7042 25.0015 30.6442 24.8915C30.5843 24.7814 30.4978 24.6881 30.3925 24.6201L27.28 22.6176C26.785 22.2951 26.125 22.6551 26.125 23.2476Z" fill="#899399"></path>
+<defs>
+<filter id="filter0_d" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+<fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+<feoffset dy="2"></feoffset>
+<fegaussianblur stdDeviation="4"></fegaussianblur>
+<fecolormatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0.18 0"></fecolormatrix>
+<feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feblend>
+<feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feblend>
+</filter>
+</defs>
+</svg>							</div>
+																	<a href="https://tickets.frigid.nyc/event/6897:1227" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/The-Heterosexuals-Facebook-Cover-Instagram-Post-1.jpg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Storytelling, LGBTQIA+, Satire, Comedy - Neurotica Fest 2025					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">The Heterosexuals (at Under St. Marks)</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      ★★★★★ "Comic genius!" - The Irish Times
+    
+    
+      
+    
+    
+      A deep-dive into the shocking world of Heterosexuality! THEY WALK AMONG 
+      US! But where did they come from? And what do they think they’re 
+      wearing? Find out in this explosive solo show based on undercover 
+      research gathered while posing as one of their own! Combining elements 
+      of storytelling, satire, comedy, and deep personal humiliation, The 
+      Heterosexuals is here to spill the T on what The Queers really think 
+      about The Straights.
+    
+    
+      
+    
+    
+      The latest solo show from tour-de-force writer/performer Johnnie 
+      McNamara Walker has wowed audiences and sold out houses across Canada as 
+      well as touring internationally to Ireland and the US.
+    
+    
+      
+    
+    
+      WINNER: English Comedy Award (Montreal Fringe)
+    
+    
+      WINNER: Outstanding Theatre Award (FringeReview.co.uk)
+    
+    
+      WINNER: Audience Favourite Award (Lavender Fest)
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:1233" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/The-Heterosexuals-Facebook-Cover-Instagram-Post-1.jpg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Storytelling, LGBTQIA+, Satire, Comedy, Theatre - Neurotica Fest 2025					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">The Heterosexuals (at Parkside Lounge)</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      THIS EVENT WILL TAKE PLACE AT THE PARKSIDE LOUNGE (317 E. Houston Street)
+    
+    
+      
+    
+    
+      ★★★★★ "Comic genius!" - The Irish Times
+    
+    
+      
+    
+    
+      A deep-dive into the shocking world of Heterosexuality! THEY WALK AMONG 
+      US! But where did they come from? And what do they think they’re 
+      wearing? Find out in this explosive solo show based on undercover 
+      research gathered while posing as one of their own! Combining elements 
+      of storytelling, satire, comedy, and deep personal humiliation, The 
+      Heterosexuals is here to spill the T on what The Queers really think 
+      about The Straights.
+    
+    
+      
+    
+    
+      The latest solo show from tour-de-force writer/performer Johnnie 
+      McNamara Walker has wowed audiences and sold out houses across Canada as 
+      well as touring internationally to Ireland and the US.
+    
+    
+      
+    
+    
+      WINNER: English Comedy Award (Montreal Fringe)
+    
+    
+      WINNER: Outstanding Theatre Award (FringeReview.co.uk)
+    
+    
+      WINNER: Audience Favourite Award (Lavender Fest)
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Parkside Lounge</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:1225" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/PoemsforGod_Square.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Storytelling, Theater, Theatre - Neurotica Fest 2025					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">POEMS FOR GOD</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      In order to get their wings, an Angel has been asked to do the 
+      impossible.
+    
+    
+      The task: save all woman, everywhere, in just 60 minutes.
+    
+    
+      
+    
+    
+      "Wonderfully wacky"
+    
+    
+      "Devilish delight"
+    
+    
+      "Deadpan Absurdism" (Orlando Weekly)
+    
+    
+      "Gasp-inducing moments" (Orlando Sentinel)
+    
+    
+      
+    
+    
+      Join certified freak/ Toronto based comedian Victoria Watson Sepejak in 
+      theatrical madhouse which explores parenthood, death, and the 
+      existential gendered experience through dreamlike physical comedy and 
+      pure silliness.
+    
+    
+      
+    
+    
+      Emerging from Toronto’s premiere alternative comedy space Sweet Action 
+      Theatre. Co-devised and directed by award-winning Canadian/LA comedian 
+      Isaac Kessler. POEMS FOR GOD is “powerful, point-of-view stuff, 
+      delivered full throttle on the knife edge of humor and horror” (Orlando 
+      Sentinel).
+    
+    
+      
+    
+    
+      WINNER - "Critics Choice: Best Solo Show - Comedy" - Orlando Fringe 2025
+    
+    
+      WINNER - "Outstanding Theatre Award - Daring Work" - FringeReview.co.uk 
+      2025
+    
+    
+      WINNER - "Best Solo Show" - Victoria Fringe 2023
+    
+    
+      WINNER - "Fringe of the Fringe" - Orlando Fringe 2023
+    
+    
+      
+    
+    
+      
+    
+    
+      NEW YORK PREMIERE!!!!!
+    
+    
+      *~*~*~* !! !! ALL WOMAN WILL BE SAVED!! !! *~*~*~*
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																							<div class="digital-icon">
+								<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<circle cx="28" cy="26" r="20" fill="white"></circle>
+<circle cx="28" cy="26" r="19.75" stroke="#BDBDBD" stroke-width="0.5"></circle>
+</g>
+<path d="M34 19.25H22C21.175 19.25 20.5 19.925 20.5 20.75V29.75C20.5 30.575 21.175 31.25 22 31.25H25V32C25 32.4125 25.3375 32.75 25.75 32.75H30.25C30.6625 32.75 31 32.4125 31 32V31.25H34C34.825 31.25 35.4925 30.575 35.4925 29.75L35.5 20.75C35.5 19.925 34.825 19.25 34 19.25ZM34 29.75H22V20.75H34V29.75Z" fill="#112638"></path>
+<path d="M26.125 23.2476V27.2526C26.125 27.8451 26.785 28.2051 27.28 27.8826L30.3925 25.8801C30.4978 25.8121 30.5843 25.7189 30.6442 25.6088C30.7042 25.4988 30.7356 25.3754 30.7356 25.2501C30.7356 25.1248 30.7042 25.0015 30.6442 24.8915C30.5843 24.7814 30.4978 24.6881 30.3925 24.6201L27.28 22.6176C26.785 22.2951 26.125 22.6551 26.125 23.2476Z" fill="#899399"></path>
+<defs>
+<filter id="filter0_d" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+<fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+<feoffset dy="2"></feoffset>
+<fegaussianblur stdDeviation="4"></fegaussianblur>
+<fecolormatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0.18 0"></fecolormatrix>
+<feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feblend>
+<feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feblend>
+</filter>
+</defs>
+</svg>							</div>
+																	<a href="https://tickets.frigid.nyc/event/6897:1228" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/cut_ella.jpg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Storytelling, Theater, Improv, Comedy, True Stories, Solo Performance - Monthly Shows					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">On Cats and Dogs and Other Family Revelations</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      On Cats and Dogs and Other Family Revelations wraps big ideas in focused 
+      stories about Ella’s pets, offering glimpses of her human family and 
+      life in her place of birth, Transylvania, Romania. With her dark humor 
+      and heart, Ella takes audiences from her childhood under communist rule, 
+      to her present quirky experiences in East Harlem, using her dog and cat 
+      as reference points.
+    
+    
+      
+    
+    
+      Content Warning: This show contains dark humor, discussions about death, 
+      and rape. This show is not recommended for children.
+    
+    
+      
+    
+    
+      The cast will feature Ella Veres and her companion dog, Pandele, who 
+      said she's in it not for fame, but to pay her vet bills. Rosamunda, her 
+      cat, was asked to perform but declined. She’d rather lounge under the 
+      sofa than be in the limelight.
+    
+    
+      
+    
+    
+      “Being from Transylvania, is expected of me to be creepy, so I oblige, 
+      from time to time, albeit not in Hollywood style,” said Ella Veres, lead 
+      performer and director of On Cats and Dogs and Other Family Revelations. 
+      “The war in Ukraine riled my memories up, and urged me to point out how 
+      much there is to lose.”
+    
+    
+      
+    
+    
+      The performance will run approximately one hour. Each show is a 
+      different iteration.
+    
+    
+      
+    
+    
+      Ella Veres is an independent performer and writer who has been active in 
+      the New York City cultural community since 2001. Her work has been 
+      presented at the Immigrant Theater Festival, Galapagos Art Space, 
+      Manhattan Theater Source, IWAS,The Field, Theater for the New City, The 
+      Moth, Stage Left, Bowery Poetry Club, Chashama, and her present 
+      incubator, Fountain House Gallery. For several years she focused on her 
+      visual art, but in 2022, serendipity made her act in Stories From My 
+      Mother at the Theater for the New City, and thus reminded her how lovely 
+      it is to be in front of a live audience.
+    
+    
+      Her current solo storytelling show, On Cats and Dogs and Other Family 
+      Revelations, was shaped during her 2023 Fountain House Gallery summer 
+      residency on Governors Island and in Adam Wade’s Magnet Theater Solo 
+      Workshop, and premiered successfully at the 2024 NYC Fringe Festival.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																							<div class="digital-icon">
+								<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<circle cx="28" cy="26" r="20" fill="white"></circle>
+<circle cx="28" cy="26" r="19.75" stroke="#BDBDBD" stroke-width="0.5"></circle>
+</g>
+<path d="M34 19.25H22C21.175 19.25 20.5 19.925 20.5 20.75V29.75C20.5 30.575 21.175 31.25 22 31.25H25V32C25 32.4125 25.3375 32.75 25.75 32.75H30.25C30.6625 32.75 31 32.4125 31 32V31.25H34C34.825 31.25 35.4925 30.575 35.4925 29.75L35.5 20.75C35.5 19.925 34.825 19.25 34 19.25ZM34 29.75H22V20.75H34V29.75Z" fill="#112638"></path>
+<path d="M26.125 23.2476V27.2526C26.125 27.8451 26.785 28.2051 27.28 27.8826L30.3925 25.8801C30.4978 25.8121 30.5843 25.7189 30.6442 25.6088C30.7042 25.4988 30.7356 25.3754 30.7356 25.2501C30.7356 25.1248 30.7042 25.0015 30.6442 24.8915C30.5843 24.7814 30.4978 24.6881 30.3925 24.6201L27.28 22.6176C26.785 22.2951 26.125 22.6551 26.125 23.2476Z" fill="#899399"></path>
+<defs>
+<filter id="filter0_d" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+<fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+<feoffset dy="2"></feoffset>
+<fegaussianblur stdDeviation="4"></fegaussianblur>
+<fecolormatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0.18 0"></fecolormatrix>
+<feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feblend>
+<feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feblend>
+</filter>
+</defs>
+</svg>							</div>
+																	<a href="https://tickets.frigid.nyc/event/6897:713" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/Backstage-UnderSt-Marks-danithag-eb8811c0-main-1.jpeg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Comedy, Stand-Up - Monthly Shows					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Daniel Simonsen--Free to Fail</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      A night of experimental comedy with New York's Funniest Stand-Up 
+      2022 winner Daniel Simonsen. Come watch the Norwegian build material as 
+      he works both scripted and completely unscripted. As seen on&nbsp;Late 
+      Night with Seth Meyers&nbsp;and&nbsp;The Late Show with Stephen 
+      Colbert.
+    
+    
+      
+      
+    
+    
+      “One to watch” Time Out&nbsp;
+    
+    
+      “Brilliantly offbeat” Guardian&nbsp;
+    
+    
+      “Exceptionally funny” Village Voice&nbsp;
+    
+    
+      
+      
+    
+    
+      **** Times&nbsp;
+    
+    
+      **** Time Out&nbsp;
+    
+    
+      **** Skinny&nbsp;
+    
+    
+      **** Fest&nbsp;
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:248" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/98b1c12d-79a4-4649-949a-d08ff985d90b.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Comedy, Play, Drama - Monthly Shows					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Milk And Henny Presents...</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Stay tuned for performance updates! 
+    
+    
+      Presented by Milk and Henny Productions.
+    
+    
+      
+    
+    
+      Join us for a special night where reality blurs and performance takes 
+      the spotlight.
+    
+    
+      
+    
+    
+      The Late Late Late Late Show&nbsp;begins as a live taping of a fictional 
+      late-night talk show with special musical guests: ‘Detranslate.’ The 
+      cameras roll, the host smiles, and the band takes the stage as tonight’s 
+      featured guests for an exclusive interview with celebrity host Quinn 
+      Valentine. But this is no ordinary taping. As the pleasant back and 
+      forth of the interview dissolves and things begin to go awry, the band 
+      drops the act and dons a new persona. Is it scripted? Is it improvised? 
+      Where did these people come from? One part media circus, one part sonic 
+      revelation, this is a night of performance that unspools the spectacle 
+      from the inside.
+    
+    
+      
+    
+    
+      Come for the show within the show. Stay for the music that tears through 
+      it and come back on the 10th for even more stylistic tunes from Mark 
+      Perro, Joseph Brock, and Bree and the Reeds.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																							<div class="digital-icon">
+								<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<circle cx="28" cy="26" r="20" fill="white"></circle>
+<circle cx="28" cy="26" r="19.75" stroke="#BDBDBD" stroke-width="0.5"></circle>
+</g>
+<path d="M34 19.25H22C21.175 19.25 20.5 19.925 20.5 20.75V29.75C20.5 30.575 21.175 31.25 22 31.25H25V32C25 32.4125 25.3375 32.75 25.75 32.75H30.25C30.6625 32.75 31 32.4125 31 32V31.25H34C34.825 31.25 35.4925 30.575 35.4925 29.75L35.5 20.75C35.5 19.925 34.825 19.25 34 19.25ZM34 29.75H22V20.75H34V29.75Z" fill="#112638"></path>
+<path d="M26.125 23.2476V27.2526C26.125 27.8451 26.785 28.2051 27.28 27.8826L30.3925 25.8801C30.4978 25.8121 30.5843 25.7189 30.6442 25.6088C30.7042 25.4988 30.7356 25.3754 30.7356 25.2501C30.7356 25.1248 30.7042 25.0015 30.6442 24.8915C30.5843 24.7814 30.4978 24.6881 30.3925 24.6201L27.28 22.6176C26.785 22.2951 26.125 22.6551 26.125 23.2476Z" fill="#899399"></path>
+<defs>
+<filter id="filter0_d" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+<fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+<feoffset dy="2"></feoffset>
+<fegaussianblur stdDeviation="4"></fegaussianblur>
+<fecolormatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0.18 0"></fecolormatrix>
+<feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feblend>
+<feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feblend>
+</filter>
+</defs>
+</svg>							</div>
+																	<a href="https://tickets.frigid.nyc/event/6897:648" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/MATT-AND-BEN.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Storytelling, Theater, Comedy, Theatre, Play - Rentals					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Matt &amp; Ben</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Matt &amp; Ben depicts its Hollywood golden boys – before J-Lo, before 
+      Gwyneth, before Project Greenlight, before Oscar… before anyone actually 
+      gave a damn.
+    
+    
+      
+    
+    
+      When the screenplay for Good Will Hunting drops mysteriously from the 
+      heavens, the boys realize they’re being tested by a Higher Power.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:1219" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/Logo500.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Comedy, Play, Drama - Monthly Shows					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">It's Getting Tired Mildred</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Doors open at 7:30 for drinks and mingling, curtain at 8:00pm.
+    
+    
+      
+    
+    
+      Welcome to Mildred Springs! A quaint city in the vague Northeastern 
+      United States. A city not unlike other cities. Join us while the bold 
+      and the beautiful citizens of Mildred Springs live the days of their 
+      lives. Some might be young and restless. Some might be doctors working 
+      at Sacred Corpuscle Memorial, a general hospital. But they've all got 
+      one life to live. Join us as their world turns. Join us as their guiding 
+      light leads them on their constant search for tomorrow. Join us as they 
+      hang on to the edge of night and you will be transported to another 
+      world. The world of It's Getting Tired Mildred. But make sure you join 
+      us for their continuing stories.
+    
+    
+      
+    
+    
+      Set in the 1980’s, known for riding the line between camp and loving 
+      homage to the soap opera genre, and featuring a dynamic cast of the 
+      indie theatre pros, IT’S GETTING TIRED MILDRED hooks audience members to 
+      come back month after month to see what happens next. Each episode of 
+      IT’S GETTING TIRED MILDRED is performed only once! Formerly a late-night 
+      hit... Now daytime moves from late-night to primetime!
+    
+    
+      
+    
+    
+      Now at Under St. Marks, 94 St. Marks Place.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																							<div class="digital-icon">
+								<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<circle cx="28" cy="26" r="20" fill="white"></circle>
+<circle cx="28" cy="26" r="19.75" stroke="#BDBDBD" stroke-width="0.5"></circle>
+</g>
+<path d="M34 19.25H22C21.175 19.25 20.5 19.925 20.5 20.75V29.75C20.5 30.575 21.175 31.25 22 31.25H25V32C25 32.4125 25.3375 32.75 25.75 32.75H30.25C30.6625 32.75 31 32.4125 31 32V31.25H34C34.825 31.25 35.4925 30.575 35.4925 29.75L35.5 20.75C35.5 19.925 34.825 19.25 34 19.25ZM34 29.75H22V20.75H34V29.75Z" fill="#112638"></path>
+<path d="M26.125 23.2476V27.2526C26.125 27.8451 26.785 28.2051 27.28 27.8826L30.3925 25.8801C30.4978 25.8121 30.5843 25.7189 30.6442 25.6088C30.7042 25.4988 30.7356 25.3754 30.7356 25.2501C30.7356 25.1248 30.7042 25.0015 30.6442 24.8915C30.5843 24.7814 30.4978 24.6881 30.3925 24.6201L27.28 22.6176C26.785 22.2951 26.125 22.6551 26.125 23.2476Z" fill="#899399"></path>
+<defs>
+<filter id="filter0_d" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+<fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+<feoffset dy="2"></feoffset>
+<fegaussianblur stdDeviation="4"></fegaussianblur>
+<fecolormatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0.18 0"></fecolormatrix>
+<feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feblend>
+<feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feblend>
+</filter>
+</defs>
+</svg>							</div>
+																	<a href="https://tickets.frigid.nyc/event/6897:579" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/Open-Mic-Flyer-a-Spanish-Affair-Rectangle-Sticker-Landscape.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						BIPOC, Variety, Multilingual, Spanish Language - Monthly Shows					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">A Spanglish Affair Open Mic</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">Spanglish Affair Open Mic
+    
+
+    
+      If you want to perform, please fill out this form and attach a 
+      screenshot of your ticket purchase:
+    
+    
+    
+    
+
+    
+      
+    
+    Click 
+    here 
+
+    
+      Now the Spanglish Affair is happening monthly!
+    
+    
+      We are introducing themes to spark your creativity:
+    
+    
+      
+        July 14th: A French Affair
+      
+      
+        Aug 4th: "Cuando Calienta el Sol" – Summer Party
+      
+      
+        Sep 15th: "Vuelta al Cole – 2000s Edition"
+      
+      
+        Oct 13th: “Drop Dead Gorgeous”
+      
+      
+        Nov 17th: "Friendsgiving from Abroad / Gracias, 
+        Amigues"
+      
+      
+        Dec 15th: "Something from Abroad" Holiday Party and 
+        Fundraiser – Nacimiento Core
+      
+    
+    
+    
+    
+
+    
+      We are excited to provide a safe space for artists to explore and share 
+      their art in front of a live audience. If there's something you've 
+      always wanted to do, this is a space for you to do it!
+    
+    
+      While our company focuses on Spanish and Spanglish content, this is not 
+      a requirement for your piece—if you're someone with art to share, this 
+      space is for you.
+    
+    
+      Here are some ideas for types of performers we're looking for: 
+      singers, dancers, comedians, performance art, burlesque, actors, visual 
+      artists, clowning, spoken word, poetry. THE SKY IS THE LIMIT!
+    
+    
+      We have 8 available spots which will be filled 
+      first-come first-
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:710" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/IMG_5585.jpg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Performance Art, Theater, Sketch Comedy, Solo Performance, Storytelling, Variety, Comedy, Theatre, Play - Co-Productions, Season 27					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Odd Salon: BEDEVIL</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Stories from the odd corners of history, science, art &amp; adventure.
+    
+    
+      
+    
+    
+      September 16:
+    
+    
+      Stories of taunting tricksters and gleeful gremlins, famous fumbles and 
+      fantastic follies, and ingenious inventions that go horribly haywire. 
+      Join us for Odd Salon NYC: BEDEVIL
+    
+    
+      
+    
+    
+      Curated by Greg Schicker-Taubman
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Parkside Lounge</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																							<div class="digital-icon">
+								<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<circle cx="28" cy="26" r="20" fill="white"></circle>
+<circle cx="28" cy="26" r="19.75" stroke="#BDBDBD" stroke-width="0.5"></circle>
+</g>
+<path d="M34 19.25H22C21.175 19.25 20.5 19.925 20.5 20.75V29.75C20.5 30.575 21.175 31.25 22 31.25H25V32C25 32.4125 25.3375 32.75 25.75 32.75H30.25C30.6625 32.75 31 32.4125 31 32V31.25H34C34.825 31.25 35.4925 30.575 35.4925 29.75L35.5 20.75C35.5 19.925 34.825 19.25 34 19.25ZM34 29.75H22V20.75H34V29.75Z" fill="#112638"></path>
+<path d="M26.125 23.2476V27.2526C26.125 27.8451 26.785 28.2051 27.28 27.8826L30.3925 25.8801C30.4978 25.8121 30.5843 25.7189 30.6442 25.6088C30.7042 25.4988 30.7356 25.3754 30.7356 25.2501C30.7356 25.1248 30.7042 25.0015 30.6442 24.8915C30.5843 24.7814 30.4978 24.6881 30.3925 24.6201L27.28 22.6176C26.785 22.2951 26.125 22.6551 26.125 23.2476Z" fill="#899399"></path>
+<defs>
+<filter id="filter0_d" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+<fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+<feoffset dy="2"></feoffset>
+<fegaussianblur stdDeviation="4"></fegaussianblur>
+<fecolormatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0.18 0"></fecolormatrix>
+<feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feblend>
+<feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feblend>
+</filter>
+</defs>
+</svg>							</div>
+																	<a href="https://tickets.frigid.nyc/event/6897:1196" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/stuart-laws-2024-square-copy.jpg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Comedy, Stand-Up - Co-Productions, Season 27					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Stuart Laws Has To Be Joking? </h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Stuart Laws is a British comedian who has opened for James Acaster, Ed 
+      Gamble, Lou Sanders and Chloe Radcliffe - his most recent special was 
+      produced by 800 Pound Gorilla and directed by Nish Kumar and he has 
+      appeared on the Off Menu and Films To Be Buried With with Brett 
+      Goldstein podcasts. This show has just finished a sold out tour of the 
+      UK and received 12 ⭐️⭐️⭐️⭐️ reviews (in the UK that’s really impressive, 
+      apologies if that isn’t how it works in the USA). It’s a stand up comedy 
+      show about relationships, travel, toilets, neurodivergence and how his 
+      life changed once he started dating an American. 
+    
+    
+      
+    
+    
+       **** ½ (Chortle.co.uk). **** (List). **** Broadway World 'You'll 
+      struggle to find a comedian with a better jokes-per-minute rate' **** 
+      (Fest). 'One of the most skilled and likeable comics... a deliciously 
+      joke-dense show' **** (Scotsman)
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:1205" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/IMG_0095.jpg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Storytelling - Monthly Shows					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Adam Wade: LIVE IN NEW YORK!</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Adam Wade, the 20-time Moth Story Slam winner, creator of the #1 Best 
+      Selling Audible Original 'You Ought To Know Adam Wade' and from TV’s 
+      'Inside Amy Schumer' and 'Girls' returns to Under Saint Marks Theater! 
+      This monthly storytelling show will feature three to four different 
+      stories from Adam’s extensive catalog. No two shows will be the same. 
+      Come and see this New York Times, Time Out New York, and CBS critics’ 
+      pick LIVE on stage in New York! A different special guest storyteller 
+      will begin each show.
+    
+    
+      
+    
+    
+      “Mr. Wade is an enchanting storyteller.” – The New York Times
+    
+    
+      
+    
+    
+      “Wade is expressing not just our inner misfit but our inner small-town 
+      kid.” – The New Yorker
+    
+    
+      
+    
+    
+      “He’s completely vulnerable. When he goes on stage he brings only 
+      himself. People instantly fall in love with him.” – George Dawes Green, 
+      the founder of The Moth
+    
+    
+      
+    
+    
+      “Adam’s nuanced observations, openness, and wit transform his 
+      coming-of-age tales into funny, impactful, and universal stories of joy 
+      and hope.” – Audible
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:476" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/Ordinary-Days-Show-Poster-Title-Only.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Storytelling, Musical, Comedy, Theatre - Rentals					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Ordinary Days</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Ordinary Days tells the story of four young New Yorkers whose lives 
+      intersect as they search for fulfillment, happiness, love and cabs. 
+      Through a score of vibrant and memorable songs, their experiences ring 
+      startlingly true to life. Ordinary Days is an original musical for 
+      anyone who's ever struggled to appreciate the simple things in a complex 
+      place. With equal doses of humor and poignancy, it celebrates how 8.3 
+      million individual stories combine in unexpected ways to make New York 
+      City such a unique and extraordinary home.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:1209" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/improv-side-coached-show.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Comedy, Improv, Satire - Co-Productions, Season 27					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Under St Marks Improv Side-Coached Show</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Side-Coached is an improv show in which performers improvise live based 
+      on an audience prompt, all along being side coached by our experienced 
+      improv teacher Ian Herrin. In this first season we aim to experiment: at 
+      times one large team, at times two smaller teams, will perform in the 
+      first part of the show, then we will jam with audience members who put 
+      their names in the hat.
+    
+    
+      
+    
+    
+      Our show is an offshoot of East Village Performance/Practice Group that 
+      started in Spring 2025. Our gratitude goes to Under St Marks Theater 
+      that fostered our group.
+    
+    
+      
+    
+    
+      Ian Herrin is an actor, improviser, and teacher with over a decade of 
+      long form experience who has performed at PIT, Magnet, UCB, and 
+      festivals all over the East Coast. Ian is the host of the long running 
+      improv show The Ian Herrin Improv Hour (IHIH) which has featured Special 
+      Guests from Saturday Night Live, Late Night with Seth Meyers, Comedy 
+      Central, Logo TV, E! Network, TLC, VH1, IFC, truTV, et al. Ian now 
+      teaches at the UCB and passionately cares about making scenework even 
+      more accessible to improv students of all backgrounds. He simply can’t 
+      wait for you to be included in what would normally be a behind closed 
+      doors intimate improv experience at Side-Coached in the historic Under 
+      St. Marks Theater.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:1235" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/o-the-murder-and-judith-logo.jpg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Performance Art, Theater, Multi-Media, LGBTQIA+, Real Life/True Stories, Spoken Word, True Stories, Storytelling, Satire, Movement, Play, Music, Drama, Theatre, Educational, Reading - Rentals					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">O' The Murder of Christa McAuliffe and Judith Resnik The N.A.S.A. &amp; President Ronald Reagan Challenger Shuttle Disaster</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      73 seconds after Challenger's Take Off on January 28th 1986
+    
+    
+      Time of Death 1138AM Eastern Standard Time…Or was it?
+    
+    
+      
+    
+    
+      'O' is a thrilling multi-platform Performance and Presentation that 
+      reveals the honest and truthful Story about why and what actually 
+      happened that winter's morning in Florida while the whole world was 
+      watching. What too many greedy Shape Shifting Politicians and Chief 
+      Production Managers and Directors had known and refused to share and why 
+      the first People of Color and Two Woman Space Craft Crew had to suffer 
+      the consequences and were forced to make the ultimate sacrifice.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:1237" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/Live-Taping-Poster-Horizontal.jpg" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Monthly Shows					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Hottie Bop: LIVE TAPING</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Hottie Bop is coming to an end. 
+    
+    
+      
+    
+    
+      After thirty-eight Hottie Bop productions, we have only TWO MORE SHOWS 
+      before we Hot our last Bop.&nbsp;
+    
+    
+      Y’know how comedians will end a year of performances with a video 
+      production - a film that captures the permanent record of their work?
+    
+    
+      On August 8, we will do just that. Three cameras, a boom guy, two 
+      cue-card holders, two security guards, a director and ONE NIGHT to 
+      capture — on video – the quintessential Hottie Bop.
+    
+    
+      
+    
+    
+      This is the PENULTIMATE show. Hottie Bop: LIVE TAPING!
+    
+    
+      
+    
+    
+      Starring:
+    
+    
+      Lina Zikas
+    
+    
+      Duane Stanford
+    
+    
+      Ben Hirsch
+    
+    
+      Kev Qian
+    
+    
+      Noah Weinflash
+    
+    
+      Ashley McGregor
+    
+    
+      Nick Barris
+    
+    
+      JR Youngblut
+    
+    
+      Jake Snyder
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																							<div class="digital-icon">
+								<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<circle cx="28" cy="26" r="20" fill="white"></circle>
+<circle cx="28" cy="26" r="19.75" stroke="#BDBDBD" stroke-width="0.5"></circle>
+</g>
+<path d="M34 19.25H22C21.175 19.25 20.5 19.925 20.5 20.75V29.75C20.5 30.575 21.175 31.25 22 31.25H25V32C25 32.4125 25.3375 32.75 25.75 32.75H30.25C30.6625 32.75 31 32.4125 31 32V31.25H34C34.825 31.25 35.4925 30.575 35.4925 29.75L35.5 20.75C35.5 19.925 34.825 19.25 34 19.25ZM34 29.75H22V20.75H34V29.75Z" fill="#112638"></path>
+<path d="M26.125 23.2476V27.2526C26.125 27.8451 26.785 28.2051 27.28 27.8826L30.3925 25.8801C30.4978 25.8121 30.5843 25.7189 30.6442 25.6088C30.7042 25.4988 30.7356 25.3754 30.7356 25.2501C30.7356 25.1248 30.7042 25.0015 30.6442 24.8915C30.5843 24.7814 30.4978 24.6881 30.3925 24.6201L27.28 22.6176C26.785 22.2951 26.125 22.6551 26.125 23.2476Z" fill="#899399"></path>
+<defs>
+<filter id="filter0_d" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+<fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+<feoffset dy="2"></feoffset>
+<fegaussianblur stdDeviation="4"></fegaussianblur>
+<fecolormatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0 0.0666667 0 0 0 0.18 0"></fecolormatrix>
+<feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feblend>
+<feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feblend>
+</filter>
+</defs>
+</svg>							</div>
+																	<a href="https://tickets.frigid.nyc/event/6897:171" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/The-Heart-Tells-Tales-Poster-NY.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Storytelling, Theater, Theatre, Play, Music - Rentals					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">The Heart Tells Tales</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      Remember how you felt reading Edger Allen Poe’s classic short story The 
+      Telltale Heart? Now, playwright Omen Kaine channels Poe, re-imagining 
+      the story for our times, and setting it in Boston during the Pandemic. 
+      In this edgy adaptation, neighbors of a beloved old-school musician hear 
+      screams. Detectives come
+    
+    
+      across a gruesome scene. Domestic Violence at its worst. But it’s not a 
+      married couple, rather a young man taking care of the older one. The 
+      caregiver admits to killing the musician and is in custody. Yet 
+      something seems off...
+    
+    
+      
+    
+    
+      Omen Kaine’s new play, the second in a trilogy, is accompanied by an 
+      album of original music from the Los Angeles Art district based band, 
+      the Clandestine Circle Quintet. Experimenting with Hip Hop, Rock and 
+      Jazz, the music is interwoven into the storyline, building tension and 
+      suspense.. The production opens in the fall of 2025, with an October run 
+      in Los Angeles, followed by a November run in New York, and then moves 
+      overseas to Belgium. It is the second installation of Kaine’s Through
+    
+    
+      the Altered Lens Trilogy.
+    
+    
+      
+    
+    
+      Don't miss out on the opportunity to experience this bold new story in 
+      its first full dramatic productions.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:1217" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+					<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card text-left">
+									<img class="card-img-top" src="./frigid_main_page_files/IMG_0929.png" alt="Event Image">
+								<div class="card-body">
+					<small>
+						Performance Art, Musical, Theater, Multi-Media, Storytelling, Movement, Theatre, Music, Drama - Co-Productions, Season 28					</small>
+					<h4 class="primary-color two-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">Falling Out-A New Musical</h4>
+
+													<p class="three-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3;">
+      WORLD PREMIERE: Falling Out-A New Musical
+    
+    
+      
+    
+    
+      In a downtown New York music bar the ballads of lost loves and missed 
+      opportunities float on the air.  Worlds collide when a melancholic 
+      transplant meets a musician with a past.  Together they create a 
+      discordant harmony that will uncover the truths they both need to face 
+      to reshape their lives. 
+    
+    
+      
+    
+    
+      This experiential production marks the WORLD PREMIERE of acclaimed 
+      musician and songwriter Josee Klein’s musical of heartbreak and 
+      redemption.
+    </p>
+						
+											<p class="dt-loc event-location">
+							<img src="./frigid_main_page_files/location.svg" alt="Location">
+							<span class="one-line-clamp" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Under St Marks</span>
+						</p>
+					
+					
+				</div>
+
+				<div class="card-footer">
+																																				<a href="https://tickets.frigid.nyc/event/6897:1238" class="btn btn-success secondary-border-color">
+						<div class="btn btn-success secondary-bg-color secondary-border-color button-bg" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+						<div data-testid="book-now-event-btn" class="button-text-inner">Book Now</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Card End-->
+	</div>
+
+      </div>
+
+      <!--Section Filter Search Start-->
+      <div class="col-lg-3 desktop-version">
+	  
+<div class="via-box filter-button-container">
+    <a href="javascript:window.location.href=/^[^?]+/.exec(window.location.href)[0]">
+        <button data-testid="clear-filter" class="btn secondary-color secondary-border-color clear-filter">Clear Filters</button>
+    </a>
+
+    <button data-testid="apply-filter" class="btn btn-success secondary-bg-color secondary-border-color button-bg apply-filter">Show results</button>
+</div>
+
+
+							<h3 class="digital-filters-title">I'm looking for:</h3>
+				<form action="https://tickets.frigid.nyc/events" class="events-filter-digital">
+					<div class="presentation-format-radio">
+						<input id="ALL_EVENTS" class="presentation-format-radio-input radio-style main_search" name="presentation-format" value="ALL_EVENTS" type="radio">
+						<label for="ALL_EVENTS" class="radio-style-1-label">All Events</label>
+					</div>
+					<div class="presentation-format-radio">
+						<input id="DIGITAL" class="presentation-format-radio-input radio-style main_search" name="presentation-format" value="DIGITAL" data-testid="DIGITAL_FILTER" type="radio">
+						<label for="DIGITAL" class="radio-style-1-label">Online</label>
+					</div>
+					<div class="presentation-format-radio">
+						<input type="radio" id="PHYSICAL" name="presentation-format" class="presentation-format-radio-input radio-style main_search" value="PHYSICAL">
+						<label for="PHYSICAL" class="radio-style-1-label">In Person Events</label>
+					</div>
+					<br>
+				</form>
+			
+
+        <div class="filter-card">
+
+          <div class="calendar-wraper via-box">
+            <h3 class="via-title">Select Dates</h3>
+            <div class="datepicker" data-testid="datepicker">
+  <div id="datetimepicker2" data-date=""><div class="datepicker datepicker-inline"><div class="datepicker-days" style=""><table class="table"><thead><tr><th colspan="7" class="datepicker-title" style="display: none;"></th></tr><tr><th class="prev">«</th><th colspan="5" class="datepicker-switch">August 2025</th><th class="next">»</th></tr><tr><th class="dow">Mo</th><th class="dow">Tu</th><th class="dow">We</th><th class="dow">Th</th><th class="dow">Fr</th><th class="dow">Sa</th><th class="dow">Su</th></tr></thead><tbody><tr><td data-testid="performance-date" class="old day" data-date="1753660800000">28</td><td data-testid="performance-date" class="old day" data-date="1753747200000">29</td><td data-testid="performance-date" class="old day" data-date="1753833600000">30</td><td data-testid="performance-date" class="old day" data-date="1753920000000">31</td><td data-testid="performance-date" class="day" data-date="1754006400000">1</td><td data-testid="performance-date" class="day" data-date="1754092800000">2</td><td data-testid="performance-date" class="day" data-date="1754179200000">3</td></tr><tr><td data-testid="performance-date" class="day" data-date="1754265600000">4</td><td data-testid="performance-date" class="day" data-date="1754352000000">5</td><td data-testid="performance-date" class="day" data-date="1754438400000">6</td><td data-testid="performance-date" class="day" data-date="1754524800000">7</td><td data-testid="performance-date" class="day" data-date="1754611200000">8</td><td data-testid="performance-date" class="day" data-date="1754697600000">9</td><td data-testid="performance-date" class="day" data-date="1754784000000">10</td></tr><tr><td data-testid="performance-date" class="day" data-date="1754870400000">11</td><td data-testid="performance-date" class="day" data-date="1754956800000">12</td><td data-testid="performance-date" class="day" data-date="1755043200000">13</td><td data-testid="performance-date" class="day" data-date="1755129600000">14</td><td data-testid="performance-date" class="day" data-date="1755216000000">15</td><td data-testid="performance-date" class="day" data-date="1755302400000">16</td><td data-testid="performance-date" class="day" data-date="1755388800000">17</td></tr><tr><td data-testid="performance-date" class="day" data-date="1755475200000">18</td><td data-testid="performance-date" class="day" data-date="1755561600000">19</td><td data-testid="performance-date" class="day" data-date="1755648000000">20</td><td data-testid="performance-date" class="day" data-date="1755734400000">21</td><td data-testid="performance-date" class="today day" data-date="1755820800000">22</td><td data-testid="performance-date" class="day" data-date="1755907200000">23</td><td data-testid="performance-date" class="day" data-date="1755993600000">24</td></tr><tr><td data-testid="performance-date" class="day" data-date="1756080000000">25</td><td data-testid="performance-date" class="day" data-date="1756166400000">26</td><td data-testid="performance-date" class="day" data-date="1756252800000">27</td><td data-testid="performance-date" class="day" data-date="1756339200000">28</td><td data-testid="performance-date" class="day" data-date="1756425600000">29</td><td data-testid="performance-date" class="day" data-date="1756512000000">30</td><td data-testid="performance-date" class="day" data-date="1756598400000">31</td></tr><tr><td data-testid="performance-date" class="new day" data-date="1756684800000">1</td><td data-testid="performance-date" class="new day" data-date="1756771200000">2</td><td data-testid="performance-date" class="new day" data-date="1756857600000">3</td><td data-testid="performance-date" class="new day" data-date="1756944000000">4</td><td data-testid="performance-date" class="new day" data-date="1757030400000">5</td><td data-testid="performance-date" class="new day" data-date="1757116800000">6</td><td data-testid="performance-date" class="new day" data-date="1757203200000">7</td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr><tr><th colspan="7" class="clear" style="display: none;">Clear</th></tr></tfoot></table></div><div class="datepicker-months" style="display: none;"><table class="table"><thead><tr><th colspan="7" class="datepicker-title" style="display: none;"></th></tr><tr><th class="prev">«</th><th colspan="5" class="datepicker-switch">Months</th><th class="next">»</th></tr></thead><tbody><tr><td colspan="7"><span class="month">Jan</span><span class="month">Feb</span><span class="month">Mar</span><span class="month">Apr</span><span class="month">May</span><span class="month">Jun</span><span class="month">Jul</span><span class="month focused">Aug</span><span class="month">Sep</span><span class="month">Oct</span><span class="month">Nov</span><span class="month">Dec</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr><tr><th colspan="7" class="clear" style="display: none;">Clear</th></tr></tfoot></table></div><div class="datepicker-years" style="display: none;"><table class="table"><thead><tr><th colspan="7" class="datepicker-title" style="display: none;"></th></tr><tr><th class="prev">«</th><th colspan="5" class="datepicker-switch">2020-2029</th><th class="next">»</th></tr></thead><tbody><tr><td colspan="7"><span class="year old">2019</span><span class="year">2020</span><span class="year">2021</span><span class="year">2022</span><span class="year">2023</span><span class="year">2024</span><span class="year focused">2025</span><span class="year">2026</span><span class="year">2027</span><span class="year">2028</span><span class="year">2029</span><span class="year new">2030</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr><tr><th colspan="7" class="clear" style="display: none;">Clear</th></tr></tfoot></table></div><div class="datepicker-decades" style="display: none;"><table class="table"><thead><tr><th colspan="7" class="datepicker-title" style="display: none;"></th></tr><tr><th class="prev">«</th><th colspan="5" class="datepicker-switch">2000-2090</th><th class="next">»</th></tr></thead><tbody><tr><td colspan="7"><span class="decade old">1990</span><span class="decade">2000</span><span class="decade">2010</span><span class="decade focused">2020</span><span class="decade">2030</span><span class="decade">2040</span><span class="decade">2050</span><span class="decade">2060</span><span class="decade">2070</span><span class="decade">2080</span><span class="decade">2090</span><span class="decade new">2100</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr><tr><th colspan="7" class="clear" style="display: none;">Clear</th></tr></tfoot></table></div><div class="datepicker-centuries" style="display: none;"><table class="table"><thead><tr><th colspan="7" class="datepicker-title" style="display: none;"></th></tr><tr><th class="prev">«</th><th colspan="5" class="datepicker-switch">2000-2900</th><th class="next">»</th></tr></thead><tbody><tr><td colspan="7"><span class="century old">1900</span><span class="century focused">2000</span><span class="century">2100</span><span class="century">2200</span><span class="century">2300</span><span class="century">2400</span><span class="century">2500</span><span class="century">2600</span><span class="century">2700</span><span class="century">2800</span><span class="century">2900</span><span class="century new">3000</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr><tr><th colspan="7" class="clear" style="display: none;">Clear</th></tr></tfoot></table></div></div></div>
+</div>
+          </div>
+          <div class="via-box ">
+            <h3 class="via-title mb-3">Select Time</h3>
+            <div class="range-select ">
+              <span class="irs irs--round js-irs-0"><span class="irs"><span class="irs-line" tabindex="0"></span><span class="irs-min" style="visibility: hidden;">00:00</span><span class="irs-max" style="visibility: hidden;">23:59</span><span class="irs-from" style="visibility: visible; left: -4.32183%;">00:00</span><span class="irs-to" style="visibility: visible; left: 90.1514%;">23:59</span><span class="irs-single" style="visibility: hidden; left: 34.062%;">00:00 - 23:59</span></span><span class="irs-grid"></span><span class="irs-bar" style="left: 2.76339%; width: 94.4732%;"></span><span class="irs-shadow shadow-from" style="display: none;"></span><span class="irs-shadow shadow-to" style="display: none;"></span><span class="irs-handle from" style="left: 0%;"><i></i><i></i><i></i></span><span class="irs-handle to" style="left: 94.4732%;"><i></i><i></i><i></i></span></span><input class="range_37 irs-hidden-input" tabindex="-1" readonly="">
+            </div>
+          </div>
+		                              </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Maintains scroll position after page refresh
+	document.addEventListener("DOMContentLoaded", function(event) {
+			var scrollpos = localStorage.getItem('scrollpos');
+			if (scrollpos) window.scrollTo(0, scrollpos);
+	});
+
+	window.onbeforeunload = function(e) {
+			localStorage.setItem('scrollpos', window.scrollY);
+	};
+</script>
+	</div>
+	<div class="home-main-mobile-container"></div>
+
+
+	<!--Footer Start-->
+	<footer class="footer-bg-color">
+		<div class="container">
+			<div class="row subscribe-row align-items-center">
+				<div class="col-lg-5">
+									</div>
+				<div class="col-lg-7">
+					<ul id="menu-footer-menu" class="footer-links mt-3"><li id="menu-item-4387" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4387"><a href="https://frigidnewyork.us4.list-manage.com/subscribe?u=10a19cdf62d1a03943d31e7c9&amp;id=1715343014">Join Our Mailing List</a></li>
+<li id="menu-item-4188" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4188"><a href="https://www.facebook.com/frigidnewyork">Facebook</a></li>
+<li id="menu-item-4208" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4208"><a href="https://www.instagram.com/frigidnewyork/">Instagram</a></li>
+<li id="menu-item-4209" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4209"><a href="https://twitter.com/frigidnewyork">Twitter</a></li>
+<li id="menu-item-4219" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4219"><a href="https://www.youtube.com/c/FRIGIDNewYork">YouTube</a></li>
+<li id="menu-item-4220" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4220"><a href="https://www.tiktok.com/@frigidnyc">TikTok</a></li>
+</ul>				</div>
+			</div>
+		</div>
+	</footer>
+			<div class="red61-copy-text text-center">
+			<p>2025 All rights reserved. Powered by <a href="https://www.red61.com/">
+					<img src="./frigid_main_page_files/red61logo.png" class="logo-footer"></a>
+			</p>
+		</div>
+		<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/sites\/17\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/red61\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<!--googleoff: all--><div id="cookie-law-info-bar" data-nosnippet="true" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: inherit; bottom: 0px; position: fixed; display: block;"><span>This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish. <a role="button" class="cli_settings_button" style="margin: 5px 20px; color: rgb(98, 163, 41);">Cookie settings</a><a role="button" data-cli_action="accept" id="cookie_action_close_header" class="medium cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button wt-cli-accept-btn" style="margin: 5px; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">ACCEPT</a><a role="button" id="cookie_action_close_header_reject" class="medium cli-plugin-button cli-plugin-main-button cookie_action_close_header_reject cli_action_button wt-cli-reject-btn" data-cli_action="reject" style="margin: 5px; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">REJECT</a></span></div><div id="cookie-law-info-again" data-nosnippet="true" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); position: fixed; font-family: inherit; width: auto; bottom: 0px; right: 100px; display: none;"><span id="cookie_hdr_showagain">Privacy &amp; Cookies Policy</span></div><div class="cli-modal" data-nosnippet="true" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+	<div class="cli-modal-content cli-bar-popup">
+		  <button type="button" class="cli-modal-close" id="cliModalClose">
+			<svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+			<span class="wt-cli-sr-only">Close</span>
+		  </button>
+		  <div class="cli-modal-body">
+			<div class="cli-container-fluid cli-tab-container">
+	<div class="cli-row">
+		<div class="cli-col-12 cli-align-items-stretch cli-px-0">
+			<div class="cli-privacy-overview">
+				<h4>Privacy Overview</h4>				<div class="cli-privacy-content">
+					<div class="cli-privacy-content-text">This website uses cookies to improve your experience while you navigate through the website. Out of these, the cookies that are categorized as necessary are stored on your browser as they are essential for the working of basic functionalities of the ...</div>
+				</div>
+				<a class="cli-privacy-readmore" aria-label="Show more" role="button" data-readmore-text="Show more" data-readless-text="Show less"></a>			</div>
+		</div>
+		<div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+												<div class="cli-tab-section">
+						<div class="cli-tab-header">
+							<a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab">
+								Necessary							</a>
+															<div class="wt-cli-necessary-checkbox">
+									<input type="checkbox" class="cli-user-preference-checkbox" id="wt-cli-checkbox-necessary" data-id="checkbox-necessary" checked="checked">
+									<label class="form-check-label" for="wt-cli-checkbox-necessary">Necessary</label>
+								</div>
+								<span class="cli-necessary-caption">Always Enabled</span>
+													</div>
+						<div class="cli-tab-content">
+							<div class="cli-tab-pane cli-fade" data-id="necessary">
+								<div class="wt-cli-cookie-description">
+									Necessary cookies are absolutely essential for the website to function properly. This category only includes cookies that ensures basic functionalities and security features of the website. These cookies do not store any personal information.								</div>
+							</div>
+						</div>
+					</div>
+																	<div class="cli-tab-section">
+						<div class="cli-tab-header">
+							<a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="non-necessary" data-toggle="cli-toggle-tab">
+								Non-necessary							</a>
+															<div class="cli-switch">
+									<input type="checkbox" id="wt-cli-checkbox-non-necessary" class="cli-user-preference-checkbox" data-id="checkbox-non-necessary" checked="checked">
+									<label for="wt-cli-checkbox-non-necessary" class="cli-slider" data-cli-enable="Enabled" data-cli-disable="Disabled"><span class="wt-cli-sr-only">Non-necessary</span></label>
+								</div>
+													</div>
+						<div class="cli-tab-content">
+							<div class="cli-tab-pane cli-fade" data-id="non-necessary">
+								<div class="wt-cli-cookie-description">
+									Any cookies that may not be particularly necessary for the website to function and is used specifically to collect user personal data via analytics, ads, other embedded contents are termed as non-necessary cookies. It is mandatory to procure user consent prior to running these cookies on your website.								</div>
+							</div>
+						</div>
+					</div>
+										</div>
+	</div>
+</div>
+		  </div>
+		  <div class="cli-modal-footer">
+			<div class="wt-cli-element cli-container-fluid cli-tab-container">
+				<div class="cli-row">
+					<div class="cli-col-12 cli-align-items-stretch cli-px-0">
+						<div class="cli-tab-footer wt-cli-privacy-overview-actions">
+						
+															<a id="wt-cli-privacy-save-btn" role="button" tabindex="0" data-cli-action="accept" class="wt-cli-privacy-btn cli_setting_save_button wt-cli-privacy-accept-btn cli-btn">SAVE &amp; ACCEPT</a>
+													</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<!--googleon: all--><script type="text/javascript" src="./frigid_main_page_files/hooks.min.js" id="wp-hooks-js"></script>
+<script type="text/javascript" src="./frigid_main_page_files/i18n.min.js" id="wp-i18n-js"></script>
+<script type="text/javascript" id="wp-i18n-js-after">
+/* <![CDATA[ */
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+/* ]]> */
+</script>
+<script type="text/javascript" src="./frigid_main_page_files/index.js" id="swv-js"></script>
+<script type="text/javascript" id="contact-form-7-js-before">
+/* <![CDATA[ */
+var wpcf7 = {
+    "api": {
+        "root": "https:\/\/tickets.frigid.nyc\/wp-json\/",
+        "namespace": "contact-form-7\/v1"
+    }
+};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./frigid_main_page_files/index(1).js" id="contact-form-7-js"></script>
+<script type="text/javascript" src="./frigid_main_page_files/underscore.min.js" id="underscore-js"></script>
+<script type="text/javascript" src="./frigid_main_page_files/popper.min.js" id="popper-js"></script>
+<script type="text/javascript" src="./frigid_main_page_files/bootstrap.min.js" id="bootstrap-js"></script>
+<script type="text/javascript" src="./frigid_main_page_files/bootstrap-input-spinner.js" id="input-spinner-js"></script>
+<script type="text/javascript" src="./frigid_main_page_files/react-wordpress-connector.js" id="react-wordpress-connector-js"></script>
+<script type="text/javascript" src="./frigid_main_page_files/react-player-embedded.js" id="digital-react-player-js"></script>
+<script type="text/javascript" src="./frigid_main_page_files/api.js" id="google-recaptcha-js"></script>
+<script type="text/javascript" src="./frigid_main_page_files/wp-polyfill.min.js" id="wp-polyfill-js"></script>
+<script type="text/javascript" id="wpcf7-recaptcha-js-before">
+/* <![CDATA[ */
+var wpcf7_recaptcha = {
+    "sitekey": "6LdjBt8ZAAAAAJHZnxoZsdghzYoOoZ-1zQmJsOOh",
+    "actions": {
+        "homepage": "homepage",
+        "contactform": "contactform"
+    }
+};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./frigid_main_page_files/index(2).js" id="wpcf7-recaptcha-js"></script>
+			<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GT-TBN734"
+		                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+		
+
+<div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe title="reCAPTCHA" width="256" height="60" role="presentation" name="a-dc8v2tnn2xk" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="./frigid_main_page_files/anchor.html"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;" src="./frigid_main_page_files/saved_resource(1).html"></iframe></div></body></html>

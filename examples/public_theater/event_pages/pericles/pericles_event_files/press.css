@@ -1,0 +1,87 @@
+﻿.list p {
+    page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid;
+    margin-left: 1%;
+}
+
+.list li, .list table {
+    margin-left: 1%;
+}
+
+.list-header {
+    width: 100%;
+    background: var(--ptRed);
+    padding: 1%;
+    color: white;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    font-size: var(--fontSize3);
+    font-family: var(--fontFamily3);
+}
+
+.section-about {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 2%;
+}
+
+.about-text {
+    border-right: var(--redLine);
+}
+
+.press-releases {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: .5vw 1vw;
+    margin-left: 1vw;
+}
+
+    .press-releases a {
+        margin-left: 1vw;
+        line-height: 1.2;
+        margin-top: .5vw;
+        display: inline-block;
+        color: var(--ptRed);
+    }
+
+
+.access-login > div:first-child {
+    margin-bottom: 1.5vw;
+}
+
+.press-login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1vw;
+    margin-top: 1vw;
+}
+
+    .press-login button {
+        padding: 1px 6px;
+    }
+
+    .press-login .animated-button {
+        margin: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .press-login > input {
+        margin: 0;
+        max-width: unset;
+    }
+
+
+.list .press-releases {
+    grid-template-columns: 1fr;
+}
+
+.list .section-about {
+    grid-template-columns: 1fr 2fr;
+    padding: 0 1vw;
+}
+
+    .list .section-about > :first-child {
+        border-right: var(--redLine);
+    }

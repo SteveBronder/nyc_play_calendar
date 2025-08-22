@@ -1,0 +1,335 @@
+#Calendar {
+    max-width: 900px;
+}
+
+.fc-day-grid {
+    background-color: white;
+}
+
+
+.fc-day-header {
+    background: #e4dccf;
+    font-size: .9em;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.fc-toolbar {
+    justify-content: start;
+    align-items: center;
+    display: flex;
+}
+
+.fc-button-primary {
+    color: gray;
+    background-color: transparent;
+    border-color: transparent;
+    font-size: 1.7em;
+}
+
+.fc-button-primary:hover,
+.fc-button-primary:not(:disabled).fc-button-active,
+.fc-button-primary:not(:disabled):active {
+    color: #000;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.fc-event, .fc-event-dot, .fc-event:hover, .fc-event-dot:hover {
+    color: #000;
+    border: none;
+    background-color: unset;
+}
+
+.fc-event:hover, .fc-event-dot:hover {
+    text-decoration: none;
+}
+
+.fc-day-grid-event .fc-content {
+    white-space: pre-wrap;
+}
+
+
+.fc-dayGrid-view .fc-day-number, .fc-dayGrid-view .fc-week-number {
+    padding: 6px;
+}
+
+.calendar-toolbar-item {
+    height: 55px;
+    top: 60px;
+}
+
+.fc-button:disabled {
+    display: none !important;
+}
+
+.fc-day-header {
+    text-transform: uppercase;
+    padding: unset !important;
+}
+
+.fc th {
+    border: none !important;
+    background-color: unset !important;
+    text-transform: uppercase;
+    letter-spacing: .26rem;
+    color: black;
+    font-size: 1.5rem !important;
+    text-align: start;
+    font-weight: bolder;
+}
+
+.fc-day-number {
+    font-weight: bolder;
+    text-transform: uppercase;
+    color: black;
+    text-decoration: none;
+}
+
+.fc-day-top.no-events {
+    opacity: .3;
+}
+
+.fc-head-container.fc-widget-header {
+    border: none !important;
+}
+
+.fc-unthemed .fc-disabled-day {
+    background-color: unset !important;
+}
+
+tbody.fc-body > tr > td.fc-widget-content {
+    border: none !important;
+}
+
+.fc-day-top {
+    text-align: start;
+}
+
+.fc-dayGrid-view .fc-body .fc-row {
+    min-height: 3em;
+    height: unset !important;
+}
+
+.fc-body {
+    border: 2px solid black;
+    border-color: lightgray !important;
+    border-top: unset;
+}
+
+.fc-day-top.fc-other-month {
+    opacity: unset;
+}
+
+.fc-scroller.fc-day-grid-container {
+    height: auto !important;
+}
+
+.fc-ltr .fc-dayGrid-view .fc-day-top {
+    float: none;
+    padding: unset;
+}
+
+.fc-event-container {
+    text-align: left;
+}
+
+.fc-center h2 {
+    color: black;
+    letter-spacing: unset;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.calendar-instructions {
+    text-align: center;
+    font-weight: 900;
+    margin: 1rem 0 1.5rem;
+}
+
+
+/*Further overrides for PDP and Season Calendar*/
+
+.fc-widget-header,
+.fc-widget-content,
+.fc-title {
+    margin-top: unset;
+    font-weight: 400;
+}
+
+.fc-button {
+    padding: unset;
+    padding-bottom: .2em;
+}
+
+.fc-button-primary {
+    color: #E72113;
+    font-size: 2rem;
+    border-radius: 5px;
+}
+
+.fc-button-primary:focus {
+    box-shadow: 0 0 0 0.1rem #9a95a555 !important;
+}
+
+.fc-dayGrid-view .fc-day-number,
+.fc-dayGrid-view .fc-week-number {
+    display: block;
+    padding: 1rem 0.5rem;
+}
+
+.fc-row.fc-week.fc-widget-content:first-of-type .fc-day-number {
+    padding-top: 0
+}
+
+.fc-day-number {
+    float: unset !important;
+    padding: unset !important;
+    padding-left: 5px !important;
+    font-size: 1.25rem;
+    color: white;
+    background: black;
+}
+
+.fc-day-number:hover {
+    text-decoration: none !important;
+    color: white;
+}
+
+
+.fc-day-top.no-events {
+    opacity: .3 !important;
+}
+
+.fc-row .fc-content-skeleton {
+    padding-bottom: unset !important;
+}
+
+td .fc-event-container {
+    padding: .65rem !important;
+}
+
+a.fc-event {
+    margin: 0;
+    line-height: 180%;
+    background-color: unset;
+}
+
+a.fc-event:hover {
+    text-decoration: none;
+}
+
+.fc-title {
+    display: block;
+    text-transform: uppercase;
+    line-height: 22px;
+    font-size: 1rem;
+    color: red;
+    border: 1px solid red;
+    width: fit-content;
+    padding-inline: 8px;
+    padding-block: 2px;
+    background: white;
+}
+
+.fc-title:hover {
+    background: red;
+    color: white;
+}
+
+.fc-title.fw-bold {
+    color: black;
+    border: unset;
+    padding: unset;
+    background: unset;
+}
+
+.fc-title.fw-bold:hover {
+    color: red;
+    border: unset;
+    padding: unset;
+    background: unset;
+}
+
+.fc-time {
+    margin: 0;
+    padding-bottom: 0.15rem;
+    background-color: #403A60;
+    background-color: #2A285F; /* CMYK */
+    color: #fff;
+    transition: all .2s ease-in;
+    line-height: normal;
+}
+
+a .fc-time:hover {
+    opacity: 0.7;
+}
+
+@media screen and (min-width: 900px) {
+    .fc-time {
+        margin: 0 15%;
+    }
+
+    .fc-center h2 {
+        font-size: 3rem;
+    }
+}
+
+.vip-add-on .fc-content.custom {
+    display: none;
+}
+
+.fc-unthemed td.fc-today {
+    background: #FFEFEF;
+}
+
+.fc-program-info {
+    font-size: .80rem;
+    color: dimgray;
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.tooltip-override {
+    opacity: 1 !important;
+    font-size: inherit;
+}
+
+.tooltip-override .tooltip-inner {
+    background: white !important;
+    color: black !important;
+    border-radius: 0px;
+    border: solid 3px black;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 33%);
+    max-width: 400px;
+    font-size: 1.0 rem;
+    font-weight: normal !important;
+    padding: 1rem;
+}
+
+.tool-tip-button {
+    color: red;
+    border: 1px solid red;
+    width: fit-content;
+    padding-inline: 8px;
+    padding-block: 2px;
+    background: white;
+}
+
+.tool-tip-button:hover {
+    background: red;
+    color: white;
+    text-decoration:none;
+}
+
+/*Styling for past event*/
+.past-event {
+    opacity: 0.6;
+    filter: grayscale(50%);
+}
+

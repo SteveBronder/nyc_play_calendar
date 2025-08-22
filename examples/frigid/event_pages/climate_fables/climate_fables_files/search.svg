@@ -1,0 +1,16 @@
+<svg id="search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="icon_small_search" d="M15,16a.993.993,0,0,1-.707-.292l-3-3A.939.939,0,0,1,11.2,12.6a7,7,0,1,1,1.4-1.4.947.947,0,0,1,.107.093l3,3A1,1,0,0,1,15,16ZM7,2a5,5,0,1,0,5,5A5.006,5.006,0,0,0,7,2Z" transform="translate(4 4)" fill="#889399"/>
+    </clipPath>
+  </defs>
+  <rect id="Base_buttons" width="32" height="32" rx="4" fill="#66a6d9" fill-opacity="0"/>
+  <g id="icon_small_alert" data-name="icon/small/alert" transform="translate(4 4)">
+    <path id="icon_small_search-2" data-name="icon_small_search" d="M15,16a.993.993,0,0,1-.707-.292l-3-3A.939.939,0,0,1,11.2,12.6a7,7,0,1,1,1.4-1.4.947.947,0,0,1,.107.093l3,3A1,1,0,0,1,15,16ZM7,2a5,5,0,1,0,5,5A5.006,5.006,0,0,0,7,2Z" transform="translate(4 4)" fill="#889399"/>
+    <g clip-path="url(#clip-path)">
+      <g id="colour_icon_blue" data-name="colour/icon/blue">
+        <rect id="Rectangle_6" data-name="Rectangle 6" width="24" height="24" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>
