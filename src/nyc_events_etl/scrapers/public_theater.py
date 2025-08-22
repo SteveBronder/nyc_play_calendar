@@ -3,7 +3,10 @@ from __future__ import annotations
 """Scraper for The Public Theater calendar."""
 
 import re
-from typing import List
+import time
+import urllib.request
+from datetime import datetime
+from typing import Any, List
 
 from ..date_parsing import parse_dates, parse_times
 from ..models import EventSeries
@@ -40,4 +43,19 @@ def parse_html(html: str, year: int) -> List[EventSeries]:
                 end_time=end_time,
             )
         )
+    return events
+
+
+def fetch_events(session: Any | None = None, sleep_secs: float = 1.0) -> List[EventSeries]:
+    """Fetch and parse Public Theater events with throttling."""
+
+    if session is None:
+        with urllib.request.urlopen("https://example.com/public") as resp:  # pragma: no cover - network
+            html = resp.read().decode("utf-8")
+    else:
+        resp = session.get("https://example.com/public")
+        resp.raise_for_status()
+        html = resp.text
+    events = parse_html(html, datetime.now().year)
+    time.sleep(sleep_secs)
     return events
