@@ -33,11 +33,14 @@ def expand_series(series: EventSeries, default_duration: timedelta = DEFAULT_DUR
             else:
                 end = start + default_duration
             uid = generate_uid(series.title, start, series.venue_name)
+            description = series.description
+            if series.source:
+                description = f"{description}\nSource: {series.source}"
             instances.append(
                 EventInstance(
                     uid=uid,
                     title=series.title,
-                    description=series.description,
+                    description=description,
                     price=series.price,
                     venue_name=series.venue_name,
                     venue_address=series.venue_address,

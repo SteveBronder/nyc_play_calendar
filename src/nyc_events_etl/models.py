@@ -16,7 +16,8 @@ class EventSeries:
     recurring rules should be expanded into concrete dates before creating the
     dataclass.  ``start_times`` holds one or more start times for the event on a
     given date.  If ``end_time`` is ``None`` a default duration may be applied
-    during normalization.
+    during normalization.  ``source`` stores the URL the event was scraped from
+    for later attribution or debugging.
     """
 
     title: str
@@ -27,6 +28,7 @@ class EventSeries:
     dates: List[date]
     start_times: List[time]
     end_time: Optional[time] = None
+    source: str = ""
 
 
 @dataclass
