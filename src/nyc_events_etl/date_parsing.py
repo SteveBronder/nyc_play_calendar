@@ -2,7 +2,7 @@ from __future__ import annotations
 
 """Utilities for parsing fuzzy date and time expressions without external deps."""
 
-from datetime import date, datetime, time
+from datetime import date, datetime, time, timedelta
 import calendar
 import re
 from typing import List, Tuple, Optional
@@ -28,7 +28,13 @@ def _parse_time(text: str) -> time:
     return datetime.strptime(text, fmt).time()
 
 
-def parse_dates(phrase: str, year: int, default_month: Optional[int] = None) -> List[date]:
+def parse_dates(
+    phrase: str,
+    year: int,
+    default_month: Optional[int] = None,
+    start_date: Optional[date] = None,
+    months_ahead: int = 0,
+) -> List[date]:
     """Parse human-readable date phrase into ``date`` objects.
 
     Parameters
@@ -40,6 +46,10 @@ def parse_dates(phrase: str, year: int, default_month: Optional[int] = None) -> 
     default_month:
         Month used when ``phrase`` does not explicitly contain one (e.g.
         "every Thursday").
+    start_date:
+        Beginning date for open-ended ranges expressed as "through ...".
+    months_ahead:
+        Number of additional months to generate for recurring monthly rules.
     """
 
     phrase = phrase.strip().lower()
@@ -59,9 +69,16 @@ def parse_dates(phrase: str, year: int, default_month: Optional[int] = None) -> 
         ord_ = ORDINAL_MAP[m.group(1)]
         weekday = WEEKDAY_MAP[m.group(2)]
         month = default_month or 1
-        first_weekday, _ = calendar.monthrange(year, month)
-        day = 1 + (weekday - first_weekday) % 7 + (ord_ - 1) * 7
-        return [date(year, month, day)]
+        dates: List[date] = []
+        for offset in range(months_ahead + 1):
+            mth = month + offset
+            yr = year + (mth - 1) // 12
+            mth = (mth - 1) % 12 + 1
+            first_weekday, days_in_month = calendar.monthrange(yr, mth)
+            day = 1 + (weekday - first_weekday) % 7 + (ord_ - 1) * 7
+            if day <= days_in_month:
+                dates.append(date(yr, mth, day))
+        return dates
 
     if "&" in phrase or "," in phrase:
         parts = re.split(r"[&,]", phrase)
@@ -87,7 +104,15 @@ def parse_dates(phrase: str, year: int, default_month: Optional[int] = None) -> 
     if m:
         month = MONTH_ABBR[m.group(1)[:3]]
         end_day = int(m.group(2))
-        return [date(year, month, d) for d in range(1, end_day + 1)]
+        if start_date:
+            start = start_date
+            end_year = start.year + (1 if month < start.month else 0)
+        else:
+            start = date(year, month, 1)
+            end_year = year
+        end = date(end_year, month, end_day)
+        delta = (end - start).days
+        return [start + timedelta(days=i) for i in range(delta + 1)]
 
     tokens = phrase.split()
     month = MONTH_ABBR[tokens[0][:3]]
