@@ -33,7 +33,7 @@ def test_update_on_conflict(monkeypatch):
     service = MagicMock()
     insert = service.events.return_value.insert.return_value
     insert.execute.side_effect = HttpError(
-        resp=SimpleNamespace(status=409), content=b""
+        resp=SimpleNamespace(status=409, reason="Conflict"), content=b""
     )
     gc = GoogleCalendarClient(service)
     action = gc.upsert_event(make_event())
