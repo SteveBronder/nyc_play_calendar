@@ -16,9 +16,9 @@ from .scrapers.common import merge_bundles
 from .scrapers.registry import SCRAPER_REGISTRY
 
 DEFAULT_ARTIFACT_PATH = Path("data/events.json")
-DEFAULT_SITE_DIR = Path("site")
+DEFAULT_SITE_DIR = Path("docs")
 POETRY_OUTPUT_ROOT = Path("data")
-POETRY_SITE_DIR = POETRY_OUTPUT_ROOT / "site"
+POETRY_SITE_DIR = POETRY_OUTPUT_ROOT / "docs"
 
 
 def scrape_theaters(theater_ids: Iterable[str] | None = None) -> ScrapeBundle:
