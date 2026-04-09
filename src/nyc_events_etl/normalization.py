@@ -46,6 +46,11 @@ def expand_series(series: EventSeries, default_duration: timedelta = DEFAULT_DUR
                     venue_address=series.venue_address,
                     start=start,
                     end=end,
+                    theater_id=series.theater_id,
+                    theater_name=series.theater_name,
+                    production_id=series.production_id,
+                    source=series.source,
+                    ticket_url=series.ticket_url,
                 )
             )
     return instances

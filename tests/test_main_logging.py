@@ -55,3 +55,9 @@ def test_run_etl_logs_counts_and_totals(monkeypatch, caplog):
     assert "Public Theater: 1 series parsed, 1 instances expanded" in text
     assert "Google Calendar: 3 inserted, 0 updated, 0 deleted" in text
 
+
+def test_parse_args_build_command():
+    args = main.parse_args(["build", "--artifact-path", "data/custom.json", "--site-dir", "site-out"])
+    assert args.command == "build"
+    assert args.artifact_path == "data/custom.json"
+    assert args.site_dir == "site-out"

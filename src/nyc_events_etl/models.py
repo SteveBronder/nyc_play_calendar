@@ -2,7 +2,7 @@ from __future__ import annotations
 
 """Data models for NYC Events ETL."""
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date, datetime, time, timedelta
 from typing import List, Optional
 
@@ -29,6 +29,13 @@ class EventSeries:
     start_times: List[time]
     end_time: Optional[time] = None
     source: str = ""
+    theater_id: str = ""
+    theater_name: str = ""
+    production_id: str = ""
+    ticket_url: str = ""
+    schedule_source_url: str = ""
+    raw_schedule_text: str = ""
+    schedule_granularity: str = "instance"
 
 
 @dataclass
@@ -48,6 +55,40 @@ class EventInstance:
     venue_address: str
     start: datetime
     end: datetime
+    theater_id: str = ""
+    theater_name: str = ""
+    production_id: str = ""
+    source: str = ""
+    ticket_url: str = ""
+
+
+@dataclass
+class TheaterProduction:
+    """Normalized production-level record used for JSON/site output."""
+
+    production_id: str
+    theater_id: str
+    theater_name: str
+    title: str
+    description: str = ""
+    price: str = ""
+    venue_name: str = ""
+    venue_address: str = ""
+    source_url: str = ""
+    ticket_url: str = ""
+    schedule_source_url: str = ""
+    raw_schedule_text: str = ""
+    run_range_text: str = ""
+    schedule_granularity: str = "run_range"
+
+
+@dataclass
+class ScrapeBundle:
+    """Scraped productions plus any concrete schedulable event series."""
+
+    productions: List[TheaterProduction] = field(default_factory=list)
+    series: List[EventSeries] = field(default_factory=list)
+    warnings: List[str] = field(default_factory=list)
 
 
 DEFAULT_DURATION = timedelta(hours=1)

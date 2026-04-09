@@ -1,2 +1,6 @@
 .venv
-src/nyc_events_etl/__pycache__/
+__pycache__/
+.pytest_cache/
+data/
+site/
+logs/

@@ -6,8 +6,6 @@ The repository includes a helper script at `scripts/cron_example.sh` that prepar
 environment and invokes the `nyc-events` CLI.
 
 1. Install dependencies with Poetry so that `.venv` contains the project.
-2. Store Google API credentials at `.secrets/service_account.json` (this file is not
-   tracked by git). The script exports `GOOGLE_APPLICATION_CREDENTIALS` pointing to it.
 3. Logs are written to `logs/nyc-events.log`. The script will create the `logs`
    directory if needed.
 
@@ -31,3 +29,16 @@ The command line entry point configures logging with a rotating file handler
 
 If any step in the pipeline logs an error the process exits with status code 1,
 which allows cron or other schedulers to detect failures.
+
+
+
+## Theaters to Scrape
+
+- https://www.nytw.org/2025-26-season/
+- https://vineyardtheatre.org/showsevents/
+- https://www.libertytheatresusa.com/nowplaying/
+- https://astorplacetheatre.com/productions/
+- https://vineyardtheatre.org/showsevents/
+- https://thewildproject.org/performances/
+- https://performancespacenewyork.org/
+- https://theaterforthenewcity.net/

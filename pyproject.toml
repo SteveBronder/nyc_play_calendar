@@ -50,6 +50,7 @@ respx = "*"  # httpx mocking
 
 [tool.poetry.scripts]
 nyc-events = "nyc_events_etl.__main__:main"
+nyc-events-data = "nyc_events_etl.pipeline:poetry_output_build"
 
 [build-system]
 requires = ["poetry-core"]
