@@ -4,3 +4,14 @@ __pycache__/
 data/
 site/
 logs/
+*.png
+.pytest_cache/
+*.log
+*.csv
+*.json
+.claude
+.playwright-mpc
+.python-version
+.DS_Store
+.serena
+.playwright-mcp

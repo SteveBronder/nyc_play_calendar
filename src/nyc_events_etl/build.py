@@ -194,6 +194,218 @@ a:hover {
   color: var(--muted);
 }
 
+.filter-container {
+  margin-bottom: 22px;
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.72), rgba(255,248,240,0.88));
+  border: 1px solid var(--line);
+  transition: all 0.3s ease;
+}
+
+.filter-container.active {
+  background: linear-gradient(135deg, rgba(255,255,255,0.92), rgba(255,250,245,0.95));
+  box-shadow: 0 4px 12px rgba(46, 27, 19, 0.08);
+}
+
+.filter-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(163, 63, 47, 0.1);
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0;
+}
+
+.filter-toggle-btn:hover {
+  background: rgba(163, 63, 47, 0.15);
+  transform: translateX(2px);
+}
+
+.filter-toggle-btn .arrow {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.filter-toggle-btn.open .arrow {
+  transform: rotate(180deg);
+}
+
+.filter-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.filter-container.active .filter-controls {
+  max-height: 300px;
+  opacity: 1;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.filter-group input[type="date"] {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.8);
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.filter-group input[type="date"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(163, 63, 47, 0.1);
+}
+
+.venue-select {
+  position: relative;
+  padding: 0;
+}
+
+.venue-select-trigger {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.8);
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: border-color 0.2s ease;
+}
+
+.venue-select-trigger:hover {
+  border-color: var(--muted);
+}
+
+.venue-select-trigger.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(163, 63, 47, 0.1);
+}
+
+.venue-select-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(46, 27, 19, 0.12);
+  z-index: 10;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.venue-select-dropdown.open {
+  max-height: 200px;
+  opacity: 1;
+  overflow-y: auto;
+}
+
+.venue-option {
+  padding: 10px 12px;
+  border: none;
+  background: none;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.venue-option:hover {
+  background: rgba(163, 63, 47, 0.06);
+}
+
+.venue-option input[type="checkbox"] {
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+.filter-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.filter-actions button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.filter-apply {
+  flex: 1;
+  background: var(--accent);
+  color: white;
+}
+
+.filter-apply:hover {
+  background: #923226;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(163, 63, 47, 0.3);
+}
+
+.filter-reset {
+  background: rgba(255,255,255,0.7);
+  color: var(--muted);
+  border: 1px solid var(--line);
+}
+
+.filter-reset:hover {
+  background: rgba(255,255,255,0.9);
+  color: var(--ink);
+}
+
 .production-list {
   display: grid;
   gap: 18px;
@@ -321,6 +533,11 @@ a:hover {
   background:
     linear-gradient(145deg, rgba(255,255,255,0.86), rgba(255,248,239,0.95));
   border: 1px solid var(--line);
+  transition: opacity 0.3s ease;
+}
+
+.venue-card.hidden {
+  display: none;
 }
 
 .venue-card h3 {
@@ -382,6 +599,10 @@ a:hover {
   .sidebar {
     position: static;
   }
+
+  .filter-controls {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 720px) {
@@ -394,7 +615,8 @@ a:hover {
   .content-panel,
   .sidebar,
   .production-card,
-  .venue-card {
+  .venue-card,
+  .filter-container {
     border-radius: 20px;
   }
 
@@ -409,6 +631,14 @@ a:hover {
 
   .production-card {
     padding: 18px;
+  }
+
+  .filter-container {
+    padding: 16px;
+  }
+
+  .filter-controls {
+    grid-template-columns: 1fr;
   }
 
   .production-head,
@@ -431,6 +661,21 @@ def _instance_payload(event: EventInstance) -> dict:
     payload["start"] = event.start.isoformat()
     payload["end"] = event.end.isoformat()
     return payload
+
+
+def _get_venue_date_range(productions: list[dict]) -> tuple[str | None, str | None]:
+    """Extract earliest and latest dates from venue productions."""
+    all_dates = []
+    for production in productions:
+        for instance in production.get("instances", []):
+            if instance.get("start"):
+                all_dates.append(instance["start"])
+
+    if not all_dates:
+        return None, None
+
+    all_dates.sort()
+    return all_dates[0][:10], all_dates[-1][:10]  # ISO date format
 
 
 def write_artifact(
@@ -510,10 +755,14 @@ def _render_index_page(payload: dict, grouped: dict[str, list[dict]], theater_ma
         preview = []
         for production in productions[:4]:
             next_show = production["instances"][0]["start"] if production["instances"] else production.get("run_range_text", "Schedule pending")
+            # Extract date for filtering (ISO format)
+            show_date = ""
+            if production["instances"]:
+                show_date = f' data-show-date="{next_show[:10]}"'
             preview.append(
                 "\n".join(
                     [
-                        '<div class="show-preview-row">',
+                        f'<div class="show-preview-row"{show_date}>',
                         "<div>",
                         f'<div class="show-preview-title">{escape(production["title"])}</div>',
                         (
@@ -528,10 +777,17 @@ def _render_index_page(payload: dict, grouped: dict[str, list[dict]], theater_ma
                 )
             )
         preview_html = "".join(preview) if preview else '<div class="empty-state">No productions found.</div>'
+
+        # Get date range for this venue
+        earliest, latest = _get_venue_date_range(productions)
+        data_attrs = ""
+        if earliest and latest:
+            data_attrs = f' data-earliest-date="{earliest}" data-latest-date="{latest}"'
+
         venue_cards.append(
             "\n".join(
                 [
-                    '<article class="venue-card">',
+                    f'<article class="venue-card" data-venue="{escape(theater_id)}"{data_attrs}>',
                     f'<h3><a href="theaters/{escape(theater_id)}.html">{escape(theater_name)}</a></h3>',
                     '<div class="venue-stats">'
                     f'<span>{len(productions)} shows</span>'
@@ -543,16 +799,20 @@ def _render_index_page(payload: dict, grouped: dict[str, list[dict]], theater_ma
             )
         )
 
+    # Build filter HTML
+    filter_html = _render_filter_panel(theater_map)
+
     body = "\n".join(
         [
             '<section class="content-panel">',
             '<div class="section-header">',
             "<div>",
             "<h2>Venue Guide</h2>",
-            f"<p>{payload['production_count']} productions across {len(theater_map)} venues.</p>",
+            f"<p id=\"result-count\">{payload['production_count']} productions across {len(theater_map)} venues.</p>",
             "</div>",
             "</div>",
-            f'<div class="venue-grid">{"".join(venue_cards)}</div>',
+            filter_html,
+            f'<div class="venue-grid" id="venueGrid">{"".join(venue_cards)}</div>',
             "</section>",
         ]
     )
@@ -565,6 +825,7 @@ def _render_index_page(payload: dict, grouped: dict[str, list[dict]], theater_ma
         ),
         theater_map=theater_map,
         main_content=body,
+        include_filter_script=True,
     )
 
 
@@ -604,6 +865,53 @@ def _render_theater_page(
         back_link="../index.html",
         sidebar_note=f"Last scrape: {escape(_format_scraped_at(payload['scraped_at']))}",
     )
+
+
+def _render_filter_panel(theater_map: dict[str, str]) -> str:
+    """Generate the filter panel HTML."""
+    venue_options = []
+    for theater_id, theater_name in sorted(theater_map.items(), key=lambda item: item[1]):
+        venue_options.append(
+            f'<label class="venue-option"><input type="checkbox" class="venue-checkbox" value="{escape(theater_id)}" /> {escape(theater_name)}</label>'
+        )
+
+    return f"""<div class="filter-container" id="filterContainer">
+  <button class="filter-toggle-btn" id="filterToggle">
+    <span>✦ Filter by Date & Venue</span>
+    <span class="arrow">▼</span>
+  </button>
+
+  <div class="filter-controls">
+    <div class="filter-group">
+      <label for="startDate">Start Date</label>
+      <input type="date" id="startDate" />
+    </div>
+
+    <div class="filter-group">
+      <label for="endDate">End Date</label>
+      <input type="date" id="endDate" />
+    </div>
+
+    <div class="filter-group venue-select">
+      <label for="venueSelect">Venues</label>
+      <button class="venue-select-trigger" id="venueSelect">
+        <span id="venueSelectText">All Venues</span>
+        <span>▼</span>
+      </button>
+      <div class="venue-select-dropdown" id="venueSelectDropdown">
+        <label class="venue-option">
+          <input type="checkbox" class="venue-checkbox" value="all" /> Select All
+        </label>
+        {"".join(venue_options)}
+      </div>
+    </div>
+
+    <div class="filter-actions">
+      <button class="filter-apply" id="filterApply">Apply Filters</button>
+      <button class="filter-reset" id="filterReset">Reset</button>
+    </div>
+  </div>
+</div>"""
 
 
 def _render_production_card(production: dict) -> str:
@@ -686,6 +994,202 @@ def _render_production_card(production: dict) -> str:
     )
 
 
+def _get_filter_script() -> str:
+    """Generate the filter JavaScript."""
+    return """<script>
+    const filterState = {
+      startDate: null,
+      endDate: null,
+      venues: new Set()
+    };
+
+    const filterContainer = document.getElementById('filterContainer');
+    const filterToggle = document.getElementById('filterToggle');
+    const filterApply = document.getElementById('filterApply');
+    const filterReset = document.getElementById('filterReset');
+    const startDateInput = document.getElementById('startDate');
+    const endDateInput = document.getElementById('endDate');
+    const venueSelect = document.getElementById('venueSelect');
+    const venueSelectDropdown = document.getElementById('venueSelectDropdown');
+    const venueSelectText = document.getElementById('venueSelectText');
+    const venueCheckboxes = document.querySelectorAll('.venue-checkbox');
+    const venueGrid = document.getElementById('venueGrid');
+    const resultCount = document.getElementById('result-count');
+
+    // Store initial state
+    const initialResultText = resultCount.textContent;
+    const initialVenueCount = venueGrid.querySelectorAll('.venue-card').length;
+
+    // Toggle Filter Panel
+    filterToggle.addEventListener('click', () => {
+      filterContainer.classList.toggle('active');
+      filterToggle.classList.toggle('open');
+    });
+
+    // Venue Select Dropdown
+    venueSelect.addEventListener('click', (e) => {
+      e.stopPropagation();
+      venueSelectDropdown.classList.toggle('open');
+      venueSelect.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!venueSelect.contains(e.target) && !venueSelectDropdown.contains(e.target)) {
+        venueSelectDropdown.classList.remove('open');
+        venueSelect.classList.remove('active');
+      }
+    });
+
+    // Venue Checkbox Logic
+    venueCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', (e) => {
+        if (checkbox.value === 'all') {
+          const isChecked = checkbox.checked;
+          venueCheckboxes.forEach(cb => {
+            if (cb.value !== 'all') {
+              cb.checked = isChecked;
+              if (isChecked) {
+                filterState.venues.add(cb.value);
+              } else {
+                filterState.venues.delete(cb.value);
+              }
+            }
+          });
+        } else {
+          if (checkbox.checked) {
+            filterState.venues.add(checkbox.value);
+          } else {
+            filterState.venues.delete(checkbox.value);
+          }
+        }
+        updateVenueSelectText();
+      });
+    });
+
+    function updateVenueSelectText() {
+      if (filterState.venues.size === 0) {
+        venueSelectText.textContent = 'All Venues';
+      } else if (filterState.venues.size === 7) {
+        venueSelectText.textContent = 'All Venues';
+      } else if (filterState.venues.size === 1) {
+        const venueName = Array.from(filterState.venues)[0].replace(/_/g, ' ').toUpperCase();
+        venueSelectText.textContent = venueName;
+      } else {
+        venueSelectText.textContent = filterState.venues.size + ' venues selected';
+      }
+    }
+
+    // Apply Filters
+    filterApply.addEventListener('click', applyFilters);
+
+    function applyFilters() {
+      filterState.startDate = startDateInput.value ? new Date(startDateInput.value) : null;
+      filterState.endDate = endDateInput.value ? new Date(endDateInput.value) : null;
+
+      const cards = document.querySelectorAll('.venue-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const venue = card.getAttribute('data-venue');
+        const earliestDate = card.getAttribute('data-earliest-date');
+        const latestDate = card.getAttribute('data-latest-date');
+
+        const isVenueMatch = filterState.venues.size === 0 || filterState.venues.has(venue);
+
+        let isDateMatch = true;
+        if (filterState.startDate || filterState.endDate) {
+          if (earliestDate && latestDate) {
+            const cardEarliestDate = new Date(earliestDate);
+            const cardLatestDate = new Date(latestDate);
+
+            if (filterState.startDate && cardLatestDate < filterState.startDate) {
+              isDateMatch = false;
+            }
+            if (filterState.endDate && cardEarliestDate > filterState.endDate) {
+              isDateMatch = false;
+            }
+          } else {
+            isDateMatch = false;
+          }
+        }
+
+        const shouldShow = isVenueMatch && isDateMatch;
+        if (shouldShow) {
+          card.classList.remove('hidden');
+
+          // Hide individual show preview rows that fall outside date range
+          const previewRows = card.querySelectorAll('.show-preview-row');
+          let hasVisibleShow = false;
+          previewRows.forEach(row => {
+            const showDate = row.getAttribute('data-show-date');
+            let showVisible = true;
+
+            if (filterState.startDate || filterState.endDate) {
+              if (showDate) {
+                const rowDate = new Date(showDate);
+                if (filterState.startDate && rowDate < filterState.startDate) {
+                  showVisible = false;
+                }
+                if (filterState.endDate && rowDate > filterState.endDate) {
+                  showVisible = false;
+                }
+              } else {
+                // Hide undated rows when date filter is applied
+                showVisible = false;
+              }
+            }
+
+            row.style.display = showVisible ? 'flex' : 'none';
+            if (showVisible) hasVisibleShow = true;
+          });
+
+          // Only count venue if it has at least one visible show
+          if (hasVisibleShow || previewRows.length === 0) {
+            visibleCount++;
+          } else {
+            card.classList.add('hidden');
+          }
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      updateResultCount(visibleCount);
+    }
+
+    // Reset Filters
+    filterReset.addEventListener('click', () => {
+      startDateInput.value = '';
+      endDateInput.value = '';
+      venueCheckboxes.forEach(cb => cb.checked = false);
+      filterState.venues.clear();
+      updateVenueSelectText();
+      venueGrid.querySelectorAll('.venue-card').forEach(card => {
+        card.classList.remove('hidden');
+        // Show all show preview rows
+        card.querySelectorAll('.show-preview-row').forEach(row => {
+          row.style.display = 'flex';
+        });
+      });
+      resultCount.textContent = initialResultText;
+    });
+
+    function updateResultCount(count) {
+      const total = venueGrid.querySelectorAll('.venue-card').length;
+      if (count === total) {
+        resultCount.textContent = initialResultText;
+      } else {
+        resultCount.textContent = count + ' of ' + total + ' venues shown.';
+      }
+    }
+
+    // Set min date to today
+    const today = new Date().toISOString().split('T')[0];
+    startDateInput.min = today;
+    endDateInput.min = today;
+  </script>"""
+
+
 def _page_shell(
     *,
     title: str,
@@ -696,6 +1200,7 @@ def _page_shell(
     active_theater_id: str = "",
     back_link: str = "",
     sidebar_note: str = "",
+    include_filter_script: bool = False,
 ) -> str:
     theater_links = []
     for theater_id, theater_name in sorted(theater_map.items(), key=lambda item: item[1]):
@@ -715,6 +1220,11 @@ def _page_shell(
             "</aside>",
         ]
     )
+
+    filter_script = ""
+    if include_filter_script:
+        filter_script = _get_filter_script()
+
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -739,6 +1249,7 @@ def _page_shell(
       {main_content}
     </div>
   </div>
+  {filter_script}
 </body>
 </html>
 """
