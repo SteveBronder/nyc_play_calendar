@@ -102,6 +102,8 @@ a:hover {
   margin-top: 26px;
 }
 
+.layout > * { min-width: 0; }
+
 .sidebar,
 .content-panel {
   border: 1px solid var(--line);
@@ -231,18 +233,19 @@ a:hover {
 
 .filter-controls {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 16px;
   margin-top: 16px;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: all 0.3s ease;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
 }
 
 .filter-container.active .filter-controls {
-  max-height: 300px;
+  max-height: 700px;
   opacity: 1;
+  overflow: visible;
 }
 
 .filter-group {
@@ -259,22 +262,6 @@ a:hover {
   color: var(--muted);
 }
 
-.filter-group input[type="date"] {
-  padding: 10px 12px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: rgba(255,255,255,0.8);
-  color: var(--ink);
-  font-size: 0.95rem;
-  font-family: inherit;
-  transition: border-color 0.2s ease;
-}
-
-.filter-group input[type="date"]:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(163, 63, 47, 0.1);
-}
 
 .venue-select {
   position: relative;
@@ -372,17 +359,6 @@ a:hover {
   font-family: inherit;
 }
 
-.filter-apply {
-  flex: 1;
-  background: var(--accent);
-  color: white;
-}
-
-.filter-apply:hover {
-  background: #923226;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(163, 63, 47, 0.3);
-}
 
 .filter-reset {
   background: rgba(255,255,255,0.7);
@@ -394,6 +370,110 @@ a:hover {
   background: rgba(255,255,255,0.9);
   color: var(--ink);
 }
+
+/* Calendar date picker */
+.cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .4rem;
+  font-weight: 600;
+  font-size: .95rem;
+}
+.cal-nav {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--accent);
+  padding: .1rem .35rem;
+  border-radius: 6px;
+  line-height: 1;
+}
+.cal-nav:hover { background: var(--accent-soft); }
+.cal-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: .85rem;
+}
+.cal-table th {
+  text-align: center;
+  padding: .25rem 0;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: .77rem;
+}
+.cal-day {
+  text-align: center;
+  padding: .35rem .1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  user-select: none;
+}
+.cal-day:not(.other-month):hover { background: rgba(102, 69, 54, 0.07); }
+.cal-day.has-show {
+  font-weight: 700;
+  color: var(--accent);
+}
+.cal-day.has-show:hover { background: var(--accent-soft); }
+.cal-day.selected {
+  background: var(--accent);
+  color: #fff !important;
+}
+.cal-day.selected:hover { opacity: .85; }
+.cal-day.other-month {
+  opacity: .3;
+  pointer-events: none;
+  cursor: default;
+}
+.cal-day.today {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+.cal-legend {
+  display: flex;
+  gap: 1rem;
+  font-size: .75rem;
+  color: var(--muted);
+  margin-top: .4rem;
+}
+.cal-legend-item {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+.cal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+.cal-dot-show { opacity: .45; }
+.cal-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin-bottom: .6rem;
+}
+.cal-preset {
+  font: inherit;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  padding: .32rem .7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel-soft, rgba(102, 69, 54, 0.04));
+  color: var(--accent);
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.cal-preset:hover {
+  background: var(--accent-soft, rgba(102, 69, 54, 0.09));
+  border-color: var(--accent);
+}
+.cal-preset:active { transform: translateY(1px); }
 
 .production-list {
   display: grid;
@@ -650,7 +730,7 @@ a:hover {
       
       <p class="eyebrow">Live Aggregation</p>
       <h1>NYC Small Theater Guide</h1>
-      <p class="subtitle">636 scheduled performances collected from neighborhood venues. Browse by theater, then drill into each show to see upcoming dates and ticket links.</p>
+      <p class="subtitle">585 upcoming performances collected from neighborhood venues. Browse by theater, then drill into each show to see upcoming dates and ticket links.</p>
       <nav class="jump-nav">
         <a href="index.html">Overview</a>
       </nav>
@@ -665,24 +745,30 @@ a:hover {
 <div class="section-header">
 <div>
 <h2>Venue Guide</h2>
-<p id="result-count">177 productions across 11 venues.</p>
+<p id="result-count">126 upcoming productions across 11 venues.</p>
 </div>
 </div>
-<div class="filter-container" id="filterContainer">
-  <button class="filter-toggle-btn" id="filterToggle">
-    <span>✦ Filter by Date & Venue</span>
+<script id="allShowDates" type="application/json">["2026-04-11", "2026-04-12", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18", "2026-04-19", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-25", "2026-04-26", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-01", "2026-05-02", "2026-05-03", "2026-05-04", "2026-05-05", "2026-05-06", "2026-05-07", "2026-05-08", "2026-05-09", "2026-05-10", "2026-05-11", "2026-05-12", "2026-05-13", "2026-05-14", "2026-05-15", "2026-05-16", "2026-05-17", "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-23", "2026-05-24", "2026-05-26", "2026-05-27", "2026-05-28", "2026-05-29", "2026-05-30", "2026-05-31", "2026-06-01", "2026-06-02", "2026-06-03", "2026-06-04", "2026-06-05", "2026-06-06", "2026-06-07", "2026-06-09", "2026-06-10", "2026-06-11", "2026-06-12", "2026-06-13", "2026-06-14", "2026-06-15", "2026-06-16", "2026-06-17", "2026-06-18", "2026-06-19", "2026-06-20", "2026-06-21", "2026-06-23", "2026-06-24", "2026-06-26", "2026-06-27", "2026-06-28", "2026-06-30", "2026-07-01", "2026-07-07", "2026-07-08", "2026-07-10", "2026-07-11", "2026-07-12", "2026-07-14", "2026-07-15", "2026-07-16", "2026-07-17", "2026-07-18", "2026-07-19", "2026-07-20", "2026-07-21", "2026-07-26", "2026-07-28", "2026-07-29", "2026-07-30", "2026-07-31", "2026-08-02", "2026-08-03", "2026-08-04", "2026-08-05", "2026-08-06", "2026-08-07", "2026-08-09", "2026-08-10", "2026-08-11", "2026-08-12", "2026-08-13", "2026-08-14", "2026-08-17", "2026-08-18", "2026-08-19", "2026-08-25", "2026-08-26", "2026-08-27", "2026-08-28", "2026-08-30"]</script>
+<div class="filter-container active" id="filterContainer">
+  <button class="filter-toggle-btn open" id="filterToggle">
+    <span>✦ Filter by Date &amp; Venue</span>
     <span class="arrow">▼</span>
   </button>
 
   <div class="filter-controls">
     <div class="filter-group">
-      <label for="startDate">Start Date</label>
-      <input type="date" id="startDate" />
-    </div>
-
-    <div class="filter-group">
-      <label for="endDate">End Date</label>
-      <input type="date" id="endDate" />
+      <label>Date</label>
+      <div class="cal-presets" id="calPresets">
+        <button type="button" class="cal-preset" data-preset="today">Today</button>
+        <button type="button" class="cal-preset" data-preset="weekend">This Weekend</button>
+        <button type="button" class="cal-preset" data-preset="this-week">This Week</button>
+        <button type="button" class="cal-preset" data-preset="next-week">Next Week</button>
+      </div>
+      <div id="calendarContainer"></div>
+      <div class="cal-legend">
+        <span class="cal-legend-item"><span class="cal-dot cal-dot-show"></span> Has shows</span>
+        <span class="cal-legend-item"><span class="cal-dot"></span> Selected</span>
+      </div>
     </div>
 
     <div class="filter-group venue-select">
@@ -700,15 +786,14 @@ a:hover {
     </div>
 
     <div class="filter-actions">
-      <button class="filter-apply" id="filterApply">Apply Filters</button>
-      <button class="filter-reset" id="filterReset">Reset</button>
+      <button class="filter-reset" id="filterReset">Reset Filters</button>
     </div>
   </div>
 </div>
 <div class="venue-grid" id="venueGrid"><article class="venue-card" data-venue="astor_place" data-earliest-date="2026-04-11" data-latest-date="2026-04-26">
 <h3><a href="theaters/astor_place.html">Astor Place Theatre</a></h3>
 <div class="venue-stats"><span>1 shows</span><span>33 listed dates</span></div>
-<div class="show-preview"><div class="show-preview-row" data-show-date="2026-04-11">
+<div class="show-preview"><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-12,2026-04-13,2026-04-15,2026-04-16,2026-04-17,2026-04-18,2026-04-19,2026-04-20,2026-04-22,2026-04-23,2026-04-24,2026-04-25,2026-04-26">
 <div>
 <div class="show-preview-title">Burnout Paradise</div>
 <div class="show-preview-meta">Sat, Apr 11 at 03:00 PM</div>
@@ -718,25 +803,25 @@ a:hover {
 </article><article class="venue-card" data-venue="chain_theatre" data-earliest-date="2026-04-11" data-latest-date="2026-04-19">
 <h3><a href="theaters/chain_theatre.html">Chain Theatre</a></h3>
 <div class="venue-stats"><span>29 shows</span><span>65 listed dates</span></div>
-<div class="show-preview"><div class="show-preview-row" data-show-date="2026-04-11">
+<div class="show-preview"><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-17,2026-04-18">
 <div>
 <div class="show-preview-title">Induction</div>
 <div class="show-preview-meta">Sat, Apr 11 at 03:40 PM</div>
 </div>
 <a href="theaters/chain_theatre.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-04-11">
+</div><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-17">
 <div>
 <div class="show-preview-title">REAL MEN WEAR SCARVES IN PITTSBURGH</div>
 <div class="show-preview-meta">Sat, Apr 11 at 03:55 PM</div>
 </div>
 <a href="theaters/chain_theatre.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-04-11">
+</div><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-13,2026-04-14,2026-04-16,2026-04-19">
 <div>
 <div class="show-preview-title">The Village Cidiot</div>
 <div class="show-preview-meta">Sat, Apr 11 at 05:35 PM</div>
 </div>
 <a href="theaters/chain_theatre.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-04-11">
+</div><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11">
 <div>
 <div class="show-preview-title">Crosswords</div>
 <div class="show-preview-meta">Sat, Apr 11 at 07:00 PM</div>
@@ -745,48 +830,36 @@ a:hover {
 </div></div>
 </article><article class="venue-card" data-venue="liberty" data-earliest-date="2026-04-17" data-latest-date="2026-04-30">
 <h3><a href="theaters/liberty.html">Liberty Theatres</a></h3>
-<div class="venue-stats"><span>3 shows</span><span>20 listed dates</span></div>
-<div class="show-preview"><div class="show-preview-row" data-show-date="2026-04-17">
+<div class="venue-stats"><span>1 shows</span><span>20 listed dates</span></div>
+<div class="show-preview"><div class="show-preview-row" data-show-date="2026-04-17" data-all-dates="2026-04-17,2026-04-18,2026-04-19,2026-04-22,2026-04-24,2026-04-25,2026-04-26,2026-04-28,2026-04-29,2026-04-30">
 <div>
 <div class="show-preview-title">SEXUAL MISCONDUCT OF THE MIDDLE CLASS</div>
 <div class="show-preview-meta">Fri, Apr 17 at 07:30 PM</div>
 </div>
 <a href="theaters/liberty.html">View venue</a>
-</div><div class="show-preview-row">
-<div>
-<div class="show-preview-title">Creditors</div>
-<div class="show-preview-meta">May 10 – June 18</div>
-</div>
-<a href="theaters/liberty.html">View venue</a>
-</div><div class="show-preview-row">
-<div>
-<div class="show-preview-title">Ginger Twinsies</div>
-<div class="show-preview-meta">July 10 – October 25th, 2025</div>
-</div>
-<a href="theaters/liberty.html">View venue</a>
 </div></div>
 </article><article class="venue-card" data-venue="nytw" data-earliest-date="2026-04-29" data-latest-date="2026-08-14">
 <h3><a href="theaters/nytw.html">New York Theatre Workshop</a></h3>
-<div class="venue-stats"><span>12 shows</span><span>124 listed dates</span></div>
-<div class="show-preview"><div class="show-preview-row" data-show-date="2026-04-29">
+<div class="venue-stats"><span>5 shows</span><span>124 listed dates</span></div>
+<div class="show-preview"><div class="show-preview-row" data-show-date="2026-04-29" data-all-dates="2026-04-29,2026-05-31,2026-06-01,2026-06-02,2026-06-03,2026-06-04,2026-06-05,2026-06-09,2026-06-10,2026-06-11,2026-06-12">
 <div>
 <div class="show-preview-title">MY JOY IS HEAVY</div>
 <div class="show-preview-meta">Wed, Apr 29 at 02:00 PM</div>
 </div>
 <a href="theaters/nytw.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-05-05">
+</div><div class="show-preview-row" data-show-date="2026-05-05" data-all-dates="2026-05-05,2026-05-07,2026-05-09,2026-05-10,2026-05-15,2026-05-16,2026-05-17,2026-05-19,2026-05-21,2026-05-23,2026-05-24,2026-05-27,2026-05-29,2026-05-30,2026-05-31,2026-06-02,2026-06-04,2026-06-06,2026-07-31,2026-08-02,2026-08-04,2026-08-06,2026-08-07,2026-08-10,2026-08-12,2026-08-13,2026-08-14">
 <div>
 <div class="show-preview-title">THE PECULIAR PATRIOT</div>
 <div class="show-preview-meta">Tue, May 05 at 07:00 PM</div>
 </div>
 <a href="theaters/nytw.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-05-05">
+</div><div class="show-preview-row" data-show-date="2026-05-05" data-all-dates="2026-05-05,2026-05-07,2026-05-09,2026-05-10,2026-05-15,2026-05-16,2026-05-17,2026-05-19,2026-05-21,2026-05-23,2026-05-24,2026-05-27,2026-05-29,2026-05-30,2026-05-31,2026-06-02,2026-06-04,2026-06-06,2026-07-31,2026-08-02,2026-08-04,2026-08-06,2026-08-07,2026-08-10,2026-08-12,2026-08-13,2026-08-14">
 <div>
 <div class="show-preview-title">MENTION MY BEAUTY</div>
 <div class="show-preview-meta">Tue, May 05 at 08:00 PM</div>
 </div>
 <a href="theaters/nytw.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-05-06">
+</div><div class="show-preview-row" data-show-date="2026-05-06" data-all-dates="2026-05-06,2026-05-08,2026-05-09,2026-05-10,2026-05-12,2026-05-14,2026-05-16,2026-05-17,2026-05-20,2026-05-22,2026-05-23,2026-05-24,2026-05-26,2026-05-28,2026-05-30,2026-05-31,2026-06-03,2026-06-05,2026-06-06,2026-07-31,2026-08-03,2026-08-05,2026-08-06,2026-08-07,2026-08-09,2026-08-11,2026-08-13,2026-08-14">
 <div>
 <div class="show-preview-title">THE UNEXPECTED 3RD</div>
 <div class="show-preview-meta">Wed, May 06 at 07:00 PM</div>
@@ -796,119 +869,119 @@ a:hover {
 </article><article class="venue-card" data-venue="parkside_lounge" data-earliest-date="2026-05-19" data-latest-date="2026-05-19">
 <h3><a href="theaters/parkside_lounge.html">Parkside Lounge</a></h3>
 <div class="venue-stats"><span>1 shows</span><span>1 listed dates</span></div>
-<div class="show-preview"><div class="show-preview-row" data-show-date="2026-05-19">
+<div class="show-preview"><div class="show-preview-row" data-show-date="2026-05-19" data-all-dates="2026-05-19">
 <div>
 <div class="show-preview-title">The Curio Society Presents: Rebirth</div>
 <div class="show-preview-meta">Tue, May 19 at 07:00 PM</div>
 </div>
 <a href="theaters/parkside_lounge.html">View venue</a>
 </div></div>
-</article><article class="venue-card" data-venue="performance_space" data-earliest-date="2022-04-10" data-latest-date="2026-06-27">
+</article><article class="venue-card" data-venue="performance_space" data-earliest-date="2026-04-12" data-latest-date="2026-06-27">
 <h3><a href="theaters/performance_space.html">Performance Space New York</a></h3>
-<div class="venue-stats"><span>33 shows</span><span>47 listed dates</span></div>
-<div class="show-preview"><div class="show-preview-row" data-show-date="2022-04-10">
-<div>
-<div class="show-preview-title">We The Youth - Keith Haring Lecture Series</div>
-<div class="show-preview-meta">Sun, Apr 10 at 03:00 PM</div>
-</div>
-<a href="theaters/performance_space.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2025-02-15">
+<div class="venue-stats"><span>5 shows</span><span>12 listed dates</span></div>
+<div class="show-preview"><div class="show-preview-row" data-show-date="2026-04-12" data-all-dates="2026-04-12,2026-04-19,2026-04-26,2026-05-03,2026-05-10,2026-05-17,2026-05-31,2026-06-07">
 <div>
 <div class="show-preview-title">Open Movement - Winter 2026</div>
-<div class="show-preview-meta">Sat, Feb 15 at 04:00 PM</div>
+<div class="show-preview-meta">Sun, Apr 12 at 04:00 PM</div>
 </div>
 <a href="theaters/performance_space.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2025-09-09">
+</div><div class="show-preview-row" data-show-date="2026-05-04" data-all-dates="2026-05-04">
 <div>
-<div class="show-preview-title">Alternative Education</div>
-<div class="show-preview-meta">Tue, Sep 09 at 07:00 PM</div>
+<div class="show-preview-title">Give Me Your Heart</div>
+<div class="show-preview-meta">Mon, May 04 at 07:00 PM</div>
 </div>
 <a href="theaters/performance_space.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2025-10-06">
+</div><div class="show-preview-row" data-show-date="2026-05-07" data-all-dates="2026-05-07">
 <div>
-<div class="show-preview-title">Theatrical</div>
-<div class="show-preview-meta">Mon, Oct 06 at 07:00 PM</div>
+<div class="show-preview-title">(Language)</div>
+<div class="show-preview-meta">Thu, May 07 at 07:00 PM</div>
+</div>
+<a href="theaters/performance_space.html">View venue</a>
+</div><div class="show-preview-row" data-show-date="2026-05-21" data-all-dates="2026-05-21">
+<div>
+<div class="show-preview-title">(Presence)</div>
+<div class="show-preview-meta">Thu, May 21 at 07:00 PM</div>
 </div>
 <a href="theaters/performance_space.html">View venue</a>
 </div></div>
 </article><article class="venue-card" data-venue="rat_nyc" data-earliest-date="2026-04-11" data-latest-date="2026-04-19">
 <h3><a href="theaters/rat_nyc.html">The Rat NYC</a></h3>
-<div class="venue-stats"><span>15 shows</span><span>33 listed dates</span></div>
-<div class="show-preview"><div class="show-preview-row" data-show-date="2026-04-11">
+<div class="venue-stats"><span>14 shows</span><span>33 listed dates</span></div>
+<div class="show-preview"><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-14,2026-04-16">
 <div>
 <div class="show-preview-title">The Isle of Slaves Revisited - A Spectacle for Our Times</div>
 <div class="show-preview-meta">Sat, Apr 11 at 03:40 PM</div>
 </div>
 <a href="theaters/rat_nyc.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-04-11">
+</div><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-17,2026-04-18">
 <div>
 <div class="show-preview-title">Chase Montana: From Funny to Fatherhood (A New Yorkers Story)</div>
 <div class="show-preview-meta">Sat, Apr 11 at 05:20 PM</div>
 </div>
 <a href="theaters/rat_nyc.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-04-11">
+</div><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-15,2026-04-18">
 <div>
 <div class="show-preview-title">Online &amp; Personal</div>
 <div class="show-preview-meta">Sat, Apr 11 at 07:00 PM</div>
 </div>
 <a href="theaters/rat_nyc.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-04-11">
+</div><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-13,2026-04-19">
 <div>
 <div class="show-preview-title">Walter Schlinger&#x27;s Romeo and Juliet</div>
 <div class="show-preview-meta">Sat, Apr 11 at 08:40 PM</div>
 </div>
 <a href="theaters/rat_nyc.html">View venue</a>
 </div></div>
-</article><article class="venue-card" data-venue="tnc" data-earliest-date="2026-04-02" data-latest-date="2026-05-17">
+</article><article class="venue-card" data-venue="tnc" data-earliest-date="2026-04-11" data-latest-date="2026-05-17">
 <h3><a href="theaters/tnc.html">Theater for the New City</a></h3>
-<div class="venue-stats"><span>9 shows</span><span>90 listed dates</span></div>
-<div class="show-preview"><div class="show-preview-row" data-show-date="2026-04-02">
-<div>
-<div class="show-preview-title">Dana II</div>
-<div class="show-preview-meta">Thu, Apr 02 at 08:00 PM</div>
-</div>
-<a href="theaters/tnc.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-04-09">
-<div>
-<div class="show-preview-title">Flo</div>
-<div class="show-preview-meta">Thu, Apr 09 at 08:00 PM</div>
-</div>
-<a href="theaters/tnc.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-04-09">
-<div>
-<div class="show-preview-title">THE DECAY OF A ROSE</div>
-<div class="show-preview-meta">Thu, Apr 09 at 08:00 PM</div>
-</div>
-<a href="theaters/tnc.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-04-10">
+<div class="venue-stats"><span>8 shows</span><span>79 listed dates</span></div>
+<div class="show-preview"><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11">
 <div>
 <div class="show-preview-title">An Evening of Modern Dance with Alison Cook Beatty Dance</div>
-<div class="show-preview-meta">Fri, Apr 10 at 08:00 PM</div>
+<div class="show-preview-meta">Sat, Apr 11 at 08:00 PM</div>
+</div>
+<a href="theaters/tnc.html">View venue</a>
+</div><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-12,2026-04-16,2026-04-17,2026-04-18,2026-04-19">
+<div>
+<div class="show-preview-title">Dana II</div>
+<div class="show-preview-meta">Sat, Apr 11 at 08:00 PM</div>
+</div>
+<a href="theaters/tnc.html">View venue</a>
+</div><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-12,2026-04-16,2026-04-17,2026-04-18,2026-04-19,2026-04-23,2026-04-24,2026-04-25,2026-04-26">
+<div>
+<div class="show-preview-title">Flo</div>
+<div class="show-preview-meta">Sat, Apr 11 at 08:00 PM</div>
+</div>
+<a href="theaters/tnc.html">View venue</a>
+</div><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-12,2026-04-16,2026-04-17,2026-04-18,2026-04-19,2026-04-23,2026-04-24,2026-04-25,2026-04-26">
+<div>
+<div class="show-preview-title">THE DECAY OF A ROSE</div>
+<div class="show-preview-meta">Sat, Apr 11 at 08:00 PM</div>
 </div>
 <a href="theaters/tnc.html">View venue</a>
 </div></div>
 </article><article class="venue-card" data-venue="under_st_marks" data-earliest-date="2026-04-11" data-latest-date="2026-08-30">
 <h3><a href="theaters/under_st_marks.html">Under St Marks</a></h3>
 <div class="venue-stats"><span>46 shows</span><span>139 listed dates</span></div>
-<div class="show-preview"><div class="show-preview-row" data-show-date="2026-04-11">
+<div class="show-preview"><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-13,2026-04-16">
 <div>
 <div class="show-preview-title">Notes on Collagen</div>
 <div class="show-preview-meta">Sat, Apr 11 at 03:40 PM</div>
 </div>
 <a href="theaters/under_st_marks.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-04-11">
+</div><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-13">
 <div>
 <div class="show-preview-title">PSA: Pelvic Service Announcement</div>
 <div class="show-preview-meta">Sat, Apr 11 at 05:20 PM</div>
 </div>
 <a href="theaters/under_st_marks.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-04-11">
+</div><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-18">
 <div>
 <div class="show-preview-title">A &quot;Confessional&quot; of A Recovering Catholic: The Musical</div>
 <div class="show-preview-meta">Sat, Apr 11 at 07:00 PM</div>
 </div>
 <a href="theaters/under_st_marks.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-04-11">
+</div><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-17">
 <div>
 <div class="show-preview-title">Extra Dry</div>
 <div class="show-preview-meta">Sat, Apr 11 at 08:40 PM</div>
@@ -917,51 +990,39 @@ a:hover {
 </div></div>
 </article><article class="venue-card" data-venue="vineyard" data-earliest-date="2026-05-12" data-latest-date="2026-06-21">
 <h3><a href="theaters/vineyard.html">Vineyard Theatre</a></h3>
-<div class="venue-stats"><span>3 shows</span><span>42 listed dates</span></div>
-<div class="show-preview"><div class="show-preview-row" data-show-date="2026-05-12">
+<div class="venue-stats"><span>1 shows</span><span>42 listed dates</span></div>
+<div class="show-preview"><div class="show-preview-row" data-show-date="2026-05-12" data-all-dates="2026-05-12,2026-05-13,2026-05-14,2026-05-15,2026-05-16,2026-05-17,2026-05-19,2026-05-20,2026-05-21,2026-05-22,2026-05-23,2026-05-24,2026-05-26,2026-05-27,2026-05-28,2026-05-29,2026-05-30,2026-05-31,2026-06-02,2026-06-03,2026-06-04,2026-06-05,2026-06-06,2026-06-07,2026-06-09,2026-06-10,2026-06-11,2026-06-12,2026-06-13,2026-06-14,2026-06-16,2026-06-17,2026-06-18,2026-06-19,2026-06-20,2026-06-21">
 <div>
 <div class="show-preview-title">||:GIRLS:||:CHANCE:||:MUSIC:||</div>
 <div class="show-preview-meta">Tue, May 12 at 07:00 PM</div>
 </div>
 <a href="theaters/vineyard.html">View venue</a>
-</div><div class="show-preview-row">
-<div>
-<div class="show-preview-title">BUGHOUSE</div>
-<div class="show-preview-meta">February 26 - April 5</div>
-</div>
-<a href="theaters/vineyard.html">View venue</a>
-</div><div class="show-preview-row">
-<div>
-<div class="show-preview-title">THE BURNING CAULDRON OF FIERY FIRE</div>
-<div class="show-preview-meta">October 23 - December 7</div>
-</div>
-<a href="theaters/vineyard.html">View venue</a>
 </div></div>
-</article><article class="venue-card" data-venue="wild_project" data-earliest-date="2026-03-02" data-latest-date="2026-05-06">
+</article><article class="venue-card" data-venue="wild_project" data-earliest-date="2026-04-11" data-latest-date="2026-05-06">
 <h3><a href="theaters/wild_project.html">Wild Project</a></h3>
-<div class="venue-stats"><span>25 shows</span><span>42 listed dates</span></div>
-<div class="show-preview"><div class="show-preview-row" data-show-date="2026-03-02">
-<div>
-<div class="show-preview-title">Too Much Birthday</div>
-<div class="show-preview-meta">Mon, Mar 02 at 08:00 PM</div>
-</div>
-<a href="theaters/wild_project.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-03-05">
-<div>
-<div class="show-preview-title">Special Effects Festival 2026</div>
-<div class="show-preview-meta">Thu, Mar 05 at 07:30 PM</div>
-</div>
-<a href="theaters/wild_project.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-03-24">
-<div>
-<div class="show-preview-title">GODDESS (DIOSA)</div>
-<div class="show-preview-meta">Tue, Mar 24 at 07:00 PM</div>
-</div>
-<a href="theaters/wild_project.html">View venue</a>
-</div><div class="show-preview-row" data-show-date="2026-04-11">
+<div class="venue-stats"><span>15 shows</span><span>37 listed dates</span></div>
+<div class="show-preview"><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-16">
 <div>
 <div class="show-preview-title">Book Club</div>
 <div class="show-preview-meta">Sat, Apr 11 at 03:40 PM</div>
+</div>
+<a href="theaters/wild_project.html">View venue</a>
+</div><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-12,2026-04-16,2026-04-17">
+<div>
+<div class="show-preview-title">Fever Dream TV</div>
+<div class="show-preview-meta">Sat, Apr 11 at 05:20 PM</div>
+</div>
+<a href="theaters/wild_project.html">View venue</a>
+</div><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11,2026-04-16,2026-04-18">
+<div>
+<div class="show-preview-title">soft.belly.</div>
+<div class="show-preview-meta">Sat, Apr 11 at 07:00 PM</div>
+</div>
+<a href="theaters/wild_project.html">View venue</a>
+</div><div class="show-preview-row" data-show-date="2026-04-11" data-all-dates="2026-04-11">
+<div>
+<div class="show-preview-title">XOXO: Love Letters from NYC</div>
+<div class="show-preview-meta">Sat, Apr 11 at 08:40 PM</div>
 </div>
 <a href="theaters/wild_project.html">View venue</a>
 </div></div>
@@ -970,196 +1031,305 @@ a:hover {
     </div>
   </div>
   <script>
-    const filterState = {
-      startDate: null,
-      endDate: null,
-      venues: new Set()
+  // --- Filter state ---
+  const filterState = { venues: new Set() };
+  const selectedDates = new Set();
+  let calYear, calMonth;
+  let anchorDate = null;   // last-clicked date, used for shift+click range fill
+
+  // All dates that have any show — loaded from embedded JSON (covers every
+  // production instance, not just the preview rows shown on this page)
+  const showDates = new Set(
+    JSON.parse(document.getElementById('allShowDates').textContent)
+  );
+
+  const filterContainer     = document.getElementById('filterContainer');
+  const filterToggle        = document.getElementById('filterToggle');
+  const filterReset         = document.getElementById('filterReset');
+  const venueSelect         = document.getElementById('venueSelect');
+  const venueSelectDropdown = document.getElementById('venueSelectDropdown');
+  const venueSelectText     = document.getElementById('venueSelectText');
+  const venueCheckboxes     = document.querySelectorAll('.venue-checkbox');
+  const venueGrid           = document.getElementById('venueGrid');
+  const resultCount         = document.getElementById('result-count');
+  const initialResultText   = resultCount.textContent;
+
+  // --- Calendar ---
+  const MONTHS = ['January','February','March','April','May','June',
+                  'July','August','September','October','November','December'];
+  const DAYS   = ['Mo','Tu','We','Th','Fr','Sa','Su'];
+
+  function pad2(n) { return String(n).padStart(2, '0'); }
+  function toDateStr(y, m, d) { return y + '-' + pad2(m + 1) + '-' + pad2(d); }
+
+  // Fill every date between a and b (inclusive) into selectedDates.
+  // Iterates by calendar day (not by 86_400_000 ms) so DST transitions
+  // like spring-forward don't drop the final date.
+  function fillRange(a, b) {
+    const parse = function(s) {
+      const p = s.split('-');
+      return new Date(parseInt(p[0], 10), parseInt(p[1], 10) - 1, parseInt(p[2], 10));
+    };
+    let lo = parse(a), hi = parse(b);
+    if (lo > hi) { const tmp = lo; lo = hi; hi = tmp; }
+    const cur = new Date(lo.getFullYear(), lo.getMonth(), lo.getDate());
+    while (cur <= hi) {
+      selectedDates.add(toDateStr(cur.getFullYear(), cur.getMonth(), cur.getDate()));
+      cur.setDate(cur.getDate() + 1);
+    }
+    anchorDate = b;
+  }
+
+  function renderCalendar(year, month) {
+    calYear = year; calMonth = month;
+    const container = document.getElementById('calendarContainer');
+
+    const today    = new Date();
+    const todayStr = toDateStr(today.getFullYear(), today.getMonth(), today.getDate());
+
+    // Monday-first offset (0=Mon … 6=Sun)
+    const firstDow    = new Date(year, month, 1).getDay();
+    const startOffset = firstDow === 0 ? 6 : firstDow - 1;
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const daysInPrev  = new Date(year, month, 0).getDate();
+
+    const dayHeaders = DAYS.map(function(d) { return '<th>' + d + '</th>'; }).join('');
+    let cells = [], rows = [];
+
+    // Previous-month overflow — not interactive
+    for (let i = 0; i < startOffset; i++) {
+      cells.push('<td class="cal-day other-month">' + (daysInPrev - startOffset + 1 + i) + '</td>');
+    }
+
+    // Current-month cells — ALL are clickable; data-date always present
+    for (let d = 1; d <= daysInMonth; d++) {
+      const ds  = toDateStr(year, month, d);
+      const cls = ['cal-day'];
+      if (showDates.has(ds))     cls.push('has-show');
+      if (selectedDates.has(ds)) cls.push('selected');
+      if (ds === todayStr)        cls.push('today');
+      cells.push('<td class="' + cls.join(' ') + '" data-date="' + ds + '">' + d + '</td>');
+      if (cells.length === 7) { rows.push('<tr>' + cells.join('') + '</tr>'); cells = []; }
+    }
+
+    // Next-month overflow — not interactive
+    let nextDay = 1;
+    while (cells.length > 0 && cells.length < 7) {
+      cells.push('<td class="cal-day other-month">' + (nextDay++) + '</td>');
+    }
+    if (cells.length) rows.push('<tr>' + cells.join('') + '</tr>');
+
+    container.innerHTML =
+      '<div class="cal-header">' +
+        '<button class="cal-nav" id="calPrev">&#8249;</button>' +
+        '<span>' + MONTHS[month] + ' ' + year + '</span>' +
+        '<button class="cal-nav" id="calNext">&#8250;</button>' +
+      '</div>' +
+      '<table class="cal-table">' +
+        '<thead><tr>' + dayHeaders + '</tr></thead>' +
+        '<tbody>' + rows.join('') + '</tbody>' +
+      '</table>';
+
+    document.getElementById('calPrev').onclick = function() {
+      let m = month - 1, y = year;
+      if (m < 0) { m = 11; y--; }
+      renderCalendar(y, m);
+    };
+    document.getElementById('calNext').onclick = function() {
+      let m = month + 1, y = year;
+      if (m > 11) { m = 0; y++; }
+      renderCalendar(y, m);
     };
 
-    const filterContainer = document.getElementById('filterContainer');
-    const filterToggle = document.getElementById('filterToggle');
-    const filterApply = document.getElementById('filterApply');
-    const filterReset = document.getElementById('filterReset');
-    const startDateInput = document.getElementById('startDate');
-    const endDateInput = document.getElementById('endDate');
-    const venueSelect = document.getElementById('venueSelect');
-    const venueSelectDropdown = document.getElementById('venueSelectDropdown');
-    const venueSelectText = document.getElementById('venueSelectText');
-    const venueCheckboxes = document.querySelectorAll('.venue-checkbox');
-    const venueGrid = document.getElementById('venueGrid');
-    const resultCount = document.getElementById('result-count');
-
-    // Store initial state
-    const initialResultText = resultCount.textContent;
-    const initialVenueCount = venueGrid.querySelectorAll('.venue-card').length;
-
-    // Toggle Filter Panel
-    filterToggle.addEventListener('click', () => {
-      filterContainer.classList.toggle('active');
-      filterToggle.classList.toggle('open');
-    });
-
-    // Venue Select Dropdown
-    venueSelect.addEventListener('click', (e) => {
-      e.stopPropagation();
-      venueSelectDropdown.classList.toggle('open');
-      venueSelect.classList.toggle('active');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!venueSelect.contains(e.target) && !venueSelectDropdown.contains(e.target)) {
-        venueSelectDropdown.classList.remove('open');
-        venueSelect.classList.remove('active');
-      }
-    });
-
-    // Venue Checkbox Logic
-    venueCheckboxes.forEach(checkbox => {
-      checkbox.addEventListener('change', (e) => {
-        if (checkbox.value === 'all') {
-          const isChecked = checkbox.checked;
-          venueCheckboxes.forEach(cb => {
-            if (cb.value !== 'all') {
-              cb.checked = isChecked;
-              if (isChecked) {
-                filterState.venues.add(cb.value);
-              } else {
-                filterState.venues.delete(cb.value);
-              }
-            }
-          });
+    // Every current-month cell is clickable.
+    // Shift+click fills the range from the last anchor to the clicked date.
+    container.querySelectorAll('.cal-day:not(.other-month)').forEach(function(cell) {
+      cell.onclick = function(e) {
+        const ds = cell.getAttribute('data-date');
+        if (e.shiftKey && anchorDate && anchorDate !== ds) {
+          fillRange(anchorDate, ds);
+        } else if (selectedDates.has(ds)) {
+          selectedDates.delete(ds);
+          anchorDate = null;
         } else {
-          if (checkbox.checked) {
-            filterState.venues.add(checkbox.value);
-          } else {
-            filterState.venues.delete(checkbox.value);
-          }
+          selectedDates.add(ds);
+          anchorDate = ds;
         }
-        updateVenueSelectText();
-      });
+        renderCalendar(calYear, calMonth);
+        applyFilters();
+      };
     });
+  }
 
-    function updateVenueSelectText() {
-      if (filterState.venues.size === 0) {
-        venueSelectText.textContent = 'All Venues';
-      } else if (filterState.venues.size === 7) {
-        venueSelectText.textContent = 'All Venues';
-      } else if (filterState.venues.size === 1) {
-        const venueName = Array.from(filterState.venues)[0].replace(/_/g, ' ').toUpperCase();
-        venueSelectText.textContent = venueName;
-      } else {
-        venueSelectText.textContent = filterState.venues.size + ' venues selected';
+  // Initialise calendar to the current month
+  (function() {
+    const now = new Date();
+    renderCalendar(now.getFullYear(), now.getMonth());
+  })();
+
+  // --- Date preset buttons (Today / This Weekend / This Week / Next Week) ---
+  // Weeks run Monday-Sunday to match the calendar grid.
+  function startOfWeekMonday(d) {
+    const dow = d.getDay();                   // 0=Sun..6=Sat
+    const offset = dow === 0 ? -6 : 1 - dow;  // back up to Monday
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate() + offset);
+  }
+  function applyPreset(name) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    let startDate, endDate;
+    if (name === 'today') {
+      startDate = endDate = today;
+    } else if (name === 'weekend') {
+      // Fri/Sat/Sun of the current week. If it's already past Sunday
+      // (it can't be — Sun is day 0) or we're on a weekday, pick the
+      // upcoming Fri..Sun. If today is Fri/Sat/Sun, start from today.
+      const dow = today.getDay();             // 0=Sun..6=Sat
+      if (dow === 0) {                        // Sunday → just today
+        startDate = endDate = today;
+      } else if (dow === 6) {                 // Saturday → Sat+Sun
+        startDate = today;
+        endDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+      } else {                                // Mon-Fri → upcoming Fri..Sun
+        const daysToFri = 5 - dow;
+        startDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + daysToFri);
+        endDate   = new Date(today.getFullYear(), today.getMonth(), today.getDate() + daysToFri + 2);
       }
+    } else if (name === 'this-week') {
+      startDate = startOfWeekMonday(today);
+      endDate   = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + 6);
+      // Never include past days — clamp the start to today if needed.
+      if (startDate < today) startDate = today;
+    } else if (name === 'next-week') {
+      const thisMon = startOfWeekMonday(today);
+      startDate = new Date(thisMon.getFullYear(), thisMon.getMonth(), thisMon.getDate() + 7);
+      endDate   = new Date(thisMon.getFullYear(), thisMon.getMonth(), thisMon.getDate() + 13);
+    } else {
+      return;
     }
+    // Replace any existing selection so the preset behaves as a shortcut,
+    // not an additive toggle.
+    selectedDates.clear();
+    const startStr = toDateStr(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+    const endStr   = toDateStr(endDate.getFullYear(),   endDate.getMonth(),   endDate.getDate());
+    fillRange(startStr, endStr);
+    // Jump the calendar to the month containing the first selected day
+    // so users can see what they picked.
+    renderCalendar(startDate.getFullYear(), startDate.getMonth());
+    applyFilters();
+  }
+  document.querySelectorAll('.cal-preset').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      applyPreset(btn.getAttribute('data-preset'));
+    });
+  });
 
-    // Apply Filters
-    filterApply.addEventListener('click', applyFilters);
+  // --- Filter-panel toggle ---
+  filterToggle.addEventListener('click', function() {
+    filterContainer.classList.toggle('active');
+    filterToggle.classList.toggle('open');
+  });
 
-    function applyFilters() {
-      filterState.startDate = startDateInput.value ? new Date(startDateInput.value) : null;
-      filterState.endDate = endDateInput.value ? new Date(endDateInput.value) : null;
-
-      const cards = document.querySelectorAll('.venue-card');
-      let visibleCount = 0;
-
-      cards.forEach(card => {
-        const venue = card.getAttribute('data-venue');
-        const earliestDate = card.getAttribute('data-earliest-date');
-        const latestDate = card.getAttribute('data-latest-date');
-
-        const isVenueMatch = filterState.venues.size === 0 || filterState.venues.has(venue);
-
-        let isDateMatch = true;
-        if (filterState.startDate || filterState.endDate) {
-          if (earliestDate && latestDate) {
-            const cardEarliestDate = new Date(earliestDate);
-            const cardLatestDate = new Date(latestDate);
-
-            if (filterState.startDate && cardLatestDate < filterState.startDate) {
-              isDateMatch = false;
-            }
-            if (filterState.endDate && cardEarliestDate > filterState.endDate) {
-              isDateMatch = false;
-            }
-          } else {
-            isDateMatch = false;
-          }
-        }
-
-        const shouldShow = isVenueMatch && isDateMatch;
-        if (shouldShow) {
-          card.classList.remove('hidden');
-
-          // Hide individual show preview rows that fall outside date range
-          const previewRows = card.querySelectorAll('.show-preview-row');
-          let hasVisibleShow = false;
-          previewRows.forEach(row => {
-            const showDate = row.getAttribute('data-show-date');
-            let showVisible = true;
-
-            if (filterState.startDate || filterState.endDate) {
-              if (showDate) {
-                const rowDate = new Date(showDate);
-                if (filterState.startDate && rowDate < filterState.startDate) {
-                  showVisible = false;
-                }
-                if (filterState.endDate && rowDate > filterState.endDate) {
-                  showVisible = false;
-                }
-              } else {
-                // Hide undated rows when date filter is applied
-                showVisible = false;
-              }
-            }
-
-            row.style.display = showVisible ? 'flex' : 'none';
-            if (showVisible) hasVisibleShow = true;
-          });
-
-          // Only count venue if it has at least one visible show
-          if (hasVisibleShow || previewRows.length === 0) {
-            visibleCount++;
-          } else {
-            card.classList.add('hidden');
-          }
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-
-      updateResultCount(visibleCount);
+  // --- Venue dropdown ---
+  venueSelect.addEventListener('click', function(e) {
+    e.stopPropagation();
+    venueSelectDropdown.classList.toggle('open');
+    venueSelect.classList.toggle('active');
+  });
+  document.addEventListener('click', function(e) {
+    if (!venueSelect.contains(e.target) && !venueSelectDropdown.contains(e.target)) {
+      venueSelectDropdown.classList.remove('open');
+      venueSelect.classList.remove('active');
     }
+  });
 
-    // Reset Filters
-    filterReset.addEventListener('click', () => {
-      startDateInput.value = '';
-      endDateInput.value = '';
-      venueCheckboxes.forEach(cb => cb.checked = false);
-      filterState.venues.clear();
-      updateVenueSelectText();
-      venueGrid.querySelectorAll('.venue-card').forEach(card => {
-        card.classList.remove('hidden');
-        // Show all show preview rows
-        card.querySelectorAll('.show-preview-row').forEach(row => {
-          row.style.display = 'flex';
+  // --- Venue checkboxes — live filtering ---
+  const totalVenueCount = [...venueCheckboxes].filter(function(cb) { return cb.value !== 'all'; }).length;
+
+  venueCheckboxes.forEach(function(cb) {
+    cb.addEventListener('change', function() {
+      if (cb.value === 'all') {
+        [...venueCheckboxes].forEach(function(c) {
+          if (c.value !== 'all') {
+            c.checked = cb.checked;
+            if (cb.checked) filterState.venues.add(c.value);
+            else filterState.venues.delete(c.value);
+          }
         });
+      } else {
+        if (cb.checked) filterState.venues.add(cb.value);
+        else filterState.venues.delete(cb.value);
+      }
+      updateVenueSelectText();
+      applyFilters();
+    });
+  });
+
+  function updateVenueSelectText() {
+    const n = filterState.venues.size;
+    if (n === 0 || n === totalVenueCount) {
+      venueSelectText.textContent = 'All Venues';
+    } else if (n === 1) {
+      const id = [...filterState.venues][0];
+      venueSelectText.textContent = id.replace(/_/g, ' ').replace(/\b\w/g, function(l) { return l.toUpperCase(); });
+    } else {
+      venueSelectText.textContent = n + ' venues selected';
+    }
+  }
+
+  // --- Core filter logic (runs immediately on every state change) ---
+  function applyFilters() {
+    let visibleCount = 0;
+
+    document.querySelectorAll('.venue-card').forEach(function(card) {
+      const venue        = card.getAttribute('data-venue');
+      const isVenueMatch = filterState.venues.size === 0 || filterState.venues.has(venue);
+
+      const rows = card.querySelectorAll('.show-preview-row');
+      let hasVisibleRow  = selectedDates.size === 0;
+
+      rows.forEach(function(row) {
+        if (selectedDates.size === 0) {
+          row.style.display = 'flex';
+        } else {
+          // data-all-dates contains every performance date for this production;
+          // fall back to data-show-date for backward compatibility
+          const raw = row.getAttribute('data-all-dates') || row.getAttribute('data-show-date') || '';
+          const visible = raw.split(',').some(function(d) { return d && selectedDates.has(d); });
+          row.style.display = visible ? 'flex' : 'none';
+          if (visible) hasVisibleRow = true;
+        }
       });
-      resultCount.textContent = initialResultText;
+
+      const shouldShow = isVenueMatch && hasVisibleRow;
+      card.classList.toggle('hidden', !shouldShow);
+      if (shouldShow) visibleCount++;
     });
 
-    function updateResultCount(count) {
-      const total = venueGrid.querySelectorAll('.venue-card').length;
-      if (count === total) {
-        resultCount.textContent = initialResultText;
-      } else {
-        resultCount.textContent = count + ' of ' + total + ' venues shown.';
-      }
-    }
+    updateResultCount(visibleCount);
+  }
 
-    // Set min date to today
-    const today = new Date().toISOString().split('T')[0];
-    startDateInput.min = today;
-    endDateInput.min = today;
-  </script>
+  // --- Reset ---
+  filterReset.addEventListener('click', function() {
+    selectedDates.clear();
+    anchorDate = null;
+    filterState.venues.clear();
+    [...venueCheckboxes].forEach(function(cb) { cb.checked = false; });
+    updateVenueSelectText();
+    renderCalendar(calYear, calMonth);
+    venueGrid.querySelectorAll('.venue-card').forEach(function(card) {
+      card.classList.remove('hidden');
+      card.querySelectorAll('.show-preview-row').forEach(function(row) { row.style.display = 'flex'; });
+    });
+    resultCount.textContent = initialResultText;
+  });
+
+  function updateResultCount(count) {
+    const total = venueGrid.querySelectorAll('.venue-card').length;
+    resultCount.textContent = count === total
+      ? initialResultText
+      : count + ' of ' + total + ' venues shown.';
+  }
+</script>
 </body>
 </html>

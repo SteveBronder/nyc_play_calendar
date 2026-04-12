@@ -102,6 +102,8 @@ a:hover {
   margin-top: 26px;
 }
 
+.layout > * { min-width: 0; }
+
 .sidebar,
 .content-panel {
   border: 1px solid var(--line);
@@ -231,18 +233,19 @@ a:hover {
 
 .filter-controls {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 16px;
   margin-top: 16px;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: all 0.3s ease;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
 }
 
 .filter-container.active .filter-controls {
-  max-height: 300px;
+  max-height: 700px;
   opacity: 1;
+  overflow: visible;
 }
 
 .filter-group {
@@ -259,22 +262,6 @@ a:hover {
   color: var(--muted);
 }
 
-.filter-group input[type="date"] {
-  padding: 10px 12px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: rgba(255,255,255,0.8);
-  color: var(--ink);
-  font-size: 0.95rem;
-  font-family: inherit;
-  transition: border-color 0.2s ease;
-}
-
-.filter-group input[type="date"]:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(163, 63, 47, 0.1);
-}
 
 .venue-select {
   position: relative;
@@ -372,17 +359,6 @@ a:hover {
   font-family: inherit;
 }
 
-.filter-apply {
-  flex: 1;
-  background: var(--accent);
-  color: white;
-}
-
-.filter-apply:hover {
-  background: #923226;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(163, 63, 47, 0.3);
-}
 
 .filter-reset {
   background: rgba(255,255,255,0.7);
@@ -394,6 +370,110 @@ a:hover {
   background: rgba(255,255,255,0.9);
   color: var(--ink);
 }
+
+/* Calendar date picker */
+.cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .4rem;
+  font-weight: 600;
+  font-size: .95rem;
+}
+.cal-nav {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--accent);
+  padding: .1rem .35rem;
+  border-radius: 6px;
+  line-height: 1;
+}
+.cal-nav:hover { background: var(--accent-soft); }
+.cal-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: .85rem;
+}
+.cal-table th {
+  text-align: center;
+  padding: .25rem 0;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: .77rem;
+}
+.cal-day {
+  text-align: center;
+  padding: .35rem .1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  user-select: none;
+}
+.cal-day:not(.other-month):hover { background: rgba(102, 69, 54, 0.07); }
+.cal-day.has-show {
+  font-weight: 700;
+  color: var(--accent);
+}
+.cal-day.has-show:hover { background: var(--accent-soft); }
+.cal-day.selected {
+  background: var(--accent);
+  color: #fff !important;
+}
+.cal-day.selected:hover { opacity: .85; }
+.cal-day.other-month {
+  opacity: .3;
+  pointer-events: none;
+  cursor: default;
+}
+.cal-day.today {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+.cal-legend {
+  display: flex;
+  gap: 1rem;
+  font-size: .75rem;
+  color: var(--muted);
+  margin-top: .4rem;
+}
+.cal-legend-item {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+.cal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+.cal-dot-show { opacity: .45; }
+.cal-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin-bottom: .6rem;
+}
+.cal-preset {
+  font: inherit;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  padding: .32rem .7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel-soft, rgba(102, 69, 54, 0.04));
+  color: var(--accent);
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.cal-preset:hover {
+  background: var(--accent-soft, rgba(102, 69, 54, 0.09));
+  border-color: var(--accent);
+}
+.cal-preset:active { transform: translateY(1px); }
 
 .production-list {
   display: grid;
@@ -665,73 +745,10 @@ a:hover {
 <div class="section-header">
 <div>
 <h2>Wild Project</h2>
-<p>25 productions and 42 listed performance dates.</p>
+<p>15 productions and 37 listed performance dates.</p>
 </div>
 </div>
 <ul class="production-list"><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Too Much Birthday</h2>
-<div class="meta-row"><span>wild project</span><span>Tickets are priced on a sliding scale – please pay what you wish. All proceeds from the event will be donated to the ACLU.</span></div>
-</div>
-<div class="tag">1 dates listed</div>
-</div>
-<div class="meta-row"><span class="run-range">March 2, 2026</span></div>
-<p class="description">Please join Jillaine Gill for a night of celebration, variety show performances, and surprises! All proceeds to be donated to the ACLU.</p>
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Mon, Mar 02 at 08:00 PM</div>
-<div class="schedule-meta">wild project</div>
-</div>
-<div class="schedule-links"><a href="https://thewildproject.org/performances/too-much-birthday/">Source</a> <a href="https://ci.ovationtix.com/621/production/1267234">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Special Effects Festival 2026</h2>
-<div class="meta-row"><span>wild project</span><span>Festival Tickets</span></div>
-</div>
-<div class="tag">3 dates listed</div>
-</div>
-<div class="meta-row"><span class="run-range">March 5-7, 2026</span></div>
-<p class="description">Founded by the visionary duo, Caden Manson and Jemma Nelson of Big Art Group, the Special Effects Festival (SFX) has championed groundbreaking, genre-defying work since 2014. After a hiatus due to the pandemic, the festival returned to rekindle the spirit of the avant-garde and create a shared space to gather for…</p>
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Thu, Mar 05 at 07:30 PM</div>
-<div class="schedule-meta">wild project</div>
-</div>
-<div class="schedule-links"><a href="https://thewildproject.org/performances/special-effects-festival-2026/">Source</a> <a href="https://ci.ovationtix.com/621/production/1264317">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Fri, Mar 06 at 07:30 PM</div>
-<div class="schedule-meta">wild project</div>
-</div>
-<div class="schedule-links"><a href="https://thewildproject.org/performances/special-effects-festival-2026/">Source</a> <a href="https://ci.ovationtix.com/621/production/1264317">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Mar 07 at 07:30 PM</div>
-<div class="schedule-meta">wild project</div>
-</div>
-<div class="schedule-links"><a href="https://thewildproject.org/performances/special-effects-festival-2026/">Source</a> <a href="https://ci.ovationtix.com/621/production/1264317">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>GODDESS (DIOSA)</h2>
-<div class="meta-row"><span>wild project</span><span>Complimentary Tickets</span></div>
-</div>
-<div class="tag">1 dates listed</div>
-</div>
-<div class="meta-row"><span class="run-range">March 24, 2026</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Tue, Mar 24 at 07:00 PM</div>
-<div class="schedule-meta">wild project</div>
-</div>
-<div class="schedule-links"><a href="https://thewildproject.org/performances/goddess-diosa/">Source</a> <a href="https://ci.ovationtix.com/621/production/1264937">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
 <div class="production-head">
 <div>
 <h2>Book Club</h2>
@@ -1118,83 +1135,6 @@ a:hover {
 </div>
 <div class="schedule-links"><a href="https://thewildproject.org/performances/wild-works-puppetry-on-the-edge/">Source</a> <a href="https://ci.ovationtix.com/621/production/1271460">Tickets</a></div>
 </li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>FRINGE 2026</h2>
-<div class="meta-row"><span>wild project</span><span>Tickets Pay-What-You-Can</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">April 1 – 19th, 2026</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">April 1 – 19th, 2026</p><div class="schedule-links"><a href="https://thewildproject.org/performances/fringe-2026/">Source</a> <a href="https://tickets.frigid.nyc/events?s=&amp;event_type=&amp;season=&amp;start_date=01%2F04%2F2026">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Fresh Fruit Festival 2026</h2>
-<div class="meta-row"><span>wild project</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">April 20 – May 3, 2026</span></div>
-<p class="description">The Fresh Fruit Festival encompasses theater, performance, poetry, comedy, spoken word, music, dance, visual arts and some talents that defy categorization. Artists come from around the city, nation and, indeed, the world. Australia, Canada, Philadelphia, Chicago, Seattle, Boston, San Francisco, San Diego, France,…</p>
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">April 20 – May 3, 2026</p><div class="schedule-links"><a href="https://thewildproject.org/performances/fresh-fruit-festival-2026/">Source</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>MESSAGES</h2>
-<div class="meta-row"><span>wild project</span><span>Purchase Tickets</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">Sunday, January 18th 2026</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Sunday, January 18th 2026</p><div class="schedule-links"><a href="https://thewildproject.org/performances/messages/">Source</a> <a href="https://www.ticketleap.events/tickets/mur-6/messages-mur?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAdGRleAPR-_ZleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadRqQxfU49zq6slefNrW25Q71_pShI9EaTFp1_7lQB8rvz6vwnMXoePGsjRJg_aem_sJTnw1z9itmUm5lqURFP8A">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>On The Verge 2026</h2>
-<div class="meta-row"><span>wild project</span><span>Tickets $11.50 – $24.50</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">March 26-29, 2026</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">March 26-29, 2026</p><div class="schedule-links"><a href="https://thewildproject.org/performances/on-the-verge-2026/">Source</a> <a href="https://ci.ovationtix.com/621/production/1266291">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Starkid’s The Trail To Oregon</h2>
-<div class="meta-row"><span>wild project</span><span>Tickets $32.25</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">March 14-22, 2026</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">March 14-22, 2026</p><div class="schedule-links"><a href="https://thewildproject.org/performances/starkids-the-trail-to-oregon/">Source</a> <a href="https://www.tickettailor.com/events/slproductions/1998557">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>THE BOTANY OF DESIRE</h2>
-<div class="meta-row"><span>wild project</span><span>Reserve Complimentary Tickets</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Specific dates are not exposed on the source site yet.</p><div class="schedule-links"><a href="https://thewildproject.org/performances/the-botany-of-desire/">Source</a> <a href="https://ci.ovationtix.com/621/production/1266237">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Three Plays From My Brain</h2>
-<div class="meta-row"><span>wild project</span><span>Tickets $24.50 (including fees)</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Specific dates are not exposed on the source site yet.</p><div class="schedule-links"><a href="https://thewildproject.org/performances/three-plays-from-my-brain/">Source</a> <a href="https://ci.ovationtix.com/621/production/1265029">Tickets</a></div></div>
 </li></ul>
 </section>
     </div>

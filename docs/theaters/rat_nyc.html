@@ -102,6 +102,8 @@ a:hover {
   margin-top: 26px;
 }
 
+.layout > * { min-width: 0; }
+
 .sidebar,
 .content-panel {
   border: 1px solid var(--line);
@@ -231,18 +233,19 @@ a:hover {
 
 .filter-controls {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 16px;
   margin-top: 16px;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: all 0.3s ease;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
 }
 
 .filter-container.active .filter-controls {
-  max-height: 300px;
+  max-height: 700px;
   opacity: 1;
+  overflow: visible;
 }
 
 .filter-group {
@@ -259,22 +262,6 @@ a:hover {
   color: var(--muted);
 }
 
-.filter-group input[type="date"] {
-  padding: 10px 12px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: rgba(255,255,255,0.8);
-  color: var(--ink);
-  font-size: 0.95rem;
-  font-family: inherit;
-  transition: border-color 0.2s ease;
-}
-
-.filter-group input[type="date"]:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(163, 63, 47, 0.1);
-}
 
 .venue-select {
   position: relative;
@@ -372,17 +359,6 @@ a:hover {
   font-family: inherit;
 }
 
-.filter-apply {
-  flex: 1;
-  background: var(--accent);
-  color: white;
-}
-
-.filter-apply:hover {
-  background: #923226;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(163, 63, 47, 0.3);
-}
 
 .filter-reset {
   background: rgba(255,255,255,0.7);
@@ -394,6 +370,110 @@ a:hover {
   background: rgba(255,255,255,0.9);
   color: var(--ink);
 }
+
+/* Calendar date picker */
+.cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .4rem;
+  font-weight: 600;
+  font-size: .95rem;
+}
+.cal-nav {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--accent);
+  padding: .1rem .35rem;
+  border-radius: 6px;
+  line-height: 1;
+}
+.cal-nav:hover { background: var(--accent-soft); }
+.cal-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: .85rem;
+}
+.cal-table th {
+  text-align: center;
+  padding: .25rem 0;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: .77rem;
+}
+.cal-day {
+  text-align: center;
+  padding: .35rem .1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  user-select: none;
+}
+.cal-day:not(.other-month):hover { background: rgba(102, 69, 54, 0.07); }
+.cal-day.has-show {
+  font-weight: 700;
+  color: var(--accent);
+}
+.cal-day.has-show:hover { background: var(--accent-soft); }
+.cal-day.selected {
+  background: var(--accent);
+  color: #fff !important;
+}
+.cal-day.selected:hover { opacity: .85; }
+.cal-day.other-month {
+  opacity: .3;
+  pointer-events: none;
+  cursor: default;
+}
+.cal-day.today {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+.cal-legend {
+  display: flex;
+  gap: 1rem;
+  font-size: .75rem;
+  color: var(--muted);
+  margin-top: .4rem;
+}
+.cal-legend-item {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+.cal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+.cal-dot-show { opacity: .45; }
+.cal-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin-bottom: .6rem;
+}
+.cal-preset {
+  font: inherit;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  padding: .32rem .7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel-soft, rgba(102, 69, 54, 0.04));
+  color: var(--accent);
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.cal-preset:hover {
+  background: var(--accent-soft, rgba(102, 69, 54, 0.09));
+  border-color: var(--accent);
+}
+.cal-preset:active { transform: translateY(1px); }
 
 .production-list {
   display: grid;
@@ -665,7 +745,7 @@ a:hover {
 <div class="section-header">
 <div>
 <h2>The Rat NYC</h2>
-<p>15 productions and 33 listed performance dates.</p>
+<p>14 productions and 33 listed performance dates.</p>
 </div>
 </div>
 <ul class="production-list"><li class="production-card">
@@ -1020,17 +1100,6 @@ a:hover {
 </div>
 <div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1393">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1393">Tickets</a></div>
 </li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Hagnificent</h2>
-<div class="meta-row"><span>The Rat NYC</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Specific dates are not exposed on the source site yet.</p><div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1396">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1396">Tickets</a></div></div>
 </li></ul>
 </section>
     </div>

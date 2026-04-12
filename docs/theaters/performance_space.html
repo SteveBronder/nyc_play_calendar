@@ -102,6 +102,8 @@ a:hover {
   margin-top: 26px;
 }
 
+.layout > * { min-width: 0; }
+
 .sidebar,
 .content-panel {
   border: 1px solid var(--line);
@@ -231,18 +233,19 @@ a:hover {
 
 .filter-controls {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 16px;
   margin-top: 16px;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: all 0.3s ease;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
 }
 
 .filter-container.active .filter-controls {
-  max-height: 300px;
+  max-height: 700px;
   opacity: 1;
+  overflow: visible;
 }
 
 .filter-group {
@@ -259,22 +262,6 @@ a:hover {
   color: var(--muted);
 }
 
-.filter-group input[type="date"] {
-  padding: 10px 12px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: rgba(255,255,255,0.8);
-  color: var(--ink);
-  font-size: 0.95rem;
-  font-family: inherit;
-  transition: border-color 0.2s ease;
-}
-
-.filter-group input[type="date"]:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(163, 63, 47, 0.1);
-}
 
 .venue-select {
   position: relative;
@@ -372,17 +359,6 @@ a:hover {
   font-family: inherit;
 }
 
-.filter-apply {
-  flex: 1;
-  background: var(--accent);
-  color: white;
-}
-
-.filter-apply:hover {
-  background: #923226;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(163, 63, 47, 0.3);
-}
 
 .filter-reset {
   background: rgba(255,255,255,0.7);
@@ -394,6 +370,110 @@ a:hover {
   background: rgba(255,255,255,0.9);
   color: var(--ink);
 }
+
+/* Calendar date picker */
+.cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .4rem;
+  font-weight: 600;
+  font-size: .95rem;
+}
+.cal-nav {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--accent);
+  padding: .1rem .35rem;
+  border-radius: 6px;
+  line-height: 1;
+}
+.cal-nav:hover { background: var(--accent-soft); }
+.cal-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: .85rem;
+}
+.cal-table th {
+  text-align: center;
+  padding: .25rem 0;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: .77rem;
+}
+.cal-day {
+  text-align: center;
+  padding: .35rem .1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  user-select: none;
+}
+.cal-day:not(.other-month):hover { background: rgba(102, 69, 54, 0.07); }
+.cal-day.has-show {
+  font-weight: 700;
+  color: var(--accent);
+}
+.cal-day.has-show:hover { background: var(--accent-soft); }
+.cal-day.selected {
+  background: var(--accent);
+  color: #fff !important;
+}
+.cal-day.selected:hover { opacity: .85; }
+.cal-day.other-month {
+  opacity: .3;
+  pointer-events: none;
+  cursor: default;
+}
+.cal-day.today {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+.cal-legend {
+  display: flex;
+  gap: 1rem;
+  font-size: .75rem;
+  color: var(--muted);
+  margin-top: .4rem;
+}
+.cal-legend-item {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+.cal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+.cal-dot-show { opacity: .45; }
+.cal-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin-bottom: .6rem;
+}
+.cal-preset {
+  font: inherit;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  padding: .32rem .7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel-soft, rgba(102, 69, 54, 0.04));
+  color: var(--accent);
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.cal-preset:hover {
+  background: var(--accent-soft, rgba(102, 69, 54, 0.09));
+  border-color: var(--accent);
+}
+.cal-preset:active { transform: translateY(1px); }
 
 .production-list {
   display: grid;
@@ -665,115 +745,20 @@ a:hover {
 <div class="section-header">
 <div>
 <h2>Performance Space New York</h2>
-<p>33 productions and 47 listed performance dates.</p>
+<p>5 productions and 12 listed performance dates.</p>
 </div>
 </div>
 <ul class="production-list"><li class="production-card">
 <div class="production-head">
 <div>
-<h2>We The Youth - Keith Haring Lecture Series</h2>
-<div class="meta-row"><span>Performance Space New York</span><span>Keith Haring Theatre</span></div>
-</div>
-<div class="tag">6 dates listed</div>
-</div>
-<div class="meta-row"><span class="run-range">Dec 6</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 10 at 03:00 PM</div>
-<div class="schedule-meta">Keith Haring Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/we-the-youth/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Jan 28 at 03:00 PM</div>
-<div class="schedule-meta">Keith Haring Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/we-the-youth/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Jun 08 at 02:00 PM</div>
-<div class="schedule-meta">Keith Haring Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/we-the-youth/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Dec 07 at 02:00 PM</div>
-<div class="schedule-meta">Keith Haring Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/we-the-youth/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Oct 18 at 12:00 PM</div>
-<div class="schedule-meta">Keith Haring Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/we-the-youth/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Dec 06 at 01:00 PM</div>
-<div class="schedule-meta">Keith Haring Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/we-the-youth/">Source</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
 <h2>Open Movement - Winter 2026</h2>
 <div class="meta-row"><span>Performance Space New York</span><span>Keith Haring Theater</span></div>
 </div>
-<div class="tag">16 dates listed</div>
+<div class="tag">8 dates listed</div>
 </div>
 <div class="meta-row"><span class="run-range">February 1 - June 7, 2026</span></div>
 
 <div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Feb 15 at 04:00 PM</div>
-<div class="schedule-meta">Keith Haring Theater</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/open-movement-winter-2026/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Feb 01 at 04:00 PM</div>
-<div class="schedule-meta">Keith Haring Theater</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/open-movement-winter-2026/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Feb 08 at 04:00 PM</div>
-<div class="schedule-meta">Keith Haring Theater</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/open-movement-winter-2026/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Mar 01 at 04:00 PM</div>
-<div class="schedule-meta">Keith Haring Theater</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/open-movement-winter-2026/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Mar 01 at 07:00 PM</div>
-<div class="schedule-meta">Keith Haring Theater</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/open-movement-winter-2026/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Mar 22 at 04:00 PM</div>
-<div class="schedule-meta">Keith Haring Theater</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/open-movement-winter-2026/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Mar 29 at 04:00 PM</div>
-<div class="schedule-meta">Keith Haring Theater</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/open-movement-winter-2026/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 05 at 04:00 PM</div>
-<div class="schedule-meta">Keith Haring Theater</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/open-movement-winter-2026/">Source</a></div>
-</li><li class="schedule-row">
 <div>
 <div class="schedule-datetime">Sun, Apr 12 at 04:00 PM</div>
 <div class="schedule-meta">Keith Haring Theater</div>
@@ -821,253 +806,6 @@ a:hover {
 <div class="schedule-meta">Keith Haring Theater</div>
 </div>
 <div class="schedule-links"><a href="https://performancespacenewyork.org/shows/open-movement-winter-2026/">Source</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Alternative Education</h2>
-<div class="meta-row"><span>Performance Space New York</span><span>Neilma Sidney Theatre</span></div>
-</div>
-<div class="tag">5 dates listed</div>
-</div>
-<div class="meta-row"><span class="run-range">Sep 7 - Oct 4</span></div>
-<p class="description">is a resource-sharing initiative including multiple workshops, tech camps, fairs, and events designed to uplift and empower artists, technicians, curators, and art workers at various stages of their careers. Spearheaded by Performance Space New York’s Production Manager</p>
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Tue, Sep 09 at 07:00 PM</div>
-<div class="schedule-meta">Neilma Sidney Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/alternative-education-2/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Mon, Sep 15 at 07:00 PM</div>
-<div class="schedule-meta">Neilma Sidney Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/alternative-education-2/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Mon, Sep 22 at 10:00 AM</div>
-<div class="schedule-meta">Neilma Sidney Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/alternative-education-2/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Tue, Sep 30 at 07:00 PM</div>
-<div class="schedule-meta">Neilma Sidney Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/alternative-education-2/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Oct 04 at 10:00 AM</div>
-<div class="schedule-meta">Neilma Sidney Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/alternative-education-2/">Source</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Theatrical</h2>
-<div class="meta-row"><span>Performance Space New York</span><span>The Neilma Sidney Theatre</span></div>
-</div>
-<div class="tag">1 dates listed</div>
-</div>
-<div class="meta-row"><span class="run-range">Oct 6</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Mon, Oct 06 at 07:00 PM</div>
-<div class="schedule-meta">The Neilma Sidney Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/theatrical-oct6/">Source</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>SXXTXCH LIVE</h2>
-<div class="meta-row"><span>Performance Space New York</span><span>October 17th | Nielma Sidney Theatre</span></div>
-</div>
-<div class="tag">5 dates listed</div>
-</div>
-<div class="meta-row"><span class="run-range">Oct 17 - 18</span></div>
-<p class="description">We the Youth: Keith Haring Lecture Series for Kids</p>
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Fri, Oct 17 at 06:00 PM</div>
-<div class="schedule-meta">October 17th | Nielma Sidney Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/sxxtxch/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Fri, Oct 17 at 06:30 PM</div>
-<div class="schedule-meta">October 17th | Nielma Sidney Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/sxxtxch/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Oct 18 at 03:00 PM</div>
-<div class="schedule-meta">October 17th | Nielma Sidney Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/sxxtxch/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Oct 18 at 04:00 PM</div>
-<div class="schedule-meta">October 17th | Nielma Sidney Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/sxxtxch/">Source</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Oct 18 at 07:30 PM</div>
-<div class="schedule-meta">October 17th | Nielma Sidney Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/sxxtxch/">Source</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>A Person in the World</h2>
-<div class="meta-row"><span>Performance Space New York</span><span>The Neilma Sidney Theatre</span></div>
-</div>
-<div class="tag">1 dates listed</div>
-</div>
-<div class="meta-row"><span class="run-range">Nov 3</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Mon, Nov 03 at 07:00 PM</div>
-<div class="schedule-meta">The Neilma Sidney Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/personintheworld/">Source</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Icons</h2>
-<div class="meta-row"><span>Performance Space New York</span><span>The Neilma Sidney Theatre</span></div>
-</div>
-<div class="tag">1 dates listed</div>
-</div>
-<div class="meta-row"><span class="run-range">Dec 1</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Mon, Dec 01 at 07:00 PM</div>
-<div class="schedule-meta">The Neilma Sidney Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/icons-nov3-2/">Source</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Critique Cabaret</h2>
-<div class="meta-row"><span>Performance Space New York</span><span>Keith Haring Theatre</span></div>
-</div>
-<div class="tag">1 dates listed</div>
-</div>
-<div class="meta-row"><span class="run-range">Dec 12</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Fri, Dec 12 at 07:00 PM</div>
-<div class="schedule-meta">Keith Haring Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/critique-cabaret/">Source</a> <a href="https://ci.ovationtix.com/203/production/1248901?performanceId=11683018">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>We Exist in the Ambivalence of Those Motherfuckers</h2>
-<div class="meta-row"><span>Performance Space New York</span></div>
-</div>
-<div class="tag">3 dates listed</div>
-</div>
-<div class="meta-row"><span class="run-range">January 27 - February 7, 2026</span></div>
-<p class="description">departs from the mainstream commemoration and reflection by Vietnam and the United States of the 50th anniversary of the end of the Vietnam War in 1975. While the injuries of the past remain present decades later and have been well-examined by Vietnamese-American artists, the history of experimental performance in…</p>
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Thu, Jan 29 at 06:30 PM</div>
-<div class="schedule-meta">Performance Space New York</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/we-exist-in-the-ambivalence/">Source</a> <a href="https://ci.ovationtix.com/203/production/1261843?performanceId=11740303">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Feb 01 at 04:00 PM</div>
-<div class="schedule-meta">Performance Space New York</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/we-exist-in-the-ambivalence/">Source</a> <a href="https://ci.ovationtix.com/203/production/1261843?performanceId=11740303">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Thu, Feb 05 at 07:00 PM</div>
-<div class="schedule-meta">Performance Space New York</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/we-exist-in-the-ambivalence/">Source</a> <a href="https://ci.ovationtix.com/203/production/1261843?performanceId=11740303">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Now America</h2>
-<div class="meta-row"><span>Performance Space New York</span><span>The Neilma Sidney Theatre</span></div>
-</div>
-<div class="tag">1 dates listed</div>
-</div>
-<div class="meta-row"><span class="run-range">Feb 2</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Mon, Feb 02 at 07:00 PM</div>
-<div class="schedule-meta">The Neilma Sidney Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/new-america/">Source</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Biography/Autobiography</h2>
-<div class="meta-row"><span>Performance Space New York</span><span>The Neilma Sidney Theatre</span></div>
-</div>
-<div class="tag">1 dates listed</div>
-</div>
-<div class="meta-row"><span class="run-range">Mar 2</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Mon, Mar 02 at 07:00 PM</div>
-<div class="schedule-meta">The Neilma Sidney Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/biography-autobiography/">Source</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Mister Cobra</h2>
-<div class="meta-row"><span>Performance Space New York</span><span>Keith Haring Theatre</span></div>
-</div>
-<div class="tag">1 dates listed</div>
-</div>
-<div class="meta-row"><span class="run-range">Mar 28</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Mar 28 at 07:00 PM</div>
-<div class="schedule-meta">Keith Haring Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/mister-cobra/">Source</a> <a href="https://ci.ovationtix.com/203/production/1248906?performanceId=11683049">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Deep</h2>
-<div class="meta-row"><span>Performance Space New York</span><span>The Neilma Sidney Theatre</span></div>
-</div>
-<div class="tag">1 dates listed</div>
-</div>
-<div class="meta-row"><span class="run-range">Apr 6</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Mon, Apr 06 at 07:00 PM</div>
-<div class="schedule-meta">The Neilma Sidney Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/deep-april6/">Source</a></div>
 </li></ul></div>
 </li><li class="production-card">
 <div class="production-head">
@@ -1137,182 +875,6 @@ a:hover {
 </div>
 <div class="schedule-links"><a href="https://performancespacenewyork.org/shows/forge-possibilty/">Source</a></div>
 </li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Aguas Frescas</h2>
-<div class="meta-row"><span>Performance Space New York</span><span>Keith Haring Theatre</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">Apr 17 - 18</span></div>
-<p class="description">On the heels of the 10th year anniversary of his cross-disciplinary fashion label,</p>
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Apr 17 - 18</p><div class="schedule-links"><a href="https://performancespacenewyork.org/shows/aguas-frescas/">Source</a> <a href="https://ci.ovationtix.com/203/production/1248905?performanceId=11683047">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Color Theories</h2>
-<div class="meta-row"><span>Performance Space New York</span><span>Keith Haring Theatre</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">September 3 - September 22</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">September 3 - September 22</p><div class="schedule-links"><a href="https://performancespacenewyork.org/shows/color-theories/">Source</a> <a href="https://color-theories.com/">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>DARKMATTER</h2>
-<div class="meta-row"><span>Performance Space New York</span><span>Jan. 13-18th | Keith Haring Theatre | 7pm</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">Jan 13 - 18</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Jan 13 - 18</p><div class="schedule-links"><a href="https://performancespacenewyork.org/shows/dark-matter/">Source</a> <a href="https://events.humanitix.com/darkmatter">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Drew Kahu’āina Broderick and Lana Lopesi in dialogue (Relation) | Forge Project x OPEN ROOM</h2>
-<div class="meta-row"><span>Performance Space New York</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">Oct 23</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Oct 23</p><div class="schedule-links"><a href="https://performancespacenewyork.org/shows/drew-kahuaina-broderick-and-lana-lopesi-in-dialogue-relation-forge-project-x-open-room/">Source</a> <a href="https://ci.ovationtix.com/203/production/1249462?performanceId=11684898">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Generational Wealth (Abundance) | Forge Project x OPEN ROOM</h2>
-<div class="meta-row"><span>Performance Space New York</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">Mar 31</span></div>
-<p class="description">Join us for a panel discussion on wealth redistribution as part of</p>
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Mar 31</p><div class="schedule-links"><a href="https://performancespacenewyork.org/shows/forge-abundance/">Source</a> <a href="https://ci.ovationtix.com/203/production/1249462?performanceId=11737267">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>HOLE PICS presents Performance Space New York&#x27;s Annual Holiday Party</h2>
-<div class="meta-row"><span>Performance Space New York</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">Dec 12</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Dec 12</p><div class="schedule-links"><a href="https://performancespacenewyork.org/shows/hole-pics-holiday-party/">Source</a> <a href="https://ci.ovationtix.com/203/production/1253870?performanceId=11704524">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>In Residence</h2>
-<div class="meta-row"><span>Performance Space New York</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">Jan 13 - Apr 15</span></div>
-<p class="description">, during a season-long residency with Performance Space New York, will further research and develop her project</p>
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Jan 13 - Apr 15</p><div class="schedule-links"><a href="https://performancespacenewyork.org/shows/leslie-cuyjet/">Source</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>LaLaLand Back</h2>
-<div class="meta-row"><span>Performance Space New York</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">Jan 10</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Jan 10</p><div class="schedule-links"><a href="https://performancespacenewyork.org/shows/lalaland-back/">Source</a> <a href="https://ci.ovationtix.com/203/production/1259567?performanceId=11731517">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Native Visual Sovereignty: A Reader on Art and Performance Book Launch with Candice Hopkins and special presentations by Spiderwoman Theater and Jeffrey Gibson (Movement) | Forge Project x OPEN ROOM</h2>
-<div class="meta-row"><span>Performance Space New York</span><span>Native Visual Sovereignty: A Reader on Art and Performance Book Launch with Candice Hopkins and special presentations by Spiderwoman Theater and Jeffrey Gibson (Movement) | Forge Project x OPEN ROOM | Performance Space New York</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">Nov 11</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Nov 11</p><div class="schedule-links"><a href="https://performancespacenewyork.org/shows/movement-forge/">Source</a> <a href="https://ci.ovationtix.com/203/production/1249462?performanceId=11684899">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>RAIN FADE</h2>
-<div class="meta-row"><span>Performance Space New York</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">Feb 17</span></div>
-<p class="description">Dweller, Alexander Ghedi Weheliye, Abdu Ali, SCRAAATCH, Sweater on Polo, Telfar</p>
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Feb 17</p><div class="schedule-links"><a href="https://performancespacenewyork.org/shows/dweller-rain-fade/">Source</a> <a href="https://ci.ovationtix.com/203/production/1266125?performanceId=11768983">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>THE FIT: Honeymoon Is Over</h2>
-<div class="meta-row"><span>Performance Space New York</span><span>Keith Haring Theatre</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">Oct 25</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Oct 25</p><div class="schedule-links"><a href="https://performancespacenewyork.org/shows/the-fit-honeymoon-is-over/">Source</a> <a href="https://www.eventbrite.com/e/1739411208749?aff=oddtdtcreator">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>The Queer Potluck</h2>
-<div class="meta-row"><span>Performance Space New York</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">Dec 4</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Dec 4</p><div class="schedule-links"><a href="https://performancespacenewyork.org/shows/the-queer-potluck/">Source</a> <a href="https://ci.ovationtix.com/203/production/1258991?performanceId=11728462">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>[siccer]</h2>
-<div class="meta-row"><span>Performance Space New York</span><span>Keith Haring Theatre | 7:30pm</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">Nov 20 - 22</span></div>
-<p class="description">Advance tickets for Thurs. Nov. 20th and Fri. Nov 21st are sold out.</p>
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Nov 20 - 22</p><div class="schedule-links"><a href="https://performancespacenewyork.org/shows/siccer/">Source</a> <a href="https://ci.ovationtix.com/203/production/1248904">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>a story, a river, a mirror, a map</h2>
-<div class="meta-row"><span>Performance Space New York</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">Sep 13</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Sep 13</p><div class="schedule-links"><a href="https://performancespacenewyork.org/shows/a-story-a-river-a-mirror-a-map/">Source</a> <a href="https://ci.ovationtix.com/203/production/1249462?performanceId=11684897">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>images consume me</h2>
-<div class="meta-row"><span>Performance Space New York</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">Dec 16</span></div>
-
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Dec 16</p><div class="schedule-links"><a href="https://performancespacenewyork.org/shows/images-consume-me/">Source</a> <a href="https://www.eventbrite.co.uk/e/images-consume-me-eiag-x-joanofarca-tickets-1977387330736?aff=oddtdtcreator">Tickets</a></div></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>sim-B</h2>
-<div class="meta-row"><span>Performance Space New York</span></div>
-</div>
-<div class="tag">Run range only</div>
-</div>
-<div class="meta-row"><span class="run-range">Aug 20 - Jun 17</span></div>
-<p class="description">is an laboratory for co-designing liberatory systems of preservation and encryption, stewarded by Black queer memory artists</p>
-<div class="schedule-block"><p class="schedule-label">Schedule</p><p class="fallback-note">Aug 20 - Jun 17</p><div class="schedule-links"><a href="https://performancespacenewyork.org/shows/sim-b/">Source</a></div></div>
 </li></ul>
 </section>
     </div>

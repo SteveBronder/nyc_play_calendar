@@ -113,6 +113,8 @@ a:hover {
   margin-top: 26px;
 }
 
+.layout > * { min-width: 0; }
+
 .sidebar,
 .content-panel {
   border: 1px solid var(--line);
@@ -242,18 +244,19 @@ a:hover {
 
 .filter-controls {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 16px;
   margin-top: 16px;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: all 0.3s ease;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
 }
 
 .filter-container.active .filter-controls {
-  max-height: 300px;
+  max-height: 700px;
   opacity: 1;
+  overflow: visible;
 }
 
 .filter-group {
@@ -270,22 +273,6 @@ a:hover {
   color: var(--muted);
 }
 
-.filter-group input[type="date"] {
-  padding: 10px 12px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: rgba(255,255,255,0.8);
-  color: var(--ink);
-  font-size: 0.95rem;
-  font-family: inherit;
-  transition: border-color 0.2s ease;
-}
-
-.filter-group input[type="date"]:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(163, 63, 47, 0.1);
-}
 
 .venue-select {
   position: relative;
@@ -383,17 +370,6 @@ a:hover {
   font-family: inherit;
 }
 
-.filter-apply {
-  flex: 1;
-  background: var(--accent);
-  color: white;
-}
-
-.filter-apply:hover {
-  background: #923226;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(163, 63, 47, 0.3);
-}
 
 .filter-reset {
   background: rgba(255,255,255,0.7);
@@ -405,6 +381,110 @@ a:hover {
   background: rgba(255,255,255,0.9);
   color: var(--ink);
 }
+
+/* Calendar date picker */
+.cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .4rem;
+  font-weight: 600;
+  font-size: .95rem;
+}
+.cal-nav {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--accent);
+  padding: .1rem .35rem;
+  border-radius: 6px;
+  line-height: 1;
+}
+.cal-nav:hover { background: var(--accent-soft); }
+.cal-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: .85rem;
+}
+.cal-table th {
+  text-align: center;
+  padding: .25rem 0;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: .77rem;
+}
+.cal-day {
+  text-align: center;
+  padding: .35rem .1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  user-select: none;
+}
+.cal-day:not(.other-month):hover { background: rgba(102, 69, 54, 0.07); }
+.cal-day.has-show {
+  font-weight: 700;
+  color: var(--accent);
+}
+.cal-day.has-show:hover { background: var(--accent-soft); }
+.cal-day.selected {
+  background: var(--accent);
+  color: #fff !important;
+}
+.cal-day.selected:hover { opacity: .85; }
+.cal-day.other-month {
+  opacity: .3;
+  pointer-events: none;
+  cursor: default;
+}
+.cal-day.today {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+.cal-legend {
+  display: flex;
+  gap: 1rem;
+  font-size: .75rem;
+  color: var(--muted);
+  margin-top: .4rem;
+}
+.cal-legend-item {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+.cal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+.cal-dot-show { opacity: .45; }
+.cal-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin-bottom: .6rem;
+}
+.cal-preset {
+  font: inherit;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  padding: .32rem .7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel-soft, rgba(102, 69, 54, 0.04));
+  color: var(--accent);
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.cal-preset:hover {
+  background: var(--accent-soft, rgba(102, 69, 54, 0.09));
+  border-color: var(--accent);
+}
+.cal-preset:active { transform: translateY(1px); }
 
 .production-list {
   display: grid;
@@ -723,6 +803,10 @@ def render_site(payload: dict, destination: Path) -> None:
 
 
 def _group_payload(payload: dict) -> dict[str, list[dict]]:
+    # Drop any performance that already happened. The site is forward-looking;
+    # past-dated shows should never appear in listings or in the date filter.
+    today_str = datetime.now(NY_TZ).date().isoformat()
+
     production_map = {}
     for production in payload["productions"]:
         copied = dict(production)
@@ -730,18 +814,23 @@ def _group_payload(payload: dict) -> dict[str, list[dict]]:
         production_map[production["production_id"]] = copied
 
     for instance in sorted(payload["instances"], key=lambda item: item["start"]):
+        if instance.get("start", "")[:10] < today_str:
+            continue
         production = production_map.get(instance["production_id"])
         if production:
             production["instances"].append(instance)
 
     grouped: dict[str, list[dict]] = defaultdict(list)
     for production in production_map.values():
+        # Hide productions whose entire run is in the past.
+        if not production["instances"]:
+            continue
         grouped[production["theater_id"]].append(production)
 
     for theater_id, productions in grouped.items():
         productions.sort(
             key=lambda item: (
-                item["instances"][0]["start"] if item["instances"] else "9999-12-31T23:59:59",
+                item["instances"][0]["start"],
                 item["title"],
             )
         )
@@ -749,20 +838,32 @@ def _group_payload(payload: dict) -> dict[str, list[dict]]:
 
 
 def _render_index_page(payload: dict, grouped: dict[str, list[dict]], theater_map: dict[str, str]) -> str:
+    # grouped has already been filtered to upcoming-only in _group_payload.
+    upcoming_production_count = sum(len(prods) for prods in grouped.values())
+    upcoming_instance_count = sum(
+        len(prod["instances"]) for prods in grouped.values() for prod in prods
+    )
+
     venue_cards = []
     for theater_id, theater_name in sorted(theater_map.items(), key=lambda item: item[1]):
         productions = grouped.get(theater_id, [])
+        if not productions:
+            continue
         preview = []
         for production in productions[:4]:
             next_show = production["instances"][0]["start"] if production["instances"] else production.get("run_range_text", "Schedule pending")
-            # Extract date for filtering (ISO format)
-            show_date = ""
+            # Embed all performance dates so the date filter can match any of them
+            show_date_attrs = ""
             if production["instances"]:
-                show_date = f' data-show-date="{next_show[:10]}"'
+                all_inst_dates = sorted({inst["start"][:10] for inst in production["instances"]})
+                show_date_attrs = (
+                    f' data-show-date="{next_show[:10]}"'
+                    f' data-all-dates="{",".join(all_inst_dates)}"'
+                )
             preview.append(
                 "\n".join(
                     [
-                        f'<div class="show-preview-row"{show_date}>',
+                        f'<div class="show-preview-row"{show_date_attrs}>',
                         "<div>",
                         f'<div class="show-preview-title">{escape(production["title"])}</div>',
                         (
@@ -802,15 +903,24 @@ def _render_index_page(payload: dict, grouped: dict[str, list[dict]], theater_ma
     # Build filter HTML
     filter_html = _render_filter_panel(theater_map)
 
+    # All unique show dates across every production — used to highlight calendar cells
+    all_show_dates_json = json.dumps(sorted({
+        inst["start"][:10]
+        for prods in grouped.values()
+        for prod in prods
+        for inst in prod["instances"]
+    }))
+
     body = "\n".join(
         [
             '<section class="content-panel">',
             '<div class="section-header">',
             "<div>",
             "<h2>Venue Guide</h2>",
-            f"<p id=\"result-count\">{payload['production_count']} productions across {len(theater_map)} venues.</p>",
+            f"<p id=\"result-count\">{upcoming_production_count} upcoming productions across {len([t for t in theater_map if grouped.get(t)])} venues.</p>",
             "</div>",
             "</div>",
+            f'<script id="allShowDates" type="application/json">{all_show_dates_json}</script>',
             filter_html,
             f'<div class="venue-grid" id="venueGrid">{"".join(venue_cards)}</div>',
             "</section>",
@@ -820,7 +930,7 @@ def _render_index_page(payload: dict, grouped: dict[str, list[dict]], theater_ma
         title="NYC Small Theater Guide",
         eyebrow="Live Aggregation",
         subtitle=(
-            f"{payload['instance_count']} scheduled performances collected from neighborhood venues. "
+            f"{upcoming_instance_count} upcoming performances collected from neighborhood venues. "
             "Browse by theater, then drill into each show to see upcoming dates and ticket links."
         ),
         theater_map=theater_map,
@@ -875,21 +985,26 @@ def _render_filter_panel(theater_map: dict[str, str]) -> str:
             f'<label class="venue-option"><input type="checkbox" class="venue-checkbox" value="{escape(theater_id)}" /> {escape(theater_name)}</label>'
         )
 
-    return f"""<div class="filter-container" id="filterContainer">
-  <button class="filter-toggle-btn" id="filterToggle">
-    <span>✦ Filter by Date & Venue</span>
+    return f"""<div class="filter-container active" id="filterContainer">
+  <button class="filter-toggle-btn open" id="filterToggle">
+    <span>✦ Filter by Date &amp; Venue</span>
     <span class="arrow">▼</span>
   </button>
 
   <div class="filter-controls">
     <div class="filter-group">
-      <label for="startDate">Start Date</label>
-      <input type="date" id="startDate" />
-    </div>
-
-    <div class="filter-group">
-      <label for="endDate">End Date</label>
-      <input type="date" id="endDate" />
+      <label>Date</label>
+      <div class="cal-presets" id="calPresets">
+        <button type="button" class="cal-preset" data-preset="today">Today</button>
+        <button type="button" class="cal-preset" data-preset="weekend">This Weekend</button>
+        <button type="button" class="cal-preset" data-preset="this-week">This Week</button>
+        <button type="button" class="cal-preset" data-preset="next-week">Next Week</button>
+      </div>
+      <div id="calendarContainer"></div>
+      <div class="cal-legend">
+        <span class="cal-legend-item"><span class="cal-dot cal-dot-show"></span> Has shows</span>
+        <span class="cal-legend-item"><span class="cal-dot"></span> Selected</span>
+      </div>
     </div>
 
     <div class="filter-group venue-select">
@@ -907,8 +1022,7 @@ def _render_filter_panel(theater_map: dict[str, str]) -> str:
     </div>
 
     <div class="filter-actions">
-      <button class="filter-apply" id="filterApply">Apply Filters</button>
-      <button class="filter-reset" id="filterReset">Reset</button>
+      <button class="filter-reset" id="filterReset">Reset Filters</button>
     </div>
   </div>
 </div>"""
@@ -997,197 +1111,306 @@ def _render_production_card(production: dict) -> str:
 def _get_filter_script() -> str:
     """Generate the filter JavaScript."""
     return """<script>
-    const filterState = {
-      startDate: null,
-      endDate: null,
-      venues: new Set()
+  // --- Filter state ---
+  const filterState = { venues: new Set() };
+  const selectedDates = new Set();
+  let calYear, calMonth;
+  let anchorDate = null;   // last-clicked date, used for shift+click range fill
+
+  // All dates that have any show — loaded from embedded JSON (covers every
+  // production instance, not just the preview rows shown on this page)
+  const showDates = new Set(
+    JSON.parse(document.getElementById('allShowDates').textContent)
+  );
+
+  const filterContainer     = document.getElementById('filterContainer');
+  const filterToggle        = document.getElementById('filterToggle');
+  const filterReset         = document.getElementById('filterReset');
+  const venueSelect         = document.getElementById('venueSelect');
+  const venueSelectDropdown = document.getElementById('venueSelectDropdown');
+  const venueSelectText     = document.getElementById('venueSelectText');
+  const venueCheckboxes     = document.querySelectorAll('.venue-checkbox');
+  const venueGrid           = document.getElementById('venueGrid');
+  const resultCount         = document.getElementById('result-count');
+  const initialResultText   = resultCount.textContent;
+
+  // --- Calendar ---
+  const MONTHS = ['January','February','March','April','May','June',
+                  'July','August','September','October','November','December'];
+  const DAYS   = ['Mo','Tu','We','Th','Fr','Sa','Su'];
+
+  function pad2(n) { return String(n).padStart(2, '0'); }
+  function toDateStr(y, m, d) { return y + '-' + pad2(m + 1) + '-' + pad2(d); }
+
+  // Fill every date between a and b (inclusive) into selectedDates.
+  // Iterates by calendar day (not by 86_400_000 ms) so DST transitions
+  // like spring-forward don't drop the final date.
+  function fillRange(a, b) {
+    const parse = function(s) {
+      const p = s.split('-');
+      return new Date(parseInt(p[0], 10), parseInt(p[1], 10) - 1, parseInt(p[2], 10));
+    };
+    let lo = parse(a), hi = parse(b);
+    if (lo > hi) { const tmp = lo; lo = hi; hi = tmp; }
+    const cur = new Date(lo.getFullYear(), lo.getMonth(), lo.getDate());
+    while (cur <= hi) {
+      selectedDates.add(toDateStr(cur.getFullYear(), cur.getMonth(), cur.getDate()));
+      cur.setDate(cur.getDate() + 1);
+    }
+    anchorDate = b;
+  }
+
+  function renderCalendar(year, month) {
+    calYear = year; calMonth = month;
+    const container = document.getElementById('calendarContainer');
+
+    const today    = new Date();
+    const todayStr = toDateStr(today.getFullYear(), today.getMonth(), today.getDate());
+
+    // Monday-first offset (0=Mon … 6=Sun)
+    const firstDow    = new Date(year, month, 1).getDay();
+    const startOffset = firstDow === 0 ? 6 : firstDow - 1;
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const daysInPrev  = new Date(year, month, 0).getDate();
+
+    const dayHeaders = DAYS.map(function(d) { return '<th>' + d + '</th>'; }).join('');
+    let cells = [], rows = [];
+
+    // Previous-month overflow — not interactive
+    for (let i = 0; i < startOffset; i++) {
+      cells.push('<td class="cal-day other-month">' + (daysInPrev - startOffset + 1 + i) + '</td>');
+    }
+
+    // Current-month cells — ALL are clickable; data-date always present
+    for (let d = 1; d <= daysInMonth; d++) {
+      const ds  = toDateStr(year, month, d);
+      const cls = ['cal-day'];
+      if (showDates.has(ds))     cls.push('has-show');
+      if (selectedDates.has(ds)) cls.push('selected');
+      if (ds === todayStr)        cls.push('today');
+      cells.push('<td class="' + cls.join(' ') + '" data-date="' + ds + '">' + d + '</td>');
+      if (cells.length === 7) { rows.push('<tr>' + cells.join('') + '</tr>'); cells = []; }
+    }
+
+    // Next-month overflow — not interactive
+    let nextDay = 1;
+    while (cells.length > 0 && cells.length < 7) {
+      cells.push('<td class="cal-day other-month">' + (nextDay++) + '</td>');
+    }
+    if (cells.length) rows.push('<tr>' + cells.join('') + '</tr>');
+
+    container.innerHTML =
+      '<div class="cal-header">' +
+        '<button class="cal-nav" id="calPrev">&#8249;</button>' +
+        '<span>' + MONTHS[month] + ' ' + year + '</span>' +
+        '<button class="cal-nav" id="calNext">&#8250;</button>' +
+      '</div>' +
+      '<table class="cal-table">' +
+        '<thead><tr>' + dayHeaders + '</tr></thead>' +
+        '<tbody>' + rows.join('') + '</tbody>' +
+      '</table>';
+
+    document.getElementById('calPrev').onclick = function() {
+      let m = month - 1, y = year;
+      if (m < 0) { m = 11; y--; }
+      renderCalendar(y, m);
+    };
+    document.getElementById('calNext').onclick = function() {
+      let m = month + 1, y = year;
+      if (m > 11) { m = 0; y++; }
+      renderCalendar(y, m);
     };
 
-    const filterContainer = document.getElementById('filterContainer');
-    const filterToggle = document.getElementById('filterToggle');
-    const filterApply = document.getElementById('filterApply');
-    const filterReset = document.getElementById('filterReset');
-    const startDateInput = document.getElementById('startDate');
-    const endDateInput = document.getElementById('endDate');
-    const venueSelect = document.getElementById('venueSelect');
-    const venueSelectDropdown = document.getElementById('venueSelectDropdown');
-    const venueSelectText = document.getElementById('venueSelectText');
-    const venueCheckboxes = document.querySelectorAll('.venue-checkbox');
-    const venueGrid = document.getElementById('venueGrid');
-    const resultCount = document.getElementById('result-count');
-
-    // Store initial state
-    const initialResultText = resultCount.textContent;
-    const initialVenueCount = venueGrid.querySelectorAll('.venue-card').length;
-
-    // Toggle Filter Panel
-    filterToggle.addEventListener('click', () => {
-      filterContainer.classList.toggle('active');
-      filterToggle.classList.toggle('open');
-    });
-
-    // Venue Select Dropdown
-    venueSelect.addEventListener('click', (e) => {
-      e.stopPropagation();
-      venueSelectDropdown.classList.toggle('open');
-      venueSelect.classList.toggle('active');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!venueSelect.contains(e.target) && !venueSelectDropdown.contains(e.target)) {
-        venueSelectDropdown.classList.remove('open');
-        venueSelect.classList.remove('active');
-      }
-    });
-
-    // Venue Checkbox Logic
-    venueCheckboxes.forEach(checkbox => {
-      checkbox.addEventListener('change', (e) => {
-        if (checkbox.value === 'all') {
-          const isChecked = checkbox.checked;
-          venueCheckboxes.forEach(cb => {
-            if (cb.value !== 'all') {
-              cb.checked = isChecked;
-              if (isChecked) {
-                filterState.venues.add(cb.value);
-              } else {
-                filterState.venues.delete(cb.value);
-              }
-            }
-          });
+    // Every current-month cell is clickable.
+    // Shift+click fills the range from the last anchor to the clicked date.
+    container.querySelectorAll('.cal-day:not(.other-month)').forEach(function(cell) {
+      cell.onclick = function(e) {
+        const ds = cell.getAttribute('data-date');
+        if (e.shiftKey && anchorDate && anchorDate !== ds) {
+          fillRange(anchorDate, ds);
+        } else if (selectedDates.has(ds)) {
+          selectedDates.delete(ds);
+          anchorDate = null;
         } else {
-          if (checkbox.checked) {
-            filterState.venues.add(checkbox.value);
-          } else {
-            filterState.venues.delete(checkbox.value);
-          }
+          selectedDates.add(ds);
+          anchorDate = ds;
         }
-        updateVenueSelectText();
-      });
+        renderCalendar(calYear, calMonth);
+        applyFilters();
+      };
     });
+  }
 
-    function updateVenueSelectText() {
-      if (filterState.venues.size === 0) {
-        venueSelectText.textContent = 'All Venues';
-      } else if (filterState.venues.size === 7) {
-        venueSelectText.textContent = 'All Venues';
-      } else if (filterState.venues.size === 1) {
-        const venueName = Array.from(filterState.venues)[0].replace(/_/g, ' ').toUpperCase();
-        venueSelectText.textContent = venueName;
-      } else {
-        venueSelectText.textContent = filterState.venues.size + ' venues selected';
+  // Initialise calendar to the current month
+  (function() {
+    const now = new Date();
+    renderCalendar(now.getFullYear(), now.getMonth());
+  })();
+
+  // --- Date preset buttons (Today / This Weekend / This Week / Next Week) ---
+  // Weeks run Monday-Sunday to match the calendar grid.
+  function startOfWeekMonday(d) {
+    const dow = d.getDay();                   // 0=Sun..6=Sat
+    const offset = dow === 0 ? -6 : 1 - dow;  // back up to Monday
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate() + offset);
+  }
+  function applyPreset(name) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    let startDate, endDate;
+    if (name === 'today') {
+      startDate = endDate = today;
+    } else if (name === 'weekend') {
+      // Fri/Sat/Sun of the current week. If it's already past Sunday
+      // (it can't be — Sun is day 0) or we're on a weekday, pick the
+      // upcoming Fri..Sun. If today is Fri/Sat/Sun, start from today.
+      const dow = today.getDay();             // 0=Sun..6=Sat
+      if (dow === 0) {                        // Sunday → just today
+        startDate = endDate = today;
+      } else if (dow === 6) {                 // Saturday → Sat+Sun
+        startDate = today;
+        endDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+      } else {                                // Mon-Fri → upcoming Fri..Sun
+        const daysToFri = 5 - dow;
+        startDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + daysToFri);
+        endDate   = new Date(today.getFullYear(), today.getMonth(), today.getDate() + daysToFri + 2);
       }
+    } else if (name === 'this-week') {
+      startDate = startOfWeekMonday(today);
+      endDate   = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + 6);
+      // Never include past days — clamp the start to today if needed.
+      if (startDate < today) startDate = today;
+    } else if (name === 'next-week') {
+      const thisMon = startOfWeekMonday(today);
+      startDate = new Date(thisMon.getFullYear(), thisMon.getMonth(), thisMon.getDate() + 7);
+      endDate   = new Date(thisMon.getFullYear(), thisMon.getMonth(), thisMon.getDate() + 13);
+    } else {
+      return;
     }
+    // Replace any existing selection so the preset behaves as a shortcut,
+    // not an additive toggle.
+    selectedDates.clear();
+    const startStr = toDateStr(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+    const endStr   = toDateStr(endDate.getFullYear(),   endDate.getMonth(),   endDate.getDate());
+    fillRange(startStr, endStr);
+    // Jump the calendar to the month containing the first selected day
+    // so users can see what they picked.
+    renderCalendar(startDate.getFullYear(), startDate.getMonth());
+    applyFilters();
+  }
+  document.querySelectorAll('.cal-preset').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      applyPreset(btn.getAttribute('data-preset'));
+    });
+  });
 
-    // Apply Filters
-    filterApply.addEventListener('click', applyFilters);
+  // --- Filter-panel toggle ---
+  filterToggle.addEventListener('click', function() {
+    filterContainer.classList.toggle('active');
+    filterToggle.classList.toggle('open');
+  });
 
-    function applyFilters() {
-      filterState.startDate = startDateInput.value ? new Date(startDateInput.value) : null;
-      filterState.endDate = endDateInput.value ? new Date(endDateInput.value) : null;
-
-      const cards = document.querySelectorAll('.venue-card');
-      let visibleCount = 0;
-
-      cards.forEach(card => {
-        const venue = card.getAttribute('data-venue');
-        const earliestDate = card.getAttribute('data-earliest-date');
-        const latestDate = card.getAttribute('data-latest-date');
-
-        const isVenueMatch = filterState.venues.size === 0 || filterState.venues.has(venue);
-
-        let isDateMatch = true;
-        if (filterState.startDate || filterState.endDate) {
-          if (earliestDate && latestDate) {
-            const cardEarliestDate = new Date(earliestDate);
-            const cardLatestDate = new Date(latestDate);
-
-            if (filterState.startDate && cardLatestDate < filterState.startDate) {
-              isDateMatch = false;
-            }
-            if (filterState.endDate && cardEarliestDate > filterState.endDate) {
-              isDateMatch = false;
-            }
-          } else {
-            isDateMatch = false;
-          }
-        }
-
-        const shouldShow = isVenueMatch && isDateMatch;
-        if (shouldShow) {
-          card.classList.remove('hidden');
-
-          // Hide individual show preview rows that fall outside date range
-          const previewRows = card.querySelectorAll('.show-preview-row');
-          let hasVisibleShow = false;
-          previewRows.forEach(row => {
-            const showDate = row.getAttribute('data-show-date');
-            let showVisible = true;
-
-            if (filterState.startDate || filterState.endDate) {
-              if (showDate) {
-                const rowDate = new Date(showDate);
-                if (filterState.startDate && rowDate < filterState.startDate) {
-                  showVisible = false;
-                }
-                if (filterState.endDate && rowDate > filterState.endDate) {
-                  showVisible = false;
-                }
-              } else {
-                // Hide undated rows when date filter is applied
-                showVisible = false;
-              }
-            }
-
-            row.style.display = showVisible ? 'flex' : 'none';
-            if (showVisible) hasVisibleShow = true;
-          });
-
-          // Only count venue if it has at least one visible show
-          if (hasVisibleShow || previewRows.length === 0) {
-            visibleCount++;
-          } else {
-            card.classList.add('hidden');
-          }
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-
-      updateResultCount(visibleCount);
+  // --- Venue dropdown ---
+  venueSelect.addEventListener('click', function(e) {
+    e.stopPropagation();
+    venueSelectDropdown.classList.toggle('open');
+    venueSelect.classList.toggle('active');
+  });
+  document.addEventListener('click', function(e) {
+    if (!venueSelect.contains(e.target) && !venueSelectDropdown.contains(e.target)) {
+      venueSelectDropdown.classList.remove('open');
+      venueSelect.classList.remove('active');
     }
+  });
 
-    // Reset Filters
-    filterReset.addEventListener('click', () => {
-      startDateInput.value = '';
-      endDateInput.value = '';
-      venueCheckboxes.forEach(cb => cb.checked = false);
-      filterState.venues.clear();
-      updateVenueSelectText();
-      venueGrid.querySelectorAll('.venue-card').forEach(card => {
-        card.classList.remove('hidden');
-        // Show all show preview rows
-        card.querySelectorAll('.show-preview-row').forEach(row => {
-          row.style.display = 'flex';
+  // --- Venue checkboxes — live filtering ---
+  const totalVenueCount = [...venueCheckboxes].filter(function(cb) { return cb.value !== 'all'; }).length;
+
+  venueCheckboxes.forEach(function(cb) {
+    cb.addEventListener('change', function() {
+      if (cb.value === 'all') {
+        [...venueCheckboxes].forEach(function(c) {
+          if (c.value !== 'all') {
+            c.checked = cb.checked;
+            if (cb.checked) filterState.venues.add(c.value);
+            else filterState.venues.delete(c.value);
+          }
         });
+      } else {
+        if (cb.checked) filterState.venues.add(cb.value);
+        else filterState.venues.delete(cb.value);
+      }
+      updateVenueSelectText();
+      applyFilters();
+    });
+  });
+
+  function updateVenueSelectText() {
+    const n = filterState.venues.size;
+    if (n === 0 || n === totalVenueCount) {
+      venueSelectText.textContent = 'All Venues';
+    } else if (n === 1) {
+      const id = [...filterState.venues][0];
+      venueSelectText.textContent = id.replace(/_/g, ' ').replace(/\\b\\w/g, function(l) { return l.toUpperCase(); });
+    } else {
+      venueSelectText.textContent = n + ' venues selected';
+    }
+  }
+
+  // --- Core filter logic (runs immediately on every state change) ---
+  function applyFilters() {
+    let visibleCount = 0;
+
+    document.querySelectorAll('.venue-card').forEach(function(card) {
+      const venue        = card.getAttribute('data-venue');
+      const isVenueMatch = filterState.venues.size === 0 || filterState.venues.has(venue);
+
+      const rows = card.querySelectorAll('.show-preview-row');
+      let hasVisibleRow  = selectedDates.size === 0;
+
+      rows.forEach(function(row) {
+        if (selectedDates.size === 0) {
+          row.style.display = 'flex';
+        } else {
+          // data-all-dates contains every performance date for this production;
+          // fall back to data-show-date for backward compatibility
+          const raw = row.getAttribute('data-all-dates') || row.getAttribute('data-show-date') || '';
+          const visible = raw.split(',').some(function(d) { return d && selectedDates.has(d); });
+          row.style.display = visible ? 'flex' : 'none';
+          if (visible) hasVisibleRow = true;
+        }
       });
-      resultCount.textContent = initialResultText;
+
+      const shouldShow = isVenueMatch && hasVisibleRow;
+      card.classList.toggle('hidden', !shouldShow);
+      if (shouldShow) visibleCount++;
     });
 
-    function updateResultCount(count) {
-      const total = venueGrid.querySelectorAll('.venue-card').length;
-      if (count === total) {
-        resultCount.textContent = initialResultText;
-      } else {
-        resultCount.textContent = count + ' of ' + total + ' venues shown.';
-      }
-    }
+    updateResultCount(visibleCount);
+  }
 
-    // Set min date to today
-    const today = new Date().toISOString().split('T')[0];
-    startDateInput.min = today;
-    endDateInput.min = today;
-  </script>"""
+  // --- Reset ---
+  filterReset.addEventListener('click', function() {
+    selectedDates.clear();
+    anchorDate = null;
+    filterState.venues.clear();
+    [...venueCheckboxes].forEach(function(cb) { cb.checked = false; });
+    updateVenueSelectText();
+    renderCalendar(calYear, calMonth);
+    venueGrid.querySelectorAll('.venue-card').forEach(function(card) {
+      card.classList.remove('hidden');
+      card.querySelectorAll('.show-preview-row').forEach(function(row) { row.style.display = 'flex'; });
+    });
+    resultCount.textContent = initialResultText;
+  });
+
+  function updateResultCount(count) {
+    const total = venueGrid.querySelectorAll('.venue-card').length;
+    resultCount.textContent = count === total
+      ? initialResultText
+      : count + ' of ' + total + ' venues shown.';
+  }
+</script>"""
 
 
 def _page_shell(
