@@ -652,6 +652,23 @@ a:hover {
   font-size: 0.9rem;
 }
 
+/* When a date filter is active, swap the single next-show line for the
+   full list of matching performance dates. Populated client-side. */
+.show-preview-dates {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: .15rem 0 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.show-preview-date {
+  padding: 1px 0;
+}
+.show-preview-date.hidden { display: none; }
+.show-preview-row.date-filtered .show-preview-meta { display: none; }
+.show-preview-row.date-filtered .show-preview-dates { display: block; }
+
 .empty-state {
   padding: 22px;
   border-radius: 18px;
@@ -739,32 +756,43 @@ a:hover {
       <aside class="sidebar">
 <h2>Browse Theaters</h2>
 <ul class="sidebar-list"><li><a href="astor_place.html">Astor Place Theatre</a></li><li><a href="chain_theatre.html">Chain Theatre</a></li><li><a href="liberty.html">Liberty Theatres</a></li><li><a href="nytw.html">New York Theatre Workshop</a></li><li><a href="parkside_lounge.html">Parkside Lounge</a></li><li><a href="performance_space.html">Performance Space New York</a></li><li><a href="rat_nyc.html">The Rat NYC</a></li><li><a href="tnc.html">Theater for the New City</a></li><li><a href="under_st_marks.html">Under St Marks · current</a></li><li><a href="vineyard.html">Vineyard Theatre</a></li><li><a href="wild_project.html">Wild Project</a></li></ul>
-<div class="sidebar-meta">Last scrape: Apr 11, 2026 at 03:11 PM</div>
+<div class="sidebar-meta">Last scrape: Apr 13, 2026 at 01:25 PM</div>
 </aside>
       <section class="content-panel">
 <div class="section-header">
 <div>
 <h2>Under St Marks</h2>
-<p>46 productions and 139 listed performance dates.</p>
+<p>46 productions and 130 listed performance dates.</p>
 </div>
 </div>
 <ul class="production-list"><li class="production-card">
 <div class="production-head">
 <div>
-<h2>Notes on Collagen</h2>
+<h2>PSA: Pelvic Service Announcement</h2>
 <div class="meta-row"><span>Under St Marks</span></div>
 </div>
-<div class="tag">3 dates listed</div>
+<div class="tag">1 dates listed</div>
 </div>
 
 
 <div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
 <div>
-<div class="schedule-datetime">Sat, Apr 11 at 03:40 PM</div>
+<div class="schedule-datetime">Mon, Apr 13 at 06:30 PM</div>
 <div class="schedule-meta">Under St Marks</div>
 </div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1328">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1328">Tickets</a></div>
-</li><li class="schedule-row">
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1343">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1343">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Notes on Collagen</h2>
+<div class="meta-row"><span>Under St Marks</span></div>
+</div>
+<div class="tag">2 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
 <div>
 <div class="schedule-datetime">Mon, Apr 13 at 08:10 PM</div>
 <div class="schedule-meta">Under St Marks</div>
@@ -780,193 +808,14 @@ a:hover {
 </li><li class="production-card">
 <div class="production-head">
 <div>
-<h2>PSA: Pelvic Service Announcement</h2>
-<div class="meta-row"><span>Under St Marks</span></div>
-</div>
-<div class="tag">2 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 11 at 05:20 PM</div>
-<div class="schedule-meta">Under St Marks</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1343">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1343">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Mon, Apr 13 at 06:30 PM</div>
-<div class="schedule-meta">Under St Marks</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1343">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1343">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>A &quot;Confessional&quot; of A Recovering Catholic: The Musical</h2>
-<div class="meta-row"><span>Under St Marks</span></div>
-</div>
-<div class="tag">2 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 11 at 07:00 PM</div>
-<div class="schedule-meta">Under St Marks</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1357">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1357">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 18 at 07:00 PM</div>
-<div class="schedule-meta">Under St Marks</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1357">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1357">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Extra Dry</h2>
-<div class="meta-row"><span>Under St Marks</span></div>
-</div>
-<div class="tag">2 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 11 at 08:40 PM</div>
-<div class="schedule-meta">Under St Marks</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1337">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1337">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Fri, Apr 17 at 06:30 PM</div>
-<div class="schedule-meta">Under St Marks</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1337">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1337">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>It&#x27;s Getting Tired Mildred</h2>
-<div class="meta-row"><span>Under St Marks</span></div>
-</div>
-<div class="tag">3 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 11 at 10:30 PM</div>
-<div class="schedule-meta">Under St Marks</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:579">Source</a> <a href="https://tickets.frigid.nyc/event/6897:579">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, May 09 at 09:30 PM</div>
-<div class="schedule-meta">Under St Marks</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:579">Source</a> <a href="https://tickets.frigid.nyc/event/6897:579">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Jun 13 at 09:30 PM</div>
-<div class="schedule-meta">Under St Marks</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:579">Source</a> <a href="https://tickets.frigid.nyc/event/6897:579">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Stations of Life</h2>
-<div class="meta-row"><span>Under St Marks</span></div>
-</div>
-<div class="tag">2 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 12 at 02:00 PM</div>
-<div class="schedule-meta">Under St Marks</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1358">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1358">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 18 at 10:20 PM</div>
-<div class="schedule-meta">Under St Marks</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1358">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1358">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>How I Learned (NOT) To Drive</h2>
-<div class="meta-row"><span>Under St Marks</span></div>
-</div>
-<div class="tag">3 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 12 at 03:40 PM</div>
-<div class="schedule-meta">Under St Marks</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1326">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1326">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Fri, Apr 17 at 09:50 PM</div>
-<div class="schedule-meta">Under St Marks</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1326">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1326">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 18 at 08:40 PM</div>
-<div class="schedule-meta">Under St Marks</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1326">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1326">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Squire D. Rathbone, Esq.</h2>
-<div class="meta-row"><span>Under St Marks</span></div>
-</div>
-<div class="tag">2 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 12 at 05:20 PM</div>
-<div class="schedule-meta">Under St Marks</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1361">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1361">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 19 at 03:40 PM</div>
-<div class="schedule-meta">Under St Marks</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1361">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1361">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
 <h2>Revenge of the Soy Boy</h2>
 <div class="meta-row"><span>Under St Marks</span></div>
 </div>
-<div class="tag">3 dates listed</div>
+<div class="tag">2 dates listed</div>
 </div>
 
 
 <div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 12 at 07:00 PM</div>
-<div class="schedule-meta">Under St Marks</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1360">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1360">Tickets</a></div>
-</li><li class="schedule-row">
 <div>
 <div class="schedule-datetime">Mon, Apr 13 at 09:50 PM</div>
 <div class="schedule-meta">Under St Marks</div>
@@ -1211,6 +1060,23 @@ a:hover {
 </li><li class="production-card">
 <div class="production-head">
 <div>
+<h2>Extra Dry</h2>
+<div class="meta-row"><span>Under St Marks</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, Apr 17 at 06:30 PM</div>
+<div class="schedule-meta">Under St Marks</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1337">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1337">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
 <h2>How to Poop in an Outhouse at -72°F</h2>
 <div class="meta-row"><span>Under St Marks</span></div>
 </div>
@@ -1224,6 +1090,29 @@ a:hover {
 <div class="schedule-meta">Under St Marks</div>
 </div>
 <div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1327">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1327">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>How I Learned (NOT) To Drive</h2>
+<div class="meta-row"><span>Under St Marks</span></div>
+</div>
+<div class="tag">2 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, Apr 17 at 09:50 PM</div>
+<div class="schedule-meta">Under St Marks</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1326">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1326">Tickets</a></div>
+</li><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 18 at 08:40 PM</div>
+<div class="schedule-meta">Under St Marks</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1326">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1326">Tickets</a></div>
 </li></ul></div>
 </li><li class="production-card">
 <div class="production-head">
@@ -1247,6 +1136,57 @@ a:hover {
 <div class="schedule-meta">Under St Marks</div>
 </div>
 <div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1362">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1362">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>A &quot;Confessional&quot; of A Recovering Catholic: The Musical</h2>
+<div class="meta-row"><span>Under St Marks</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 18 at 07:00 PM</div>
+<div class="schedule-meta">Under St Marks</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1357">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1357">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Stations of Life</h2>
+<div class="meta-row"><span>Under St Marks</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 18 at 10:20 PM</div>
+<div class="schedule-meta">Under St Marks</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1358">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1358">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Squire D. Rathbone, Esq.</h2>
+<div class="meta-row"><span>Under St Marks</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, Apr 19 at 03:40 PM</div>
+<div class="schedule-meta">Under St Marks</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1361">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1361">Tickets</a></div>
 </li></ul></div>
 </li><li class="production-card">
 <div class="production-head">
@@ -1799,6 +1739,29 @@ a:hover {
 <div class="schedule-meta">Under St Marks</div>
 </div>
 <div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1414">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1414">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>It&#x27;s Getting Tired Mildred</h2>
+<div class="meta-row"><span>Under St Marks</span></div>
+</div>
+<div class="tag">2 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, May 09 at 09:30 PM</div>
+<div class="schedule-meta">Under St Marks</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:579">Source</a> <a href="https://tickets.frigid.nyc/event/6897:579">Tickets</a></div>
+</li><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Jun 13 at 09:30 PM</div>
+<div class="schedule-meta">Under St Marks</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:579">Source</a> <a href="https://tickets.frigid.nyc/event/6897:579">Tickets</a></div>
 </li></ul></div>
 </li><li class="production-card">
 <div class="production-head">

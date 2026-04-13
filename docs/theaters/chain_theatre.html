@@ -652,6 +652,23 @@ a:hover {
   font-size: 0.9rem;
 }
 
+/* When a date filter is active, swap the single next-show line for the
+   full list of matching performance dates. Populated client-side. */
+.show-preview-dates {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: .15rem 0 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.show-preview-date {
+  padding: 1px 0;
+}
+.show-preview-date.hidden { display: none; }
+.show-preview-row.date-filtered .show-preview-meta { display: none; }
+.show-preview-row.date-filtered .show-preview-dates { display: block; }
+
 .empty-state {
   padding: 22px;
   border-radius: 18px;
@@ -739,48 +756,19 @@ a:hover {
       <aside class="sidebar">
 <h2>Browse Theaters</h2>
 <ul class="sidebar-list"><li><a href="astor_place.html">Astor Place Theatre</a></li><li><a href="chain_theatre.html">Chain Theatre · current</a></li><li><a href="liberty.html">Liberty Theatres</a></li><li><a href="nytw.html">New York Theatre Workshop</a></li><li><a href="parkside_lounge.html">Parkside Lounge</a></li><li><a href="performance_space.html">Performance Space New York</a></li><li><a href="rat_nyc.html">The Rat NYC</a></li><li><a href="tnc.html">Theater for the New City</a></li><li><a href="under_st_marks.html">Under St Marks</a></li><li><a href="vineyard.html">Vineyard Theatre</a></li><li><a href="wild_project.html">Wild Project</a></li></ul>
-<div class="sidebar-meta">Last scrape: Apr 11, 2026 at 03:11 PM</div>
+<div class="sidebar-meta">Last scrape: Apr 13, 2026 at 01:25 PM</div>
 </aside>
       <section class="content-panel">
 <div class="section-header">
 <div>
 <h2>Chain Theatre</h2>
-<p>29 productions and 65 listed performance dates.</p>
+<p>26 productions and 47 listed performance dates.</p>
 </div>
 </div>
 <ul class="production-list"><li class="production-card">
 <div class="production-head">
 <div>
-<h2>Induction</h2>
-<div class="meta-row"><span>Chain Theatre</span></div>
-</div>
-<div class="tag">3 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 11 at 03:40 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1375">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1375">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Fri, Apr 17 at 06:00 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1375">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1375">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 18 at 08:40 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1375">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1375">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>REAL MEN WEAR SCARVES IN PITTSBURGH</h2>
+<h2>Thoughts &amp; Prayers</h2>
 <div class="meta-row"><span>Chain Theatre</span></div>
 </div>
 <div class="tag">2 dates listed</div>
@@ -789,16 +777,16 @@ a:hover {
 
 <div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
 <div>
-<div class="schedule-datetime">Sat, Apr 11 at 03:55 PM</div>
+<div class="schedule-datetime">Mon, Apr 13 at 06:00 PM</div>
 <div class="schedule-meta">Chain Theatre</div>
 </div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1384">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1384">Tickets</a></div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1380">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1380">Tickets</a></div>
 </li><li class="schedule-row">
 <div>
-<div class="schedule-datetime">Fri, Apr 17 at 07:55 PM</div>
+<div class="schedule-datetime">Sat, Apr 18 at 07:00 PM</div>
 <div class="schedule-meta">Chain Theatre</div>
 </div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1384">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1384">Tickets</a></div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1380">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1380">Tickets</a></div>
 </li></ul></div>
 </li><li class="production-card">
 <div class="production-head">
@@ -806,17 +794,11 @@ a:hover {
 <h2>The Village Cidiot</h2>
 <div class="meta-row"><span>Chain Theatre</span></div>
 </div>
-<div class="tag">5 dates listed</div>
+<div class="tag">4 dates listed</div>
 </div>
 
 
 <div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 11 at 05:35 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1388">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1388">Tickets</a></div>
-</li><li class="schedule-row">
 <div>
 <div class="schedule-datetime">Mon, Apr 13 at 06:15 PM</div>
 <div class="schedule-meta">Chain Theatre</div>
@@ -844,7 +826,7 @@ a:hover {
 </li><li class="production-card">
 <div class="production-head">
 <div>
-<h2>Crosswords</h2>
+<h2>Apoloholics: Based On True Stories of People Who Apologize Too Much</h2>
 <div class="meta-row"><span>Chain Theatre</span></div>
 </div>
 <div class="tag">1 dates listed</div>
@@ -852,288 +834,11 @@ a:hover {
 
 
 <div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 11 at 07:00 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1340">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1340">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>The Box Factory</h2>
-<div class="meta-row"><span>Chain Theatre</span></div>
-</div>
-<div class="tag">3 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 11 at 07:15 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1385">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1385">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 12 at 02:00 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1385">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1385">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 18 at 03:55 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1385">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1385">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Echoes of My Silence</h2>
-<div class="meta-row"><span>Chain Theatre</span></div>
-</div>
-<div class="tag">2 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 11 at 08:40 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1373">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1373">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Tue, Apr 14 at 09:20 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1373">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1373">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>There&#x27;s Something Seriously Wrong With Cyrus</h2>
-<div class="meta-row"><span>Chain Theatre</span></div>
-</div>
-<div class="tag">2 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 11 at 08:55 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1332">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1332">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 12 at 05:35 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1332">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1332">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Apoloholics: Based On True Stories of People Who Apologize Too Much</h2>
-<div class="meta-row"><span>Chain Theatre</span></div>
-</div>
-<div class="tag">2 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 11 at 10:20 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1371">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1371">Tickets</a></div>
-</li><li class="schedule-row">
 <div>
 <div class="schedule-datetime">Mon, Apr 13 at 07:40 PM</div>
 <div class="schedule-meta">Chain Theatre</div>
 </div>
 <div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1371">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1371">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Your Love Isn&#x27;t Love</h2>
-<div class="meta-row"><span>Chain Theatre</span></div>
-</div>
-<div class="tag">2 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 11 at 10:35 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1390">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1390">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 18 at 08:55 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1390">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1390">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Panic In The Bathroom</h2>
-<div class="meta-row"><span>Chain Theatre</span></div>
-</div>
-<div class="tag">3 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 12 at 02:00 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1379">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1379">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 12 at 07:00 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1379">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1379">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 19 at 02:00 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1379">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1379">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>House of Waffle</h2>
-<div class="meta-row"><span>Chain Theatre</span></div>
-</div>
-<div class="tag">3 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 12 at 03:40 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1374">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1374">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 18 at 05:20 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1374">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1374">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 19 at 03:40 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1374">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1374">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>IN BETWEEN THE MOON AND THE SUN</h2>
-<div class="meta-row"><span>Chain Theatre</span></div>
-</div>
-<div class="tag">3 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 12 at 03:55 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1382">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1382">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Thu, Apr 16 at 09:25 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1382">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1382">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 18 at 10:35 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1382">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1382">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Miracle of The Star</h2>
-<div class="meta-row"><span>Chain Theatre</span></div>
-</div>
-<div class="tag">1 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 12 at 05:20 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1377">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1377">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>White As Snow</h2>
-<div class="meta-row"><span>Chain Theatre</span></div>
-</div>
-<div class="tag">3 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 12 at 07:15 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1389">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1389">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Tue, Apr 14 at 09:25 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1389">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1389">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 18 at 02:00 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1389">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1389">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Thoughts &amp; Prayers</h2>
-<div class="meta-row"><span>Chain Theatre</span></div>
-</div>
-<div class="tag">2 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Mon, Apr 13 at 06:00 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1380">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1380">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 18 at 07:00 PM</div>
-<div class="schedule-meta">Chain Theatre</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1380">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1380">Tickets</a></div>
 </li></ul></div>
 </li><li class="production-card">
 <div class="production-head">
@@ -1244,6 +949,46 @@ a:hover {
 <div class="schedule-meta">Chain Theatre</div>
 </div>
 <div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1387">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1387">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Echoes of My Silence</h2>
+<div class="meta-row"><span>Chain Theatre</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Tue, Apr 14 at 09:20 PM</div>
+<div class="schedule-meta">Chain Theatre</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1373">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1373">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>White As Snow</h2>
+<div class="meta-row"><span>Chain Theatre</span></div>
+</div>
+<div class="tag">2 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Tue, Apr 14 at 09:25 PM</div>
+<div class="schedule-meta">Chain Theatre</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1389">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1389">Tickets</a></div>
+</li><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 18 at 02:00 PM</div>
+<div class="schedule-meta">Chain Theatre</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1389">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1389">Tickets</a></div>
 </li></ul></div>
 </li><li class="production-card">
 <div class="production-head">
@@ -1380,6 +1125,52 @@ a:hover {
 </li><li class="production-card">
 <div class="production-head">
 <div>
+<h2>IN BETWEEN THE MOON AND THE SUN</h2>
+<div class="meta-row"><span>Chain Theatre</span></div>
+</div>
+<div class="tag">2 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Thu, Apr 16 at 09:25 PM</div>
+<div class="schedule-meta">Chain Theatre</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1382">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1382">Tickets</a></div>
+</li><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 18 at 10:35 PM</div>
+<div class="schedule-meta">Chain Theatre</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1382">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1382">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Induction</h2>
+<div class="meta-row"><span>Chain Theatre</span></div>
+</div>
+<div class="tag">2 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, Apr 17 at 06:00 PM</div>
+<div class="schedule-meta">Chain Theatre</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1375">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1375">Tickets</a></div>
+</li><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 18 at 08:40 PM</div>
+<div class="schedule-meta">Chain Theatre</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1375">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1375">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
 <h2>CHIP ON HER SHOULDER</h2>
 <div class="meta-row"><span>Chain Theatre</span></div>
 </div>
@@ -1393,6 +1184,23 @@ a:hover {
 <div class="schedule-meta">Chain Theatre</div>
 </div>
 <div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1350">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1350">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>REAL MEN WEAR SCARVES IN PITTSBURGH</h2>
+<div class="meta-row"><span>Chain Theatre</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, Apr 17 at 07:55 PM</div>
+<div class="schedule-meta">Chain Theatre</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1384">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1384">Tickets</a></div>
 </li></ul></div>
 </li><li class="production-card">
 <div class="production-head">
@@ -1417,7 +1225,7 @@ a:hover {
 <h2>Lunatic</h2>
 <div class="meta-row"><span>Chain Theatre</span></div>
 </div>
-<div class="tag">2 dates listed</div>
+<div class="tag">1 dates listed</div>
 </div>
 
 
@@ -1427,12 +1235,46 @@ a:hover {
 <div class="schedule-meta">Chain Theatre</div>
 </div>
 <div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1376">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1376">Tickets</a></div>
-</li><li class="schedule-row">
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
 <div>
-<div class="schedule-datetime">Sun, Apr 19 at 05:20 PM</div>
+<h2>The Box Factory</h2>
+<div class="meta-row"><span>Chain Theatre</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 18 at 03:55 PM</div>
 <div class="schedule-meta">Chain Theatre</div>
 </div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1376">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1376">Tickets</a></div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1385">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1385">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>House of Waffle</h2>
+<div class="meta-row"><span>Chain Theatre</span></div>
+</div>
+<div class="tag">2 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 18 at 05:20 PM</div>
+<div class="schedule-meta">Chain Theatre</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1374">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1374">Tickets</a></div>
+</li><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, Apr 19 at 03:40 PM</div>
+<div class="schedule-meta">Chain Theatre</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1374">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1374">Tickets</a></div>
 </li></ul></div>
 </li><li class="production-card">
 <div class="production-head">
@@ -1456,6 +1298,40 @@ a:hover {
 <div class="schedule-meta">Chain Theatre</div>
 </div>
 <div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1383">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1383">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Your Love Isn&#x27;t Love</h2>
+<div class="meta-row"><span>Chain Theatre</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 18 at 08:55 PM</div>
+<div class="schedule-meta">Chain Theatre</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1390">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1390">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Panic In The Bathroom</h2>
+<div class="meta-row"><span>Chain Theatre</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, Apr 19 at 02:00 PM</div>
+<div class="schedule-meta">Chain Theatre</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1379">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1379">Tickets</a></div>
 </li></ul></div>
 </li></ul>
 </section>

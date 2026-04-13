@@ -663,6 +663,23 @@ a:hover {
   font-size: 0.9rem;
 }
 
+/* When a date filter is active, swap the single next-show line for the
+   full list of matching performance dates. Populated client-side. */
+.show-preview-dates {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: .15rem 0 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.show-preview-date {
+  padding: 1px 0;
+}
+.show-preview-date.hidden { display: none; }
+.show-preview-row.date-filtered .show-preview-meta { display: none; }
+.show-preview-row.date-filtered .show-preview-dates { display: block; }
+
 .empty-state {
   padding: 22px;
   border-radius: 18px;
@@ -851,26 +868,30 @@ def _render_index_page(payload: dict, grouped: dict[str, list[dict]], theater_ma
             continue
         preview = []
         for production in productions[:4]:
-            next_show = production["instances"][0]["start"] if production["instances"] else production.get("run_range_text", "Schedule pending")
-            # Embed all performance dates so the date filter can match any of them
-            show_date_attrs = ""
-            if production["instances"]:
-                all_inst_dates = sorted({inst["start"][:10] for inst in production["instances"]})
-                show_date_attrs = (
-                    f' data-show-date="{next_show[:10]}"'
-                    f' data-all-dates="{",".join(all_inst_dates)}"'
-                )
+            # _group_payload guarantees every production here has at least
+            # one upcoming instance; past instances have already been filtered.
+            instances = production["instances"]
+            next_show = instances[0]["start"]
+            all_inst_dates = sorted({inst["start"][:10] for inst in instances})
+            show_date_attrs = (
+                f' data-show-date="{next_show[:10]}"'
+                f' data-all-dates="{",".join(all_inst_dates)}"'
+            )
+            # Every upcoming performance — shown in place of the single
+            # next-show meta line when a date filter is active so users
+            # can see every matching date for each show.
+            dates_list = "".join(
+                f'<li class="show-preview-date" data-date="{inst["start"][:10]}">{escape(_format_start(inst["start"]))}</li>'
+                for inst in instances
+            )
             preview.append(
                 "\n".join(
                     [
                         f'<div class="show-preview-row"{show_date_attrs}>',
                         "<div>",
                         f'<div class="show-preview-title">{escape(production["title"])}</div>',
-                        (
-                            f'<div class="show-preview-meta">{escape(_format_start(next_show))}</div>'
-                            if production["instances"]
-                            else f'<div class="show-preview-meta">{escape(production.get("run_range_text") or "Schedule pending")}</div>'
-                        ),
+                        f'<div class="show-preview-meta">{escape(_format_start(next_show))}</div>',
+                        f'<ul class="show-preview-dates">{dates_list}</ul>',
                         "</div>",
                         f'<a href="theaters/{escape(theater_id)}.html">View venue</a>',
                         "</div>",
@@ -1369,15 +1390,29 @@ def _get_filter_script() -> str:
       let hasVisibleRow  = selectedDates.size === 0;
 
       rows.forEach(function(row) {
+        const dateItems = row.querySelectorAll('.show-preview-date');
         if (selectedDates.size === 0) {
           row.style.display = 'flex';
+          row.classList.remove('date-filtered');
+          // Restore every <li> so the list is clean if filter is reactivated.
+          dateItems.forEach(function(li) { li.classList.remove('hidden'); });
         } else {
           // data-all-dates contains every performance date for this production;
           // fall back to data-show-date for backward compatibility
           const raw = row.getAttribute('data-all-dates') || row.getAttribute('data-show-date') || '';
           const visible = raw.split(',').some(function(d) { return d && selectedDates.has(d); });
           row.style.display = visible ? 'flex' : 'none';
-          if (visible) hasVisibleRow = true;
+          if (visible) {
+            hasVisibleRow = true;
+            row.classList.add('date-filtered');
+            // Show only the performance dates that intersect the current selection.
+            dateItems.forEach(function(li) {
+              const d = li.getAttribute('data-date');
+              li.classList.toggle('hidden', !selectedDates.has(d));
+            });
+          } else {
+            row.classList.remove('date-filtered');
+          }
         }
       });
 
@@ -1399,7 +1434,13 @@ def _get_filter_script() -> str:
     renderCalendar(calYear, calMonth);
     venueGrid.querySelectorAll('.venue-card').forEach(function(card) {
       card.classList.remove('hidden');
-      card.querySelectorAll('.show-preview-row').forEach(function(row) { row.style.display = 'flex'; });
+      card.querySelectorAll('.show-preview-row').forEach(function(row) {
+        row.style.display = 'flex';
+        row.classList.remove('date-filtered');
+        row.querySelectorAll('.show-preview-date.hidden').forEach(function(li) {
+          li.classList.remove('hidden');
+        });
+      });
     });
     resultCount.textContent = initialResultText;
   });

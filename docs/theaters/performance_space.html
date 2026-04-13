@@ -652,6 +652,23 @@ a:hover {
   font-size: 0.9rem;
 }
 
+/* When a date filter is active, swap the single next-show line for the
+   full list of matching performance dates. Populated client-side. */
+.show-preview-dates {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: .15rem 0 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.show-preview-date {
+  padding: 1px 0;
+}
+.show-preview-date.hidden { display: none; }
+.show-preview-row.date-filtered .show-preview-meta { display: none; }
+.show-preview-row.date-filtered .show-preview-dates { display: block; }
+
 .empty-state {
   padding: 22px;
   border-radius: 18px;
@@ -739,13 +756,13 @@ a:hover {
       <aside class="sidebar">
 <h2>Browse Theaters</h2>
 <ul class="sidebar-list"><li><a href="astor_place.html">Astor Place Theatre</a></li><li><a href="chain_theatre.html">Chain Theatre</a></li><li><a href="liberty.html">Liberty Theatres</a></li><li><a href="nytw.html">New York Theatre Workshop</a></li><li><a href="parkside_lounge.html">Parkside Lounge</a></li><li><a href="performance_space.html">Performance Space New York · current</a></li><li><a href="rat_nyc.html">The Rat NYC</a></li><li><a href="tnc.html">Theater for the New City</a></li><li><a href="under_st_marks.html">Under St Marks</a></li><li><a href="vineyard.html">Vineyard Theatre</a></li><li><a href="wild_project.html">Wild Project</a></li></ul>
-<div class="sidebar-meta">Last scrape: Apr 11, 2026 at 03:11 PM</div>
+<div class="sidebar-meta">Last scrape: Apr 13, 2026 at 01:25 PM</div>
 </aside>
       <section class="content-panel">
 <div class="section-header">
 <div>
 <h2>Performance Space New York</h2>
-<p>5 productions and 12 listed performance dates.</p>
+<p>5 productions and 11 listed performance dates.</p>
 </div>
 </div>
 <ul class="production-list"><li class="production-card">
@@ -754,17 +771,11 @@ a:hover {
 <h2>Open Movement - Winter 2026</h2>
 <div class="meta-row"><span>Performance Space New York</span><span>Keith Haring Theater</span></div>
 </div>
-<div class="tag">8 dates listed</div>
+<div class="tag">7 dates listed</div>
 </div>
 <div class="meta-row"><span class="run-range">February 1 - June 7, 2026</span></div>
 
 <div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 12 at 04:00 PM</div>
-<div class="schedule-meta">Keith Haring Theater</div>
-</div>
-<div class="schedule-links"><a href="https://performancespacenewyork.org/shows/open-movement-winter-2026/">Source</a></div>
-</li><li class="schedule-row">
 <div>
 <div class="schedule-datetime">Sun, Apr 19 at 04:00 PM</div>
 <div class="schedule-meta">Keith Haring Theater</div>

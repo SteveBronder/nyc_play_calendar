@@ -652,6 +652,23 @@ a:hover {
   font-size: 0.9rem;
 }
 
+/* When a date filter is active, swap the single next-show line for the
+   full list of matching performance dates. Populated client-side. */
+.show-preview-dates {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: .15rem 0 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.show-preview-date {
+  padding: 1px 0;
+}
+.show-preview-date.hidden { display: none; }
+.show-preview-row.date-filtered .show-preview-meta { display: none; }
+.show-preview-row.date-filtered .show-preview-dates { display: block; }
+
 .empty-state {
   padding: 22px;
   border-radius: 18px;
@@ -739,230 +756,16 @@ a:hover {
       <aside class="sidebar">
 <h2>Browse Theaters</h2>
 <ul class="sidebar-list"><li><a href="astor_place.html">Astor Place Theatre</a></li><li><a href="chain_theatre.html">Chain Theatre</a></li><li><a href="liberty.html">Liberty Theatres</a></li><li><a href="nytw.html">New York Theatre Workshop</a></li><li><a href="parkside_lounge.html">Parkside Lounge</a></li><li><a href="performance_space.html">Performance Space New York</a></li><li><a href="rat_nyc.html">The Rat NYC</a></li><li><a href="tnc.html">Theater for the New City</a></li><li><a href="under_st_marks.html">Under St Marks</a></li><li><a href="vineyard.html">Vineyard Theatre</a></li><li><a href="wild_project.html">Wild Project · current</a></li></ul>
-<div class="sidebar-meta">Last scrape: Apr 11, 2026 at 03:11 PM</div>
+<div class="sidebar-meta">Last scrape: Apr 13, 2026 at 01:25 PM</div>
 </aside>
       <section class="content-panel">
 <div class="section-header">
 <div>
 <h2>Wild Project</h2>
-<p>15 productions and 37 listed performance dates.</p>
+<p>14 productions and 28 listed performance dates.</p>
 </div>
 </div>
 <ul class="production-list"><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Book Club</h2>
-<div class="meta-row"><span>Wild Project</span></div>
-</div>
-<div class="tag">2 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 11 at 03:40 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1338">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1338">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Thu, Apr 16 at 09:20 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1338">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1338">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Fever Dream TV</h2>
-<div class="meta-row"><span>Wild Project</span></div>
-</div>
-<div class="tag">4 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 11 at 05:20 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1366">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1366">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 12 at 05:20 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1366">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1366">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Thu, Apr 16 at 07:40 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1366">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1366">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Fri, Apr 17 at 07:40 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1366">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1366">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>soft.belly.</h2>
-<div class="meta-row"><span>Wild Project</span></div>
-</div>
-<div class="tag">3 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 11 at 07:00 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1417">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1417">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Thu, Apr 16 at 06:00 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1417">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1417">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 18 at 02:00 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1417">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1417">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>XOXO: Love Letters from NYC</h2>
-<div class="meta-row"><span>Wild Project</span></div>
-</div>
-<div class="tag">1 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 11 at 08:40 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1341">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1341">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>The Sexiest Man Alive</h2>
-<div class="meta-row"><span>Wild Project</span></div>
-</div>
-<div class="tag">3 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 11 at 10:20 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1369">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1369">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Tue, Apr 14 at 09:20 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1369">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1369">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Wed, Apr 15 at 07:40 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1369">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1369">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Crushed Velvet</h2>
-<div class="meta-row"><span>Wild Project</span></div>
-</div>
-<div class="tag">3 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 12 at 02:00 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1364">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1364">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Mon, Apr 13 at 07:40 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1364">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1364">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 18 at 07:00 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1364">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1364">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>In Preparation of War</h2>
-<div class="meta-row"><span>Wild Project</span></div>
-</div>
-<div class="tag">3 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 12 at 03:40 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1368">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1368">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Wed, Apr 15 at 06:00 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1368">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1368">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 19 at 07:00 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1368">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1368">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>1 Small Lie: Martin Dockery</h2>
-<div class="meta-row"><span>Wild Project</span></div>
-</div>
-<div class="tag">2 dates listed</div>
-</div>
-
-
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 12 at 07:00 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1344">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1344">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sat, Apr 18 at 05:20 PM</div>
-<div class="schedule-meta">Wild Project</div>
-</div>
-<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1344">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1344">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
 <div class="production-head">
 <div>
 <h2>Desi SNL</h2>
@@ -984,6 +787,29 @@ a:hover {
 <div class="schedule-meta">Wild Project</div>
 </div>
 <div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1365">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1365">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Crushed Velvet</h2>
+<div class="meta-row"><span>Wild Project</span></div>
+</div>
+<div class="tag">2 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Mon, Apr 13 at 07:40 PM</div>
+<div class="schedule-meta">Wild Project</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1364">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1364">Tickets</a></div>
+</li><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 18 at 07:00 PM</div>
+<div class="schedule-meta">Wild Project</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1364">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1364">Tickets</a></div>
 </li></ul></div>
 </li><li class="production-card">
 <div class="production-head">
@@ -1052,6 +878,115 @@ a:hover {
 </li><li class="production-card">
 <div class="production-head">
 <div>
+<h2>The Sexiest Man Alive</h2>
+<div class="meta-row"><span>Wild Project</span></div>
+</div>
+<div class="tag">2 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Tue, Apr 14 at 09:20 PM</div>
+<div class="schedule-meta">Wild Project</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1369">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1369">Tickets</a></div>
+</li><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Wed, Apr 15 at 07:40 PM</div>
+<div class="schedule-meta">Wild Project</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1369">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1369">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>In Preparation of War</h2>
+<div class="meta-row"><span>Wild Project</span></div>
+</div>
+<div class="tag">2 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Wed, Apr 15 at 06:00 PM</div>
+<div class="schedule-meta">Wild Project</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1368">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1368">Tickets</a></div>
+</li><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, Apr 19 at 07:00 PM</div>
+<div class="schedule-meta">Wild Project</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1368">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1368">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>soft.belly.</h2>
+<div class="meta-row"><span>Wild Project</span></div>
+</div>
+<div class="tag">2 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Thu, Apr 16 at 06:00 PM</div>
+<div class="schedule-meta">Wild Project</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1417">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1417">Tickets</a></div>
+</li><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 18 at 02:00 PM</div>
+<div class="schedule-meta">Wild Project</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1417">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1417">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Fever Dream TV</h2>
+<div class="meta-row"><span>Wild Project</span></div>
+</div>
+<div class="tag">2 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Thu, Apr 16 at 07:40 PM</div>
+<div class="schedule-meta">Wild Project</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1366">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1366">Tickets</a></div>
+</li><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, Apr 17 at 07:40 PM</div>
+<div class="schedule-meta">Wild Project</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1366">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1366">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Book Club</h2>
+<div class="meta-row"><span>Wild Project</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Thu, Apr 16 at 09:20 PM</div>
+<div class="schedule-meta">Wild Project</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1338">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1338">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
 <h2>Did You Charge Your Phone For The End Of The World?</h2>
 <div class="meta-row"><span>Wild Project</span></div>
 </div>
@@ -1071,6 +1006,23 @@ a:hover {
 <div class="schedule-meta">Wild Project</div>
 </div>
 <div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1353">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1353">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>1 Small Lie: Martin Dockery</h2>
+<div class="meta-row"><span>Wild Project</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 18 at 05:20 PM</div>
+<div class="schedule-meta">Wild Project</div>
+</div>
+<div class="schedule-links"><a href="https://tickets.frigid.nyc/event/6897:1344">Source</a> <a href="https://tickets.frigid.nyc/event/6897:1344">Tickets</a></div>
 </li></ul></div>
 </li><li class="production-card">
 <div class="production-head">
