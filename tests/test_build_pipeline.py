@@ -50,6 +50,7 @@ def test_write_artifact_and_render_site(tmp_path: Path):
     index_html = (site_dir / "index.html").read_text()
     theater_html = (site_dir / "theaters" / "vineyard.html").read_text()
     assert "Girls Chance Music" in index_html
+    assert 'href="https://example.com/show">Source</a>' in index_html
     assert "View venue" in index_html
     assert "Back to all theaters" in theater_html
     assert "Upcoming Dates" in theater_html

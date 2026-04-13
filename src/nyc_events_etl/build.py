@@ -663,6 +663,14 @@ a:hover {
   font-size: 0.9rem;
 }
 
+.show-preview-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: end;
+  align-items: start;
+}
+
 /* When a date filter is active, swap the single next-show line for the
    full list of matching performance dates. Populated client-side. */
 .show-preview-dates {
@@ -893,7 +901,14 @@ def _render_index_page(payload: dict, grouped: dict[str, list[dict]], theater_ma
                         f'<div class="show-preview-meta">{escape(_format_start(next_show))}</div>',
                         f'<ul class="show-preview-dates">{dates_list}</ul>',
                         "</div>",
-                        f'<a href="theaters/{escape(theater_id)}.html">View venue</a>',
+                        '<div class="show-preview-links">'
+                        + (
+                            f'<a href="{escape(production["source_url"])}">Source</a> '
+                            if production.get("source_url")
+                            else ""
+                        )
+                        + f'<a href="theaters/{escape(theater_id)}.html">View venue</a>'
+                        + "</div>",
                         "</div>",
                     ]
                 )
