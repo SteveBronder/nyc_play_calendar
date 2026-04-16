@@ -967,7 +967,8 @@ def _render_index_page(payload: dict, grouped: dict[str, list[dict]], theater_ma
         eyebrow="Live Aggregation",
         subtitle=(
             f"{upcoming_instance_count} upcoming performances collected from neighborhood venues. "
-            "Browse by theater, then drill into each show to see upcoming dates and ticket links."
+            "Browse by theater, then drill into each show to see upcoming dates and ticket links. "
+            f"Last updated {_format_scraped_at(payload['scraped_at'])}."
         ),
         theater_map=theater_map,
         main_content=body,
