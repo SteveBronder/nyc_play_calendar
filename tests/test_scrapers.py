@@ -4,6 +4,7 @@ from datetime import date, time
 from nyc_events_etl.scrapers import caveat, frigid, public_theater
 from nyc_events_etl.scrapers.asylum import extract_events_list, format_price, parse_api_events, strip_html
 from nyc_events_etl.scrapers.here import parse_here_schedule_lines
+from nyc_events_etl.scrapers.slipper_room import _parse_wix_datetime, _strip_date_suffix
 
 FRIGID_HTML = """
 <div class="event">
@@ -456,3 +457,37 @@ def test_here_parse_mixed_bare_and_ampm():
         (date(2026, 6, 9), time(21, 0)),
         (date(2026, 6, 18), time(20, 30)),
     ]
+
+
+def test_slipper_room_parse_wix_datetime():
+    result = _parse_wix_datetime("Apr 18, 2026, 8:00 PM")
+    assert result == (date(2026, 4, 18), time(20, 0))
+
+    result = _parse_wix_datetime("May 3, 2026, 5:00 PM")
+    assert result == (date(2026, 5, 3), time(17, 0))
+
+    result = _parse_wix_datetime("Dec 31, 2026, 10:45 PM")
+    assert result == (date(2026, 12, 31), time(22, 45))
+
+    result = _parse_wix_datetime("no date here")
+    assert result is None
+
+
+def test_slipper_room_parse_wix_datetime_in_context():
+    # Datetime embedded in longer text (as it appears in the detail card)
+    text = "Some title Apr 18, 2026, 8:00 PM New York, 167 Orchard St"
+    result = _parse_wix_datetime(text)
+    assert result == (date(2026, 4, 18), time(20, 0))
+
+
+def test_slipper_room_strip_date_suffix():
+    # Period before month name
+    assert _strip_date_suffix("Mr. Choade's Upstairs Downstairs. April 18") == "Mr. Choade's Upstairs Downstairs"
+    assert _strip_date_suffix("Guest Event: Visceral Abstractions. April 20") == "Guest Event: Visceral Abstractions"
+    assert _strip_date_suffix("Slippery Sundays. May 10") == "Slippery Sundays"
+    # No period before month name (space only)
+    assert _strip_date_suffix("The Slipper Room Show! May 1") == "The Slipper Room Show!"
+    assert _strip_date_suffix("The Glitter Gutter!!! April 22") == "The Glitter Gutter!!!"
+    assert _strip_date_suffix("Slipper Room Midnight Show. April 18") == "Slipper Room Midnight Show"
+    # No date suffix at all
+    assert _strip_date_suffix("A Simple Title") == "A Simple Title"

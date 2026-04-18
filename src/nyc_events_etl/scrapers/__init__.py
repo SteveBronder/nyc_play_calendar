@@ -1,6 +1,6 @@
 """HTML scraper modules for various event sources."""
 
-from . import astor_place, asylum, caveat, frigid, here, liberty, nytw, performance_space, public_theater, theater_for_the_new_city, vineyard, wild_project
+from . import astor_place, asylum, caveat, frigid, here, liberty, nytw, performance_space, public_theater, slipper_room, theater_for_the_new_city, vineyard, wild_project
 from .registry import SCRAPER_REGISTRY
 
 __all__ = [
@@ -14,6 +14,7 @@ __all__ = [
     "nytw",
     "performance_space",
     "public_theater",
+    "slipper_room",
     "theater_for_the_new_city",
     "vineyard",
     "wild_project",
