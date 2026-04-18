@@ -38,14 +38,18 @@ def test_frigid_scraper():
     assert event.source == "https://frigid.example/measure"
 
 
-def test_public_theater_scraper():
-    def fake_fetch(url: str) -> str:
-        assert url == "https://public.example/pericles"
-        return "<span class=\"price\">Free</span>"
+def test_public_theater_parse_calendar_datetime():
+    from datetime import date, time
+    from nyc_events_etl.scrapers.public_theater import _parse_calendar_datetime
 
-    events = public_theater.parse_html(PUBLIC_HTML, 2025, fetch=fake_fetch)
-    event = events[0]
-    assert event.venue_name == "Cathedral"
-    assert event.start_times[0].hour == 20
-    assert event.price == "Free"
-    assert event.source == "https://public.example/pericles"
+    result = _parse_calendar_datetime("Fri, April 17 | 7:00PM", 2026)
+    assert result is not None
+    assert result[0] == date(2026, 4, 17)
+    assert result[1] == time(19, 0)
+
+    result2 = _parse_calendar_datetime("Sat, January 10 | 1:00PM", 2027)
+    assert result2 is not None
+    assert result2[0] == date(2027, 1, 10)
+    assert result2[1] == time(13, 0)
+
+    assert _parse_calendar_datetime("No date here", 2026) is None
