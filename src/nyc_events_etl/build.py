@@ -1511,6 +1511,15 @@ def _page_shell(
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{escape(title)}</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BSMDBR7PZ8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+
+    gtag('config', 'G-BSMDBR7PZ8');
+  </script>
   <style>{SITE_CSS}</style>
 </head>
 <body>
