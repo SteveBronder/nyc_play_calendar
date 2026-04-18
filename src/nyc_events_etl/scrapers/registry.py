@@ -2,7 +2,7 @@ from __future__ import annotations
 
 """Registry of Playwright theater scrapers."""
 
-from . import astor_place, frigid, liberty, nytw, performance_space, public_theater, theater_for_the_new_city, vineyard, wild_project
+from . import astor_place, caveat, frigid, liberty, nytw, performance_space, public_theater, theater_for_the_new_city, vineyard, wild_project
 
 SCRAPER_REGISTRY = {
     nytw.THEATER_ID: nytw,
@@ -14,5 +14,6 @@ SCRAPER_REGISTRY = {
     theater_for_the_new_city.THEATER_ID: theater_for_the_new_city,
     frigid.THEATER_ID: frigid,
     public_theater.THEATER_ID: public_theater,
+    caveat.THEATER_ID: caveat,
 }
 
