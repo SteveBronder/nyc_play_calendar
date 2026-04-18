@@ -1,0 +1,2516 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Caveat</title>
+  <style>
+:root {
+  --bg: #f4ecdf;
+  --paper: rgba(255, 250, 243, 0.9);
+  --card: #fffaf4;
+  --ink: #231814;
+  --muted: #705d55;
+  --line: rgba(102, 69, 54, 0.14);
+  --accent: #a33f2f;
+  --accent-soft: rgba(163, 63, 47, 0.12);
+  --olive: #59634d;
+  --shadow: 0 22px 54px rgba(46, 27, 19, 0.09);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(163, 63, 47, 0.14), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(89, 99, 77, 0.12), transparent 26%),
+    linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.shell {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 28px 0 52px;
+}
+
+.hero {
+  padding: 34px 36px 26px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.78), rgba(255,246,236,0.92)),
+    linear-gradient(90deg, rgba(163,63,47,0.08), rgba(89,99,77,0.06));
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--accent);
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  margin: 14px 0 0;
+  max-width: 66ch;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.jump-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.jump-nav a {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.62);
+  color: var(--ink);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 22px;
+  margin-top: 26px;
+}
+
+.layout > * { min-width: 0; }
+
+.sidebar,
+.content-panel {
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.sidebar {
+  padding: 22px 20px;
+  align-self: start;
+  position: sticky;
+  top: 20px;
+}
+
+.sidebar h2,
+.content-panel h2,
+.production-card h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+}
+
+.sidebar h2 {
+  margin: 0 0 14px;
+  font-size: 1.2rem;
+}
+
+.sidebar-list,
+.production-list,
+.schedule-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-list li + li {
+  margin-top: 10px;
+}
+
+.sidebar-list a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.75);
+  border: 1px solid transparent;
+}
+
+.sidebar-list a:hover {
+  border-color: var(--line);
+  text-decoration: none;
+}
+
+.sidebar-meta {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.content-panel {
+  padding: 24px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 1.55rem;
+}
+
+.section-header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.filter-container {
+  margin-bottom: 22px;
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.72), rgba(255,248,240,0.88));
+  border: 1px solid var(--line);
+  transition: all 0.3s ease;
+}
+
+.filter-container.active {
+  background: linear-gradient(135deg, rgba(255,255,255,0.92), rgba(255,250,245,0.95));
+  box-shadow: 0 4px 12px rgba(46, 27, 19, 0.08);
+}
+
+.filter-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(163, 63, 47, 0.1);
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0;
+}
+
+.filter-toggle-btn:hover {
+  background: rgba(163, 63, 47, 0.15);
+  transform: translateX(2px);
+}
+
+.filter-toggle-btn .arrow {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.filter-toggle-btn.open .arrow {
+  transform: rotate(180deg);
+}
+
+.filter-controls {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 16px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+}
+
+.filter-container.active .filter-controls {
+  max-height: 700px;
+  opacity: 1;
+  overflow: visible;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+
+.venue-select {
+  position: relative;
+  padding: 0;
+}
+
+.venue-select-trigger {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.8);
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: border-color 0.2s ease;
+}
+
+.venue-select-trigger:hover {
+  border-color: var(--muted);
+}
+
+.venue-select-trigger.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(163, 63, 47, 0.1);
+}
+
+.venue-select-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(46, 27, 19, 0.12);
+  z-index: 10;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.venue-select-dropdown.open {
+  max-height: 200px;
+  opacity: 1;
+  overflow-y: auto;
+}
+
+.venue-option {
+  padding: 10px 12px;
+  border: none;
+  background: none;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.venue-option:hover {
+  background: rgba(163, 63, 47, 0.06);
+}
+
+.venue-option input[type="checkbox"] {
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+.filter-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.filter-actions button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+
+.filter-reset {
+  background: rgba(255,255,255,0.7);
+  color: var(--muted);
+  border: 1px solid var(--line);
+}
+
+.filter-reset:hover {
+  background: rgba(255,255,255,0.9);
+  color: var(--ink);
+}
+
+/* Calendar date picker */
+.cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .4rem;
+  font-weight: 600;
+  font-size: .95rem;
+}
+.cal-nav {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--accent);
+  padding: .1rem .35rem;
+  border-radius: 6px;
+  line-height: 1;
+}
+.cal-nav:hover { background: var(--accent-soft); }
+.cal-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: .85rem;
+}
+.cal-table th {
+  text-align: center;
+  padding: .25rem 0;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: .77rem;
+}
+.cal-day {
+  text-align: center;
+  padding: .35rem .1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  user-select: none;
+}
+.cal-day:not(.other-month):hover { background: rgba(102, 69, 54, 0.07); }
+.cal-day.has-show {
+  font-weight: 700;
+  color: var(--accent);
+}
+.cal-day.has-show:hover { background: var(--accent-soft); }
+.cal-day.selected {
+  background: var(--accent);
+  color: #fff !important;
+}
+.cal-day.selected:hover { opacity: .85; }
+.cal-day.other-month {
+  opacity: .3;
+  pointer-events: none;
+  cursor: default;
+}
+.cal-day.today {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+.cal-legend {
+  display: flex;
+  gap: 1rem;
+  font-size: .75rem;
+  color: var(--muted);
+  margin-top: .4rem;
+}
+.cal-legend-item {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+.cal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+.cal-dot-show { opacity: .45; }
+.cal-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin-bottom: .6rem;
+}
+.cal-preset {
+  font: inherit;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  padding: .32rem .7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel-soft, rgba(102, 69, 54, 0.04));
+  color: var(--accent);
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.cal-preset:hover {
+  background: var(--accent-soft, rgba(102, 69, 54, 0.09));
+  border-color: var(--accent);
+}
+.cal-preset:active { transform: translateY(1px); }
+
+.production-list {
+  display: grid;
+  gap: 18px;
+}
+
+.production-card {
+  padding: 22px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,250,245,0.94)),
+    linear-gradient(135deg, rgba(163,63,47,0.04), rgba(89,99,77,0.04));
+}
+
+.production-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: start;
+}
+
+.production-head h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.05;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.meta-row {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+
+.run-range {
+  display: inline-flex;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(89, 99, 77, 0.1);
+  color: var(--olive);
+}
+
+.description {
+  margin: 14px 0 0;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.schedule-block {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.schedule-label {
+  margin: 0 0 10px;
+  font-size: 0.83rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.schedule-list {
+  display: grid;
+  gap: 10px;
+}
+
+.schedule-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(102, 69, 54, 0.08);
+}
+
+.schedule-datetime {
+  font-weight: 700;
+}
+
+.schedule-meta {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.schedule-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: end;
+  font-size: 0.92rem;
+}
+
+.fallback-note {
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.venue-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.venue-card {
+  padding: 20px;
+  border-radius: 22px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.86), rgba(255,248,239,0.95));
+  border: 1px solid var(--line);
+  transition: opacity 0.3s ease;
+}
+
+.venue-card.hidden {
+  display: none;
+}
+
+.venue-card h3 {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  font-size: 1.55rem;
+}
+
+.venue-stats {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+
+.show-preview {
+  margin-top: 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.show-preview-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(102, 69, 54, 0.08);
+}
+
+.show-preview-row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.show-preview-title {
+  font-weight: 700;
+}
+
+.show-preview-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.show-preview-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: end;
+  align-items: start;
+}
+
+/* When a date filter is active, swap the single next-show line for the
+   full list of matching performance dates. Populated client-side. */
+.show-preview-dates {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: .15rem 0 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.show-preview-date {
+  padding: 1px 0;
+}
+.show-preview-date.hidden { display: none; }
+.show-preview-row.date-filtered .show-preview-meta { display: none; }
+.show-preview-row.date-filtered .show-preview-dates { display: block; }
+
+.empty-state {
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.7);
+  border: 1px dashed var(--line);
+  color: var(--muted);
+}
+
+@media (max-width: 960px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+
+  .filter-controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .shell {
+    width: min(100vw - 20px, 1180px);
+    padding-top: 18px;
+  }
+
+  .hero,
+  .content-panel,
+  .sidebar,
+  .production-card,
+  .venue-card,
+  .filter-container {
+    border-radius: 20px;
+  }
+
+  .hero {
+    padding: 26px 22px;
+  }
+
+  .content-panel,
+  .sidebar {
+    padding: 18px;
+  }
+
+  .production-card {
+    padding: 18px;
+  }
+
+  .filter-container {
+    padding: 16px;
+  }
+
+  .filter-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .production-head,
+  .section-header,
+  .show-preview-row,
+  .schedule-row {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .schedule-links {
+    justify-content: start;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="shell">
+    <header class="hero">
+      <p><a href="../index.html">Back to all theaters</a></p>
+      <p class="eyebrow">Venue Page</p>
+      <h1>Caveat</h1>
+      <p class="subtitle">Each show is grouped into a single card with its listed performance dates underneath.</p>
+      <nav class="jump-nav">
+        <a href="../index.html">Overview</a>
+      </nav>
+    </header>
+    <div class="layout">
+      <aside class="sidebar">
+<h2>Browse Theaters</h2>
+<ul class="sidebar-list"><li><a href="astor_place.html">Astor Place Theatre</a></li><li><a href="asylum.html">Asylum NYC</a></li><li><a href="caveat.html">Caveat · current</a></li><li><a href="chain_theatre.html">Chain Theatre</a></li><li><a href="here.html">HERE Arts Center</a></li><li><a href="liberty.html">Liberty Theatres</a></li><li><a href="nytw.html">New York Theatre Workshop</a></li><li><a href="parkside_lounge.html">Parkside Lounge</a></li><li><a href="performance_space.html">Performance Space New York</a></li><li><a href="public_theater.html">The Public Theater</a></li><li><a href="rat_nyc.html">The Rat NYC</a></li><li><a href="slipper_room.html">The Slipper Room</a></li><li><a href="tnc.html">Theater for the New City</a></li><li><a href="under_st_marks.html">Under St Marks</a></li><li><a href="vineyard.html">Vineyard Theatre</a></li><li><a href="wild_project.html">Wild Project</a></li></ul>
+<div class="sidebar-meta">Last scrape: Apr 18, 2026 at 03:34 PM</div>
+</aside>
+      <section class="content-panel">
+<div class="section-header">
+<div>
+<h2>Caveat</h2>
+<p>102 productions and 102 listed performance dates.</p>
+</div>
+</div>
+<ul class="production-list"><li class="production-card">
+<div class="production-head">
+<div>
+<h2>On The Watchlist with Jay Servedio</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">On The Watchlist with Jay Servedio is a brand-new live late-night comedy series that blends biting satire with investigative curiosity. Inspired by The Daily Show but rooted in its own chaotic, absurdist voice, On The Watchlist dives headfirst into the week’s headlines, media manipulation, and political theater. Each…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 18 at 04:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/on-the-watchlist-with-jay-servedio-a-live-late-night-comedy-show-4-18-2026">Source</a> <a href="https://www.caveat.nyc/event/on-the-watchlist-with-jay-servedio-a-live-late-night-comedy-show-4-18-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Lectures on Tap-&quot;The History of Titanic Movies&quot;</h2>
+<div class="meta-row"><span>Caveat</span><span>SOLD OUT ($40 advance)</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Professors, experts, and storytellers giving thought-provoking lectures in NYC bars. 📍 Location: Exact address given in confirmation email 🧠 Lecture: &quot;The History of Titanic Movies&quot; 🎤 Speaker: Professor Isabella Tecson You definitely know James Cameron’s cinematic masterpiece, but did you know there are hundreds of…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 18 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/lectures-on-tap-the-history-of-titanic-movies-4-18-2026">Source</a> <a href="https://www.caveat.nyc/event/lectures-on-tap-the-history-of-titanic-movies-4-18-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>They Blinded Me With Science Presents: Home On Any Street</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">A show bringing STEM to life through the campy spectacle of drag. Are we adding glamour to science or taking academia down a peg? Come see us at Caveat and judge for yourself! Produced and Hosted by Nic Comparato, featuring Maude Addams. Doors at 9:00pm. Show starts at 9:30pm. Join us for our very first show at…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 18 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/they-blinded-me-with-science-presents-home-on-any-street--4-18-2026">Source</a> <a href="https://www.caveat.nyc/event/they-blinded-me-with-science-presents-home-on-any-street--4-18-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Mama Left (by Going Right)</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Family fractures got you seeing red and feeling blue? You&#x27;re not alone! Mama Left (by Going Right) is a cathartic hour of comedy, community and commiseration in which performers share their painful (and painfully funny) experiences to help us laugh through our tears as we navigate politicized relationships and the…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, Apr 19 at 02:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/mama-left-by-going-right-4-19-2026">Source</a> <a href="https://www.caveat.nyc/event/mama-left-by-going-right-4-19-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Three-Day Champion: Josh Gondelman, Jeff Hiller &amp; More!</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Three-Day Champion is a comedic storytelling show wrapped inside game show format that asks, if you were a three-day champion on a game show, what three stories about yourself would you choose to tell? In each episode comedian guests compete to tell their favorite, funniest, most revealing anecdotes for bragging…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, Apr 19 at 05:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/three-day-champion-josh-gondelman--more-4-19-2026">Source</a> <a href="https://www.caveat.nyc/event/three-day-champion-josh-gondelman--more-4-19-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>RAAAATSCRAPS: The Best Improv Show in the World</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $8 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">RaaaatScraps is the World&#x27;s Best Improv Show from the people who produced Asssscat. Join a surprise guest monologist and NYC&#x27;s best improvisers, many from The Upright Citizens Brigade Theatre, who have been seen on Broad City, High Maintenance, Succession, Severance, Somebody Somewhere, Difficult People, Search…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, Apr 19 at 07:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/raaaatscraps-the-best-improv-show-in-the-world-4-19-2026">Source</a> <a href="https://www.caveat.nyc/event/raaaatscraps-the-best-improv-show-in-the-world-4-19-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>And Scene</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Actors are given a scene &amp; learn their lines, improvisers are given nothing &amp; must make it work. New York top improvisers and actors from Broadway, TV and beyond perform in scenes from Mamet to Moliere and everything in between. The actors will know their lines and the improvisers will improvise with no prior…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Mon, Apr 20 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/and-scene-4-20-2026">Source</a> <a href="https://www.caveat.nyc/event/and-scene-4-20-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>The Night of Your Life</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">A 2000&#x27;s-tinged sketch comedy hour, featuring standup and improv from NYC favorites. The sort of show that makes you pine for Jesse McCartney and long for Brenda song. In more ways than one. Improv from MIDWIVES Standup from MO MACSAI and DELANEY WELLINGTON Featuring JACOB KAPLAN, DAVID COLTON, HARRIS SOLOMON Written…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Mon, Apr 20 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/the-night-of-your-life-4-20-2026">Source</a> <a href="https://www.caveat.nyc/event/the-night-of-your-life-4-20-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>The Jewish Dating Game!</h2>
+<div class="meta-row"><span>Caveat</span><span>$30 advance, $35 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Not Your Motha&#x27;s &quot;Dating Game!&quot; The Jewish Dating Game is a hilarious interactive dating game show with delicious prizes. Hosted by modern matchmaker, Linnea Sage. Watch people fall in love or sign up to be a contestant! A show for Jews and allies, singles and couples, all are welcome to this night of joy, fun, and…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Tue, Apr 21 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/the-jewish-dating-game-4-21-2026">Source</a> <a href="https://www.caveat.nyc/event/the-jewish-dating-game-4-21-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Comedian Traitors</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">New York City&#x27;s most Villainous Comedians play the ultimate murder mystery game based on the television phenomenon The Traitors. Hosted by Christopher Morucci at an ancient castle (Caveat) in the Lower East Side, The Comedians will work together on challenges to build a prize. But hidden amongst the Faithful…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Tue, Apr 21 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/comedian-traitors-4-21-2026">Source</a> <a href="https://www.caveat.nyc/event/comedian-traitors-4-21-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Science Tonight! - Happy B-Earthday!</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Science, Tonight is a late-night comedy talk show with guests scientists who are prepared, and improvisers who are not, to talk about science. Host Dr. Mark Popinchalk and the Science, Tonight reporting team are going to have their hands full keeping the show on the road as scientists and literal forces of nature…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Wed, Apr 22 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/science-tonight---happy-b-earthday-4-9-2026">Source</a> <a href="https://www.caveat.nyc/event/science-tonight---happy-b-earthday-4-9-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Ben’s Health: A Live-Action Men’s Health Magazine</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Hosted by Ben Taylor (Nerd Nite), Ben’s Health Magazine is a live performance magazine to help men do better. The city&#x27;s most wonderful comedians and storytellers will present &quot;columns&quot; on everything you love from your favorite grocery store checkout periodical. Plus! Interactive personals section to make friends…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Wed, Apr 22 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/bens-health-a-live-action-mens-health-magazine-4-22-2026">Source</a> <a href="https://www.caveat.nyc/event/bens-health-a-live-action-mens-health-magazine-4-22-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Lectures on Tap - &quot;Gender, Performed: The Social Construction of Identity&quot;</h2>
+<div class="meta-row"><span>Caveat</span><span>SOLD OUT ($40 advance)</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Professors, experts, and storytellers giving thought-provoking lectures in NYC bars. 📍 Location: Exact address given in confirmation email 🧠 Lecture: &quot;Gender, Performed: The Social Construction of Identity&quot; 🎤 Speaker: Alexandra Stamson Join us for a thought-provoking evening as philosopher and public intellectual…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Thu, Apr 23 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/lectures-on-tap---gender-performed-the-social-construction-of-identity-4-23-2026">Source</a> <a href="https://www.caveat.nyc/event/lectures-on-tap---gender-performed-the-social-construction-of-identity-4-23-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Major Fix: PowerPoint lecture series about personal obsessions</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Major Fix is a PowerPoint lecture series in which New York City’s brightest creative minds present on their personal obsessions, followed by an audience Q&amp;A. Topics have included What Was the Best Time to Exist On Earth?, The Subtle Art of Online Stalking, and New York City Etiquette Tips From a Native New Yorker for…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Thu, Apr 23 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/major-fix-powerpoint-lecture-series-about-personal-obsessions-4-23-2026">Source</a> <a href="https://www.caveat.nyc/event/major-fix-powerpoint-lecture-series-about-personal-obsessions-4-23-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>WLC x NPT: Spitballing</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">WLC Productions, in collaboration with No Plans Tonight, has a night of sketches ready to make you laugh (or die trying). With talent coming in from all corners of the NY comedic world, we will throw some of our dumbest, most ridiculous ideas around to see what sticks, purely spitballing.</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, Apr 24 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/wlc-x-npt-spitballing-4-24-2026">Source</a> <a href="https://www.caveat.nyc/event/wlc-x-npt-spitballing-4-24-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Ask a Fuckboy</h2>
+<div class="meta-row"><span>Caveat</span><span>$30 advance, $35 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Ask a Fuckboy is a new comedy show in NYC that combines the irreverence of Call Her Daddy with the indulgent storytelling of your favorite guilty pleasure Reddit thread. Comics present unhinged dating stories and a panel of “fuckboys” (male comedians) weighs in. Hosted by: Andrea Popova (Writer of 10,000-reader…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, Apr 24 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/ask-a-fuckboy-4-24-2026">Source</a> <a href="https://www.caveat.nyc/event/ask-a-fuckboy-4-24-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Hahapocalypse</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Things have been…….not great lately for climate activists. But we’re not going gentle into that good night! Come party/laugh/scream with some of your favorite comics and activists while supporting climate movements! HAHApocalypse is a climate comedy variety show where comedians of all kinds tackle the greatest…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 25 at 01:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/hahapocalypse-4-25-2026">Source</a> <a href="https://www.caveat.nyc/event/hahapocalypse-4-25-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Nerd Nite</h2>
+<div class="meta-row"><span>Caveat</span><span>$16 advance, $26 door, $21 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Nerd Nite NYC&#x27;s final show of our 2025-2026 season features three fun-yet-informative presentations about the habitability of Earth and other planets, how Luffy from One Piece could use his liberation skills to inspire us to navigate a world still full of corruption and occupation, and how we can use our smartphones…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 25 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/nerd-nite-4-25-2026">Source</a> <a href="https://www.caveat.nyc/event/nerd-nite-4-25-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Drunk Planet Earth</h2>
+<div class="meta-row"><span>Caveat</span><span>$0 advance</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Mystery Science Theater meets Animal Documentary at Drunk Planet Earth. Hosted by Brian Morabito (Dropout) and Stephen Buckley (UCB), the twist of the show comes when the audience tries to stump the hosts with animal questions. Come for the animal facts, stay for the drunk hosts trying to remember what they know…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Apr 25 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/drunk-planet-earth-4-25-2026">Source</a> <a href="https://www.caveat.nyc/event/drunk-planet-earth-4-25-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Lord of the Sword</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">The “Nerdy Gay Juggler,” Jacob D’Eustachio, is back with a brand-new family-friendly show filled with his signature “inventive trickery that sparkles from all angles” (Juggle Magazine)! Come for the juggling, sword swallowing, screwball comedy and unicorns, stay for a young fool’s heartfelt quest to save his lord’s…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, Apr 26 at 02:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/lordofthesword-4-26-2026">Source</a> <a href="https://www.caveat.nyc/event/lordofthesword-4-26-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Slackjaw Live</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $12 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Award-winning humor writer Wendi Aarons (The New Yorker, McSweeney&#x27;s), author of “I&#x27;m Wearing Tunics Now: On Growing Older, Better, and a Hell of a Lot Louder” shares her insights on How to Turn Stand-Alone Satire Pieces into a Book. Slackjaw is a Medium publication with 149k+ followers that runs daily humor pieces…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, Apr 26 at 05:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/slackjaw-live-4-26-2026">Source</a> <a href="https://www.caveat.nyc/event/slackjaw-live-4-26-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Bitch With Mitch</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Get ready for a night of unfiltered opinions, wildly specific grudges, and PowerPoint slides no one asked for but everyone needs. Bitch with Mitch is a comedy show where the city’s funniest people take the stage armed with a topic of their choice and exactly 10 minutes to go off. Think TED Talk meets roast meets that…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Mon, Apr 27 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/bitch-with-mitch-4-21-2026">Source</a> <a href="https://www.caveat.nyc/event/bitch-with-mitch-4-21-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Starseeds</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door, $0 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">STARSEEDS A Dark Comedy Ritual Musical When a storm descends on New Orleans, the residents of a psychiatric ward find themselves unmoored from time, reality, and each other — until the music begins. Starseeds is a darkly comic, ritually charged new musical exploring belief, breakdown, and the search for meaning in…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Mon, Apr 27 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/starseeds-4-27-2026">Source</a> <a href="https://www.caveat.nyc/event/starseeds-4-27-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Pop Princexx</h2>
+<div class="meta-row"><span>Caveat</span><span>$30 advance, $35 door, $20 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">What&#x27;s a Princexx?? A genderqueer regal icon! This past winter was much too cold and things are finally heating up - it&#x27;s time to break out the girlypop playlist and warm weather fits. Join us for a musical femininominom featuring selections from some of our favorite pop and princess divas. Our fabulous cast of femme…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Tue, Apr 28 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/pop-princexx-4-28-2026">Source</a> <a href="https://www.caveat.nyc/event/pop-princexx-4-28-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Meet Me On the Brooklyn Bridge</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Table Read: Meet Me On The Brooklyn Bridge - A Film By Parade Stone When Kennedy and Gianna, former middle school best friends, get paired together to write an article about the best places in New York City to find queer love, Kennedy questions her sexuality, who she is, and her relationship with Gianna.</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Tue, Apr 28 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/Meetmeinbrooklyn-4-28-2026">Source</a> <a href="https://www.caveat.nyc/event/Meetmeinbrooklyn-4-28-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>West Wing Writers Presents: Speakeasy</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $8 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">&lt;p style=&quot;font-weight: 400;&quot;&gt;SpeakEasy is the definitive speechwriting comedy show! Brought to you by the chief humor writers at the speechwriting firm West Wing Writers, SpeakEasy brings together professional speechwriters, outside experts, and comedians who are really into speeches to talk about the techniques they…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Wed, Apr 29 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/west-wing-writers-presents-speakeasy-4-29-2026">Source</a> <a href="https://www.caveat.nyc/event/west-wing-writers-presents-speakeasy-4-29-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Sorry We&#x27;re Here</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $23 door, $18 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">SORRY WE&#x27;RE HERE is an NYC-based sketch group founded by Caleb Alexander, Edward Barbini, Leah Windahl, and Kevin Turner. Sorry We&#x27;re Here invites a rotating cast of guest writers and performers to join them for a hilarious original hour of sketches. With new creative voices joining the mix every performance, each…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Wed, Apr 29 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/sorry-were-here-4-29-2026">Source</a> <a href="https://www.caveat.nyc/event/sorry-were-here-4-29-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Morning Brew Presents: Business Island</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Join us as we test the chops of three of our employees to see who can out-strategize, out-synergize, and out-touch-base their corporate peers. We are boiling the ocean to find who will be the survivor aka employee of the month. Hosted by Meg Baniewicz and Annie Bennett and featuring Morning Brew creators, this game…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Thu, Apr 30 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/morning-brew-presents-business-island-4-30-2026">Source</a> <a href="https://www.caveat.nyc/event/morning-brew-presents-business-island-4-30-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Sagematch</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">It is well known that Caveat is the place for nerdy comedy. We all know this! But the question remains: WHO is the best nerdy comic and/or comedic nerd at Caveat? Come watch Caveat&#x27;s finest and funniest fight head-to-head-to-head-to-head presenting on topics both prepared and improvised. Then YOU decide who shall be…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Thu, Apr 30 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/sagematch-4-30-2026">Source</a> <a href="https://www.caveat.nyc/event/sagematch-4-30-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Immigrant Jam</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">&lt;p&gt;Lucie Pohl&amp;rsquo;s Immigrant Jam Comedy features NYC&amp;rsquo;s funniest immigrant and 1st gen comics, who will make you laugh so hard you&amp;rsquo;ll wish you were born somewhere else. Guaranteed not to have stolen any of your jobs, Immigrant Jam celebrates the beauty of everything cross cultural, deliciously different…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, May 01 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/immigrant-jam-5-1-2026">Source</a> <a href="https://www.caveat.nyc/event/immigrant-jam-5-1-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Existential Questions of the 21st Century</h2>
+<div class="meta-row"><span>Caveat</span><span>$25 advance, $30 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">At ExistenceCon™, the world’s premier festival for those celebrating the coming end of the world, entrepreneurs, artists, alien-worshippers, and sentient computers come to terms with their preconceived notions of life and progress…all while singing. Plus, an interview with the NYC-DSA Ecosocialists, who may try to…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, May 02 at 01:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/existential-questions-of-the-21st-century-5-2-2026">Source</a> <a href="https://www.caveat.nyc/event/existential-questions-of-the-21st-century-5-2-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>My Immortal Live</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Irreverent, angsty, weirdly horny: This is a karaoke-style semi-improvised staged reading of My Immortal—aka the worst fanfiction ever written. Will Ebony Dark’Ness Dementia Raven Way prevail in her struggle against Satan, sudden sex scenes, and spellcheck? Will she be forced to choose between her beloved Draco and…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, May 02 at 04:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/my-immortal-live-5-2-2026">Source</a> <a href="https://www.caveat.nyc/event/my-immortal-live-5-2-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Tom D&#x27;s Big New York Show</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Tom Delgado, a certified NYC tour guide and comedian, takes you on an entertaining tour through different aspects of New York each month with history, his comedian friends, trivia with prizes, and special guests. About Tom: Tom has a popular YouTube channel called tomdnyc, where he shows you around NYC and other…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, May 02 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/tom-ds-big-new-york-show-5-2-2026">Source</a> <a href="https://www.caveat.nyc/event/tom-ds-big-new-york-show-5-2-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>The Fantasy Tavern</h2>
+<div class="meta-row"><span>Caveat</span><span>$35 advance, $40 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Join our rowdy band of bards for a musical celebration of your favorite fandoms, from Shrek 2 to Baldur&#x27;s Gate 3. Expect pop-culture parodies, queer covers of ren faire classics, and tons of audience interaction as we put the party back in adventuring party! Many guests come in costume or cosplay. Every show is a new…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, May 02 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/the-fantasy-tavern-5-2-2026">Source</a> <a href="https://www.caveat.nyc/event/the-fantasy-tavern-5-2-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Taste of Science Presents: NYC SciComm Block Party</h2>
+<div class="meta-row"><span>Caveat</span><span>$12 advance, $17 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">As part of this year’s taste of science festival, we’re bringing our most admired science communication friends together at Caveat to throw our annual SciComm Block Party! We&#x27;ll have tables with demonstrations, interactive activities, and even some exotic creatures to meet. We invite you to celebrate with us and kick…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, May 03 at 05:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/taste-of-science-presents-nyc-scicomm-block-party-5-3-2026">Source</a> <a href="https://www.caveat.nyc/event/taste-of-science-presents-nyc-scicomm-block-party-5-3-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Camp Virgo: Field Day</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">It&#x27;s Camp Virgo: Field Day! Camp Virgo, a comedy and variety show full of early 2000s nostalgia, is back for the Spring. Grab your bandanas and get ready for the three-legged race! (We won&#x27;t actually make you do this.) We&#x27;ve got a fabulous lineup full of comics, puppeteers, improv groups, and characters. Hosts:…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Mon, May 04 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/camp-virgo-field-day--5-4-2026">Source</a> <a href="https://www.caveat.nyc/event/camp-virgo-field-day--5-4-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>NYC Pun-Off</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">The NYC Pun-Off is a competitive wordplay event that is exactly what it sounds like. If you love puns, you&#x27;ll love this. If you don&#x27;t love puns... we can fix that. A long time ago in a comedy club far, far away… just kidding, it was San Francisco. But the legend is real. Worldwide Puns has been producing the Bay Area…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Mon, May 04 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/nyc-pun-off-5-4-2026">Source</a> <a href="https://www.caveat.nyc/event/nyc-pun-off-5-4-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>The New York Groove Live</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">It&#x27;s a brand-new show about how to be a better New Yorker, from the journalists behind The New York Groove! Join Team Groove as we dig into citywide news, share explainers about how to do things in the city and interview journalists newsmakers and local comedians. You&#x27;ll always leave the show knowing how to do…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Tue, May 05 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/the-new-york-groove-live~-5-5-2026">Source</a> <a href="https://www.caveat.nyc/event/the-new-york-groove-live~-5-5-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Doctors Without Boundaries</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Real-life ER doctor Aaron Bola welcomes chronically over-sharing comedians to tell stories of their weirdest diagnoses. He then does what he wishes he had time to do with their patients: break down the insane history of how the medical community has treated that condition, why that condition has been stigmatized, and…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Wed, May 06 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/doctors-without-boundaries-5-6-2026">Source</a> <a href="https://www.caveat.nyc/event/doctors-without-boundaries-5-6-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Alex Berr: How to Kill a Mouse</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">A solo comedy show from a dedicated biomedical researcher processing the loss of her mother to cancer. A deeply personal, funny, and at times absurd look at grief and the human side of science. ★★★★★ &quot;Endlessly compelling&quot; - The Wee Review A solo comedy show from a scientist reconciling her personal life with her…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Wed, May 06 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/alex-berr-how-to-kill-a-mouse-5-6-2026">Source</a> <a href="https://www.caveat.nyc/event/alex-berr-how-to-kill-a-mouse-5-6-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Good Work_Live: Cocaine with Dan Toomey</h2>
+<div class="meta-row"><span>Caveat</span><span>SOLD OUT ($20 advance, $25 door)</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">At Good Work_ Live, Dan Toomey and his news associates bring their YouTube channel to the live stage – tackling one surprise news topic each show with a panel of guests, experts, and hopefully one animal. At our next event, Toomey looks at cocaine. Dan Toomey is a comedian who hosts the Good Work YouTube channel.</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Thu, May 07 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/good-work_live-cocaine-with-dan-toomey-5-7-2026">Source</a> <a href="https://www.caveat.nyc/event/good-work_live-cocaine-with-dan-toomey-5-7-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Cliff Hanger: An Edge of Your Seat Sketch Comedy Show</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Cliff Hanger is a sketch comedy group, going strong since &#x27;22 on stages from The Second City to UCB and the Portland Sketch Comedy Festival. Blending recognizable situations and popular culture with absurd humor, Cliff Hanger brings you hair-raising sketch comedy that will shock, awe, and thrill. Also make you laugh.…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Thu, May 07 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/cliff-hanger-an-edge-of-your-seat-sketch-comedy-show-5-7-2026">Source</a> <a href="https://www.caveat.nyc/event/cliff-hanger-an-edge-of-your-seat-sketch-comedy-show-5-7-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>The Earth is Flat, And Other Facts</h2>
+<div class="meta-row"><span>Caveat</span><span>$18 advance, $23 door, $18 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Wake up and smell the chemtrails, sheeple! Join our convention of free-thinkers as we uncover everything the global elites want to keep hidden from us. Four comedians will present their own unique conspiracy theories, connecting dots that you never knew existed. After each presentation, their findings will be peer…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, May 08 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/the-earth-is-flat-and-other-facts-5-8-2026">Source</a> <a href="https://www.caveat.nyc/event/the-earth-is-flat-and-other-facts-5-8-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Fucked Up Play Fest</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door, $18 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Fucked-Up Play Fest is BACK for a night of hot 10 minute plays by even hotter playwrights, all performed as a drinking game for the audience! Featuring 6 new works by 6 NYC playwrights. Grab a drink at the bar and a program at the door to go drink along with the show. Bring a friend, bring a date, bring your sense of…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, May 08 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/fucked-up-play-fest-5-8-2026">Source</a> <a href="https://www.caveat.nyc/event/fucked-up-play-fest-5-8-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Women in Sketch</h2>
+<div class="meta-row"><span>Caveat</span><span>$25 advance, $30 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">WOMEN IN SKETCH returns to the Caveat stage this Spring for their second show! This Mother’s Day Eve, celebrate women at this bold and hilarious all-female comedy show! Join us for an afternoon of laughs, creativity, and connection! FEATURING: Isabella Filosa, Sydney Penticuff, Jenna Burns, Grace Cameron, Michelle…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, May 09 at 01:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/women-in-sketch-5-9-2026">Source</a> <a href="https://www.caveat.nyc/event/women-in-sketch-5-9-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Mating Games</h2>
+<div class="meta-row"><span>Caveat</span><span>$25 advance, $30 door, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Mating Games is a witty, subversive new musical set in a Papua New Guinea ornithology lab — where birds choose their mates, women make the rules, and Darwin gets a serious revision. Raucous and surprisingly moving, it turns the real science of sexual selection into a passionate argument for female autonomy. Think…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, May 09 at 04:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/mating-games-5-9-2026">Source</a> <a href="https://www.caveat.nyc/event/mating-games-5-9-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>College Radio</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">A comedy show about music. Like your Spotify Wrapped...but funny. A playlist of sketches. Each show in this series is inspired by a musical theme – the playlist could be any genre from punk and party anthems to 70s classics and Broadway musicals. Hear what musically inspired sketches College Radio has composed! It’s…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, May 09 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/college-radio-5-9-2026">Source</a> <a href="https://www.caveat.nyc/event/college-radio-5-9-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>The Infallible Joke Formula</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Infallible Joke Formula is back with “Philoso-fight!” When we do our research who’s ideas should we prioritize? Psychology and Philosophy goes head to head to define the perfect punchline, in an all out underground theater bar brawl. Featuring comedy from Dan Toomey, Chicken Big, Haley Hepworth, and some surprise…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, May 09 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/the-infallible-joke-formula-5-9-2026">Source</a> <a href="https://www.caveat.nyc/event/the-infallible-joke-formula-5-9-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Impossible New York Stories</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Every New Yorker has had a crazy NYC moment that makes them say, “Only in New York…” In this special Mother&#x27;s Day Edition, Comedians and storytellers will trauma bond with you as they share their wild, improbable, yet totally true - Impossible New York Stories!</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, May 10 at 02:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/impossible-new-york-stories-5-10-2026">Source</a> <a href="https://www.caveat.nyc/event/impossible-new-york-stories-5-10-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Funny Money: A comedy show about money</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">A comedy show for people who would rather laugh than cry about money! In honor of Mother’s Day, the inaugural show explores the question many New Yorkers ask themselves at some point: “Can I ever afford to have a kid here?” Bring your mom, your friend, your partner – even if you know you want to stay child free!…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, May 10 at 05:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/funny-money-a-comedy-show-about-money-5-10-2026">Source</a> <a href="https://www.caveat.nyc/event/funny-money-a-comedy-show-about-money-5-10-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Tina Friml</h2>
+<div class="meta-row"><span>Caveat</span><span>$25 advance, $30 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">**Tina Friml** is a standup comedian who uses animated optimism to talk about living with cerebral palsy. In 2024, she was named one of Variety’s Top 10 Comics To Watch. Her sharp jokes and fearless honesty about the social assumptions that come with living with a disability has earned Tina a dedicated social media…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Mon, May 11 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/tina-friml-5-11-2026">Source</a> <a href="https://www.caveat.nyc/event/tina-friml-5-11-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>&#x27;Read This To Look Cool&#x27; Book Launch and Comedy Show</h2>
+<div class="meta-row"><span>Caveat</span><span>$34 advance, $47 door, $39 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Join author Maeve Dunigan for a book launch party and comedy show celebrating the release of her debut essay collection, &quot;Read This To Look Cool.&quot; Featuring readings from some of Maeve&#x27;s funniest (and arguably coolest) friends. Plus, Maeve will sit down with The New Yorker’s humor and cartoons editor, Emma Allen, for…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Tue, May 12 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/read-this-to-look-cool-book-launch-and-comedy-show--5-12-2026">Source</a> <a href="https://www.caveat.nyc/event/read-this-to-look-cool-book-launch-and-comedy-show--5-12-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>The Brand New Talent Show</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Can you teach old comedians new tricks? The Brand New Talent Show says yes! Hosted by Emily Claypoole, three hilarious comedians are challenged to learn and perform brand new talents in only one week. Watch their inspiring behind-the-scenes journeys mastering their new crafts, cheer them on during live performances…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Tue, May 12 at 09:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/the-brand-new-talent-show-5-12-2026">Source</a> <a href="https://www.caveat.nyc/event/the-brand-new-talent-show-5-12-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Peer Revue</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">The formula is simple: 1. Experts give fun talks 2. Comedians improv/e them, sight unseen The Result: A night where big ideas meet big laughs Talks by: **Noah Guiberson** *(Facts Machine)* **Amy Muller** *(Abolish Everything)* **Michael Salgarolo** *(NYU)* **Luke Strathman** *(EconLOL)* Comedy by: **Shyaporn…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Wed, May 13 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/peer-revue-5-13-2026">Source</a> <a href="https://www.caveat.nyc/event/peer-revue-5-13-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Get Work</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Comedians go on job interviews with real life hiring professionals in an effort to get the job. The catch? They&#x27;ll be assigned terrible fake resumes that they won&#x27;t see until the show. Will these performers successfully crank up their corporate charisma and defend some truly terrible credentials, or will their…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Thu, May 14 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/get-work-5-14-2026">Source</a> <a href="https://www.caveat.nyc/event/get-work-5-14-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Our Findings Show</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">The science game show that&#x27;s academically rigorous and comically ridiculous. Science Communicator and Comedian Tom Lum will put his contestants through trials and games inspired by the wildest real scientific papers. Join us to see for yourself what Our Findings Show!</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, May 15 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/our-findings-show-5-15-2026">Source</a> <a href="https://www.caveat.nyc/event/our-findings-show-5-15-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Before The War Is Over</h2>
+<div class="meta-row"><span>Caveat</span><span>$30 advance, $35 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">After four years of war back home in Ukraine, Yaroslav Zubko finally decided it was time to do his part… by launching his first solo comedy show. Torn between guilt, culture shock, the absurdities of American life, he fights childhood trauma, capitalism, the more-than-occasional existential crisis, and other…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, May 15 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/before-the-war-is-over--5-15-2026">Source</a> <a href="https://www.caveat.nyc/event/before-the-war-is-over--5-15-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Nerd Nite Presents: Three Spreadsheets to the Wind</h2>
+<div class="meta-row"><span>Caveat</span><span>$16 advance, $26 door, $21 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Behold the NYC premiere of Nerd Nite&#x27;s first spin-off show, Three Spreadsheets to the Wind! Join us for a matinee on Saturday May 16, 2026 at 4pm for a rousing, funny, charming show that combines story telling, Excel, and drinks – just as the founders of Microsoft definitely intended. This show brings three story…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, May 16 at 04:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/nerd-nite-presents-three-spreadsheets-to-the-wind-5-16-2026">Source</a> <a href="https://www.caveat.nyc/event/nerd-nite-presents-three-spreadsheets-to-the-wind-5-16-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Fun in Moderation: Sketch Comedy</h2>
+<div class="meta-row"><span>Caveat</span><span>$12 advance, $20 door, $20 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Fun in Moderation is BACK with all new sketches! Fun in Moderation is a New York City-based sketch comedy team comprised of Austin Elias-de Jesus (UCB), Kendall Bowden (Nick’s girlfriend), Nick Ryan (Kendall’s boyfriend), and Syd King (Good Girls Gone Sad). The group has performed at SF Sketchfest, New York Comedy…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, May 16 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/fun-in-moderation-sketch-comedy-5-16-2026">Source</a> <a href="https://www.caveat.nyc/event/fun-in-moderation-sketch-comedy-5-16-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>The Best of The Seven Deadly Sins</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $23 door, $18 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Indulge in the wickedly entertaining world of The Best of The Seven Deadly Sins through the eyes of comedians and storytellers. Come for the comedy, stay to get your own printed copy of The Best of the Seven Deadly Sins!</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, May 17 at 02:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/the-best-of-the-seven-deadly-sins-5-17-2026">Source</a> <a href="https://www.caveat.nyc/event/the-best-of-the-seven-deadly-sins-5-17-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Comedy Cabaret for Disgruntled Humans</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Comedy Cabaret for Disgruntled Humans These days, your news feed can be hazardous to your health. Come laugh in community while we skewer the powers that be and capture the absurdity of the moment. A night of song, spirits and comedy is just what the doctor ordered – and it’s a lot cheaper. Join award winning hosts…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, May 17 at 05:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/comedy-cabaret-for-disgruntled-humans-5-17-2026">Source</a> <a href="https://www.caveat.nyc/event/comedy-cabaret-for-disgruntled-humans-5-17-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>My Little Phobia</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $22 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Emily will perform a perfectly normal solo show - as long as no one vomits. What follows is a funny, strange, dark unraveling: emetophobia, derailed storytelling, and misplaced trust in a My Little Pony (they can’t throw up, you see). Absurd, darkly funny, and unexpectedly tender. Emily wrote a totally normal solo…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Mon, May 18 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/my-little-phobia-5-18-2026">Source</a> <a href="https://www.caveat.nyc/event/my-little-phobia-5-18-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Story-oke: Sing and Tell</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Part karaoke, part confessional. STORY-OKE invites performers and audience members alike to share a true story about their connection to a song - or the song itself - then sing the hell out of it. Every song has a story. For our next show, we&#x27;ll have stories about songs by performers from the worlds of science,…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Tue, May 19 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/story-oke-sing-and-tell-5-19-2026">Source</a> <a href="https://www.caveat.nyc/event/story-oke-sing-and-tell-5-19-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Pitch Roast Live</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Pitch Roast Live️‍ brings comedy, startups, and venture capital together. A Shark Tank and comedy roast crossover episode. Real comedians and real VC investors roast real startup pitches. 4 founders, 3 comedians, 2 VC investors, 1 winner!</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Wed, May 20 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/pitch-roast-live-5-20-2026">Source</a> <a href="https://www.caveat.nyc/event/pitch-roast-live-5-20-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Facts Machine: Science, Comedy &amp; Trivia!</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Facts Machine is a science comedy show (and science trivia showdown) by and for people who are curious about everything – but especially the things that make them laugh! Scientists by day and pub trivia hosts by night, Em, Noah, and Rob leverage their scientific curiosity and delight in obscure minutiae to bring you…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Thu, May 21 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/facts-machine-science-comedy--trivia-5-21-2026">Source</a> <a href="https://www.caveat.nyc/event/facts-machine-science-comedy--trivia-5-21-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Facebook Marketplace Live!: The Game Show</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $23 door, $18 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Facebook Marketplace Live!: The Game Show showcases NYC&#x27;s finest improvisers as they battle it out in a series of Facebook Marketplace-inspired games for the title of King of Sh*t. Think Whose Line Is It Anyway? meets Buy Nothing. Audience members play to win too! Get up on stage and answer riveting Facebook…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Thu, May 21 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/facebook-marketplace-live-the-game-show-5-21-2026">Source</a> <a href="https://www.caveat.nyc/event/facebook-marketplace-live-the-game-show-5-21-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Boba Gays</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Celebrate AANHPI Heritage Month with Boba Gays on May 22! Join us for a night of big laughs and big talent at our all Asian, all queer comedy variety show featuring stand up, improv, and more. Hosted by Alex Kim and Kenny Park Yi, Boba Gays brings together some of the funniest Asian performers in NYC for a joyful…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, May 22 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/boba-gays-5-22-2026">Source</a> <a href="https://www.caveat.nyc/event/boba-gays-5-22-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>The Power Joker: A Robert Moses Comedy Show</h2>
+<div class="meta-row"><span>Caveat</span><span>$17 advance, $25 door, $22 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">&lt;b&gt;THEME: NEW YORK ON SCREEN&lt;/b&gt; What happens when the master builder of New York, Robert Moses, loses his power and attempts to host a late night talk show? The Power Joker is one hour of driving comedy inspired by that horrible &quot;genius&quot; Robert Moses and his 1974 biography, The Power Broker by Robert Caro. Come see…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, May 23 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/the-power-joker-a-robert-moses-comedy-show-5-23-2026">Source</a> <a href="https://www.caveat.nyc/event/the-power-joker-a-robert-moses-comedy-show-5-23-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Kinda Queer Mostly Anxious &amp; Horny</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Make it a sketch-y date with Kinda Queer, a comedy show, led by 2 bisexual men, fighting erasure one sketch at a time! Featuring a (mostly) queer cast and crew, Kinda Queer, hits the streets to find out what people are doing to feel less lonely/horny. Whether that’s friends, dates, or a complicated (but it’s oh so…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, May 24 at 02:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/kinda-queer-mostly-anxious--horny-5-24-2026">Source</a> <a href="https://www.caveat.nyc/event/kinda-queer-mostly-anxious--horny-5-24-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Projectorfest: Shitty Mozart</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">They cloned Mozart, it went horribly wrong and now we&#x27;re stuck with the consequences. Wearing a cheap wig, Shitty Mozart (Aaron Nemo, a writer for The Late Show with Stephen Colbert) performs a dazzlingly chaotic and vulgar one-man multimedia concerto. Terrified that the audience will realize he lacks the musical…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Mon, May 25 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/projectorfest-shitty-mozart-5-25-2026">Source</a> <a href="https://www.caveat.nyc/event/projectorfest-shitty-mozart-5-25-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Projectorfest: Scurvy &amp; Swords + From Wolf To Baby</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">These shows are presented as a part of Projectorfest 2026, a weeklong showcase of ambitious multimedia-driven comedy projects. More at projectorfest.com. This performance includes two 30-minute shows. **MATT STORRS: SCURVY &amp; SWORDS** – Matt Storrs Matt Storrs gave himself scurvy. While cleaning the rusty sword he…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Tue, May 26 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/projectorfest-scurvy--swords--from-wolf-to-baby-5-26-2026">Source</a> <a href="https://www.caveat.nyc/event/projectorfest-scurvy--swords--from-wolf-to-baby-5-26-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Projectorfest: Running in the Family + UNCnapping</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">These shows are presented as a part of Projectorfest 2026, a weeklong showcase of ambitious multimedia-driven comedy projects. More at projectorfest.com. This performance includes two 30-minute shows. **RUNNING IN THE FAMILY** – Brent Birnaum In 2010, Brent Birnbaum was disqualified from his Bronx Science student…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Tue, May 26 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/projectorfest-running-in-the-family--uncnapping-5-26-2026">Source</a> <a href="https://www.caveat.nyc/event/projectorfest-running-in-the-family--uncnapping-5-26-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Projectorfest: Jargon</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Jargon is a terrible blight on communication, understanding, and clarity. It&#x27;s also hilarious and wonderful. Ben Lillie takes us on a journey through the 10 best pieces of academic jargon, from The Mohorovičić Discontinuity to Deus Ex Machina, and beyond. Come see how the language we use has shaped our view of the…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Wed, May 27 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/projectorfest-jargon-5-27-2026">Source</a> <a href="https://www.caveat.nyc/event/projectorfest-jargon-5-27-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Do It Live w/ Chika</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $23 door, $18 premium, $5 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">For people who wonder &quot;What if Wendy Williams was a comedian with a political science degree?&quot;, there&#x27;s Do It Live w/ Chika. Do It Live features funny, candid conversations with New York political leaders and organizers, musicians, local business owners, comedians, and more. The show explores the city that we live in…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Thu, May 28 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/do-it-live-w-chika-5-28-2026">Source</a> <a href="https://www.caveat.nyc/event/do-it-live-w-chika-5-28-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Projectorfest: Doomscroll + Aran Plays a Game with You</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $23 door, $20 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">These shows are presented as a part of Projectorfest 2026, a weeklong showcase of ambitious multimedia-driven comedy projects. More at projectorfest.com. This performance includes two 30-minute shows. **DOOMSCROLL** – Blake Ung In Doomscroll, Blake must do whatever the projector says, and the audience has the…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, May 29 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/projectorfest-doomscroll--aran-plays-a-game-with-you-5-29-2026">Source</a> <a href="https://www.caveat.nyc/event/projectorfest-doomscroll--aran-plays-a-game-with-you-5-29-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Projectorfest: My Life in Charts + Regulate This!</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">These shows are presented as a part of Projectorfest 2026, a weeklong showcase of ambitious multimedia-driven comedy projects. More at projectorfest.com. This performance includes two 30-minute shows. **MY LIFE IN CHARTS** – Kevin McNulty A data analyst uses charts to prove how he peaked in kindergarten, that his…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, May 29 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/projectorfest-my-life-in-charts--regulate-this-5-29-2026">Source</a> <a href="https://www.caveat.nyc/event/projectorfest-my-life-in-charts--regulate-this-5-29-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Projectorfest: Bari + Why You Should Hire Me To Care For Your Child/Beg Me To Date Your Son</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">These shows are presented as a part of Projectorfest 2026, a weeklong showcase of ambitious multimedia-driven comedy projects. More at projectorfest.com. This performance includes two 30-minute shows. **BARI** – Akmal Tajihan Realizing he is the same age his father was when he immigrated to the United States. Akmal…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, May 30 at 01:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/projectorfest-bari--why-you-should-hire-me-to-care-for-your-childbeg-me-to-date-your-son-5-30-2026">Source</a> <a href="https://www.caveat.nyc/event/projectorfest-bari--why-you-should-hire-me-to-care-for-your-childbeg-me-to-date-your-son-5-30-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Projectorfest: Yeast! + It&#x27;s Complicated...</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">These shows are presented as a part of Projectorfest 2026, a weeklong showcase of ambitious multimedia-driven comedy projects. More at projectorfest.com. This performance includes two 30-minute shows. **YEAST!** – Megan Archbold Megan Archbold has made it 30 years without making a gynecologist appointment. Which has…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, May 30 at 04:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/projectorfest-yeast--its-complicated-5-30-2026">Source</a> <a href="https://www.caveat.nyc/event/projectorfest-yeast--its-complicated-5-30-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Projectorfest: Tallest Fastest Best + The World is Ending</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">These shows are presented as a part of Projectorfest 2026, a weeklong showcase of ambitious multimedia-driven comedy projects. More at projectorfest.com. This performance includes two 30-minute shows. **TALLEST FASTEST BEST** – Amy Muller For her first job, Amy Muller (Abolish Everything!, Jet Lag: The Game,…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, May 30 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/projectorfest-tallest-fastest-best--the-world-is-ending-5-30-2026">Source</a> <a href="https://www.caveat.nyc/event/projectorfest-tallest-fastest-best--the-world-is-ending-5-30-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Projectorfest: Smart Bidet + The Better Binness Bros</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">These shows are presented as a part of Projectorfest 2026, a weeklong showcase of ambitious multimedia-driven comedy projects. More at projectorfest.com. This performance includes two 30-minute shows. **SMART BIDET: A KEYNOTE PRESENTATION** – Jaren Bronen Dr. Melvin Garrett is a scientist and inventor who is thrilled…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, May 30 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/projectorfest-5-30-2026">Source</a> <a href="https://www.caveat.nyc/event/projectorfest-5-30-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Confessions of an Autistic Barbie</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Confessions of an Autistic Barbie takes you on a journey with awkward bombshell Amy Powell. As she struggles to shove her omnidirectional mind into a box, the box is in for a surprise. Sometimes the things you try to change and hide about yourself turn out to be your greatest strengths. Directed by Maggie Metnick.…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, May 31 at 02:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/confessions-of-an-autistic-barbie-5-31-2026">Source</a> <a href="https://www.caveat.nyc/event/confessions-of-an-autistic-barbie-5-31-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>The Schmooze</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Inspired by the classic improv form, the Living Room, The Schmooze brings folks together for a night of unfiltered kibitzing, kvetching, and improv comedy. With a charismatic cast of experienced comedians, ages 70+, you&#x27;ll be hooked by their chutzpah. Featuring Lily Friedman, Richard Gould, Janet Klein, Barbara…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, May 31 at 05:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/the-schmooze-1-25-2026">Source</a> <a href="https://www.caveat.nyc/event/the-schmooze-1-25-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>EXTREME SEX: How Extremism Crept Into Our Pants and Stayed There</h2>
+<div class="meta-row"><span>Caveat</span><span>$25 advance, $30 door, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Performed by Dani Faith Leonard, this part TED Talk, part one-person show about sex and extremism blends deep research with sharp humor and wildly entertaining visuals. Dani has spent the past decade studying the history of sex. At the same time, she’s been directing a documentary about extremism in America.…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Wed, Jun 03 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/extreme-sex-how-extremism-crept-into-our-pants-and-stayed-there-6-3-2026">Source</a> <a href="https://www.caveat.nyc/event/extreme-sex-how-extremism-crept-into-our-pants-and-stayed-there-6-3-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>RISK! live show and story slam in New York</h2>
+<div class="meta-row"><span>Caveat</span><span>$18 advance, $23 door, $20 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">[RISK!](https://www.risk-show.com/) is the show where people tell true stories they never thought they&#x27;d dare to share in public. Created by Kevin Allison (MTV&#x27;s The State, Netflix, Comedy Central, HBO), RISK! features true stories from people from all walks of life that are often more raw, real, and uncensored than…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Tue, Jun 09 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/risk-live-show-and-story-slam-in-new-york-6-9-2026">Source</a> <a href="https://www.caveat.nyc/event/risk-live-show-and-story-slam-in-new-york-6-9-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Vocabaret: A Tourney At Law</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">*Do you marvel at morphemes? Are you scintillated by syntax? Then you belong at Vocabaret, where we make language fun while making fun of language. Each month we explore a new theme — from Phobias to Butts — in segments with titles like “Back That A-Z Up,” “Glossed in Translation” and “Will You Accept This Prose?”…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, Jun 12 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/vocabaret-a-tourney-at-law-6-12-2026">Source</a> <a href="https://www.caveat.nyc/event/vocabaret-a-tourney-at-law-6-12-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Books &amp; Burlesque</h2>
+<div class="meta-row"><span>Caveat</span><span>$25 advance, $45 door, $35 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">BOOKS AND BURLESQUE, Saturday, June 13 from 9:00 pm–11:30 pm. Doors 9:00 pm. Show: 9:30pm-11:30pm with an intermission If the show is sold out there will be a waiting list at the door We are excited to celebrate Pride with graphic nonfiction, naughty novels, and sexy performers! Featuring authors reading excerpts…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Jun 13 at 09:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/books--burlesque-6-13-2026">Source</a> <a href="https://www.caveat.nyc/event/books--burlesque-6-13-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Wuhan Clan Ain’t Nuthin’ ta Duck Wit</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Wu-Tang energy meets immigrant storytelling in a high-octane solo show blending stand-up, comedy rap, martial arts, and multimedia swagger. In Wuhan Clan Ain’t Nuthin’ ta Duck Wit, Bernice Ye (aka Godmutha Ye) brings audiences into her fully realized comedic universe — where immigrant survival stories collide with…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Wed, Jun 17 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/wuhan-clan-aint-nuthin-ta-duck-wit-6-17-2026">Source</a> <a href="https://www.caveat.nyc/event/wuhan-clan-aint-nuthin-ta-duck-wit-6-17-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>REPARATIONS! A Juneteenth Celebration of Black Improv Comedy!</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Show Description: You’re invited to the 5th Annual passing out of REPARATIONS! Come join host and WildNOut Castmate, Sydney Duncan, as she celebrates Juneteenth with a blackity-black showcase of NYC’s best all-black improv and sketch teams with a surprise special guest stand-up set!</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, Jun 19 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/reparations-a-juneteenth-celebration-of-black-improv-comedy-6-19-2026">Source</a> <a href="https://www.caveat.nyc/event/reparations-a-juneteenth-celebration-of-black-improv-comedy-6-19-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>The Rocky Horror Picture Show</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">It’s time to be loud and proud, sweet Transylvanians!✨ 💋It’s Rocky Horror Picture Show! And since it’s pride month, you can expect a queer as Hell show!🏳️‍🌈 Come watch the cult classic the way it was meant to be seen; with a full shadowcast of actors and an audience yelling Asshole/Slut! Party poppers and snapping…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Jun 20 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/the-rocky-horror-picture-show-6-20-2026">Source</a> <a href="https://www.caveat.nyc/event/the-rocky-horror-picture-show-6-20-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Michael John Ciszewski: Mother, Superior</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Every gay guy has his diva—Madonna, Janet, Britney, Bey, Gaga—but New York City comedian Michael John Ciszewski’s has always been Sophie, his mother. She’s a nurse, a mystic, and a loudmouth Jersey girl who loves Bruce Springsteen almost as much as she loves her idiot son. And now, Michael John’s on a mission to make…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, Jun 21 at 02:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/michael-john-ciszewski-mother-superior-6-21-2026">Source</a> <a href="https://www.caveat.nyc/event/michael-john-ciszewski-mother-superior-6-21-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>EconLOL: An Economics-Themed Comedy Show</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">EconLOL is an economics-themed comedy show that will teach you nothing about the economy, but will give you lots of opportunities to laugh at it. EconLOL brings together comedians and sometimes real life economists to make fun of economics (or something at least somewhat econ-adjacent) however they please. Line up to…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Mon, Jun 22 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/econlol-an-economics-themed-comedy-show-6-22-2026">Source</a> <a href="https://www.caveat.nyc/event/econlol-an-economics-themed-comedy-show-6-22-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Bangladesh Unplugged, a standup comedy show and Networking Event!</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $30 door, $25 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">We are back with another edition of **Bangladesh Unplugged**, a stand-up comedy show and networking event by Bangladeshis for Bangladeshis. Bangladesh Unplugged is more than a comedy show. It’s a high-energy gathering of Bangladeshi professionals, entrepreneurs, and creatives. It’s a space to connect, laugh, and…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Jul 11 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/bangladesh-unplugged-a-standup-comedy-show-and-networking-event-7-11-2026">Source</a> <a href="https://www.caveat.nyc/event/bangladesh-unplugged-a-standup-comedy-show-and-networking-event-7-11-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>SummerWeen: A Radio Play Festival</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">This summer, no one can hear you scream, me scream, we all scream for ice cream. The Sidekick Troupe presents: The SummerWeen Radio Play Festival! We simply cannot wait for Halloween, so we&#x27;re bringing it to you early. The SummerWeen Radio Play Festival is a collection of short, silly, and spooky radio plays written…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, Jul 12 at 02:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/summerween-a-radio-play-festival-7-12-2026">Source</a> <a href="https://www.caveat.nyc/event/summerween-a-radio-play-festival-7-12-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>American Assholes: Escape to Edinburgh</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $20 door</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">A Queer, African &amp; Indigenous American trio (HBO, Don’t Tell, Amazon Prime, NY Times – Critic’s Pick, Time Out), unite for a cross-cultural comedy hour dissecting identity, politics, and why Americans might, in fact, be the worst. Smart, sharp, and occasionally unhinged, these comics deliver a Venn diagram of…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, Jul 19 at 05:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/american-assholes-escape-to-edinburgh-7-19-2026">Source</a> <a href="https://www.caveat.nyc/event/american-assholes-escape-to-edinburgh-7-19-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Yesterday&#x27;s Horroscope</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $25 door, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Scholars across time have struggled to define Yesterday’s Horoscope, but it’s simply a two-woman comedy show with an astrological bent in which Kristina Gustovich and Jane Mitchell play the all seeing, all knowing, and occasionally withholding Skies. Inspired by all one-woman shows, this two-woman show features more…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Wed, Jul 22 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/yesterdays-horroscope-7-22-2026">Source</a> <a href="https://www.caveat.nyc/event/yesterdays-horroscope-7-22-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Welp, We Solved It</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Tom Delgado hosts journalists, professors, comedians, and laypeople to educate the audience and solve the pressing issues of the day!</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, Jul 24 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/welp-we-solved-it-7-24-2026">Source</a> <a href="https://www.caveat.nyc/event/welp-we-solved-it-7-24-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>The Story Collider</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">The Story Collider is a storytelling show dedicated to bringing true, personal stories about science to audiences around the world. Each month we bring five storytellers to the stage to tell their stories of how science impacted their lives in touching, funny, and interesting ways.</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Mon, Jul 27 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/the-story-collider-7-27-2026">Source</a> <a href="https://www.caveat.nyc/event/the-story-collider-7-27-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Ticklemuff&#x27;s Big Tour!</h2>
+<div class="meta-row"><span>Caveat</span><span>$25 advance, $30 door, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">The dynamic ventriloquism duo Zack Binder &amp; Ticklemuff are coming from Los Angeles to bring you an hour of whimsical, heartwarming comedy- only to be interrupted when Zack&#x27;s raunchy, muppet girlfriend Jill Goldstein shows up...and all hell breaks loose. Strap in for a hilarious, emotionally therapeutic rollercoaster…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, Aug 02 at 05:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/ticklemuffs-big-tour-8-2-2026">Source</a> <a href="https://www.caveat.nyc/event/ticklemuffs-big-tour-8-2-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>NYC Magic Ensemble</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $30 door, $25 premium</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">The NYC Magic Ensemble presents a night of world-class magicians and mentalists at the Caveat Theater in Manhattan. Witness an evening of sophisticated illusion and psychological mystery that will have you questioning your own senses. Perfect for a remarkable date night or an unforgettable evening with friends. Just…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Fri, Aug 14 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/nyc-magic-ensemble-8-14-2026">Source</a> <a href="https://www.caveat.nyc/event/nyc-magic-ensemble-8-14-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Let&#x27;s See, What Else 10-Year Anniversary</h2>
+<div class="meta-row"><span>Caveat</span><span>$15 advance, $25 door, $20 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Hosts Courtney Maginnis &amp; Tom Delgado celebrate the 10-year anniversary of their popular weekly stand-up show, Let&#x27;s See, What Else!</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Tue, Aug 25 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/lets-see-what-else-10-year-anniversary-8-25-2026">Source</a> <a href="https://www.caveat.nyc/event/lets-see-what-else-10-year-anniversary-8-25-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Catbaret! NYC’s Cat-Themed Variety Show: Meowloween!</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $30 door, $25 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Meow! Calling all cat lovers—join us for a purr-fect variety show! Celebrate Meowloween with **Catbaret** NYC’s cat-themed cabaret, hosted by **Gemma Smith** and packed with comedy music, and burlesque (aka purr-lesque). *&quot;You pawsitively won&#x27;t want to miss Catbaret.&quot; — Time Out NY* **Highlights include:** *…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Oct 31 at 07:00 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/catbaret-nycs-cat-themed-variety-show-meowloween-10-31-2026">Source</a> <a href="https://www.caveat.nyc/event/catbaret-nycs-cat-themed-variety-show-meowloween-10-31-2026">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Catbaret! NYC’s Cat-Themed Variety Show: Meowy X-Mas &amp; Happy Hanukkats</h2>
+<div class="meta-row"><span>Caveat</span><span>$20 advance, $30 door, $25 premium, $10 livestream</span></div>
+</div>
+<div class="tag">1 dates listed</div>
+</div>
+
+<p class="description">Meow! Calling all cat lovers—join us for a purr-fect variety show! Celebrate Meowloween with **Catbaret** NYC’s cat-themed cabaret, hosted by **Gemma Smith** and packed with comedy music, and burlesque (aka purr-lesque). *&quot;You pawsitively won&#x27;t want to miss Catbaret.&quot; — Time Out NY* **Highlights include:** *…</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sat, Dec 19 at 09:30 PM</div>
+<div class="schedule-meta">Caveat</div>
+</div>
+<div class="schedule-links"><a href="https://www.caveat.nyc/event/catbaret-nycs-cat-themed-variety-show-meowy-x-mas--happy-hanukkats-12-19-2026">Source</a> <a href="https://www.caveat.nyc/event/catbaret-nycs-cat-themed-variety-show-meowy-x-mas--happy-hanukkats-12-19-2026">Tickets</a></div>
+</li></ul></div>
+</li></ul>
+</section>
+    </div>
+  </div>
+  
+</body>
+</html>
