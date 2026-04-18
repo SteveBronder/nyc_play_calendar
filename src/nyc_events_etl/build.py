@@ -1508,9 +1508,6 @@ def _page_shell(
     return f"""<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{escape(title)}</title>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-BSMDBR7PZ8"></script>
   <script>
@@ -1520,6 +1517,9 @@ def _page_shell(
 
     gtag('config', 'G-BSMDBR7PZ8');
   </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{escape(title)}</title>
   <style>{SITE_CSS}</style>
 </head>
 <body>
