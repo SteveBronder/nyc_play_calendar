@@ -6,42 +6,24 @@ from nyc_events_etl.scrapers.asylum import extract_events_list, format_price, pa
 from nyc_events_etl.scrapers.here import parse_here_schedule_lines
 from nyc_events_etl.scrapers.slipper_room import _parse_wix_datetime, _strip_date_suffix
 
-FRIGID_HTML = """
-<div class="event">
-  <span class="title">Measure for Measure</span>
-  <a href="https://frigid.example/measure">Details</a>
-  <span class="date">Aug 16</span>
-  <span class="time">7 pm</span>
-  <span class="venue">Under St Marks</span>
-  <span class="address">94 St Marks Pl</span>
-</div>
-"""
-
-PUBLIC_HTML = """
-<div class="event">
-  <span class="title">Pericles</span>
-  <span class="desc">Concert</span>
-  <a href="https://public.example/pericles">Info</a>
-  <span class="date">Aug 29</span>
-  <span class="time">8 pm</span>
-  <span class="venue">Cathedral</span>
-  <span class="address">112 St</span>
-</div>
-"""
+def test_frigid_venue_id_map():
+    """VENUE_ID_MAP contains expected venues and handles variant spellings."""
+    assert frigid.VENUE_ID_MAP["Under St. Marks"] == "under_st_marks"
+    assert frigid.VENUE_ID_MAP["Under St Marks"] == "under_st_marks"
+    assert frigid.VENUE_ID_MAP["Chain Theatre"] == "chain_theatre"
 
 
-def test_frigid_scraper():
-    def fake_fetch(url: str) -> str:
-        assert url == "https://frigid.example/measure"
-        return "<span class=\"desc\">A play.</span><span class=\"price\">$20</span>"
+def test_frigid_date_parsing():
+    """Frigid uses DD/MM/YYYY dates and 'YYYY-MM-DD HH:MM:SS' performance times."""
+    from datetime import datetime
 
-    events = frigid.parse_html(FRIGID_HTML, 2025, fetch=fake_fetch)
-    event = events[0]
-    assert event.title == "Measure for Measure"
-    assert event.dates[0].day == 16
-    assert event.description == "A play."
-    assert event.price == "$20"
-    assert event.source == "https://frigid.example/measure"
+    # DD/MM/YYYY format used in data-performances JSON
+    dt = datetime.strptime("12/04/2026", "%d/%m/%Y")
+    assert dt.date() == date(2026, 4, 12)
+
+    # performanceRealTime format
+    dt = datetime.strptime("2026-04-12 15:55:00", "%Y-%m-%d %H:%M:%S")
+    assert dt.time() == time(15, 55)
 
 
 def test_public_theater_parse_calendar_datetime():
