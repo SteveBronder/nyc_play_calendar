@@ -135,8 +135,45 @@ a:hover {
 }
 
 .sidebar h2 {
-  margin: 0 0 14px;
+  margin: 0;
   font-size: 1.2rem;
+}
+
+.sidebar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 0 14px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+.sidebar-toggle .toggle-arrow {
+  display: inline-block;
+  font-size: 0.7em;
+  color: var(--muted);
+  transition: transform 0.3s ease;
+}
+
+.sidebar-toggle.open .toggle-arrow {
+  transform: rotate(180deg);
+}
+
+.sidebar-list-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.sidebar-list-wrapper.expanded {
+  max-height: 2000px;
+  opacity: 1;
 }
 
 .sidebar-list,
@@ -600,65 +637,6 @@ a:hover {
   font-size: 0.94rem;
 }
 
-.venue-grid-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 14px 18px;
-  margin-bottom: 16px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,248,240,0.78));
-  color: var(--ink);
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: inherit;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.venue-grid-toggle:hover {
-  background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,250,245,0.92));
-  box-shadow: 0 3px 10px rgba(46, 27, 19, 0.07);
-}
-
-.venue-grid-toggle .toggle-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.venue-grid-toggle .toggle-arrow {
-  display: inline-block;
-  transition: transform 0.3s ease;
-  font-size: 0.8em;
-  color: var(--accent);
-}
-
-.venue-grid-toggle.open .toggle-arrow {
-  transform: rotate(180deg);
-}
-
-.venue-grid-toggle .toggle-count {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--muted);
-}
-
-.venue-grid-wrapper {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.45s ease, opacity 0.3s ease;
-}
-
-.venue-grid-wrapper.expanded {
-  max-height: none;
-  opacity: 1;
-  overflow: visible;
-}
-
 .venue-grid {
   display: grid;
   gap: 16px;
@@ -830,9 +808,14 @@ a:hover {
     </header>
     <div class="layout">
       <aside class="sidebar">
+<button class="sidebar-toggle" id="sidebarToggle" aria-expanded="false">
 <h2>Browse Theaters</h2>
+<span class="toggle-arrow">&#x25BC;</span>
+</button>
+<div class="sidebar-list-wrapper" id="sidebarListWrapper">
 <ul class="sidebar-list"><li><a href="theaters/astor_place.html">Astor Place Theatre</a></li><li><a href="theaters/asylum.html">Asylum NYC</a></li><li><a href="theaters/caveat.html">Caveat</a></li><li><a href="theaters/chain_theatre.html">Chain Theatre</a></li><li><a href="theaters/here.html">HERE Arts Center</a></li><li><a href="theaters/liberty.html">Liberty Theatres</a></li><li><a href="theaters/nytw.html">New York Theatre Workshop</a></li><li><a href="theaters/parkside_lounge.html">Parkside Lounge</a></li><li><a href="theaters/performance_space.html">Performance Space New York</a></li><li><a href="theaters/public_theater.html">The Public Theater</a></li><li><a href="theaters/rat_nyc.html">The Rat NYC</a></li><li><a href="theaters/slipper_room.html">The Slipper Room</a></li><li><a href="theaters/tnc.html">Theater for the New City</a></li><li><a href="theaters/under_st_marks.html">Under St Marks</a></li><li><a href="theaters/vineyard.html">Vineyard Theatre</a></li><li><a href="theaters/wild_project.html">Wild Project</a></li></ul>
 <div class="sidebar-meta">Schedules link directly back to the venue source and ticket page when available.</div>
+</div>
 </aside>
       <section class="content-panel">
 <div class="section-header">
@@ -883,8 +866,7 @@ a:hover {
     </div>
   </div>
 </div>
-<button class="venue-grid-toggle" id="venueGridToggle"><span class="toggle-label"><span class="toggle-arrow">&#x25BC;</span> Browse All Venues</span><span class="toggle-count">14 venues</span></button>
-<div class="venue-grid-wrapper" id="venueGridWrapper"><div class="venue-grid" id="venueGrid"><article class="venue-card" data-venue="astor_place" data-earliest-date="2026-04-20" data-latest-date="2026-05-06">
+<div class="venue-grid" id="venueGrid"><article class="venue-card" data-venue="astor_place" data-earliest-date="2026-04-20" data-latest-date="2026-05-06">
 <h3><a href="theaters/astor_place.html">Astor Place Theatre</a></h3>
 <div class="venue-stats"><span>1 shows</span><span>32 listed dates</span></div>
 <div class="show-preview"><div class="show-preview-row" data-show-date="2026-04-20" data-all-dates="2026-04-20,2026-04-22,2026-04-23,2026-04-24,2026-04-25,2026-04-26,2026-04-27,2026-04-29,2026-04-30,2026-05-01,2026-05-02,2026-05-03,2026-05-04,2026-05-06">
@@ -1234,7 +1216,7 @@ a:hover {
 </div>
 <div class="show-preview-links"><a href="https://thewildproject.org/performances/wild-works-puppetry-on-the-edge/">Source</a> <a href="theaters/wild_project.html">View venue</a></div>
 </div></div>
-</article></div></div>
+</article></div>
 </section>
     </div>
   </div>
@@ -1438,16 +1420,6 @@ a:hover {
     filterToggle.classList.toggle('open');
   });
 
-  // --- Venue grid toggle (starts collapsed) ---
-  var venueGridToggle  = document.getElementById('venueGridToggle');
-  var venueGridWrapper = document.getElementById('venueGridWrapper');
-  if (venueGridToggle && venueGridWrapper) {
-    venueGridToggle.addEventListener('click', function() {
-      venueGridWrapper.classList.toggle('expanded');
-      venueGridToggle.classList.toggle('open');
-    });
-  }
-
   // --- Venue dropdown ---
   venueSelect.addEventListener('click', function(e) {
     e.stopPropagation();
@@ -1569,5 +1541,18 @@ a:hover {
       : count + ' of ' + total + ' venues shown.';
   }
 </script>
+  <script>
+  (function() {
+    var btn = document.getElementById('sidebarToggle');
+    var wrap = document.getElementById('sidebarListWrapper');
+    if (btn && wrap) {
+      btn.addEventListener('click', function() {
+        var expanded = wrap.classList.toggle('expanded');
+        btn.classList.toggle('open');
+        btn.setAttribute('aria-expanded', expanded);
+      });
+    }
+  })();
+  </script>
 </body>
 </html>

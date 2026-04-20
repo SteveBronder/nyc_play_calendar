@@ -135,8 +135,45 @@ a:hover {
 }
 
 .sidebar h2 {
-  margin: 0 0 14px;
+  margin: 0;
   font-size: 1.2rem;
+}
+
+.sidebar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 0 14px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+.sidebar-toggle .toggle-arrow {
+  display: inline-block;
+  font-size: 0.7em;
+  color: var(--muted);
+  transition: transform 0.3s ease;
+}
+
+.sidebar-toggle.open .toggle-arrow {
+  transform: rotate(180deg);
+}
+
+.sidebar-list-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.sidebar-list-wrapper.expanded {
+  max-height: 2000px;
+  opacity: 1;
 }
 
 .sidebar-list,
@@ -600,65 +637,6 @@ a:hover {
   font-size: 0.94rem;
 }
 
-.venue-grid-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 14px 18px;
-  margin-bottom: 16px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,248,240,0.78));
-  color: var(--ink);
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: inherit;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.venue-grid-toggle:hover {
-  background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,250,245,0.92));
-  box-shadow: 0 3px 10px rgba(46, 27, 19, 0.07);
-}
-
-.venue-grid-toggle .toggle-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.venue-grid-toggle .toggle-arrow {
-  display: inline-block;
-  transition: transform 0.3s ease;
-  font-size: 0.8em;
-  color: var(--accent);
-}
-
-.venue-grid-toggle.open .toggle-arrow {
-  transform: rotate(180deg);
-}
-
-.venue-grid-toggle .toggle-count {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--muted);
-}
-
-.venue-grid-wrapper {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.45s ease, opacity 0.3s ease;
-}
-
-.venue-grid-wrapper.expanded {
-  max-height: none;
-  opacity: 1;
-  overflow: visible;
-}
-
 .venue-grid {
   display: grid;
   gap: 16px;
@@ -830,9 +808,14 @@ a:hover {
     </header>
     <div class="layout">
       <aside class="sidebar">
+<button class="sidebar-toggle" id="sidebarToggle" aria-expanded="false">
 <h2>Browse Theaters</h2>
+<span class="toggle-arrow">&#x25BC;</span>
+</button>
+<div class="sidebar-list-wrapper" id="sidebarListWrapper">
 <ul class="sidebar-list"><li><a href="astor_place.html">Astor Place Theatre</a></li><li><a href="asylum.html">Asylum NYC</a></li><li><a href="caveat.html">Caveat</a></li><li><a href="chain_theatre.html">Chain Theatre</a></li><li><a href="here.html">HERE Arts Center</a></li><li><a href="liberty.html">Liberty Theatres</a></li><li><a href="nytw.html">New York Theatre Workshop</a></li><li><a href="parkside_lounge.html">Parkside Lounge</a></li><li><a href="performance_space.html">Performance Space New York</a></li><li><a href="public_theater.html">The Public Theater · current</a></li><li><a href="rat_nyc.html">The Rat NYC</a></li><li><a href="slipper_room.html">The Slipper Room</a></li><li><a href="tnc.html">Theater for the New City</a></li><li><a href="under_st_marks.html">Under St Marks</a></li><li><a href="vineyard.html">Vineyard Theatre</a></li><li><a href="wild_project.html">Wild Project</a></li></ul>
 <div class="sidebar-meta">Last scrape: Apr 19, 2026 at 06:12 AM</div>
+</div>
 </aside>
       <section class="content-panel">
 <div class="section-header">
@@ -5914,5 +5897,18 @@ a:hover {
     </div>
   </div>
   
+  <script>
+  (function() {
+    var btn = document.getElementById('sidebarToggle');
+    var wrap = document.getElementById('sidebarListWrapper');
+    if (btn && wrap) {
+      btn.addEventListener('click', function() {
+        var expanded = wrap.classList.toggle('expanded');
+        btn.classList.toggle('open');
+        btn.setAttribute('aria-expanded', expanded);
+      });
+    }
+  })();
+  </script>
 </body>
 </html>
