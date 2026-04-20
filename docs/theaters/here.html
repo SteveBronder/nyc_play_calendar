@@ -600,6 +600,65 @@ a:hover {
   font-size: 0.94rem;
 }
 
+.venue-grid-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,248,240,0.78));
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.venue-grid-toggle:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,250,245,0.92));
+  box-shadow: 0 3px 10px rgba(46, 27, 19, 0.07);
+}
+
+.venue-grid-toggle .toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.venue-grid-toggle .toggle-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 0.8em;
+  color: var(--accent);
+}
+
+.venue-grid-toggle.open .toggle-arrow {
+  transform: rotate(180deg);
+}
+
+.venue-grid-toggle .toggle-count {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.venue-grid-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.45s ease, opacity 0.3s ease;
+}
+
+.venue-grid-wrapper.expanded {
+  max-height: none;
+  opacity: 1;
+  overflow: visible;
+}
+
 .venue-grid {
   display: grid;
   gap: 16px;
@@ -779,27 +838,10 @@ a:hover {
 <div class="section-header">
 <div>
 <h2>HERE Arts Center</h2>
-<p>7 productions and 62 listed performance dates.</p>
+<p>6 productions and 61 listed performance dates.</p>
 </div>
 </div>
 <ul class="production-list"><li class="production-card">
-<div class="production-head">
-<div>
-<h2>OFF THE RECORD: ACTS OF RESTORATIVE JUSTICE</h2>
-<div class="meta-row"><span>HERE Arts Center</span></div>
-</div>
-<div class="tag">1 dates listed</div>
-</div>
-<div class="meta-row"><span class="run-range">April 5 - 19</span></div>
-<p class="description">OFF THE RECORD: Acts of Restorative Justice is a theatrical intervention aimed directly at the American Criminal Justice System and a call for audiences to activate their activism and stoke the fires of change.</p>
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 19 at 04:00 PM</div>
-<div class="schedule-meta">HERE Arts Center</div>
-</div>
-<div class="schedule-links"><a href="https://here.org/shows/off-the-record-acts-of-restorative-justice/">Source</a> <a href="https://here.app.getcuebox.com/o/CCTQ0T6B/shows/9VRG0GQP">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
 <div class="production-head">
 <div>
 <h2>The Menopause Monologues</h2>

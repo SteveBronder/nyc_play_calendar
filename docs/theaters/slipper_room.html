@@ -600,6 +600,65 @@ a:hover {
   font-size: 0.94rem;
 }
 
+.venue-grid-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,248,240,0.78));
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.venue-grid-toggle:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,250,245,0.92));
+  box-shadow: 0 3px 10px rgba(46, 27, 19, 0.07);
+}
+
+.venue-grid-toggle .toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.venue-grid-toggle .toggle-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 0.8em;
+  color: var(--accent);
+}
+
+.venue-grid-toggle.open .toggle-arrow {
+  transform: rotate(180deg);
+}
+
+.venue-grid-toggle .toggle-count {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.venue-grid-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.45s ease, opacity 0.3s ease;
+}
+
+.venue-grid-wrapper.expanded {
+  max-height: none;
+  opacity: 1;
+  overflow: visible;
+}
+
 .venue-grid {
   display: grid;
   gap: 16px;
@@ -779,80 +838,10 @@ a:hover {
 <div class="section-header">
 <div>
 <h2>The Slipper Room</h2>
-<p>22 productions and 54 listed performance dates.</p>
+<p>21 productions and 52 listed performance dates.</p>
 </div>
 </div>
 <ul class="production-list"><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Guest Event Mandopop Aerial Spectacular</h2>
-<div class="meta-row"><span>The Slipper Room</span></div>
-</div>
-<div class="tag">1 dates listed</div>
-</div>
-
-<p class="description">Showtime 5:00pm. Mandarin and Taiwanese pop meets live aerial artistry in one unforgettable evening. Come celebrate music, movement, and magic in the air!</p>
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 19 at 04:30 PM</div>
-<div class="schedule-meta">The Slipper Room</div>
-</div>
-<div class="schedule-links"><a href="https://www.slipperroom.com/event-details/guest-event-mandopop-aerial-spectacular-april-19">Source</a> <a href="https://www.slipperroom.com/event-details/guest-event-mandopop-aerial-spectacular-april-19">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
-<div class="production-head">
-<div>
-<h2>Slippery Sundays</h2>
-<div class="meta-row"><span>The Slipper Room</span></div>
-</div>
-<div class="tag">7 dates listed</div>
-</div>
-
-<p class="description">The variety show that tops them all. Since 1999. The original and still the best. Doors at 8:00pm. Showtime 8:30 with a single intermission. Featuring Walt Whitman, Maddox, Miss Pretty Smart, Peek A Boo Pointe, Audrey Love, &amp; Samson Night! Full bore fun, non-stop excitement.</p>
-<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 19 at 08:00 PM</div>
-<div class="schedule-meta">The Slipper Room</div>
-</div>
-<div class="schedule-links"><a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Source</a> <a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, Apr 26 at 08:00 PM</div>
-<div class="schedule-meta">The Slipper Room</div>
-</div>
-<div class="schedule-links"><a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Source</a> <a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, May 03 at 08:00 PM</div>
-<div class="schedule-meta">The Slipper Room</div>
-</div>
-<div class="schedule-links"><a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Source</a> <a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, May 10 at 08:00 PM</div>
-<div class="schedule-meta">The Slipper Room</div>
-</div>
-<div class="schedule-links"><a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Source</a> <a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, May 17 at 08:00 PM</div>
-<div class="schedule-meta">The Slipper Room</div>
-</div>
-<div class="schedule-links"><a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Source</a> <a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, May 24 at 08:00 PM</div>
-<div class="schedule-meta">The Slipper Room</div>
-</div>
-<div class="schedule-links"><a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Source</a> <a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Tickets</a></div>
-</li><li class="schedule-row">
-<div>
-<div class="schedule-datetime">Sun, May 31 at 08:00 PM</div>
-<div class="schedule-meta">The Slipper Room</div>
-</div>
-<div class="schedule-links"><a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Source</a> <a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Tickets</a></div>
-</li></ul></div>
-</li><li class="production-card">
 <div class="production-head">
 <div>
 <h2>Guest Event: Visceral Abstractions</h2>
@@ -1120,6 +1109,53 @@ a:hover {
 <div class="schedule-meta">The Slipper Room</div>
 </div>
 <div class="schedule-links"><a href="https://www.slipperroom.com/event-details/guest-event-let-the-sunshine-in-april-26">Source</a> <a href="https://www.slipperroom.com/event-details/guest-event-let-the-sunshine-in-april-26">Tickets</a></div>
+</li></ul></div>
+</li><li class="production-card">
+<div class="production-head">
+<div>
+<h2>Slippery Sundays</h2>
+<div class="meta-row"><span>The Slipper Room</span></div>
+</div>
+<div class="tag">6 dates listed</div>
+</div>
+
+<p class="description">The variety show that tops them all. Since 1999. The original and still the best. Doors at 8:00pm. Showtime 8:30 with a single intermission. Featuring Walt Whitman, Maddox, Miss Pretty Smart, Peek A Boo Pointe, Audrey Love, &amp; Samson Night! Full bore fun, non-stop excitement.</p>
+<div class="schedule-block"><p class="schedule-label">Upcoming Dates</p><ul class="schedule-list"><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, Apr 26 at 08:00 PM</div>
+<div class="schedule-meta">The Slipper Room</div>
+</div>
+<div class="schedule-links"><a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Source</a> <a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Tickets</a></div>
+</li><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, May 03 at 08:00 PM</div>
+<div class="schedule-meta">The Slipper Room</div>
+</div>
+<div class="schedule-links"><a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Source</a> <a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Tickets</a></div>
+</li><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, May 10 at 08:00 PM</div>
+<div class="schedule-meta">The Slipper Room</div>
+</div>
+<div class="schedule-links"><a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Source</a> <a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Tickets</a></div>
+</li><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, May 17 at 08:00 PM</div>
+<div class="schedule-meta">The Slipper Room</div>
+</div>
+<div class="schedule-links"><a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Source</a> <a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Tickets</a></div>
+</li><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, May 24 at 08:00 PM</div>
+<div class="schedule-meta">The Slipper Room</div>
+</div>
+<div class="schedule-links"><a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Source</a> <a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Tickets</a></div>
+</li><li class="schedule-row">
+<div>
+<div class="schedule-datetime">Sun, May 31 at 08:00 PM</div>
+<div class="schedule-meta">The Slipper Room</div>
+</div>
+<div class="schedule-links"><a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Source</a> <a href="https://www.slipperroom.com/event-details/slippery-sundays-may-10">Tickets</a></div>
 </li></ul></div>
 </li><li class="production-card">
 <div class="production-head">

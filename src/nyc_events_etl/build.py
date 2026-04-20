@@ -602,6 +602,65 @@ a:hover {
   font-size: 0.94rem;
 }
 
+.venue-grid-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,248,240,0.78));
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.venue-grid-toggle:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,250,245,0.92));
+  box-shadow: 0 3px 10px rgba(46, 27, 19, 0.07);
+}
+
+.venue-grid-toggle .toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.venue-grid-toggle .toggle-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 0.8em;
+  color: var(--accent);
+}
+
+.venue-grid-toggle.open .toggle-arrow {
+  transform: rotate(180deg);
+}
+
+.venue-grid-toggle .toggle-count {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.venue-grid-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.45s ease, opacity 0.3s ease;
+}
+
+.venue-grid-wrapper.expanded {
+  max-height: none;
+  opacity: 1;
+  overflow: visible;
+}
+
 .venue-grid {
   display: grid;
   gap: 16px;
@@ -958,7 +1017,11 @@ def _render_index_page(payload: dict, grouped: dict[str, list[dict]], theater_ma
             "</div>",
             f'<script id="allShowDates" type="application/json">{all_show_dates_json}</script>',
             filter_html,
-            f'<div class="venue-grid" id="venueGrid">{"".join(venue_cards)}</div>',
+            f'<button class="venue-grid-toggle" id="venueGridToggle">'
+            f'<span class="toggle-label"><span class="toggle-arrow">&#x25BC;</span> Browse All Venues</span>'
+            f'<span class="toggle-count">{len(venue_cards)} venues</span>'
+            f'</button>',
+            f'<div class="venue-grid-wrapper" id="venueGridWrapper"><div class="venue-grid" id="venueGrid">{"".join(venue_cards)}</div></div>',
             "</section>",
         ]
     )
@@ -1346,6 +1409,16 @@ def _get_filter_script() -> str:
     filterContainer.classList.toggle('active');
     filterToggle.classList.toggle('open');
   });
+
+  // --- Venue grid toggle (starts collapsed) ---
+  var venueGridToggle  = document.getElementById('venueGridToggle');
+  var venueGridWrapper = document.getElementById('venueGridWrapper');
+  if (venueGridToggle && venueGridWrapper) {
+    venueGridToggle.addEventListener('click', function() {
+      venueGridWrapper.classList.toggle('expanded');
+      venueGridToggle.classList.toggle('open');
+    });
+  }
 
   // --- Venue dropdown ---
   venueSelect.addEventListener('click', function(e) {
